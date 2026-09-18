@@ -2,3 +2,6 @@ streamlit
 pandas
 nfl_data_py
 pyarrow
+scikit-learn
+scipy
+joblib
