@@ -33,7 +33,7 @@ MARKETS = {
         "snap_filter": ("attempts", 0),
         "features": ["attempts_season_avg", "attempts_last3_avg", "attempts_last5_avg", "attempts_trend",
                      "games_played_prior"],
-        "model_name": "passing_attempts",  # avoid clashing with rushing "carries" file naming
+        "model_name": "passing_attempts",
     },
     "completions": {
         "positions": ["QB"],
