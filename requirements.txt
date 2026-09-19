@@ -1,6 +1,6 @@
 streamlit
 pandas
-nflreadypy
+nflreadpy
 pyarrow
 scikit-learn
 scipy
