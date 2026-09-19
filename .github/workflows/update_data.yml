@@ -30,6 +30,9 @@ jobs:
 
       - name: Train models
         run: python scripts/train_all_markets.py
+      
+      - name: build slate
+        run: python scripts/build_slate.py
 
       - name: Commit updated data
         run: |
