@@ -27,7 +27,7 @@ MARKETS = {
 }
 
 
-def get_upcoming_week(schedule: pd.DataFrame, as_of: pd.Timestamp):
+def get_upcoming_week(schedule: pd.DataFrame, as_of: pd.Timestamp) -> tuple[int, pd.DataFrame]:
     """The next week that has at least one game not yet played."""
     schedule = schedule.copy()
     schedule["gameday"] = pd.to_datetime(schedule["gameday"])
@@ -133,6 +133,30 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         opp_feature_cols = [c for c in feature_cols if c.startswith("opp_") and c.endswith("_allowed_season_avg")]
         for col in opp_feature_cols:
             eligible[col] = eligible["upcoming_opponent"].map(team_defense[col])
+
+        eligible = eligible.dropna(subset=feature_cols)
+        if eligible.empty:
+            continue
+
+        X = eligible[feature_cols]
+        preds = model.predict(X)
+
+        for i, (_, r) in enumerate(eligible.iterrows()):
+            rows.append({
+                "market": market_label,
+                "player": r["player_display_name"],
+                "team": r["team"],
+                "opponent": r["upcoming_opponent"],
+                "position": r["position"],
+                "projection": round(preds[i], 1),
+                "season_avg": round(r[feature_cols[0]], 1),
+                "games_played_prior": int(r["games_played_prior"]),
+                "week": week,
+            })
+
+    return pd.DataFrame(rows)
+
+
 if __name__ == "__main__":
     import nflreadpy as nfl
     current_year = datetime.now().year
