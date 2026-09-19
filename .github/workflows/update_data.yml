@@ -20,7 +20,7 @@ jobs:
           python-version: '3.11'
 
       - name: Install dependencies
-        run: pip install nfl_data_py pandas pyarrow scikit-learn scipy joblib
+        run: pip install nflreadypy pandas pyarrow scikit-learn scipy joblib
 
       - name: Run update script
         run: python scripts/update_data.py
