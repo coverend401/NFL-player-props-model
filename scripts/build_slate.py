@@ -64,11 +64,36 @@ def latest_team_defense(features: pd.DataFrame) -> pd.DataFrame:
     return team_rows[opp_cols]
 
 
+def build_game_context_for_week(week_games: pd.DataFrame) -> pd.DataFrame:
+    """Same implied-total / home-away / indoor logic as build_features.py's
+    build_game_context, but scoped to just the upcoming week's actual games -
+    this is what makes the slate use THIS week's real lines, not last week's."""
+    wg = week_games.copy()
+    wg["home_implied_total"] = (wg["total_line"] + wg["spread_line"]) / 2
+    wg["away_implied_total"] = (wg["total_line"] - wg["spread_line"]) / 2
+    wg["indoor"] = wg["roof"].isin(["dome", "closed"]).astype(int)
+
+    home_rows = wg[["home_team", "home_implied_total", "away_implied_total", "indoor"]].rename(
+        columns={"home_team": "team", "home_implied_total": "team_implied_total",
+                 "away_implied_total": "opp_implied_total"}
+    )
+    home_rows["is_home"] = 1
+
+    away_rows = wg[["away_team", "away_implied_total", "home_implied_total", "indoor"]].rename(
+        columns={"away_team": "team", "away_implied_total": "team_implied_total",
+                 "home_implied_total": "opp_implied_total"}
+    )
+    away_rows["is_home"] = 0
+
+    return pd.concat([home_rows, away_rows], ignore_index=True).set_index("team")
+
+
 def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timestamp) -> pd.DataFrame:
     week, week_games = get_upcoming_week(schedule, as_of)
     schedule_current_season = week_games["season"].iloc[0]
     opp_map = build_opponent_map(week_games)
     team_defense = latest_team_defense(features)
+    game_context = build_game_context_for_week(week_games)
 
     latest_per_player = (
         features.sort_values(["player_id", "season", "week"])
@@ -85,6 +110,11 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
     active = latest_per_player[latest_per_player["team"].isin(opp_map.keys())].copy()
     active["upcoming_opponent"] = active["team"].map(opp_map)
 
+    # Swap in THIS week's actual implied total / home-away / indoor, replacing
+    # whatever was attached to each player's last game.
+    for col in ["team_implied_total", "opp_implied_total", "is_home", "indoor"]:
+        active[col] = active["team"].map(game_context[col])
+
     rows = []
     for market_key, market_label in MARKETS.items():
         try:
@@ -100,33 +130,9 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
 
         # Swap in the UPCOMING opponent's current defensive numbers, replacing
         # whatever opponent-allowed value was attached to their last game.
-        opp_feature_cols = [c for c in feature_cols if c.startswith("opp_")]
+        opp_feature_cols = [c for c in feature_cols if c.startswith("opp_") and c.endswith("_allowed_season_avg")]
         for col in opp_feature_cols:
             eligible[col] = eligible["upcoming_opponent"].map(team_defense[col])
-
-        eligible = eligible.dropna(subset=feature_cols)
-        if eligible.empty:
-            continue
-
-        X = eligible[feature_cols]
-        preds = model.predict(X)
-
-        for i, (_, r) in enumerate(eligible.iterrows()):
-            rows.append({
-                "market": market_label,
-                "player": r["player_display_name"],
-                "team": r["team"],
-                "opponent": r["upcoming_opponent"],
-                "position": r["position"],
-                "projection": round(preds[i], 1),
-                "season_avg": round(r[feature_cols[0]], 1),
-                "games_played_prior": int(r["games_played_prior"]),
-                "week": week,
-            })
-
-    return pd.DataFrame(rows)
-
-
 if __name__ == "__main__":
     import nflreadpy as nfl
     current_year = datetime.now().year

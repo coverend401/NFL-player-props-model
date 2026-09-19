@@ -88,7 +88,12 @@ MARKETS = {
                      "games_played_prior", "opp_receptions_allowed_season_avg"],
     },
 }
-
+# Game-context features (implied team total, opponent implied total, home/away,
+# indoor/outdoor) - all known before kickoff via closing betting lines, so
+# adding them isn't leakage. Applied to every market uniformly.
+GAME_CONTEXT_FEATURES = ["team_implied_total", "opp_implied_total", "is_home", "indoor"]
+for _config in MARKETS.values():
+    _config["features"] = _config["features"] + GAME_CONTEXT_FEATURES
 
 def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
     snap_col, min_val = config["snap_filter"]
