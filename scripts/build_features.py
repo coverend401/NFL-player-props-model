@@ -52,22 +52,22 @@ def build_player_features(df: pd.DataFrame) -> pd.DataFrame:
         df.groupby(["opponent_team", "season", "week"])[STAT_COLS]
         .sum()
         .reset_index()
-        .rename(columns={"opponent_team": "team"})
+        .rename(columns={"opponent_team": "_opp_team_key"})
     )
-    team_allowed = team_allowed.sort_values(["team", "season", "week"])
+    team_allowed = team_allowed.sort_values(["_opp_team_key", "season", "week"])
     for stat in STAT_COLS:
-        shifted_allowed = team_allowed.groupby("team")[stat].shift(1)
+        shifted_allowed = team_allowed.groupby("_opp_team_key")[stat].shift(1)
         team_allowed[f"opp_{stat}_allowed_season_avg"] = (
-            shifted_allowed.groupby(team_allowed["team"]).expanding().mean().reset_index(level=0, drop=True)
+            shifted_allowed.groupby(team_allowed["_opp_team_key"]).expanding().mean().reset_index(level=0, drop=True)
         )
 
-    opp_cols = ["team", "season", "week"] + [f"opp_{s}_allowed_season_avg" for s in STAT_COLS]
+    opp_cols = ["_opp_team_key", "season", "week"] + [f"opp_{s}_allowed_season_avg" for s in STAT_COLS]
     df = df.merge(
         team_allowed[opp_cols],
         left_on=["opponent_team", "season", "week"],
-        right_on=["team", "season", "week"],
+        right_on=["_opp_team_key", "season", "week"],
         how="left",
-    ).drop(columns=["team"])
+    ).drop(columns=["_opp_team_key"])
 
     return df
 

@@ -33,7 +33,7 @@ MARKETS = {
         "snap_filter": ("attempts", 0),
         "features": ["attempts_season_avg", "attempts_last3_avg", "attempts_last5_avg", "attempts_trend",
                      "games_played_prior"],
-        "model_name": "passing_attempts",
+        "model_name": "passing_attempts",  # avoid clashing with rushing "carries" file naming
     },
     "completions": {
         "positions": ["QB"],
@@ -56,6 +56,23 @@ MARKETS = {
                      "games_played_prior"],
         "model_name": "rushing_attempts",
     },
+    "qb_rushing_yards": {
+        "positions": ["QB"],
+        "snap_filter": ("carries", 0),
+        "features": ["rushing_yards_season_avg", "rushing_yards_last3_avg", "rushing_yards_last5_avg",
+                     "rushing_yards_trend", "carries_season_avg", "carries_last3_avg",
+                     "games_played_prior", "opp_rushing_yards_allowed_season_avg"],
+        "model_name": "qb_rushing_yards",
+        "target_col": "rushing_yards",
+    },
+    "qb_carries": {
+        "positions": ["QB"],
+        "snap_filter": ("carries", 0),
+        "features": ["carries_season_avg", "carries_last3_avg", "carries_last5_avg", "carries_trend",
+                     "games_played_prior"],
+        "model_name": "qb_rushing_attempts",
+        "target_col": "carries",
+    },
     "receiving_yards": {
         "positions": ["WR", "TE", "RB"],
         "snap_filter": ("targets", 0),
@@ -73,19 +90,29 @@ MARKETS = {
 }
 
 
-def prepare_dataset(features: pd.DataFrame, market: str, config: dict) -> pd.DataFrame:
+def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
     snap_col, min_val = config["snap_filter"]
     df = features[
         features["position"].isin(config["positions"]) & (features[snap_col] > min_val)
     ].copy()
     df = df[df["games_played_prior"] >= MIN_PRIOR_GAMES]
-    df = df.dropna(subset=config["features"] + [market])
+    df = df.dropna(subset=config["features"] + [target_col])
     return df
 
 
 def time_based_split(df: pd.DataFrame):
-    seasons = sorted(df["season"].unique())
-    test_season = seasons[-1]
+    """
+    Test season = most recent season with a FULL slate of games (>=17 weeks
+    of regular season data), not simply the latest season in the data.
+    Otherwise, mid-season, the current partial season would get used as the
+    test set - a tiny, noisy sample that produces a misleadingly bad-looking
+    result purely from small numbers, not an actual worse model.
+    """
+    season_weeks = df.groupby("season")["week"].max()
+    complete_seasons = season_weeks[season_weeks >= 17].index
+    if len(complete_seasons) == 0:
+        raise ValueError("No complete season available to validate against yet.")
+    test_season = complete_seasons.max()
     return df[df["season"] < test_season], df[df["season"] == test_season], test_season
 
 
@@ -110,9 +137,10 @@ def calibration_summary(preds, y_test, resid_std, baseline_line, n_bins=5):
 
 def train_market(features: pd.DataFrame, market: str, config: dict):
     label = config.get("model_name", market)
-    print(f"\n{'='*60}\nMARKET: {label}  (target column: {market})\n{'='*60}")
+    target_col = config.get("target_col", market)
+    print(f"\n{'='*60}\nMARKET: {label}  (target column: {target_col})\n{'='*60}")
 
-    df = prepare_dataset(features, market, config)
+    df = prepare_dataset(features, target_col, config)
     if len(df) < 200:
         print(f"SKIPPED - only {len(df)} usable rows, too small to train/validate honestly.")
         return None
@@ -122,11 +150,11 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
         print(f"SKIPPED - only {len(test)} test-season rows, too small to validate honestly.")
         return None
 
-    X_train, y_train = train[config["features"]], train[market]
-    X_test, y_test = test[config["features"]], test[market]
+    X_train, y_train = train[config["features"]], train[target_col]
+    X_test, y_test = test[config["features"]], test[target_col]
     print(f"Train: {len(train)} rows (seasons < {test_season}) | Test: {len(test)} rows (season {test_season})")
 
-    naive_col = config["features"][0]
+    naive_col = config["features"][0]  # each market's first feature is always its own season_avg
     naive_mae = mae(X_test[naive_col], y_test)
     print(f"Naive (season avg only): MAE={naive_mae:.2f}")
 
@@ -159,10 +187,23 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
     print("Calibration (vs. player's own season average as a stand-in line):")
     print(calibration_summary(best_preds, y_test, resid_std, test[naive_col]))
 
+    # Validation used train-only data to keep the test fair. Now that we know
+    # this model type genuinely beats the baseline, refit it on ALL available
+    # data (including the validated season and any in-progress current season)
+    # so the model actually shipped benefits from the most recent information.
+    X_full, y_full = df[config["features"]], df[target_col]
+    final_model = Ridge(alpha=1.0) if best_name == "ridge" else GradientBoostingRegressor(
+        n_estimators=200, max_depth=3, learning_rate=0.05, random_state=42
+    )
+    final_model.fit(X_full, y_full)
+    final_resid_std = np.std(y_full - final_model.predict(X_full))
+
     out_path = f"data/model_{label}.joblib"
-    joblib.dump({"model": best_model, "features": config["features"], "resid_std": resid_std,
-                 "market": market, "positions": config["positions"]}, out_path)
-    print(f"Saved -> {out_path}")
+    joblib.dump({"model": final_model, "features": config["features"], "resid_std": final_resid_std,
+                 "market": market, "positions": config["positions"],
+                 "validated_mae": min(ridge_mae, gbr_mae), "validated_against_season": int(test_season)},
+                out_path)
+    print(f"Saved -> {out_path} (retrained on full data through the current season)")
     return out_path
 
 

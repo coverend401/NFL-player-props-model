@@ -1,6 +1,6 @@
 streamlit
 pandas
-nfl_data_py
+nflreadypy
 pyarrow
 scikit-learn
 scipy
