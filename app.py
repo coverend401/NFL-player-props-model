@@ -12,6 +12,8 @@ MARKETS = {
     "Completions": "completions",
     "Rushing Yards": "rushing_yards",
     "Rushing Attempts": "rushing_attempts",
+    "QB Rushing Yards": "qb_rushing_yards",
+    "QB Rushing Attempts": "qb_rushing_attempts",
     "Receiving Yards": "receiving_yards",
     "Receptions": "receptions",
 }
