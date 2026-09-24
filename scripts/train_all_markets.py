@@ -106,6 +106,24 @@ BOTH_SIDES_DEFENSE = ["opp_passing_yards_allowed_season_avg", "opp_rushing_yards
 for _config in MARKETS.values():
     _config["features"] = _config["features"] + BOTH_SIDES_DEFENSE
 
+# Game-context features (implied team total, opponent implied total, home/away,
+# indoor/outdoor) - all known before kickoff via closing betting lines, so
+# adding them isn't leakage. Applied to every market uniformly.
+GAME_CONTEXT_FEATURES = ["team_implied_total", "opp_implied_total", "is_home", "indoor"]
+for _config in MARKETS.values():
+    _config["features"] = _config["features"] + GAME_CONTEXT_FEATURES
+
+
+def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
+    snap_col, min_val = config["snap_filter"]
+    df = features[
+        features["position"].isin(config["positions"]) & (features[snap_col] > min_val)
+    ].copy()
+    df = df[df["games_played_prior"] >= MIN_PRIOR_GAMES]
+    df = df.dropna(subset=config["features"] + [target_col])
+    return df
+
+
 def time_based_split(df: pd.DataFrame):
     """
     Test season = most recent season with a FULL slate of games (>=17 weeks
