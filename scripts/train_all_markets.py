@@ -26,13 +26,16 @@ MARKETS = {
         "snap_filter": ("attempts", 0),
         "features": ["passing_yards_season_avg", "passing_yards_last3_avg", "passing_yards_last5_avg",
                      "passing_yards_trend", "attempts_season_avg", "attempts_last3_avg",
-                     "games_played_prior", "opp_passing_yards_allowed_season_avg"],
+                     "games_played_prior",
+                     "pass_completions_exp_season_avg", "pass_yards_gained_exp_season_avg",
+                     "offense_pct_season_avg", "completion_pct_above_expectation_season_avg",
+                     "avg_time_to_throw_season_avg", "passing_epa_season_avg"],
     },
     "attempts": {  # passing attempts (QB)
         "positions": ["QB"],
         "snap_filter": ("attempts", 0),
         "features": ["attempts_season_avg", "attempts_last3_avg", "attempts_last5_avg", "attempts_trend",
-                     "games_played_prior"],
+                     "games_played_prior", "offense_pct_season_avg"],
         "model_name": "passing_attempts",  # avoid clashing with rushing "carries" file naming
     },
     "completions": {
@@ -40,20 +43,22 @@ MARKETS = {
         "snap_filter": ("attempts", 0),
         "features": ["completions_season_avg", "completions_last3_avg", "completions_last5_avg",
                      "completions_trend", "attempts_season_avg", "attempts_last3_avg",
-                     "games_played_prior"],
+                     "games_played_prior", "pass_completions_exp_season_avg",
+                     "completion_pct_above_expectation_season_avg"],
     },
     "rushing_yards": {
         "positions": ["RB"],
         "snap_filter": ("carries", 0),
         "features": ["rushing_yards_season_avg", "rushing_yards_last3_avg", "rushing_yards_last5_avg",
                      "rushing_yards_trend", "carries_season_avg", "carries_last3_avg",
-                     "games_played_prior", "opp_rushing_yards_allowed_season_avg"],
+                     "games_played_prior", "rush_yards_gained_exp_season_avg",
+                     "offense_pct_season_avg", "rushing_epa_season_avg"],
     },
     "carries": {  # rushing attempts
         "positions": ["RB"],
         "snap_filter": ("carries", 0),
         "features": ["carries_season_avg", "carries_last3_avg", "carries_last5_avg", "carries_trend",
-                     "games_played_prior"],
+                     "games_played_prior", "offense_pct_season_avg"],
         "model_name": "rushing_attempts",
     },
     "qb_rushing_yards": {
@@ -61,7 +66,7 @@ MARKETS = {
         "snap_filter": ("carries", 0),
         "features": ["rushing_yards_season_avg", "rushing_yards_last3_avg", "rushing_yards_last5_avg",
                      "rushing_yards_trend", "carries_season_avg", "carries_last3_avg",
-                     "games_played_prior", "opp_rushing_yards_allowed_season_avg"],
+                     "games_played_prior", "rush_yards_gained_exp_season_avg", "rushing_epa_season_avg"],
         "model_name": "qb_rushing_yards",
         "target_col": "rushing_yards",
     },
@@ -78,32 +83,28 @@ MARKETS = {
         "snap_filter": ("targets", 0),
         "features": ["receiving_yards_season_avg", "receiving_yards_last3_avg", "receiving_yards_last5_avg",
                      "receiving_yards_trend", "targets_season_avg", "targets_last3_avg",
-                     "games_played_prior", "opp_receiving_yards_allowed_season_avg"],
+                     "games_played_prior", "receptions_exp_season_avg", "rec_yards_gained_exp_season_avg",
+                     "offense_pct_season_avg", "target_share_season_avg", "air_yards_share_season_avg",
+                     "wopr_season_avg", "receiving_epa_season_avg"],
     },
     "receptions": {
         "positions": ["WR", "TE", "RB"],
         "snap_filter": ("targets", 0),
         "features": ["receptions_season_avg", "receptions_last3_avg", "receptions_last5_avg",
                      "receptions_trend", "targets_season_avg", "targets_last3_avg",
-                     "games_played_prior", "opp_receptions_allowed_season_avg"],
+                     "games_played_prior", "receptions_exp_season_avg",
+                     "offense_pct_season_avg", "target_share_season_avg", "wopr_season_avg"],
     },
 }
-# Game-context features (implied team total, opponent implied total, home/away,
-# indoor/outdoor) - all known before kickoff via closing betting lines, so
-# adding them isn't leakage. Applied to every market uniformly.
-GAME_CONTEXT_FEATURES = ["team_implied_total", "opp_implied_total", "is_home", "indoor"]
+
+# Both-sides opponent defense: every market gets the opponent's PASS defense
+# AND RUSH defense strength, not just the matching side - this is what lets
+# the model learn game-script substitution effects (e.g. an elite pass
+# defense forcing more rushing attempts) from real historical patterns,
+# rather than needing that reasoning hard-coded.
+BOTH_SIDES_DEFENSE = ["opp_passing_yards_allowed_season_avg", "opp_rushing_yards_allowed_season_avg"]
 for _config in MARKETS.values():
-    _config["features"] = _config["features"] + GAME_CONTEXT_FEATURES
-
-def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
-    snap_col, min_val = config["snap_filter"]
-    df = features[
-        features["position"].isin(config["positions"]) & (features[snap_col] > min_val)
-    ].copy()
-    df = df[df["games_played_prior"] >= MIN_PRIOR_GAMES]
-    df = df.dropna(subset=config["features"] + [target_col])
-    return df
-
+    _config["features"] = _config["features"] + BOTH_SIDES_DEFENSE
 
 def time_based_split(df: pd.DataFrame):
     """
