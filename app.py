@@ -28,9 +28,29 @@ def load_model(file_label):
 
 features = load_features()
 
-tab1, tab2 = st.tabs(["Today's Slate", "Single Prop Lookup"])
+tab1, tab2, tab3 = st.tabs(["Top Picks", "Today's Slate", "Single Prop Lookup"])
 
 with tab1:
+    st.subheader("Model's highest-conviction picks")
+    st.caption("Two per game, ranked by how far the model's view diverges from the player's own "
+               "season average. This reflects model confidence, not confirmed betting value - "
+               "check any pick against a real sportsbook price in Single Prop Lookup before betting it.")
+    try:
+        top_picks = pd.read_parquet("data/top_picks.parquet")
+        for _, r in top_picks.iterrows():
+            st.markdown(f"**{r['player']}** ({r['team']} vs {r['opponent']}) — "
+                        f"{r['side']} {r['season_avg']} {r['market']} "
+                        f"→ model projects {r['projection']}")
+            st.caption(f"Model confidence: {r['model_probability']*100:.0f}% | "
+                       f"{r['games_played_prior']} games on record")
+            st.divider()
+        st.warning("If picking two legs from the SAME game for a parlay: same-game outcomes are "
+                   "correlated (a QB's big day tends to come with his top receiver's big day too). "
+                   "Multiplying these two probabilities together overstates your true combined odds - "
+                   "treat same-game parlays with extra caution.")
+    except FileNotFoundError:
+        st.warning("Top picks not generated yet - run the workflow to build them.")
+with tab2:
     st.subheader("This week's projections")
     try:
         slate = pd.read_parquet("data/slate.parquet")
@@ -51,7 +71,7 @@ with tab1:
     except FileNotFoundError:
         st.warning("Slate not generated yet - run the workflow to build it.")
 
-with tab2:
+with tab3:
     st.subheader("Try a prediction")
     market_label = st.selectbox("Market", list(MARKETS.keys()))
     file_label = MARKETS[market_label]

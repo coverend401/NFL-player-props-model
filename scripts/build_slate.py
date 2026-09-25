@@ -100,18 +100,12 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         .groupby("player_id")
         .tail(1)
     )
-    # Only players active in the current season - otherwise a retired player
-    # whose last known team happens to be playing this week would wrongly
-    # show up (their team is real, but they aren't on it anymore).
     current_season = int(schedule_current_season)
     latest_per_player = latest_per_player[latest_per_player["season"] == current_season]
 
-    # Only players whose most recent known team is actually playing this week
     active = latest_per_player[latest_per_player["team"].isin(opp_map.keys())].copy()
     active["upcoming_opponent"] = active["team"].map(opp_map)
 
-    # Swap in THIS week's actual implied total / home-away / indoor, replacing
-    # whatever was attached to each player's last game.
     for col in ["team_implied_total", "opp_implied_total", "is_home", "indoor"]:
         active[col] = active["team"].map(game_context[col])
 
@@ -128,8 +122,6 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         if eligible.empty:
             continue
 
-        # Swap in the UPCOMING opponent's current defensive numbers, replacing
-        # whatever opponent-allowed value was attached to their last game.
         opp_feature_cols = [c for c in feature_cols if c.startswith("opp_") and c.endswith("_allowed_season_avg")]
         for col in opp_feature_cols:
             eligible[col] = eligible["upcoming_opponent"].map(team_defense[col])
@@ -150,11 +142,49 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
                 "position": r["position"],
                 "projection": round(preds[i], 1),
                 "season_avg": round(r[feature_cols[0]], 1),
+                "resid_std": round(resid_std, 2),
                 "games_played_prior": int(r["games_played_prior"]),
                 "week": week,
             })
 
     return pd.DataFrame(rows)
+
+
+def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: int = 2) -> pd.DataFrame:
+    """
+    Ranks every projection by model CONVICTION - not confirmed betting value,
+    since that needs a real bookmaker price we don't have for the whole slate.
+
+    Conviction here means: using the player's own season average as a
+    realistic stand-in line (real bookmaker lines cluster tightly around
+    recent form), how far from a 50/50 coin flip does the model's probability
+    land? A big gap only happens when the model's projection meaningfully
+    diverges from "just their average" - i.e. the matchup, trend, or usage
+    signals are pulling hard in one direction.
+
+    Small-sample players are explicitly dampened (capped confidence below
+    `min_games` prior appearances) since the season average and residual
+    spread behind a 3-game sample are themselves unreliable.
+    """
+    from scipy.stats import norm
+
+    picks = slate.copy()
+    prob_over = 1 - norm.cdf(picks["season_avg"], picks["projection"], picks["resid_std"])
+    picks["side"] = np.where(prob_over >= 0.5, "Over", "Under")
+    picks["model_probability"] = np.where(prob_over >= 0.5, prob_over, 1 - prob_over)
+
+    sample_dampener = (picks["games_played_prior"] / min_games).clip(upper=1.0)
+    picks["confidence"] = (picks["model_probability"] - 0.5) * 2 * sample_dampener
+
+    picks["game_key"] = picks.apply(lambda r: tuple(sorted([r["team"], r["opponent"]])), axis=1)
+
+    top_picks = (
+        picks.sort_values("confidence", ascending=False)
+        .groupby("game_key")
+        .head(top_n_per_game)
+        .sort_values(["game_key", "confidence"], ascending=[True, False])
+    )
+    return top_picks.drop(columns=["game_key"])
 
 
 if __name__ == "__main__":
@@ -165,5 +195,8 @@ if __name__ == "__main__":
 
     slate = build_slate(features, schedule, pd.Timestamp(datetime.now().date()))
     print(f"Slate built: {len(slate)} player-market rows for week {slate['week'].iloc[0] if len(slate) else '?'}")
-    print(slate.sort_values(["market", "projection"], ascending=[True, False]).head(30).to_string(index=False))
     slate.to_parquet("data/slate.parquet", index=False)
+
+    top_picks = compute_top_picks(slate)
+    print(f"\nTop picks: {len(top_picks)} rows")
+    top_picks.to_parquet("data/top_picks.parquet", index=False)
