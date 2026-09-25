@@ -64,7 +64,7 @@ with tab2:
 
         st.dataframe(
             filtered.sort_values(["market", "projection"], ascending=[True, False])
-            [["market", "player", "team", "opponent", "projection", "season_avg", "games_played_prior"]],
+            [["market", "player", "team", "opponent", "projection", "career_avg", "games_played_prior"]],
             use_container_width=True,
             hide_index=True,
         )
