@@ -31,15 +31,17 @@ features = load_features()
 tab1, tab2, tab3 = st.tabs(["Top Picks", "Today's Slate", "Single Prop Lookup"])
 
 with tab1:
-    st.subheader("Model's highest-conviction picks")
-    st.caption("Two per game, ranked by how far the model's view diverges from the player's own "
-               "season average. This reflects model confidence, not confirmed betting value - "
-               "check any pick against a real sportsbook price in Single Prop Lookup before betting it.")
+    st.subheader("Model's highest-conviction Over picks")
+    st.caption("Two per game, ranked by how far the model's view diverges from the player's "
+               "RECENT form (last 3 games) - not career average, so this should track much closer "
+               "to real bookmaker lines. Shows Over picks only. This reflects model confidence, "
+               "not confirmed betting value - check any pick against a real sportsbook price in "
+               "Single Prop Lookup before betting it.")
     try:
         top_picks = pd.read_parquet("data/top_picks.parquet")
         for _, r in top_picks.iterrows():
             st.markdown(f"**{r['player']}** ({r['team']} vs {r['opponent']}) — "
-                        f"{r['side']} {r['season_avg']} {r['market']} "
+                        f"Over {r['recent_form']} {r['market']} "
                         f"→ model projects {r['projection']}")
             st.caption(f"Model confidence: {r['model_probability']*100:.0f}% | "
                        f"{r['games_played_prior']} games on record")

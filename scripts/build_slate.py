@@ -27,7 +27,7 @@ MARKETS = {
 }
 
 
-def get_upcoming_week(schedule: pd.DataFrame, as_of: pd.Timestamp) -> tuple[int, pd.DataFrame]:
+def get_upcoming_week(schedule: pd.DataFrame, as_of: pd.Timestamp):
     """The next week that has at least one game not yet played."""
     schedule = schedule.copy()
     schedule["gameday"] = pd.to_datetime(schedule["gameday"])
@@ -88,7 +88,24 @@ def build_game_context_for_week(week_games: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([home_rows, away_rows], ignore_index=True).set_index("team")
 
 
-def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timestamp) -> pd.DataFrame:
+def get_current_qb_starters(current_year: int) -> dict:
+    """
+    Live depth-chart data (updated daily, not tied to game history) - the
+    ONLY reliable free source for "who is actually starting THIS week,"
+    since a player returning from injury or a benching can't be inferred
+    from past box scores alone. Returns {team: gsis_id} for each team's
+    current QB1, using the single most recent snapshot available.
+    """
+    import nflreadpy as nfl
+    dc = nfl.load_depth_charts(seasons=[current_year]).to_pandas()
+    qb1 = dc[(dc["pos_abb"] == "QB") & (dc["pos_rank"] == 1)]
+    latest_dt = qb1["dt"].max()
+    qb1_latest = qb1[qb1["dt"] == latest_dt]
+    return dict(zip(qb1_latest["team"], qb1_latest["gsis_id"]))
+
+
+def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timestamp,
+                 current_qb_starters: dict = None) -> pd.DataFrame:
     week, week_games = get_upcoming_week(schedule, as_of)
     schedule_current_season = week_games["season"].iloc[0]
     opp_map = build_opponent_map(week_games)
@@ -105,6 +122,14 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
 
     active = latest_per_player[latest_per_player["team"].isin(opp_map.keys())].copy()
     active["upcoming_opponent"] = active["team"].map(opp_map)
+
+    # Drop backup/benched QBs: a QB's LAST recorded game doesn't tell you if
+    # someone else has since taken over (e.g. the starter returning from
+    # injury). Only the live depth chart actually knows who's starting now.
+    if current_qb_starters:
+        is_qb = active["position"] == "QB"
+        is_current_starter = active["player_id"].isin(current_qb_starters.values())
+        active = active[~is_qb | is_current_starter]
 
     for col in ["team_implied_total", "opp_implied_total", "is_home", "indoor"]:
         active[col] = active["team"].map(game_context[col])
@@ -133,6 +158,10 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         X = eligible[feature_cols]
         preds = model.predict(X)
 
+        # feature_cols[0] is always the market's own *_season_avg (career-long) -
+        # feature_cols[1] is always *_last3_avg, a much more realistic stand-in
+        # for where a real bookmaker line would actually sit (recent form,
+        # not a multi-year career average).
         for i, (_, r) in enumerate(eligible.iterrows()):
             rows.append({
                 "market": market_label,
@@ -141,7 +170,8 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
                 "opponent": r["upcoming_opponent"],
                 "position": r["position"],
                 "projection": round(preds[i], 1),
-                "season_avg": round(r[feature_cols[0]], 1),
+                "career_avg": round(r[feature_cols[0]], 1),
+                "recent_form": round(r[feature_cols[1]], 1),
                 "resid_std": round(resid_std, 2),
                 "games_played_prior": int(r["games_played_prior"]),
                 "week": week,
@@ -150,31 +180,39 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
     return pd.DataFrame(rows)
 
 
-def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: int = 2) -> pd.DataFrame:
+def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: int = 2,
+                       side_filter: str = None) -> pd.DataFrame:
     """
     Ranks every projection by model CONVICTION - not confirmed betting value,
     since that needs a real bookmaker price we don't have for the whole slate.
 
-    Conviction here means: using the player's own season average as a
-    realistic stand-in line (real bookmaker lines cluster tightly around
-    recent form), how far from a 50/50 coin flip does the model's probability
-    land? A big gap only happens when the model's projection meaningfully
-    diverges from "just their average" - i.e. the matchup, trend, or usage
-    signals are pulling hard in one direction.
+    Uses RECENT FORM (last 3 games) as the stand-in line, not career average -
+    real bookmaker lines track current role and recent production, not a
+    multi-year history, so this is a much more realistic comparison point.
 
     Small-sample players are explicitly dampened (capped confidence below
-    `min_games` prior appearances) since the season average and residual
-    spread behind a 3-game sample are themselves unreliable.
+    `min_games` prior appearances) since recent form and residual spread
+    behind a 3-game sample are themselves unreliable.
+
+    side_filter: pass "Over" to only surface Over picks (useful since many
+    sportsbooks let you shop a lower alternate line for better Over odds,
+    an option that doesn't work the same way for Under). Passing this
+    narrows the pool to whatever upward conviction exists that week - if the
+    model's strongest signals that week are mostly Unders, the remaining
+    Over picks will be weaker/fewer than an unfiltered list would show.
     """
     from scipy.stats import norm
 
     picks = slate.copy()
-    prob_over = 1 - norm.cdf(picks["season_avg"], picks["projection"], picks["resid_std"])
+    prob_over = 1 - norm.cdf(picks["recent_form"], picks["projection"], picks["resid_std"])
     picks["side"] = np.where(prob_over >= 0.5, "Over", "Under")
     picks["model_probability"] = np.where(prob_over >= 0.5, prob_over, 1 - prob_over)
 
     sample_dampener = (picks["games_played_prior"] / min_games).clip(upper=1.0)
     picks["confidence"] = (picks["model_probability"] - 0.5) * 2 * sample_dampener
+
+    if side_filter:
+        picks = picks[picks["side"] == side_filter]
 
     picks["game_key"] = picks.apply(lambda r: tuple(sorted([r["team"], r["opponent"]])), axis=1)
 
@@ -192,11 +230,12 @@ if __name__ == "__main__":
     current_year = datetime.now().year
     schedule = nfl.load_schedules(seasons=[current_year]).to_pandas()
     features = pd.read_parquet("data/player_features.parquet")
+    qb_starters = get_current_qb_starters(current_year)
 
-    slate = build_slate(features, schedule, pd.Timestamp(datetime.now().date()))
+    slate = build_slate(features, schedule, pd.Timestamp(datetime.now().date()), qb_starters)
     print(f"Slate built: {len(slate)} player-market rows for week {slate['week'].iloc[0] if len(slate) else '?'}")
     slate.to_parquet("data/slate.parquet", index=False)
 
-    top_picks = compute_top_picks(slate)
-    print(f"\nTop picks: {len(top_picks)} rows")
+    top_picks = compute_top_picks(slate, side_filter="Over")
+    print(f"\nTop Over picks: {len(top_picks)} rows")
     top_picks.to_parquet("data/top_picks.parquet", index=False)
