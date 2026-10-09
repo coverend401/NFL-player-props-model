@@ -281,13 +281,17 @@ with tabs[3]:
                "confidence, stakes and the Parlay Hunter - works from this board, because the model can only judge "
                "a bet once it knows the real price.")
     pool_players = (sorted(slate["player"].unique()) if slate is not None else sorted(features["player_display_name"].dropna().unique()))
+    # Market sits OUTSIDE the form on purpose: widgets inside a form don't refresh until it is
+    # submitted, which would leave the player list stuck on the first market's players.
+    market_sel = st.selectbox("Market", list(MARKETS.keys()), key="board_market")
+    if slate is not None:
+        options = sorted(slate[slate["market"] == market_sel]["player"].unique())
+    else:
+        options = pool_players
+    if not options:
+        st.caption(f"No {market_sel} projections in this week's slate.")
     with st.form("add_prop", clear_on_submit=True):
-        market_sel = st.selectbox("Market", list(MARKETS.keys()))
-        if slate is not None:
-            options = sorted(slate[slate["market"] == market_sel]["player"].unique())
-        else:
-            options = pool_players
-        player_sel = st.selectbox("Player (this week's slate)", options) if options else None
+        player_sel = st.selectbox("Player (this week's slate)", options, key="board_player") if options else None
         c1, c2 = st.columns(2)
         side_sel = c1.radio("Side", ["Over", "Under"], horizontal=True)
         line_sel = c2.number_input("Line", value=0.5, step=0.5)
