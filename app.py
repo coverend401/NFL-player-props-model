@@ -450,6 +450,17 @@ with tabs[4]:
                     st.caption(b_)
 
 # ================================================================ MY BETS
+RESULT_LABELS = {"win": "Won", "loss": "Lost", "push": "Push", "void": "Void"}
+TYPE_FILTERS = {"Singles": "single", "2-Leg Parlays": "parlay2", "SGPs": "sgp", "Larger Parlays": "parlayN"}
+
+
+def bet_text(b):
+    if b["bet_type"] == "single":
+        return f"{b['player']} {b['direction']} {b['line']} {b['market']}"
+    legs = b["legs_json"] or []
+    return " + ".join(f"{l['player']} {l['side']} {l['line']}" for l in legs) or str(b["player"])
+
+
 with tabs[5]:
     st.subheader("My Bets")
     view_paper = st.radio("Show", ["Live bets", "Paper bets"], horizontal=True) == "Paper bets"
@@ -462,87 +473,205 @@ with tabs[5]:
 
     view = df[df["paper"].astype(bool) == view_paper] if len(df) else df
     open_ = view[view["status"] == "open"] if len(view) else view
-    st.markdown(f"#### Open ({len(open_)})")
-    for _, b in open_.iterrows():
-        label = (f"{b['player']} {b['direction']} {b['line']} {b['market']} @ {b['odds_decimal']:.2f}"
-                 if b["bet_type"] == "single" else f"{b['bet_type']}: {b['player']}")
-        with st.expander(f"{label}  |  stake {gbp(float(b['actual_stake'] or 0))}"):
-            st.caption(f"Logged {str(b['created_at'])[:16]} | model {b['model_version']} | EV {float(b['ev_pct']):+.1f}% | "
-                       f"confidence {float(b['confidence']):.0f}")
-            if b["bet_type"] == "single":
-                cl1, cl2 = st.columns(2)
-                cline = cl1.number_input("Closing line", value=float(b["line"]), step=0.5, key=f"cl_{b['bet_id']}")
-                codds = cl2.text_input("Closing odds", key=f"co_{b['bet_id']}", placeholder="1.85")
-                if st.button("Save closing line", key=f"scl_{b['bet_id']}") and codds:
-                    try:
-                        ledger.set_closing_single(b["bet_id"], cline, parse_odds(codds)); st.rerun()
-                    except ValueError as e:
-                        st.error(str(e))
-                res = st.selectbox("Result", ["win", "loss", "push", "void"], key=f"res_{b['bet_id']}")
-                if st.button("Settle", key=f"set_{b['bet_id']}"):
-                    ledger.settle_single(b["bet_id"], res); st.rerun()
-            else:
-                legs = b["legs_json"] or []
-                results = []
-                for j, l in enumerate(legs):
-                    st.markdown(f"Leg {j+1}: {l['player']} {l['side']} {l['line']} {l['market']} @ {l['odds']:.2f}")
-                    results.append(st.selectbox(f"Leg {j+1} result", ["win", "loss", "push", "void"], key=f"lr_{b['bet_id']}_{j}"))
-                    k1, k2 = st.columns(2)
-                    cod = k2.text_input("Closing odds", key=f"lco_{b['bet_id']}_{j}", placeholder="1.70")
-                    if cod and st.button("Save closing", key=f"lsc_{b['bet_id']}_{j}"):
+    sub_open, sub_hist, sub_perf = st.tabs([f"Open ({len(open_)})", "History", "Performance"])
+
+    # ---------------------------------------------------------------- OPEN
+    with sub_open:
+        if open_.empty:
+            st.caption("No open bets.")
+        for _, b in open_.iterrows():
+            label = (f"{b['player']} {b['direction']} {b['line']} {b['market']} @ {b['odds_decimal']:.2f}"
+                     if b["bet_type"] == "single" else f"{b['bet_type']}: {b['player']}")
+            with st.expander(f"{label}  |  stake {gbp(float(b['actual_stake'] or 0))}"):
+                st.caption(f"Logged {str(b['created_at'])[:16]} | model {b['model_version']} | EV {float(b['ev_pct']):+.1f}% | "
+                           f"confidence {float(b['confidence']):.0f}")
+                if b["bet_type"] == "single":
+                    cl1, cl2 = st.columns(2)
+                    cline = cl1.number_input("Closing line", value=float(b["line"]), step=0.5, key=f"cl_{b['bet_id']}")
+                    codds = cl2.text_input("Closing odds", key=f"co_{b['bet_id']}", placeholder="1.85")
+                    if st.button("Save closing line", key=f"scl_{b['bet_id']}") and codds:
                         try:
-                            ledger.set_closing_leg(b["bet_id"], j, float(l["line"]), parse_odds(cod)); st.rerun()
+                            ledger.set_closing_single(b["bet_id"], cline, parse_odds(codds)); st.rerun()
                         except ValueError as e:
                             st.error(str(e))
-                if st.button("Settle parlay", key=f"sp_{b['bet_id']}"):
-                    ledger.settle_parlay(b["bet_id"], results); st.rerun()
+                    res = st.selectbox("Result", ["win", "loss", "push", "void"], key=f"res_{b['bet_id']}")
+                    if st.button("Settle", key=f"set_{b['bet_id']}"):
+                        ledger.settle_single(b["bet_id"], res); st.rerun()
+                else:
+                    legs = b["legs_json"] or []
+                    results = []
+                    for j, l in enumerate(legs):
+                        st.markdown(f"Leg {j+1}: {l['player']} {l['side']} {l['line']} {l['market']} @ {l['odds']:.2f}")
+                        results.append(st.selectbox(f"Leg {j+1} result", ["win", "loss", "push", "void"], key=f"lr_{b['bet_id']}_{j}"))
+                        k1, k2 = st.columns(2)
+                        cod = k2.text_input("Closing odds", key=f"lco_{b['bet_id']}_{j}", placeholder="1.70")
+                        if cod and st.button("Save closing", key=f"lsc_{b['bet_id']}_{j}"):
+                            try:
+                                ledger.set_closing_leg(b["bet_id"], j, float(l["line"]), parse_odds(cod)); st.rerun()
+                            except ValueError as e:
+                                st.error(str(e))
+                    if st.button("Settle parlay", key=f"sp_{b['bet_id']}"):
+                        ledger.settle_parlay(b["bet_id"], results); st.rerun()
 
-    st.markdown("#### Exposure (open bets)")
-    exp = be.exposure_summary(open_)
-    for w in exp["warnings"]:
-        st.warning(w)
-    for name, t in exp["tables"].items():
-        with st.expander(f"By {name}"):
-            st.dataframe(t, hide_index=True, width="stretch")
-
-    st.markdown("#### Performance")
-    bt = perf.by_type(df, view_paper)
-    if not bt:
-        st.caption("No settled bets yet.")
-    for name, s in bt.items():
-        st.markdown(f"**{name}**")
-        a1, a2, a3 = st.columns(3)
-        a1.metric("Bets", s["bets"]); a2.metric("Win rate", f"{s['win_rate']:.0f}%"); a3.metric("ROI", f"{s['roi_pct']:+.1f}%")
-        a1, a2, a3 = st.columns(3)
-        a1.metric("Profit", gbp(s["profit"])); a2.metric("Staked", gbp(s["staked"]))
-        a3.metric("Avg CLV", f"{s['avg_clv']:+.1f}%" if s["avg_clv"] is not None else "n/a")
-        st.caption(f"Avg odds {s['avg_odds']:.2f} | avg EV {s['avg_ev']:+.1f}% | avg model prob {s['avg_model_prob']:.0f}% | "
-                   f"avg confidence {s['avg_confidence']:.0f} | max losing streak {s['max_losing_streak']} | "
-                   f"max drawdown {gbp(s['max_drawdown'])}"
-                   + (f" | avg bet score {s['avg_bet_score']:.0f}" if s["avg_bet_score"] else "")
-                   + (f" | avg parlay score {s['avg_parlay_score']:.0f}" if s["avg_parlay_score"] else ""))
-    curve = perf.profit_curve(df, view_paper)
-    if not curve.empty:
-        st.line_chart(curve.set_index("settled_at"))
-    for label, by in [("By market", "market"), ("By EV band", "ev_band"), ("By probability band", "prob_band"),
-                      ("By position", "position"), ("By model version", "model_version")]:
-        t = perf.breakdown(df, view_paper, by)
-        if not t.empty:
-            with st.expander(label):
+        st.markdown("#### Exposure (open bets)")
+        exp = be.exposure_summary(open_)
+        for w in exp["warnings"]:
+            st.warning(w)
+        for name, t in exp["tables"].items():
+            with st.expander(f"By {name}"):
                 st.dataframe(t, hide_index=True, width="stretch")
-    with st.expander("Calibration: did the model's probabilities come true?"):
-        ct = be.calibration_table(df, live_only=not view_paper) if len(df) else pd.DataFrame()
-        if ct.empty:
-            st.caption("Needs settled singles. Until a bucket has 30+ results it is ignored (neutral).")
+
+    # ---------------------------------------------------------------- HISTORY
+    with sub_hist:
+        if view.empty:
+            st.caption("No bets logged yet.")
         else:
-            ct = ct.assign(bucket=ct["bucket"].astype(str), predicted=(ct["predicted"] * 100).round(1),
-                           actual=(ct["actual"] * 100).round(1))
-            st.dataframe(ct, hide_index=True, width="stretch")
-    clv_rows = view[pd.to_numeric(view["clv_pct"], errors="coerce").notna()] if len(view) else view
-    if len(clv_rows):
-        moved = clv_rows["line_moved_favourably"].dropna()
-        st.caption(f"CLV recorded on {len(clv_rows)} bets. Line moved in the model's direction on "
-                   f"{(moved.astype(bool).mean()*100 if len(moved) else 0):.0f}% of those with a line move.")
+            h = view.copy()
+            h["when"] = pd.to_datetime(h["settled_at"].fillna(h["created_at"]), errors="coerce", utc=True)
+
+            c1, c2 = st.columns(2)
+            status_f = c1.selectbox("Status", ["Settled", "Open", "All"], key="hist_status")
+            result_f = c2.selectbox("Result", ["All", "Won", "Lost", "Push", "Void"], key="hist_result")
+            c3, c4 = st.columns(2)
+            type_f = c3.selectbox("Bet type", ["All"] + list(TYPE_FILTERS), key="hist_type")
+            period_f = c4.selectbox("Period", ["All time", "Last 7 days", "Last 30 days", "Last 90 days"], key="hist_period")
+            search_f = st.text_input("Search player, market or game", key="hist_search")
+
+            if status_f == "Settled":
+                h = h[h["status"] == "settled"]
+            elif status_f == "Open":
+                h = h[h["status"] == "open"]
+            if result_f != "All":
+                inv = {v: k for k, v in RESULT_LABELS.items()}
+                h = h[h["result"] == inv[result_f]]
+            if type_f != "All":
+                h = h[h["bet_type"] == TYPE_FILTERS[type_f]]
+            if period_f != "All time":
+                days = int(period_f.split()[1])
+                h = h[h["when"] >= pd.Timestamp.now(tz="UTC") - pd.Timedelta(days=days)]
+            if search_f.strip():
+                q = search_f.strip().lower()
+                hay = (h["player"].fillna("") + " " + h["market"].fillna("") + " " + h["game"].fillna("")).str.lower()
+                h = h[hay.str.contains(q, regex=False)]
+            h = h.sort_values("when", ascending=False)
+
+            settled = h[h["status"] == "settled"]
+            stk = pd.to_numeric(settled["actual_stake"], errors="coerce").fillna(0)
+            prf = pd.to_numeric(settled["profit"], errors="coerce").fillna(0)
+            w_, l_, p_ = (int((settled["result"] == x).sum()) for x in ("win", "loss", "push"))
+            m1, m2, m3, m4 = st.columns(4)
+            m1.metric("Bets", len(h))
+            m2.metric("W-L-P", f"{w_}-{l_}-{p_}")
+            m3.metric("Profit", gbp(float(prf.sum())))
+            m4.metric("ROI", f"{(prf.sum() / stk.sum() * 100 if stk.sum() else 0):+.1f}%")
+
+            if h.empty:
+                st.info("No bets match those filters.")
+            else:
+                local = h["when"].dt.tz_convert("Europe/London")
+                table = pd.DataFrame({
+                    "Date": local.dt.strftime("%d %b %H:%M"),
+                    "Type": h["bet_type"].map({v: k for k, v in TYPE_FILTERS.items()}).fillna(h["bet_type"]),
+                    "Bet": [bet_text(b) for _, b in h.iterrows()],
+                    "Odds": pd.to_numeric(h["odds_decimal"].fillna(h["parlay_odds_decimal"]), errors="coerce").round(2),
+                    "Stake £": pd.to_numeric(h["actual_stake"], errors="coerce").round(2),
+                    "Result": h["result"].map(RESULT_LABELS).fillna("Open"),
+                    "Profit £": pd.to_numeric(h["profit"], errors="coerce").round(2),
+                    "EV %": pd.to_numeric(h["ev_pct"], errors="coerce").round(1),
+                    "Model %": (pd.to_numeric(h["model_prob"], errors="coerce") * 100).round(1),
+                    "CLV %": pd.to_numeric(h["clv_pct"], errors="coerce").round(1),
+                    "Model": h["model_version"],
+                }).reset_index(drop=True)
+                st.dataframe(table, hide_index=True, width="stretch")
+                st.download_button("Download these as CSV", table.to_csv(index=False), "my_bets.csv", "text/csv")
+
+                st.markdown("#### Inspect a bet")
+                rows = list(h.iterrows())
+                idx = st.selectbox("Pick one", range(len(rows)), key="hist_pick",
+                                   format_func=lambda i: f"{table.loc[i, 'Date']} | {table.loc[i, 'Bet'][:48]} | {table.loc[i, 'Result']}")
+                b = rows[idx][1]
+                bid = b["bet_id"]
+                st.markdown(f"**Original bet (locked)** - logged {str(b['created_at'])[:16]} UTC, model {b['model_version']}")
+                a1, a2, a3 = st.columns(3)
+                a1.metric("Bookmaker", b["bookmaker"] or "-")
+                a2.metric("Odds", f"{float(b['odds_decimal'] if b['bet_type'] == 'single' else b['parlay_odds_decimal']):.2f}")
+                a3.metric("Stake", gbp(float(b["actual_stake"] or 0)))
+                a1, a2, a3 = st.columns(3)
+                a1.metric("Model prob", f"{float(b['model_prob'])*100:.1f}%")
+                a2.metric("EV at bet", f"{float(b['ev_pct']):+.1f}%")
+                a3.metric("Confidence", f"{float(b['confidence']):.0f}")
+                st.caption(f"Recommended stake was {gbp(float(b['recommended_stake'] or 0))}"
+                           + (f" | Line {b['line']}" if b["bet_type"] == "single" else ""))
+                if b["bet_type"] == "single":
+                    if pd.notna(b["closing_odds_decimal"]):
+                        st.caption(f"Closing line {b['closing_line']} @ {float(b['closing_odds_decimal']):.2f} | "
+                                   f"CLV {float(b['clv_pct']):+.1f}% | line moved in our favour: {b['line_moved_favourably']}")
+                    else:
+                        st.caption("No closing line recorded.")
+                else:
+                    for j, l in enumerate(b["legs_json"] or []):
+                        st.caption(f"Leg {j+1}: {l['player']} {l['side']} {l['line']} {l['market']} @ {l['odds']:.2f} - "
+                                   f"{RESULT_LABELS.get(l.get('result'), 'open')}"
+                                   + (f" | closed @ {l['closing_odds_decimal']:.2f}" if l.get("closing_odds_decimal") else ""))
+                if b["status"] == "settled":
+                    st.markdown(f"**Result: {RESULT_LABELS.get(b['result'], b['result'])}** - "
+                                f"returned {gbp(float(b['return_amount'] or 0))}, profit {gbp(float(b['profit'] or 0))}")
+                    with st.expander("Settled it wrong? Correct the result"):
+                        st.caption("Profit is recalculated from the original, locked odds and stake.")
+                        opts = ["win", "loss", "push", "void"]
+                        if b["bet_type"] == "single":
+                            new = st.selectbox("Correct result", opts, index=opts.index(b["result"]), key=f"hfix_{bid}")
+                            if st.button("Apply correction", key=f"hfixb_{bid}"):
+                                ledger.settle_single(bid, new); st.rerun()
+                        else:
+                            legs = b["legs_json"] or []
+                            news = [st.selectbox(f"Leg {j+1}", opts, index=opts.index(l.get("result") or "win"),
+                                                 key=f"hfix_{bid}_{j}") for j, l in enumerate(legs)]
+                            if st.button("Apply correction", key=f"hfixb_{bid}"):
+                                ledger.settle_parlay(bid, news); st.rerun()
+                note = st.text_area("Notes", value=b["notes"] or "", key=f"hnote_{bid}")
+                if st.button("Save note", key=f"hnoteb_{bid}"):
+                    ledger.add_note(bid, note); st.rerun()
+
+    # ---------------------------------------------------------------- PERFORMANCE
+    with sub_perf:
+        bt = perf.by_type(df, view_paper)
+        if not bt:
+            st.caption("No settled bets yet.")
+        for name, s in bt.items():
+            st.markdown(f"**{name}**")
+            a1, a2, a3 = st.columns(3)
+            a1.metric("Bets", s["bets"]); a2.metric("Win rate", f"{s['win_rate']:.0f}%"); a3.metric("ROI", f"{s['roi_pct']:+.1f}%")
+            a1, a2, a3 = st.columns(3)
+            a1.metric("Profit", gbp(s["profit"])); a2.metric("Staked", gbp(s["staked"]))
+            a3.metric("Avg CLV", f"{s['avg_clv']:+.1f}%" if s["avg_clv"] is not None else "n/a")
+            st.caption(f"Avg odds {s['avg_odds']:.2f} | avg EV {s['avg_ev']:+.1f}% | avg model prob {s['avg_model_prob']:.0f}% | "
+                       f"avg confidence {s['avg_confidence']:.0f} | max losing streak {s['max_losing_streak']} | "
+                       f"max drawdown {gbp(s['max_drawdown'])}"
+                       + (f" | avg bet score {s['avg_bet_score']:.0f}" if s["avg_bet_score"] else "")
+                       + (f" | avg parlay score {s['avg_parlay_score']:.0f}" if s["avg_parlay_score"] else ""))
+        curve = perf.profit_curve(df, view_paper)
+        if not curve.empty:
+            st.line_chart(curve.set_index("settled_at"))
+        for label, by in [("By market", "market"), ("By EV band", "ev_band"), ("By probability band", "prob_band"),
+                          ("By position", "position"), ("By model version", "model_version")]:
+            t = perf.breakdown(df, view_paper, by)
+            if not t.empty:
+                with st.expander(label):
+                    st.dataframe(t, hide_index=True, width="stretch")
+        with st.expander("Calibration: did the model's probabilities come true?"):
+            ct = be.calibration_table(df, live_only=not view_paper) if len(df) else pd.DataFrame()
+            if ct.empty:
+                st.caption("Needs settled singles. Until a bucket has 30+ results it is ignored (neutral).")
+            else:
+                ct = ct.assign(bucket=ct["bucket"].astype(str), predicted=(ct["predicted"] * 100).round(1),
+                               actual=(ct["actual"] * 100).round(1))
+                st.dataframe(ct, hide_index=True, width="stretch")
+        clv_rows = view[pd.to_numeric(view["clv_pct"], errors="coerce").notna()] if len(view) else view
+        if len(clv_rows):
+            moved = clv_rows["line_moved_favourably"].dropna()
+            st.caption(f"CLV recorded on {len(clv_rows)} bets. Line moved in the model's direction on "
+                       f"{(moved.astype(bool).mean()*100 if len(moved) else 0):.0f}% of those with a line move.")
 
 # ================================================================ SETTINGS
 with tabs[6]:
