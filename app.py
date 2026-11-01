@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime, timezone
 
 import joblib
@@ -49,29 +50,41 @@ MARKETS = {
 INJURY_OPTIONS = ["unknown", "healthy", "questionable", "doubtful", "out"]
 
 
-@st.cache_data
-def load_features():
+def _mtime(path):
+    """Changes whenever the Tuesday update replaces a data file, so cached copies refresh by themselves."""
+    try:
+        return os.path.getmtime(path)
+    except OSError:
+        return 0.0
+
+
+@st.cache_data(ttl=1800)
+def _load_features(v):
     return pd.read_parquet("data/player_features.parquet")
 
 
-@st.cache_data
-def load_slate():
+@st.cache_data(ttl=1800)
+def _load_slate(v):
     try:
         return pd.read_parquet("data/slate.parquet")
     except FileNotFoundError:
         return None
 
 
-@st.cache_resource
-def load_model(file_label):
+@st.cache_resource(ttl=1800)
+def _load_model(file_label, v):
     try:
         return joblib.load(f"data/model_{file_label}.joblib")
     except FileNotFoundError:
         return None
 
 
-@st.cache_data
-def latest_lookup(_features):
+def load_model(file_label):
+    return _load_model(file_label, _mtime(f"data/model_{file_label}.joblib"))
+
+
+@st.cache_data(ttl=1800)
+def _latest_lookup(_features, v):
     latest = _features.sort_values(["season", "week"]).groupby("player_display_name").tail(1)
     return {r["player_display_name"]: r for _, r in latest.iterrows()}
 
@@ -87,9 +100,9 @@ def get_ledger():
     return Ledger(SQLiteBackend("ledger_local.db")), "Supabase not configured - bets are stored in a TEMPORARY file that is wiped when the app restarts."
 
 
-features = load_features()
-slate = load_slate()
-LATEST = latest_lookup(features)
+features = _load_features(_mtime("data/player_features.parquet"))
+slate = _load_slate(_mtime("data/slate.parquet"))
+LATEST = _latest_lookup(features, _mtime("data/player_features.parquet"))
 ledger, ledger_warning = get_ledger()
 
 
@@ -105,6 +118,27 @@ ledger_df = ledger.dataframe()
 calib_table = be.calibration_table(ledger_df)
 _clv = pd.to_numeric(ledger_df["clv_pct"], errors="coerce").mean() if len(ledger_df) else 0.0
 avg_clv = 0.0 if pd.isna(_clv) else float(_clv)
+
+# ---- Price Board belongs to ONE slate week. When the Tuesday update moves the slate on, last week's
+# props are dropped automatically (logged bets are untouched - they live in the ledger).
+WEEK_KEY = f"{datetime.now().year}-W{int(slate['week'].iloc[0])}" if slate is not None and len(slate) else None
+if "board" not in st.session_state:
+    st.session_state["board"] = ledger.get_setting("price_board", []) or []
+    st.session_state["board_week"] = ledger.get_setting("price_board_week")
+if WEEK_KEY and st.session_state["board_week"] != WEEK_KEY:
+    dropped = len(st.session_state["board"])
+    st.session_state["board"] = []
+    st.session_state["parlay_overrides"] = {}
+    st.session_state["board_week"] = WEEK_KEY
+    ledger.set_setting("price_board", [])
+    ledger.set_setting("price_board_week", WEEK_KEY)
+    if dropped:
+        st.session_state["board_cleared_msg"] = (
+            f"Price Board cleared: {dropped} prop(s) from last week were removed because the model has moved "
+            f"on to Week {int(slate['week'].iloc[0])}. Anything you logged is still in My Bets.")
+_msg = st.session_state.pop("board_cleared_msg", None)
+if _msg:
+    st.info(_msg)
 
 if ledger_warning:
     st.warning(ledger_warning)
@@ -258,10 +292,6 @@ with tabs[2]:
     single_lookup()
 
 # ================================================================ PRICE BOARD
-if "board" not in st.session_state:
-    st.session_state["board"] = ledger.get_setting("price_board", []) or []
-
-
 def save_board():
     ledger.set_setting("price_board", st.session_state["board"])
 
@@ -287,7 +317,9 @@ with tabs[3]:
     if slate is not None:
         options = sorted(slate[slate["market"] == market_sel]["player"].unique())
     else:
-        options = pool_players
+        _b = load_model(MARKETS[market_sel])
+        options = (sorted(features[features["position"].isin(_b["positions"])]["player_display_name"].dropna().unique())
+                   if _b else pool_players)
     if not options:
         st.caption(f"No {market_sel} projections in this week's slate.")
     with st.form("add_prop", clear_on_submit=True):
