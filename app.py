@@ -190,6 +190,8 @@ with tabs[1]:
     st.subheader("This week's projections")
     if slate is None:
         st.warning("Slate not generated yet - run the workflow to build it.")
+    elif slate.empty:
+        st.info("No eligible upcoming projections available.")
     else:
         week_num = slate["week"].iloc[0] if len(slate) else "?"
         st.caption(f"Week {week_num} - {len(slate)} player-market projections")
@@ -215,22 +217,23 @@ with tabs[2]:
         model, resid_std = bundle["model"], bundle["resid_std"]
         feature_cols, positions = bundle["features"], bundle["positions"]
 
-        eligible = features[features["position"].isin(positions)]
-        players = sorted(eligible["player_display_name"].dropna().unique())
-        player = st.selectbox("Player", players)
-        player_rows = eligible[eligible["player_display_name"] == player].dropna(subset=feature_cols)
-        if player_rows.empty:
-            st.warning("Not enough game history for this player yet.")
+        if slate is None or slate.empty:
+            st.warning("No upcoming projections available. Run the data workflow before pricing a prop.")
             return
-
-        latest = player_rows.sort_values(["season", "week"]).iloc[-1]
-        X = latest[feature_cols].astype(float).to_frame().T
-        prediction = model.predict(X)[0]
-        games_played = int(latest["games_played_prior"])
+        market_slate = slate[slate["market"] == market_label]
+        players = sorted(market_slate["player"].dropna().unique())
+        if not players:
+            st.warning(f"No eligible upcoming projections for {market_label}.")
+            return
+        player = st.selectbox("Player", players)
+        projection_row = market_slate[market_slate["player"] == player].iloc[0]
+        prediction = float(projection_row["projection"])
+        resid_std = float(projection_row["resid_std"])
+        games_played = int(projection_row["games_played_prior"])
 
         st.metric(f"Model projection - {market_label}", f"{prediction:.1f}")
-        st.caption(f"Based on data through Season {int(latest['season'])}, Week {int(latest['week'])} "
-                   f"({games_played} prior games on record).")
+        st.caption(f"Upcoming Week {int(projection_row['week'])}; {games_played} prior participating games."
+                   + (f" Prediction timestamp: {projection_row['prediction_at']}." if "prediction_at" in projection_row else ""))
 
         st.subheader("Compare against a bookmaker price")
         line = st.number_input("Bookmaker line", value=float(round(prediction, 1)), step=0.5)

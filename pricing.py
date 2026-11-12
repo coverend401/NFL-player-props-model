@@ -4,9 +4,8 @@ Connects the EXISTING model to the betting engine.
 Probability maths is unchanged from the existing Single Prop Lookup:
     P(Over line) = 1 - Normal_CDF(line; projection, residual_std)
 
-Projection source, in order of preference:
-  1. This week's slate row (already adjusted for the actual upcoming opponent, implied team total, home/away)
-  2. Fallback: the player's latest historical row (what the old lookup used) - flagged as NOT matchup-adjusted
+Projection source: the upcoming slate, generated with an explicit history cutoff.
+Historical entering-game rows are not valid upcoming fallbacks.
 """
 import numpy as np
 import pandas as pd
@@ -51,22 +50,9 @@ def price_prop(*, market, file_label, player, side, line, odds_raw, odds_other_r
         week = int(row["week"])
         matchup_adjusted = True
     else:
-        if load_model is None or latest is None:
-            return {"error": "player has no projection this week and no history to fall back on"}
-        bundle = load_model(file_label)
-        if bundle is None:
-            return {"error": f"no trained model for {market}"}
-        cols = bundle["features"]
-        if latest[cols].isna().any():
-            return {"error": "not enough game history for this player yet"}
-        projection = float(bundle["model"].predict(latest[cols].astype(float).to_frame().T)[0])
-        resid_std = float(bundle["resid_std"])
-        recent = float(latest[cols[1]]); career = float(latest[cols[0]])
-        games = int(latest["games_played_prior"])
-        team, opp = latest["team"], latest.get("opponent_team", "?")
-        position = latest["position"]
-        week = int(latest["week"]) + 1
-        matchup_adjusted = False
+        # Historical feature rows describe the game they entered, not the next
+        # fixture. Replaying them here would reintroduce the one-game lag.
+        return {"error": "no eligible upcoming slate projection; run the data workflow"}
 
     p_over = float(1 - norm.cdf(line, projection, resid_std))
     p = p_over if side == "Over" else 1 - p_over

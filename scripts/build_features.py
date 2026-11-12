@@ -11,6 +11,11 @@ import pandas as pd
 import numpy as np
 import nflreadpy as nfl
 
+try:
+    from .forecast_features import player_features, defense_features, observation_status, schedule_times
+except ImportError:  # direct script execution in CI
+    from forecast_features import player_features, defense_features, observation_status, schedule_times
+
 STAT_COLS = [
     "passing_yards", "passing_tds", "interceptions", "completions", "attempts",
     "carries", "rushing_yards", "rushing_tds",
@@ -52,7 +57,7 @@ def build_game_context(seasons: list) -> pd.DataFrame:
 
     sched["home_implied_total"] = (sched["total_line"] + sched["spread_line"]) / 2
     sched["away_implied_total"] = (sched["total_line"] - sched["spread_line"]) / 2
-    sched["indoor"] = sched["roof"].isin(["dome", "closed"]).astype(int)
+    sched["indoor"] = sched["roof"].map({"dome": 1, "closed": 1, "outdoors": 0, "open": 0})
 
     home_rows = sched[["season", "week", "home_team", "away_team",
                         "home_implied_total", "away_implied_total", "total_line", "indoor"]].rename(
@@ -71,7 +76,22 @@ def build_game_context(seasons: list) -> pd.DataFrame:
     return pd.concat([home_rows, away_rows], ignore_index=True)
 
 
-def build_aux_data(seasons: list) -> pd.DataFrame:
+def build_participation_data(seasons: list) -> pd.DataFrame:
+    """Historical snap records, including players absent from the stats source."""
+    players = nfl.load_players().to_pandas()[["gsis_id", "pfr_id"]].dropna().drop_duplicates()
+    snaps = nfl.load_snap_counts(seasons=seasons).to_pandas()
+    snaps = snaps[snaps.game_type == "REG"].copy()
+    snaps = snaps.merge(players, left_on="pfr_player_id", right_on="pfr_id", how="left", validate="many_to_one")
+    print(f"Participation mapping: {int(snaps.gsis_id.isna().sum())} snap records have no GSIS ID; not fabricated.")
+    snaps = snaps.dropna(subset=["gsis_id"])
+    snaps = snaps.rename(columns={"gsis_id":"player_id", "player":"player_display_name",
+                                  "opponent":"opponent_team", "game_type":"season_type"})
+    columns = ["player_id", "season", "week", "game_id", "season_type", "player_display_name",
+               "position", "team", "opponent_team", "offense_pct"]
+    return snaps[columns].drop_duplicates(["player_id", "season", "week"])
+
+
+def build_aux_data(seasons: list, participation=None) -> pd.DataFrame:
     """
     Expected-opportunity, snap-share, and QB tracking data - process-based
     signals that separate real opportunity/skill from box-score luck.
@@ -84,14 +104,8 @@ def build_aux_data(seasons: list) -> pd.DataFrame:
     ff["season"] = ff["season"].astype(int)
     ff["week"] = ff["week"].astype(int)
 
-    players = nfl.load_players().to_pandas()[["gsis_id", "pfr_id"]].dropna()
-    snaps = nfl.load_snap_counts(seasons=seasons).to_pandas()
-    snaps = snaps.merge(players, left_on="pfr_player_id", right_on="pfr_id", how="inner")
-    snaps = snaps.dropna(subset=["gsis_id"])
-    snaps = snaps[["gsis_id", "season", "week", "offense_pct"]].copy()
-    snaps = snaps.drop_duplicates(subset=["gsis_id", "season", "week"], keep="first")
-    snaps["season"] = snaps["season"].astype(int)
-    snaps["week"] = snaps["week"].astype(int)
+    snaps = build_participation_data(seasons) if participation is None else participation.copy()
+    snaps = snaps.rename(columns={"player_id":"gsis_id"})
 
     ngs_pass = nfl.load_nextgen_stats(seasons=seasons, stat_type="passing").to_pandas()
     ngs_pass = ngs_pass[ngs_pass["week"] > 0].dropna(subset=["player_gsis_id"])
@@ -107,7 +121,7 @@ def build_aux_data(seasons: list) -> pd.DataFrame:
     return aux.rename(columns={"gsis_id": "player_id"})
 
 
-def build_player_features(df: pd.DataFrame) -> pd.DataFrame:
+def build_player_features(df: pd.DataFrame, aux=None, game_context=None, schedule=None, team_stats=None) -> pd.DataFrame:
     df = df.copy()
     # Treat regular season only for now (playoffs have different dynamics/sample size)
     df = df[df["season_type"] == "REG"].copy()
@@ -136,72 +150,57 @@ def build_player_features(df: pd.DataFrame) -> pd.DataFrame:
     # Merge in auxiliary data before the rolling-feature loop, so it goes
     # through the exact same leakage-safe treatment as the core stats.
     seasons_for_aux = sorted(df["season"].unique().tolist())
-    aux = build_aux_data(seasons_for_aux)
-    df = df.merge(aux, on=["player_id", "season", "week"], how="left")
+    aux = build_aux_data(seasons_for_aux) if aux is None else aux
+    df["stats_observed"] = True
+    # Auxiliary-only players enter the panel only with a recorded snap record.
+    # Their box-score outcomes remain NaN; absence is not evidence of zero.
+    aux = aux[aux.player_id.isin(df.player_id) | aux.offense_pct.notna()].copy()
+    df = df.merge(aux, on=["player_id", "season", "week"], how="outer",
+                  suffixes=("", "_participation"), validate="one_to_one")
+    for col in ["game_id", "season_type", "player_display_name", "position", "team", "opponent_team", "offense_pct"]:
+        other = col + "_participation"
+        if other in df:
+            df[col] = df[col].combine_first(df.pop(other))
+    df["stats_observed"] = df.stats_observed.eq(True)
+    df = df[df.season_type.eq("REG")].copy()
+    print("Participation-only missing outcomes by position:",
+          df.loc[~df.stats_observed].groupby("position").size().to_dict())
+    df["observation_status"] = observation_status(df)
 
-    # Chronological sort is essential - this is what makes shift() safe
-    df = df.sort_values(["player_id", "season", "week"]).reset_index(drop=True)
+    if schedule is not None:
+        times = schedule_times(schedule)
+        times = times[times.game_type == "REG"]
+        df = df.merge(times[["game_id", "kickoff_at", "completed_at"]], on="game_id", how="left", validate="many_to_one")
+        # Outcomes with no completed fixture cannot become historical inputs.
+        unavailable = df.completed_at.isna()
+        if unavailable.any():
+            print(f"Excluded {int(unavailable.sum())} source rows without a completed fixture.")
+        df = df[~unavailable].copy()
+        df["prediction_at"] = df.kickoff_at
+        # Shift-based historical calculations require nonoverlapping games for
+        # each player/defense. Fail instead of leaking an unfinished prior game.
+        for key in ["player_id", "opponent_team"]:
+            ordered = df.sort_values([key, "kickoff_at"]).drop_duplicates([key, "game_id"])
+            previous_available = ordered.groupby(key).completed_at.shift(1)
+            if (previous_available >= ordered.kickoff_at).any():
+                raise ValueError(f"Overlapping/unavailable prior games for {key}; explicit as-of reconstruction required")
 
-    grouped = df.groupby("player_id", group_keys=False)
-
-    for stat in STAT_COLS:
-        # shift(1) first: excludes the current game from its own rolling window
-        shifted = grouped[stat].shift(1)
-
-        df[f"{stat}_season_avg"] = (
-            shifted.groupby(df["player_id"]).expanding().mean().reset_index(level=0, drop=True)
-        )
-        df[f"{stat}_last3_avg"] = (
-            shifted.groupby(df["player_id"]).rolling(3, min_periods=1).mean().reset_index(level=0, drop=True)
-        )
-        df[f"{stat}_last5_avg"] = (
-            shifted.groupby(df["player_id"]).rolling(5, min_periods=1).mean().reset_index(level=0, drop=True)
-        )
-        # Simple trend signal: last3 vs season avg (positive = trending up recently)
-        df[f"{stat}_trend"] = df[f"{stat}_last3_avg"] - df[f"{stat}_season_avg"]
-
-    # Auxiliary stats get season_avg and last3_avg only (not last5/trend) -
-    # keeps the feature count from exploding while still capturing both a
-    # stable long-run level and recent role/usage changes.
-    for stat in AUX_STAT_COLS:
-        shifted = grouped[stat].shift(1)
-        df[f"{stat}_season_avg"] = (
-            shifted.groupby(df["player_id"]).expanding().mean().reset_index(level=0, drop=True)
-        )
-        df[f"{stat}_last3_avg"] = (
-            shifted.groupby(df["player_id"]).rolling(3, min_periods=1).mean().reset_index(level=0, drop=True)
-        )
-
-    # How many prior regular-season games this player has on record - critical
-    # for the "flag small sample sizes" requirement later in the project.
-    df["games_played_prior"] = grouped.cumcount()
-
-    # --- Opponent defensive factor ---
-    # For each team-week, what did they allow at each stat, using only PRIOR weeks.
-    team_allowed = (
-        df.groupby(["opponent_team", "season", "week"])[STAT_COLS]
-        .sum()
-        .reset_index()
-        .rename(columns={"opponent_team": "_opp_team_key"})
-    )
-    team_allowed = team_allowed.sort_values(["_opp_team_key", "season", "week"])
-    for stat in STAT_COLS:
-        shifted_allowed = team_allowed.groupby("_opp_team_key")[stat].shift(1)
-        team_allowed[f"opp_{stat}_allowed_season_avg"] = (
-            shifted_allowed.groupby(team_allowed["_opp_team_key"]).expanding().mean().reset_index(level=0, drop=True)
-        )
-
-    opp_cols = ["_opp_team_key", "season", "week"] + [f"opp_{s}_allowed_season_avg" for s in STAT_COLS]
-    df = df.merge(
-        team_allowed[opp_cols],
-        left_on=["opponent_team", "season", "week"],
-        right_on=["_opp_team_key", "season", "week"],
-        how="left",
-    ).drop(columns=["_opp_team_key"])
+    # The same calculator builds entering-game and upcoming inclusive states.
+    df = player_features(df, STAT_COLS, AUX_STAT_COLS)
+    if team_stats is not None:
+        totals = team_stats.rename(columns={"passing_interceptions":"interceptions"})
+        totals = totals[totals.season_type.eq("REG")]
+        total_cols = {c: f"team_total_{c}" for c in STAT_COLS}
+        df = df.merge(totals[["game_id", "team"] + STAT_COLS].rename(columns=total_cols),
+                      on=["game_id", "team"], how="left", validate="many_to_one")
+    allowed = defense_features(df, STAT_COLS)
+    opp_cols = [c for c in allowed if c.startswith("opp_")]
+    df = df.merge(allowed[["opponent_team", "season", "week"] + opp_cols],
+                  on=["opponent_team", "season", "week"], how="left", validate="many_to_one")
 
     # --- Game context: implied team total, home/away, indoor - all known pre-kickoff ---
     seasons = sorted(df["season"].unique().tolist())
-    game_context = build_game_context(seasons)
+    game_context = build_game_context(seasons) if game_context is None else game_context
     df = df.merge(
         game_context,
         left_on=["season", "week", "team", "opponent_team"],
@@ -218,25 +217,31 @@ def leakage_check(df: pd.DataFrame) -> None:
     for one game and confirm it matches ONLY prior games, never the game itself
     or future games.
     """
-    sample_player = df["player_id"].iloc[len(df) // 2]
-    player_rows = df[df["player_id"] == sample_player].sort_values(["season", "week"]).reset_index(drop=True)
-    if len(player_rows) < 4:
-        return
-    check_idx = 3  # 4th game for this player
-    stat = "passing_yards"
-    prior_games = player_rows.loc[:check_idx - 1, stat]
-    expected_avg = prior_games.mean()
-    actual_avg = player_rows.loc[check_idx, f"{stat}_season_avg"]
-    assert np.isclose(expected_avg, actual_avg, equal_nan=True), (
-        f"LEAKAGE CHECK FAILED: expected {expected_avg}, got {actual_avg}"
-    )
-    print(f"Leakage check passed for player {sample_player}, game index {check_idx}: "
-          f"season_avg={actual_avg:.2f} matches manual calc of prior games only.")
+    participants = df[df.offense_pct.gt(0) & df.position.isin(["QB", "RB", "WR", "TE"])]
+    counts = participants.groupby("player_id").size()
+    ids = counts[counts >= 4].index[:12]
+    if len(ids) == 0:
+        raise ValueError("Leakage check requires a player with four participating games")
+    checks = 0
+    for player_id in ids:
+        rows = participants[participants.player_id.eq(player_id)].sort_values(["season", "week"])
+        for stat in ["passing_yards", "carries", "targets"]:
+            prior = rows.iloc[:3][stat]
+            current = rows.iloc[3]
+            expected_recent = prior.mean() if prior.notna().all() else np.nan
+            for suffix, expected in [("season_avg", prior.mean()), ("last3_avg", expected_recent)]:
+                actual = current[f"{stat}_{suffix}"]
+                assert np.isclose(expected, actual, equal_nan=True), (
+                    f"LEAKAGE CHECK FAILED: {player_id} {stat}_{suffix}: expected {expected}, got {actual}")
+                checks += 1
+    print(f"Leakage check passed: {checks} manual feature comparisons across {len(ids)} players.")
 
 
 if __name__ == "__main__":
     df = pd.read_parquet("data/weekly_player_data.parquet")
-    features = build_player_features(df)
+    schedule = nfl.load_schedules(seasons=sorted(df["season"].unique().tolist())).to_pandas()
+    team_stats = nfl.load_team_stats(seasons=sorted(df["season"].unique().tolist())).to_pandas()
+    features = build_player_features(df, schedule=schedule, team_stats=team_stats)
     leakage_check(features)
     print(f"Built features for {len(features)} rows, {features.shape[1]} columns.")
     print(f"Game context coverage: {features['team_implied_total'].notna().mean()*100:.1f}% of rows have betting-line data")
