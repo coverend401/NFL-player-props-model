@@ -69,6 +69,15 @@ class StreamlitStage1ATests(unittest.TestCase):
             old_ev, engine_ev, delta=0.51
         )  # different display rounding
 
+    def test_unresolved_roof_scenarios_are_not_shown_as_betting_probabilities(self):
+        slate = self.slate()
+        slate["projection_status"] = "roof_scenarios_only"
+        slate["roof_scenario_low"] = 300.
+        slate["roof_scenario_high"] = 340.
+        at = self.run_app(slate)
+        self.assertTrue(any("Roof unresolved" in w.value for w in at.warning))
+        self.assertFalse(any(m.label == "Model probability Over" for m in at.metric))
+
     def test_empty_slate_renders_without_historical_prediction_fallback(self):
         at = self.run_app(self.slate().iloc[:0])
         self.assertFalse(any(m.label.startswith("Model projection") for m in at.metric))

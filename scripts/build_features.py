@@ -12,9 +12,9 @@ import numpy as np
 import nflreadpy as nfl
 
 try:
-    from .forecast_features import player_features, defense_features, observation_status, schedule_times
+    from .forecast_features import player_features, defense_features, observation_status, schedule_times, utc_timestamp
 except ImportError:  # direct script execution in CI
-    from forecast_features import player_features, defense_features, observation_status, schedule_times
+    from forecast_features import player_features, defense_features, observation_status, schedule_times, utc_timestamp
 
 STAT_COLS = [
     "passing_yards", "passing_tds", "interceptions", "completions", "attempts",
@@ -121,7 +121,7 @@ def build_aux_data(seasons: list, participation=None) -> pd.DataFrame:
     return aux.rename(columns={"gsis_id": "player_id"})
 
 
-def build_player_features(df: pd.DataFrame, aux=None, game_context=None, schedule=None, team_stats=None) -> pd.DataFrame:
+def build_player_features(df: pd.DataFrame, aux=None, game_context=None, schedule=None, team_stats=None, data_cutoff=None) -> pd.DataFrame:
     df = df.copy()
     # Treat regular season only for now (playoffs have different dynamics/sample size)
     df = df[df["season_type"] == "REG"].copy()
@@ -172,9 +172,12 @@ def build_player_features(df: pd.DataFrame, aux=None, game_context=None, schedul
         times = times[times.game_type == "REG"]
         df = df.merge(times[["game_id", "kickoff_at", "completed_at"]], on="game_id", how="left", validate="many_to_one")
         # Outcomes with no completed fixture cannot become historical inputs.
-        unavailable = df.completed_at.isna()
+        # The Tuesday 09:00 run must not train on Monday observations whose
+        # availability proxy is 09:15. Use the same strict boundary as replay.
+        cutoff = utc_timestamp(data_cutoff if data_cutoff is not None else pd.Timestamp.now(tz="UTC"))
+        unavailable = df.completed_at.isna() | (df.completed_at >= cutoff)
         if unavailable.any():
-            print(f"Excluded {int(unavailable.sum())} source rows without a completed fixture.")
+            print(f"Excluded {int(unavailable.sum())} source rows without a fixture available before the data cutoff.")
         df = df[~unavailable].copy()
         df["prediction_at"] = df.kickoff_at
         # Shift-based historical calculations require nonoverlapping games for

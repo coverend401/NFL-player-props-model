@@ -1,5 +1,7 @@
 # Stage 1A: eligibility and forecast timing
 
+> The [final pre-merge review](stage1a-final-review.md) supersedes the original coverage interpretation and documents subsequent hardening. The report below preserves the initial PR snapshot; the current code separately labels roof scenarios.
+
 Implemented on `stage-1a-eligibility-feature-timing` against audited commit `0c6029002be0820c0502d957372d5261610ba927`. No deployment, merge, or tracked data/model replacement is included in this change. Regenerated artifacts were validated in an isolated copy.
 
 ## Eligibility and observation policy

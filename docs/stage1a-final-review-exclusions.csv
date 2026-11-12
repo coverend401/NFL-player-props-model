@@ -1,0 +1,582 @@
+market,player,player_id,reason,missing,recorded_games,last_participation_week
+Passing Yards,Matthew Stafford,00-0026498,missing fixture context,indoor,106,9.0
+Passing Yards,Tyrod Taylor,00-0028118,missing recent statistical history,"passing_yards_last3_avg,passing_yards_last5_avg,passing_yards_trend,attempts_last3_avg",32,9.0
+Passing Yards,Dak Prescott,00-0033077,missing fixture context,indoor,99,9.0
+Passing Yards,Jacoby Brissett,00-0033119,missing fixture context,indoor,80,8.0
+Passing Yards,Cooper Rush,00-0033662,missing fixture context,indoor,36,2.0
+Passing Yards,Patrick Mahomes,00-0033873,missing fixture context,indoor,116,9.0
+Passing Yards,Kyle Allen,00-0034577,missing recent statistical history,passing_yards_last5_avg,31,9.0
+Passing Yards,Mason Rudolph,00-0034771,missing recent statistical history,"passing_yards_last3_avg,passing_yards_last5_avg,passing_yards_trend,attempts_last3_avg",34,8.0
+Passing Yards,Gardner Minshew,00-0035289,missing fixture context,indoor,62,9.0
+Passing Yards,Drew Lock,00-0035704,missing recent statistical history,passing_yards_last5_avg,40,9.0
+Passing Yards,Daniel Jones,00-0035710,missing fixture context,indoor,91,9.0
+Passing Yards,Tua Tagovailoa,00-0036212,missing fixture context,indoor,78,5.0
+Passing Yards,Justin Fields,00-0036945,missing fixture context,"passing_yards_last3_avg,passing_yards_last5_avg,passing_yards_trend,attempts_last3_avg,indoor",59,9.0
+Passing Yards,Mac Jones,00-0036972,missing fixture context,indoor,64,9.0
+Passing Yards,Brock Purdy,00-0037834,missing fixture context,indoor,56,9.0
+Passing Yards,Malik Willis,00-0038128,missing fixture context,indoor,26,9.0
+Passing Yards,Tommy DeVito,00-0038476,missing recent statistical history,passing_yards_last5_avg,12,9.0
+Passing Yards,Anthony Richardson,00-0039164,missing fixture context,indoor,17,8.0
+Passing Yards,Michael Penix Jr.,00-0039917,missing fixture context,indoor,20,9.0
+Passing Yards,Quinn Ewers,00-0040234,missing recent statistical history,"passing_yards_last3_avg,passing_yards_last5_avg,passing_yards_trend,attempts_last3_avg",4,8.0
+Passing Yards,Joe Fagnano,00-0040981,insufficient prior participation or position mismatch,,1,9.0
+Passing Attempts,Matthew Stafford,00-0026498,missing fixture context,indoor,106,9.0
+Passing Attempts,Tyrod Taylor,00-0028118,missing recent statistical history,"attempts_last3_avg,attempts_last5_avg,attempts_trend",32,9.0
+Passing Attempts,Dak Prescott,00-0033077,missing fixture context,indoor,99,9.0
+Passing Attempts,Jacoby Brissett,00-0033119,missing fixture context,indoor,80,8.0
+Passing Attempts,Cooper Rush,00-0033662,missing fixture context,indoor,36,2.0
+Passing Attempts,Patrick Mahomes,00-0033873,missing fixture context,indoor,116,9.0
+Passing Attempts,Kyle Allen,00-0034577,missing recent statistical history,attempts_last5_avg,31,9.0
+Passing Attempts,Mason Rudolph,00-0034771,missing recent statistical history,"attempts_last3_avg,attempts_last5_avg,attempts_trend",34,8.0
+Passing Attempts,Gardner Minshew,00-0035289,missing fixture context,indoor,62,9.0
+Passing Attempts,Drew Lock,00-0035704,missing recent statistical history,attempts_last5_avg,40,9.0
+Passing Attempts,Daniel Jones,00-0035710,missing fixture context,indoor,91,9.0
+Passing Attempts,Tua Tagovailoa,00-0036212,missing fixture context,indoor,78,5.0
+Passing Attempts,Justin Fields,00-0036945,missing fixture context,"attempts_last3_avg,attempts_last5_avg,attempts_trend,indoor",59,9.0
+Passing Attempts,Mac Jones,00-0036972,missing fixture context,indoor,64,9.0
+Passing Attempts,Brock Purdy,00-0037834,missing fixture context,indoor,56,9.0
+Passing Attempts,Malik Willis,00-0038128,missing fixture context,indoor,26,9.0
+Passing Attempts,Tommy DeVito,00-0038476,missing recent statistical history,attempts_last5_avg,12,9.0
+Passing Attempts,Anthony Richardson,00-0039164,missing fixture context,indoor,17,8.0
+Passing Attempts,Michael Penix Jr.,00-0039917,missing fixture context,indoor,20,9.0
+Passing Attempts,Quinn Ewers,00-0040234,missing recent statistical history,"attempts_last3_avg,attempts_last5_avg,attempts_trend",4,8.0
+Passing Attempts,Joe Fagnano,00-0040981,insufficient prior participation or position mismatch,,1,9.0
+Completions,Matthew Stafford,00-0026498,missing fixture context,indoor,106,9.0
+Completions,Tyrod Taylor,00-0028118,missing recent statistical history,"completions_last3_avg,completions_last5_avg,completions_trend,attempts_last3_avg",32,9.0
+Completions,Dak Prescott,00-0033077,missing fixture context,indoor,99,9.0
+Completions,Jacoby Brissett,00-0033119,missing fixture context,indoor,80,8.0
+Completions,Cooper Rush,00-0033662,missing fixture context,indoor,36,2.0
+Completions,Patrick Mahomes,00-0033873,missing fixture context,indoor,116,9.0
+Completions,Kyle Allen,00-0034577,missing recent statistical history,completions_last5_avg,31,9.0
+Completions,Mason Rudolph,00-0034771,missing recent statistical history,"completions_last3_avg,completions_last5_avg,completions_trend,attempts_last3_avg",34,8.0
+Completions,Gardner Minshew,00-0035289,missing fixture context,indoor,62,9.0
+Completions,Drew Lock,00-0035704,missing recent statistical history,completions_last5_avg,40,9.0
+Completions,Daniel Jones,00-0035710,missing fixture context,indoor,91,9.0
+Completions,Tua Tagovailoa,00-0036212,missing fixture context,indoor,78,5.0
+Completions,Justin Fields,00-0036945,missing fixture context,"completions_last3_avg,completions_last5_avg,completions_trend,attempts_last3_avg,indoor",59,9.0
+Completions,Mac Jones,00-0036972,missing fixture context,indoor,64,9.0
+Completions,Brock Purdy,00-0037834,missing fixture context,indoor,56,9.0
+Completions,Malik Willis,00-0038128,missing fixture context,indoor,26,9.0
+Completions,Tommy DeVito,00-0038476,missing recent statistical history,completions_last5_avg,12,9.0
+Completions,Anthony Richardson,00-0039164,missing fixture context,indoor,17,8.0
+Completions,Michael Penix Jr.,00-0039917,missing fixture context,indoor,20,9.0
+Completions,Quinn Ewers,00-0040234,missing recent statistical history,"completions_last3_avg,completions_last5_avg,completions_trend,attempts_last3_avg",4,8.0
+Completions,Joe Fagnano,00-0040981,insufficient prior participation or position mismatch,,1,9.0
+Rushing Yards,Christian McCaffrey,00-0033280,missing fixture context,indoor,87,9.0
+Rushing Yards,Patrick Ricard,00-0033376,insufficient prior participation or position mismatch,,63,9.0
+Rushing Yards,Dare Ogunbowale,00-0033854,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",94,9.0
+Rushing Yards,Craig Reynolds,00-0035567,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",37,4.0
+Rushing Yards,Reggie Gilliam,00-0036187,insufficient prior participation or position mismatch,,42,4.0
+Rushing Yards,Jonathan Taylor,00-0036223,missing fixture context,indoor,92,9.0
+Rushing Yards,Kene Nwangwu,00-0036842,prior-season only,,46,18.0
+Rushing Yards,Khalil Herbert,00-0036906,missing fixture context,indoor,59,9.0
+Rushing Yards,Michael Carter,00-0036924,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",61,8.0
+Rushing Yards,Javonte Williams,00-0036997,missing fixture context,indoor,78,9.0
+Rushing Yards,Tyler Goodson,00-0037120,missing fixture context,"rushing_yards_last5_avg,indoor",35,9.0
+Rushing Yards,Bam Knight,00-0037157,missing fixture context,indoor,25,8.0
+Rushing Yards,Tyler Allgeier,00-0037263,missing fixture context,indoor,75,9.0
+Rushing Yards,Ronnie Rivers,00-0037557,missing fixture context,"rushing_yards_last5_avg,indoor",24,1.0
+Rushing Yards,Velus Jones Jr.,00-0037745,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",33,7.0
+Rushing Yards,Brian Robinson,00-0037746,missing fixture context,indoor,63,6.0
+Rushing Yards,Kyren Williams,00-0037840,missing fixture context,indoor,61,9.0
+Rushing Yards,Pierre Strong,00-0038098,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",42,9.0
+Rushing Yards,Kenneth Walker III,00-0038134,missing fixture context,indoor,65,9.0
+Rushing Yards,Evan Hull,00-0038397,missing fixture context,indoor,7,9.0
+Rushing Yards,Lew Nichols III,00-0038409,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",5,8.0
+Rushing Yards,Bijan Robinson,00-0038542,missing fixture context,indoor,59,9.0
+Rushing Yards,Hunter Luepke,00-0038738,insufficient prior participation or position mismatch,,44,9.0
+Rushing Yards,Jaleel McLaughlin,00-0038794,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",45,8.0
+Rushing Yards,De'Von Achane,00-0039040,missing fixture context,indoor,46,3.0
+Rushing Yards,British Brooks,00-0039603,prior-season only,,10,18.0
+Rushing Yards,Blake Corum,00-0039738,missing fixture context,indoor,40,9.0
+Rushing Yards,Jaylen Wright,00-0039874,missing fixture context,indoor,27,8.0
+Rushing Yards,Brashard Smith,00-0040078,missing fixture context,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg,indoor",18,4.0
+Rushing Yards,Jordan James,00-0040177,missing fixture context,"rushing_yards_last5_avg,indoor",4,9.0
+Rushing Yards,DJ Giddens,00-0040179,missing fixture context,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg,indoor",5,8.0
+Rushing Yards,Ollie Gordon II,00-0040198,missing fixture context,indoor,23,9.0
+Rushing Yards,Kalel Mullings,00-0040205,missing recent statistical history,rushing_yards_last5_avg,4,5.0
+Rushing Yards,Tahj Brooks,00-0040208,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",17,7.0
+Rushing Yards,Anthony Tyus III,00-0040394,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",4,7.0
+Rushing Yards,Cam Skattebo,00-0040715,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",13,7.0
+Rushing Yards,Nicholas Singleton,00-0040886,insufficient prior participation or position mismatch,,1,4.0
+Rushing Yards,Emmett Johnson,00-0041013,missing fixture context,indoor,7,9.0
+Rushing Yards,Jeremiyah Love,00-0041027,missing fixture context,indoor,5,8.0
+Rushing Yards,Kaelon Black,00-0041052,missing fixture context,indoor,7,9.0
+Rushing Yards,Kaytron Allen,00-0041096,missing fixture context,indoor,4,9.0
+Rushing Yards,Seth McGowan,00-0041125,missing fixture context,indoor,8,9.0
+Rushing Yards,CJ Donaldson,00-0041326,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",5,7.0
+Rushing Attempts,Christian McCaffrey,00-0033280,missing fixture context,indoor,87,9.0
+Rushing Attempts,Patrick Ricard,00-0033376,insufficient prior participation or position mismatch,,63,9.0
+Rushing Attempts,Dare Ogunbowale,00-0033854,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",94,9.0
+Rushing Attempts,Craig Reynolds,00-0035567,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",37,4.0
+Rushing Attempts,Reggie Gilliam,00-0036187,insufficient prior participation or position mismatch,,42,4.0
+Rushing Attempts,Jonathan Taylor,00-0036223,missing fixture context,indoor,92,9.0
+Rushing Attempts,Kene Nwangwu,00-0036842,prior-season only,,46,18.0
+Rushing Attempts,Khalil Herbert,00-0036906,missing fixture context,indoor,59,9.0
+Rushing Attempts,Michael Carter,00-0036924,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",61,8.0
+Rushing Attempts,Javonte Williams,00-0036997,missing fixture context,indoor,78,9.0
+Rushing Attempts,Tyler Goodson,00-0037120,missing fixture context,"carries_last5_avg,indoor",35,9.0
+Rushing Attempts,Bam Knight,00-0037157,missing fixture context,indoor,25,8.0
+Rushing Attempts,Tyler Allgeier,00-0037263,missing fixture context,indoor,75,9.0
+Rushing Attempts,Ronnie Rivers,00-0037557,missing fixture context,"carries_last5_avg,indoor",24,1.0
+Rushing Attempts,Velus Jones Jr.,00-0037745,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",33,7.0
+Rushing Attempts,Brian Robinson,00-0037746,missing fixture context,indoor,63,6.0
+Rushing Attempts,Kyren Williams,00-0037840,missing fixture context,indoor,61,9.0
+Rushing Attempts,Pierre Strong,00-0038098,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",42,9.0
+Rushing Attempts,Kenneth Walker III,00-0038134,missing fixture context,indoor,65,9.0
+Rushing Attempts,Evan Hull,00-0038397,missing fixture context,indoor,7,9.0
+Rushing Attempts,Lew Nichols III,00-0038409,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",5,8.0
+Rushing Attempts,Brady Russell,00-0038488,insufficient prior participation or position mismatch,,30,9.0
+Rushing Attempts,Ben VanSumeren,00-0038489,insufficient prior participation or position mismatch,,9,4.0
+Rushing Attempts,Bijan Robinson,00-0038542,missing fixture context,indoor,59,9.0
+Rushing Attempts,Scott Matlock,00-0038614,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",26,9.0
+Rushing Attempts,Hunter Luepke,00-0038738,insufficient prior participation or position mismatch,,44,9.0
+Rushing Attempts,Jaleel McLaughlin,00-0038794,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",45,8.0
+Rushing Attempts,De'Von Achane,00-0039040,missing fixture context,indoor,46,3.0
+Rushing Attempts,British Brooks,00-0039603,prior-season only,,10,18.0
+Rushing Attempts,Blake Corum,00-0039738,missing fixture context,indoor,40,9.0
+Rushing Attempts,Jaylen Wright,00-0039874,missing fixture context,indoor,27,8.0
+Rushing Attempts,Brashard Smith,00-0040078,missing fixture context,"carries_last3_avg,carries_last5_avg,carries_trend,indoor",18,4.0
+Rushing Attempts,Jordan James,00-0040177,missing fixture context,"carries_last5_avg,indoor",4,9.0
+Rushing Attempts,DJ Giddens,00-0040179,missing fixture context,"carries_last3_avg,carries_last5_avg,carries_trend,indoor",5,8.0
+Rushing Attempts,Ollie Gordon II,00-0040198,missing fixture context,indoor,23,9.0
+Rushing Attempts,Kalel Mullings,00-0040205,missing recent statistical history,carries_last5_avg,4,5.0
+Rushing Attempts,Tahj Brooks,00-0040208,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",17,7.0
+Rushing Attempts,Anthony Tyus III,00-0040394,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",4,7.0
+Rushing Attempts,Cam Skattebo,00-0040715,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",13,7.0
+Rushing Attempts,Nicholas Singleton,00-0040886,insufficient prior participation or position mismatch,,1,4.0
+Rushing Attempts,Jaydn Ott,00-0040959,insufficient prior participation or position mismatch,,1,9.0
+Rushing Attempts,Emmett Johnson,00-0041013,missing fixture context,indoor,7,9.0
+Rushing Attempts,Jeremiyah Love,00-0041027,missing fixture context,indoor,5,8.0
+Rushing Attempts,Kaelon Black,00-0041052,missing fixture context,indoor,7,9.0
+Rushing Attempts,Max Bredeson,00-0041081,insufficient prior participation or position mismatch,,1,9.0
+Rushing Attempts,Kaytron Allen,00-0041096,missing fixture context,indoor,4,9.0
+Rushing Attempts,Seth McGowan,00-0041125,missing fixture context,indoor,8,9.0
+Rushing Attempts,CJ Donaldson,00-0041326,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",5,7.0
+Rushing Attempts,Dean Connors,00-0041415,no verified offensive participation history,,2,
+Rushing Attempts,DJ Herman,00-0041436,insufficient prior participation or position mismatch,,1,9.0
+Rushing Attempts,Eli Heidenreich,00-0041490,insufficient prior participation or position mismatch,,1,1.0
+QB Rushing Yards,Matthew Stafford,00-0026498,missing fixture context,indoor,106,9.0
+QB Rushing Yards,Tyrod Taylor,00-0028118,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",32,9.0
+QB Rushing Yards,Dak Prescott,00-0033077,missing fixture context,indoor,99,9.0
+QB Rushing Yards,Jacoby Brissett,00-0033119,missing fixture context,indoor,80,8.0
+QB Rushing Yards,Cooper Rush,00-0033662,missing fixture context,indoor,36,2.0
+QB Rushing Yards,Patrick Mahomes,00-0033873,missing fixture context,indoor,116,9.0
+QB Rushing Yards,Kyle Allen,00-0034577,missing recent statistical history,rushing_yards_last5_avg,31,9.0
+QB Rushing Yards,Mason Rudolph,00-0034771,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",34,8.0
+QB Rushing Yards,Gardner Minshew,00-0035289,missing fixture context,indoor,62,9.0
+QB Rushing Yards,Drew Lock,00-0035704,missing recent statistical history,rushing_yards_last5_avg,40,9.0
+QB Rushing Yards,Daniel Jones,00-0035710,missing fixture context,indoor,91,9.0
+QB Rushing Yards,Tua Tagovailoa,00-0036212,missing fixture context,indoor,78,5.0
+QB Rushing Yards,Justin Fields,00-0036945,missing fixture context,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg,indoor",59,9.0
+QB Rushing Yards,Mac Jones,00-0036972,missing fixture context,indoor,64,9.0
+QB Rushing Yards,Brock Purdy,00-0037834,missing fixture context,indoor,56,9.0
+QB Rushing Yards,Malik Willis,00-0038128,missing fixture context,indoor,26,9.0
+QB Rushing Yards,Tommy DeVito,00-0038476,missing recent statistical history,rushing_yards_last5_avg,12,9.0
+QB Rushing Yards,Anthony Richardson,00-0039164,missing fixture context,indoor,17,8.0
+QB Rushing Yards,Michael Penix Jr.,00-0039917,missing fixture context,indoor,20,9.0
+QB Rushing Yards,Quinn Ewers,00-0040234,missing recent statistical history,"rushing_yards_last3_avg,rushing_yards_last5_avg,rushing_yards_trend,carries_last3_avg",4,8.0
+QB Rushing Yards,Joe Fagnano,00-0040981,insufficient prior participation or position mismatch,,1,9.0
+QB Rushing Attempts,Matthew Stafford,00-0026498,missing fixture context,indoor,106,9.0
+QB Rushing Attempts,Tyrod Taylor,00-0028118,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",32,9.0
+QB Rushing Attempts,Dak Prescott,00-0033077,missing fixture context,indoor,99,9.0
+QB Rushing Attempts,Jacoby Brissett,00-0033119,missing fixture context,indoor,80,8.0
+QB Rushing Attempts,Cooper Rush,00-0033662,missing fixture context,indoor,36,2.0
+QB Rushing Attempts,Patrick Mahomes,00-0033873,missing fixture context,indoor,116,9.0
+QB Rushing Attempts,Kyle Allen,00-0034577,missing recent statistical history,carries_last5_avg,31,9.0
+QB Rushing Attempts,Mason Rudolph,00-0034771,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",34,8.0
+QB Rushing Attempts,Gardner Minshew,00-0035289,missing fixture context,indoor,62,9.0
+QB Rushing Attempts,Drew Lock,00-0035704,missing recent statistical history,carries_last5_avg,40,9.0
+QB Rushing Attempts,Daniel Jones,00-0035710,missing fixture context,indoor,91,9.0
+QB Rushing Attempts,Tua Tagovailoa,00-0036212,missing fixture context,indoor,78,5.0
+QB Rushing Attempts,Justin Fields,00-0036945,missing fixture context,"carries_last3_avg,carries_last5_avg,carries_trend,indoor",59,9.0
+QB Rushing Attempts,Mac Jones,00-0036972,missing fixture context,indoor,64,9.0
+QB Rushing Attempts,Brock Purdy,00-0037834,missing fixture context,indoor,56,9.0
+QB Rushing Attempts,Malik Willis,00-0038128,missing fixture context,indoor,26,9.0
+QB Rushing Attempts,Tommy DeVito,00-0038476,missing recent statistical history,carries_last5_avg,12,9.0
+QB Rushing Attempts,Anthony Richardson,00-0039164,missing fixture context,indoor,17,8.0
+QB Rushing Attempts,Michael Penix Jr.,00-0039917,missing fixture context,indoor,20,9.0
+QB Rushing Attempts,Quinn Ewers,00-0040234,missing recent statistical history,"carries_last3_avg,carries_last5_avg,carries_trend",4,8.0
+QB Rushing Attempts,Joe Fagnano,00-0040981,insufficient prior participation or position mismatch,,1,9.0
+Receiving Yards,Keenan Allen,00-0030279,missing fixture context,indoor,108,9.0
+Receiving Yards,Travis Kelce,00-0030506,missing fixture context,indoor,119,9.0
+Receiving Yards,Odell Beckham Jr.,00-0031235,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",59,9.0
+Receiving Yards,Brandin Cooks,00-0031236,missing fixture context,indoor,101,9.0
+Receiving Yards,Davante Adams,00-0031381,missing fixture context,indoor,109,6.0
+Receiving Yards,Mike Evans,00-0031408,missing fixture context,indoor,104,6.0
+Receiving Yards,Chris Manhertz,00-0031484,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",47,9.0
+Receiving Yards,Austin Hooper,00-0032392,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",109,9.0
+Receiving Yards,Chris Moore,00-0032398,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",61,5.0
+Receiving Yards,Demarcus Robinson,00-0032775,missing fixture context,indoor,101,9.0
+Receiving Yards,Laquon Treadwell,00-0032951,missing fixture context,indoor,46,9.0
+Receiving Yards,Tyler Higbee,00-0033110,missing fixture context,indoor,95,9.0
+Receiving Yards,Mo Alie-Cox,00-0033217,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",95,9.0
+Receiving Yards,Christian McCaffrey,00-0033280,missing fixture context,indoor,87,9.0
+Receiving Yards,George Kittle,00-0033288,missing fixture context,indoor,100,9.0
+Receiving Yards,Kendrick Bourne,00-0033307,missing fixture context,"receiving_yards_last5_avg,indoor",104,8.0
+Receiving Yards,Tim Patrick,00-0033375,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",68,7.0
+Receiving Yards,Patrick Ricard,00-0033376,insufficient prior participation or position mismatch,,63,9.0
+Receiving Yards,Pharaoh Brown,00-0033439,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",64,7.0
+Receiving Yards,Eric Saubert,00-0033576,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",63,9.0
+Receiving Yards,Robert Tonyan,00-0033757,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",63,8.0
+Receiving Yards,Dare Ogunbowale,00-0033854,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",94,9.0
+Receiving Yards,Jonnu Smith,00-0033858,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",111,9.0
+Receiving Yards,David Njoku,00-0033885,missing recent statistical history,receiving_yards_last5_avg,82,2.0
+Receiving Yards,Tyler Conklin,00-0034270,missing recent statistical history,receiving_yards_last5_avg,93,9.0
+Receiving Yards,Ian Thomas,00-0034365,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",73,9.0
+Receiving Yards,Justin Watson,00-0034386,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",66,7.0
+Receiving Yards,Trent Sherfield,00-0034487,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",75,9.0
+Receiving Yards,Tanner Hudson,00-0034613,missing recent statistical history,receiving_yards_last5_avg,48,5.0
+Receiving Yards,Durham Smythe,00-0034798,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",90,4.0
+Receiving Yards,KhaDarel Hodge,00-0034854,missing fixture context,"receiving_yards_last5_avg,indoor",80,9.0
+Receiving Yards,Foster Moreau,00-0034981,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",89,9.0
+Receiving Yards,Ashton Dulin,00-0035021,missing fixture context,indoor,73,9.0
+Receiving Yards,Olamide Zaccheaus,00-0035208,missing fixture context,indoor,95,9.0
+Receiving Yards,Craig Reynolds,00-0035567,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",37,4.0
+Receiving Yards,Alex Bachman,00-0035602,missing fixture context,indoor,22,7.0
+Receiving Yards,Drew Sample,00-0035631,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",73,9.0
+Receiving Yards,Deebo Samuel Sr.,00-0035719,missing fixture context,indoor,101,5.0
+Receiving Yards,Nick Westbrook-Ikhine,00-0036182,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",81,5.0
+Receiving Yards,Reggie Gilliam,00-0036187,insufficient prior participation or position mismatch,,42,4.0
+Receiving Yards,Jonathan Taylor,00-0036223,missing fixture context,indoor,92,9.0
+Receiving Yards,Colby Parkinson,00-0036244,missing fixture context,indoor,71,9.0
+Receiving Yards,Devin Duvernay,00-0036331,missing fixture context,indoor,96,9.0
+Receiving Yards,CeeDee Lamb,00-0036358,missing fixture context,indoor,102,9.0
+Receiving Yards,Van Jefferson,00-0036415,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",85,9.0
+Receiving Yards,Charlie Woerner,00-0036429,missing fixture context,"receiving_yards_last5_avg,indoor",51,9.0
+Receiving Yards,Chris Blair,00-0036463,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",9,9.0
+Receiving Yards,Kenny Yeboah,00-0036510,prior-season only,,16,18.0
+Receiving Yards,Quintin Morris,00-0036590,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",37,9.0
+Receiving Yards,John Bates,00-0036628,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",63,9.0
+Receiving Yards,Tylan Wallace,00-0036630,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",47,9.0
+Receiving Yards,Noah Gray,00-0036637,missing fixture context,indoor,77,9.0
+Receiving Yards,Simi Fehoko,00-0036646,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",24,9.0
+Receiving Yards,Brock Wright,00-0036754,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",54,9.0
+Receiving Yards,Feleipe Franks,00-0036825,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",32,9.0
+Receiving Yards,Kene Nwangwu,00-0036842,prior-season only,,46,18.0
+Receiving Yards,Tutu Atwell,00-0036849,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",59,9.0
+Receiving Yards,Ben Skowronek,00-0036862,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",66,5.0
+Receiving Yards,Luke Farrell,00-0036887,missing fixture context,indoor,54,9.0
+Receiving Yards,Khalil Herbert,00-0036906,missing fixture context,indoor,59,9.0
+Receiving Yards,Michael Carter,00-0036924,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",61,8.0
+Receiving Yards,Kyle Pitts,00-0036970,missing fixture context,indoor,86,9.0
+Receiving Yards,Josh Palmer,00-0036988,missing recent statistical history,receiving_yards_last5_avg,72,8.0
+Receiving Yards,Javonte Williams,00-0036997,missing fixture context,indoor,78,9.0
+Receiving Yards,Hunter Long,00-0037004,missing fixture context,"receiving_yards_last5_avg,indoor",26,4.0
+Receiving Yards,Dareke Young,00-0037093,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",28,9.0
+Receiving Yards,Tyler Goodson,00-0037120,missing fixture context,"receiving_yards_last5_avg,indoor",35,9.0
+Receiving Yards,Irvin Charles,00-0037156,prior-season only,,16,10.0
+Receiving Yards,Bam Knight,00-0037157,missing fixture context,indoor,25,8.0
+Receiving Yards,Kevin Austin Jr.,00-0037231,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",13,4.0
+Receiving Yards,Drake London,00-0037238,missing fixture context,indoor,70,9.0
+Receiving Yards,George Pickens,00-0037247,missing fixture context,indoor,72,8.0
+Receiving Yards,Greg Dulcich,00-0037252,missing fixture context,"receiving_yards_last5_avg,indoor",31,9.0
+Receiving Yards,Tyler Allgeier,00-0037263,missing fixture context,indoor,75,9.0
+Receiving Yards,Teagan Quitoriano,00-0037277,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",13,9.0
+Receiving Yards,James Mitchell,00-0037282,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",12,9.0
+Receiving Yards,Jalen Nailor,00-0037291,missing recent statistical history,receiving_yards_last5_avg,49,9.0
+Receiving Yards,Andrew Ogletree,00-0037292,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",39,9.0
+Receiving Yards,Nick Muse,00-0037317,missing fixture context,indoor,7,9.0
+Receiving Yards,Brandon Johnson,00-0037382,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",16,8.0
+Receiving Yards,Tay Martin,00-0037524,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",9,9.0
+Receiving Yards,Ronnie Rivers,00-0037557,missing fixture context,"receiving_yards_last5_avg,indoor",24,1.0
+Receiving Yards,Alec Pierce,00-0037664,missing fixture context,indoor,65,2.0
+Receiving Yards,Jalen Tolbert,00-0037666,missing fixture context,"receiving_yards_last5_avg,indoor",48,8.0
+Receiving Yards,Jahan Dotson,00-0037741,missing fixture context,indoor,66,9.0
+Receiving Yards,Trey McBride,00-0037744,missing fixture context,indoor,70,9.0
+Receiving Yards,Velus Jones Jr.,00-0037745,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",33,7.0
+Receiving Yards,Brian Robinson,00-0037746,missing fixture context,indoor,63,6.0
+Receiving Yards,Jelani Woods,00-0037755,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",19,9.0
+Receiving Yards,KaVontae Turpin,00-0037801,missing fixture context,indoor,70,5.0
+Receiving Yards,Jeremy Ruckert,00-0037805,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",43,9.0
+Receiving Yards,Kyren Williams,00-0037840,missing fixture context,indoor,61,9.0
+Receiving Yards,Jake Ferguson,00-0038041,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",66,9.0
+Receiving Yards,Pierre Strong,00-0038098,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",42,9.0
+Receiving Yards,Tyquan Thornton,00-0038104,missing fixture context,indoor,40,4.0
+Receiving Yards,Kenneth Walker III,00-0038134,missing fixture context,indoor,65,9.0
+Receiving Yards,Xavier Smith,00-0038359,missing fixture context,indoor,32,3.0
+Receiving Yards,Will Mallory,00-0038394,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",20,8.0
+Receiving Yards,Evan Hull,00-0038397,missing fixture context,indoor,7,9.0
+Receiving Yards,Brady Russell,00-0038488,insufficient prior participation or position mismatch,,30,9.0
+Receiving Yards,Ben VanSumeren,00-0038489,insufficient prior participation or position mismatch,,9,4.0
+Receiving Yards,Nikko Remigio,00-0038519,missing fixture context,indoor,26,6.0
+Receiving Yards,Bijan Robinson,00-0038542,missing fixture context,indoor,59,9.0
+Receiving Yards,Luke Schoonmaker,00-0038547,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",40,7.0
+Receiving Yards,Michael Wilson,00-0038559,missing fixture context,indoor,54,9.0
+Receiving Yards,Scott Matlock,00-0038614,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",26,9.0
+Receiving Yards,Jalen Brooks,00-0038640,missing fixture context,indoor,25,7.0
+Receiving Yards,Brayden Willis,00-0038643,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",16,9.0
+Receiving Yards,Blake Whiteheart,00-0038710,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",21,9.0
+Receiving Yards,Jared Wayne,00-0038728,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",5,9.0
+Receiving Yards,Hunter Luepke,00-0038738,insufficient prior participation or position mismatch,,44,9.0
+Receiving Yards,Jaleel McLaughlin,00-0038794,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",45,8.0
+Receiving Yards,Ryan Miller,00-0038824,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",20,8.0
+Receiving Yards,Mitchell Tinsley,00-0038839,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",10,9.0
+Receiving Yards,Jalin Hyatt,00-0038938,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",29,9.0
+Receiving Yards,Josh Downs,00-0038997,missing fixture context,indoor,55,9.0
+Receiving Yards,De'Von Achane,00-0039040,missing fixture context,indoor,46,3.0
+Receiving Yards,Elijah Higgins,00-0039041,missing fixture context,indoor,50,9.0
+Receiving Yards,Jonathan Mingo,00-0039062,missing fixture context,indoor,40,9.0
+Receiving Yards,Rashee Rice,00-0039067,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",32,9.0
+Receiving Yards,Davis Allen,00-0039074,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",36,9.0
+Receiving Yards,Puka Nacua,00-0039075,missing fixture context,indoor,50,9.0
+Receiving Yards,Jayden Reed,00-0039146,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",39,2.0
+Receiving Yards,Cade Stover,00-0039359,missing recent statistical history,receiving_yards_last5_avg,24,7.0
+Receiving Yards,Jacob Cowing,00-0039365,missing fixture context,indoor,22,9.0
+Receiving Yards,Ryan Flournoy,00-0039410,missing fixture context,indoor,32,9.0
+Receiving Yards,Hayden Rucci,00-0039489,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",4,9.0
+Receiving Yards,Brevyn Spann-Ford,00-0039530,missing fixture context,indoor,35,9.0
+Receiving Yards,David Martin-Robinson,00-0039648,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",15,8.0
+Receiving Yards,Blake Corum,00-0039738,missing fixture context,indoor,40,9.0
+Receiving Yards,Jordan Whittington,00-0039751,missing fixture context,"receiving_yards_last5_avg,indoor",34,9.0
+Receiving Yards,Devontez Walker,00-0039792,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",15,9.0
+Receiving Yards,Erick All,00-0039814,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",10,7.0
+Receiving Yards,Anthony Gould,00-0039816,missing fixture context,indoor,24,9.0
+Receiving Yards,Theo Johnson,00-0039847,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",29,9.0
+Receiving Yards,Jaylen Wright,00-0039874,missing fixture context,indoor,27,8.0
+Receiving Yards,Malik Washington,00-0039880,missing fixture context,indoor,38,9.0
+Receiving Yards,Brian Thomas Jr.,00-0039893,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",37,9.0
+Receiving Yards,Xavier Worthy,00-0039894,missing fixture context,indoor,37,9.0
+Receiving Yards,Ben Sinnott,00-0039912,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",18,9.0
+Receiving Yards,Brashard Smith,00-0040078,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",18,4.0
+Receiving Yards,Jake Briningstool,00-0040081,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",4,9.0
+Receiving Yards,Tyler Warren,00-0040128,missing fixture context,indoor,23,9.0
+Receiving Yards,Tai Felton,00-0040154,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",15,9.0
+Receiving Yards,Jordan Watkins,00-0040172,missing fixture context,"receiving_yards_last5_avg,indoor",5,9.0
+Receiving Yards,Jordan James,00-0040177,missing fixture context,"receiving_yards_last5_avg,indoor",4,9.0
+Receiving Yards,DJ Giddens,00-0040179,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",5,8.0
+Receiving Yards,Jackson Hawes,00-0040194,missing recent statistical history,receiving_yards_last5_avg,17,9.0
+Receiving Yards,Ollie Gordon II,00-0040198,missing fixture context,indoor,23,9.0
+Receiving Yards,Tahj Brooks,00-0040208,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",17,7.0
+Receiving Yards,Gavin Bartholomew,00-0040215,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",2,9.0
+Receiving Yards,Andrew Armstrong,00-0040298,missing fixture context,indoor,3,9.0
+Receiving Yards,Coleman Owen,00-0040352,insufficient prior participation or position mismatch,,5,9.0
+Receiving Yards,Ben Yurosek,00-0040509,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",8,9.0
+Receiving Yards,Xavier Restrepo,00-0040522,prior-season only,,2,13.0
+Receiving Yards,Ke'Shawn Williams,00-0040534,prior-season only,,11,18.0
+Receiving Yards,Gunnar Helm,00-0040584,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",22,8.0
+Receiving Yards,Konata Mumpfield,00-0040590,missing fixture context,"receiving_yards_last5_avg,indoor",17,9.0
+Receiving Yards,Mark Redman,00-0040598,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",1,9.0
+Receiving Yards,Jalen Royals,00-0040646,missing fixture context,indoor,9,9.0
+Receiving Yards,Tory Horton,00-0040648,missing recent statistical history,receiving_yards_last5_avg,13,9.0
+Receiving Yards,Isaac TeSlaa,00-0040669,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",20,9.0
+Receiving Yards,Cam Skattebo,00-0040715,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",13,7.0
+Receiving Yards,Jack Bech,00-0040729,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",16,9.0
+Receiving Yards,Terrance Ferguson,00-0040737,missing fixture context,indoor,13,3.0
+Receiving Yards,Elijah Arroyo,00-0040739,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",14,6.0
+Receiving Yards,Isaiah Bond,00-0040782,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",19,8.0
+Receiving Yards,Matthew Hibner,00-0040879,missing recent statistical history,receiving_yards_last5_avg,5,9.0
+Receiving Yards,Cyrus Allen,00-0040890,missing fixture context,indoor,5,9.0
+Receiving Yards,Emmett Johnson,00-0041013,missing fixture context,indoor,7,9.0
+Receiving Yards,Jeremiyah Love,00-0041027,missing fixture context,indoor,5,8.0
+Receiving Yards,Zachariah Branch,00-0041044,missing fixture context,indoor,7,8.0
+Receiving Yards,Kaelon Black,00-0041052,missing fixture context,indoor,7,9.0
+Receiving Yards,Colbie Young,00-0041069,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",1,9.0
+Receiving Yards,Reggie Virgil,00-0041070,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",2,9.0
+Receiving Yards,Tanner Koziol,00-0041084,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",1,9.0
+Receiving Yards,Jack Endries,00-0041116,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",1,9.0
+Receiving Yards,Seth McGowan,00-0041125,missing fixture context,indoor,8,9.0
+Receiving Yards,Deion Burks,00-0041132,missing fixture context,indoor,6,9.0
+Receiving Yards,CJ Donaldson,00-0041326,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",5,7.0
+Receiving Yards,DJ Herman,00-0041436,insufficient prior participation or position mismatch,,1,9.0
+Receiving Yards,Skyler Bell,00-0041443,insufficient prior participation or position mismatch,,1,6.0
+Receiving Yards,Omar Cooper Jr.,00-0041511,missing recent statistical history,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg",3,9.0
+Receiving Yards,Caleb Douglas,00-0041523,missing fixture context,indoor,4,9.0
+Receiving Yards,Will Kacmarek,00-0041524,missing fixture context,"receiving_yards_last3_avg,receiving_yards_last5_avg,receiving_yards_trend,targets_last3_avg,indoor",6,9.0
+Receiving Yards,Chris Bell,00-0041525,missing fixture context,indoor,7,9.0
+Receiving Yards,Kevin Coleman Jr.,00-0041529,missing fixture context,indoor,6,9.0
+Receiving Yards,Seydou Traore,00-0041579,missing fixture context,indoor,3,9.0
+Receptions,Keenan Allen,00-0030279,missing fixture context,indoor,108,9.0
+Receptions,Travis Kelce,00-0030506,missing fixture context,indoor,119,9.0
+Receptions,Odell Beckham Jr.,00-0031235,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",59,9.0
+Receptions,Brandin Cooks,00-0031236,missing fixture context,indoor,101,9.0
+Receptions,Davante Adams,00-0031381,missing fixture context,indoor,109,6.0
+Receptions,Mike Evans,00-0031408,missing fixture context,indoor,104,6.0
+Receptions,Chris Manhertz,00-0031484,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",47,9.0
+Receptions,Austin Hooper,00-0032392,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",109,9.0
+Receptions,Chris Moore,00-0032398,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",61,5.0
+Receptions,Demarcus Robinson,00-0032775,missing fixture context,indoor,101,9.0
+Receptions,Laquon Treadwell,00-0032951,missing fixture context,indoor,46,9.0
+Receptions,Tyler Higbee,00-0033110,missing fixture context,indoor,95,9.0
+Receptions,Mo Alie-Cox,00-0033217,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",95,9.0
+Receptions,Christian McCaffrey,00-0033280,missing fixture context,indoor,87,9.0
+Receptions,George Kittle,00-0033288,missing fixture context,indoor,100,9.0
+Receptions,Kendrick Bourne,00-0033307,missing fixture context,"receptions_last5_avg,indoor",104,8.0
+Receptions,Tim Patrick,00-0033375,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",68,7.0
+Receptions,Patrick Ricard,00-0033376,insufficient prior participation or position mismatch,,63,9.0
+Receptions,Pharaoh Brown,00-0033439,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",64,7.0
+Receptions,Eric Saubert,00-0033576,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",63,9.0
+Receptions,Robert Tonyan,00-0033757,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",63,8.0
+Receptions,Dare Ogunbowale,00-0033854,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",94,9.0
+Receptions,Jonnu Smith,00-0033858,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",111,9.0
+Receptions,David Njoku,00-0033885,missing recent statistical history,receptions_last5_avg,82,2.0
+Receptions,Tyler Conklin,00-0034270,missing recent statistical history,receptions_last5_avg,93,9.0
+Receptions,Ian Thomas,00-0034365,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",73,9.0
+Receptions,Justin Watson,00-0034386,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",66,7.0
+Receptions,Trent Sherfield,00-0034487,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",75,9.0
+Receptions,Tanner Hudson,00-0034613,missing recent statistical history,receptions_last5_avg,48,5.0
+Receptions,Durham Smythe,00-0034798,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",90,4.0
+Receptions,KhaDarel Hodge,00-0034854,missing fixture context,"receptions_last5_avg,indoor",80,9.0
+Receptions,Foster Moreau,00-0034981,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",89,9.0
+Receptions,Ashton Dulin,00-0035021,missing fixture context,indoor,73,9.0
+Receptions,Olamide Zaccheaus,00-0035208,missing fixture context,indoor,95,9.0
+Receptions,Craig Reynolds,00-0035567,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",37,4.0
+Receptions,Alex Bachman,00-0035602,missing fixture context,indoor,22,7.0
+Receptions,Drew Sample,00-0035631,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",73,9.0
+Receptions,Deebo Samuel Sr.,00-0035719,missing fixture context,indoor,101,5.0
+Receptions,Nick Westbrook-Ikhine,00-0036182,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",81,5.0
+Receptions,Reggie Gilliam,00-0036187,insufficient prior participation or position mismatch,,42,4.0
+Receptions,Jonathan Taylor,00-0036223,missing fixture context,indoor,92,9.0
+Receptions,Colby Parkinson,00-0036244,missing fixture context,indoor,71,9.0
+Receptions,Devin Duvernay,00-0036331,missing fixture context,indoor,96,9.0
+Receptions,CeeDee Lamb,00-0036358,missing fixture context,indoor,102,9.0
+Receptions,Van Jefferson,00-0036415,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",85,9.0
+Receptions,Charlie Woerner,00-0036429,missing fixture context,"receptions_last5_avg,indoor",51,9.0
+Receptions,Chris Blair,00-0036463,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",9,9.0
+Receptions,Kenny Yeboah,00-0036510,prior-season only,,16,18.0
+Receptions,Quintin Morris,00-0036590,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",37,9.0
+Receptions,John Bates,00-0036628,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",63,9.0
+Receptions,Tylan Wallace,00-0036630,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",47,9.0
+Receptions,Noah Gray,00-0036637,missing fixture context,indoor,77,9.0
+Receptions,Simi Fehoko,00-0036646,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",24,9.0
+Receptions,Brock Wright,00-0036754,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",54,9.0
+Receptions,Feleipe Franks,00-0036825,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",32,9.0
+Receptions,Kene Nwangwu,00-0036842,prior-season only,,46,18.0
+Receptions,Tutu Atwell,00-0036849,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",59,9.0
+Receptions,Ben Skowronek,00-0036862,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",66,5.0
+Receptions,Luke Farrell,00-0036887,missing fixture context,indoor,54,9.0
+Receptions,Khalil Herbert,00-0036906,missing fixture context,indoor,59,9.0
+Receptions,Michael Carter,00-0036924,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",61,8.0
+Receptions,Kyle Pitts,00-0036970,missing fixture context,indoor,86,9.0
+Receptions,Josh Palmer,00-0036988,missing recent statistical history,receptions_last5_avg,72,8.0
+Receptions,Javonte Williams,00-0036997,missing fixture context,indoor,78,9.0
+Receptions,Hunter Long,00-0037004,missing fixture context,"receptions_last5_avg,indoor",26,4.0
+Receptions,Dareke Young,00-0037093,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",28,9.0
+Receptions,Tyler Goodson,00-0037120,missing fixture context,"receptions_last5_avg,indoor",35,9.0
+Receptions,Irvin Charles,00-0037156,prior-season only,,16,10.0
+Receptions,Bam Knight,00-0037157,missing fixture context,indoor,25,8.0
+Receptions,Kevin Austin Jr.,00-0037231,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",13,4.0
+Receptions,Drake London,00-0037238,missing fixture context,indoor,70,9.0
+Receptions,George Pickens,00-0037247,missing fixture context,indoor,72,8.0
+Receptions,Greg Dulcich,00-0037252,missing fixture context,"receptions_last5_avg,indoor",31,9.0
+Receptions,Tyler Allgeier,00-0037263,missing fixture context,indoor,75,9.0
+Receptions,Teagan Quitoriano,00-0037277,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",13,9.0
+Receptions,James Mitchell,00-0037282,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",12,9.0
+Receptions,Jalen Nailor,00-0037291,missing recent statistical history,receptions_last5_avg,49,9.0
+Receptions,Andrew Ogletree,00-0037292,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",39,9.0
+Receptions,Nick Muse,00-0037317,missing fixture context,indoor,7,9.0
+Receptions,Brandon Johnson,00-0037382,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",16,8.0
+Receptions,Tay Martin,00-0037524,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",9,9.0
+Receptions,Ronnie Rivers,00-0037557,missing fixture context,"receptions_last5_avg,indoor",24,1.0
+Receptions,Alec Pierce,00-0037664,missing fixture context,indoor,65,2.0
+Receptions,Jalen Tolbert,00-0037666,missing fixture context,"receptions_last5_avg,indoor",48,8.0
+Receptions,Jahan Dotson,00-0037741,missing fixture context,indoor,66,9.0
+Receptions,Trey McBride,00-0037744,missing fixture context,indoor,70,9.0
+Receptions,Velus Jones Jr.,00-0037745,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",33,7.0
+Receptions,Brian Robinson,00-0037746,missing fixture context,indoor,63,6.0
+Receptions,Jelani Woods,00-0037755,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",19,9.0
+Receptions,KaVontae Turpin,00-0037801,missing fixture context,indoor,70,5.0
+Receptions,Jeremy Ruckert,00-0037805,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",43,9.0
+Receptions,Kyren Williams,00-0037840,missing fixture context,indoor,61,9.0
+Receptions,Jake Ferguson,00-0038041,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",66,9.0
+Receptions,Pierre Strong,00-0038098,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",42,9.0
+Receptions,Tyquan Thornton,00-0038104,missing fixture context,indoor,40,4.0
+Receptions,Kenneth Walker III,00-0038134,missing fixture context,indoor,65,9.0
+Receptions,Xavier Smith,00-0038359,missing fixture context,indoor,32,3.0
+Receptions,Will Mallory,00-0038394,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",20,8.0
+Receptions,Evan Hull,00-0038397,missing fixture context,indoor,7,9.0
+Receptions,Lew Nichols III,00-0038409,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",5,8.0
+Receptions,Brady Russell,00-0038488,insufficient prior participation or position mismatch,,30,9.0
+Receptions,Ben VanSumeren,00-0038489,insufficient prior participation or position mismatch,,9,4.0
+Receptions,Nikko Remigio,00-0038519,missing fixture context,indoor,26,6.0
+Receptions,Bijan Robinson,00-0038542,missing fixture context,indoor,59,9.0
+Receptions,Luke Schoonmaker,00-0038547,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",40,7.0
+Receptions,Michael Wilson,00-0038559,missing fixture context,indoor,54,9.0
+Receptions,Scott Matlock,00-0038614,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",26,9.0
+Receptions,Jalen Brooks,00-0038640,missing fixture context,indoor,25,7.0
+Receptions,Brayden Willis,00-0038643,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",16,9.0
+Receptions,Blake Whiteheart,00-0038710,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",21,9.0
+Receptions,Jared Wayne,00-0038728,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",5,9.0
+Receptions,Hunter Luepke,00-0038738,insufficient prior participation or position mismatch,,44,9.0
+Receptions,Jaleel McLaughlin,00-0038794,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",45,8.0
+Receptions,Ryan Miller,00-0038824,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",20,8.0
+Receptions,Mitchell Tinsley,00-0038839,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",10,9.0
+Receptions,Jalin Hyatt,00-0038938,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",29,9.0
+Receptions,Josh Downs,00-0038997,missing fixture context,indoor,55,9.0
+Receptions,De'Von Achane,00-0039040,missing fixture context,indoor,46,3.0
+Receptions,Elijah Higgins,00-0039041,missing fixture context,indoor,50,9.0
+Receptions,Jonathan Mingo,00-0039062,missing fixture context,indoor,40,9.0
+Receptions,Rashee Rice,00-0039067,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",32,9.0
+Receptions,Davis Allen,00-0039074,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",36,9.0
+Receptions,Puka Nacua,00-0039075,missing fixture context,indoor,50,9.0
+Receptions,Jayden Reed,00-0039146,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",39,2.0
+Receptions,Cade Stover,00-0039359,missing recent statistical history,receptions_last5_avg,24,7.0
+Receptions,Jacob Cowing,00-0039365,missing fixture context,indoor,22,9.0
+Receptions,Ryan Flournoy,00-0039410,missing fixture context,indoor,32,9.0
+Receptions,Hayden Rucci,00-0039489,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",4,9.0
+Receptions,Brevyn Spann-Ford,00-0039530,missing fixture context,indoor,35,9.0
+Receptions,British Brooks,00-0039603,prior-season only,,10,18.0
+Receptions,David Martin-Robinson,00-0039648,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",15,8.0
+Receptions,Blake Corum,00-0039738,missing fixture context,indoor,40,9.0
+Receptions,Jordan Whittington,00-0039751,missing fixture context,"receptions_last5_avg,indoor",34,9.0
+Receptions,Devontez Walker,00-0039792,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",15,9.0
+Receptions,Erick All,00-0039814,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",10,7.0
+Receptions,Anthony Gould,00-0039816,missing fixture context,indoor,24,9.0
+Receptions,Theo Johnson,00-0039847,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",29,9.0
+Receptions,Jaylen Wright,00-0039874,missing fixture context,indoor,27,8.0
+Receptions,Malik Washington,00-0039880,missing fixture context,indoor,38,9.0
+Receptions,Brian Thomas Jr.,00-0039893,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",37,9.0
+Receptions,Xavier Worthy,00-0039894,missing fixture context,indoor,37,9.0
+Receptions,Ben Sinnott,00-0039912,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",18,9.0
+Receptions,Brashard Smith,00-0040078,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",18,4.0
+Receptions,Jake Briningstool,00-0040081,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",4,9.0
+Receptions,Tyler Warren,00-0040128,missing fixture context,indoor,23,9.0
+Receptions,Tai Felton,00-0040154,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",15,9.0
+Receptions,Jordan Watkins,00-0040172,missing fixture context,"receptions_last5_avg,indoor",5,9.0
+Receptions,Jordan James,00-0040177,missing fixture context,"receptions_last5_avg,indoor",4,9.0
+Receptions,DJ Giddens,00-0040179,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",5,8.0
+Receptions,Jackson Hawes,00-0040194,missing recent statistical history,receptions_last5_avg,17,9.0
+Receptions,Ollie Gordon II,00-0040198,missing fixture context,indoor,23,9.0
+Receptions,Kalel Mullings,00-0040205,missing recent statistical history,receptions_last5_avg,4,5.0
+Receptions,Tahj Brooks,00-0040208,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",17,7.0
+Receptions,Gavin Bartholomew,00-0040215,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",2,9.0
+Receptions,Andrew Armstrong,00-0040298,missing fixture context,indoor,3,9.0
+Receptions,Coleman Owen,00-0040352,insufficient prior participation or position mismatch,,5,9.0
+Receptions,Anthony Tyus III,00-0040394,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",4,7.0
+Receptions,Ben Yurosek,00-0040509,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",8,9.0
+Receptions,Xavier Restrepo,00-0040522,prior-season only,,2,13.0
+Receptions,Ke'Shawn Williams,00-0040534,prior-season only,,11,18.0
+Receptions,Gunnar Helm,00-0040584,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",22,8.0
+Receptions,Konata Mumpfield,00-0040590,missing fixture context,"receptions_last5_avg,indoor",17,9.0
+Receptions,Mark Redman,00-0040598,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",1,9.0
+Receptions,Jalen Royals,00-0040646,missing fixture context,indoor,9,9.0
+Receptions,Tory Horton,00-0040648,missing recent statistical history,receptions_last5_avg,13,9.0
+Receptions,Isaac TeSlaa,00-0040669,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",20,9.0
+Receptions,Cam Skattebo,00-0040715,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",13,7.0
+Receptions,Jack Bech,00-0040729,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",16,9.0
+Receptions,Terrance Ferguson,00-0040737,missing fixture context,indoor,13,3.0
+Receptions,Elijah Arroyo,00-0040739,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",14,6.0
+Receptions,Isaiah Bond,00-0040782,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",19,8.0
+Receptions,Matthew Hibner,00-0040879,missing recent statistical history,receptions_last5_avg,5,9.0
+Receptions,Nicholas Singleton,00-0040886,insufficient prior participation or position mismatch,,1,4.0
+Receptions,Cyrus Allen,00-0040890,missing fixture context,indoor,5,9.0
+Receptions,Emmett Johnson,00-0041013,missing fixture context,indoor,7,9.0
+Receptions,Jeremiyah Love,00-0041027,missing fixture context,indoor,5,8.0
+Receptions,Zachariah Branch,00-0041044,missing fixture context,indoor,7,8.0
+Receptions,Kaelon Black,00-0041052,missing fixture context,indoor,7,9.0
+Receptions,Colbie Young,00-0041069,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",1,9.0
+Receptions,Reggie Virgil,00-0041070,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",2,9.0
+Receptions,Tanner Koziol,00-0041084,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",1,9.0
+Receptions,Kaytron Allen,00-0041096,missing fixture context,indoor,4,9.0
+Receptions,Jack Endries,00-0041116,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",1,9.0
+Receptions,Seth McGowan,00-0041125,missing fixture context,indoor,8,9.0
+Receptions,Deion Burks,00-0041132,missing fixture context,indoor,6,9.0
+Receptions,CJ Donaldson,00-0041326,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",5,7.0
+Receptions,DJ Herman,00-0041436,insufficient prior participation or position mismatch,,1,9.0
+Receptions,Skyler Bell,00-0041443,insufficient prior participation or position mismatch,,1,6.0
+Receptions,Omar Cooper Jr.,00-0041511,missing recent statistical history,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg",3,9.0
+Receptions,Caleb Douglas,00-0041523,missing fixture context,indoor,4,9.0
+Receptions,Will Kacmarek,00-0041524,missing fixture context,"receptions_last3_avg,receptions_last5_avg,receptions_trend,targets_last3_avg,indoor",6,9.0
+Receptions,Chris Bell,00-0041525,missing fixture context,indoor,7,9.0
+Receptions,Kevin Coleman Jr.,00-0041529,missing fixture context,indoor,6,9.0
+Receptions,Seydou Traore,00-0041579,missing fixture context,indoor,3,9.0

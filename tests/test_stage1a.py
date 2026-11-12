@@ -302,6 +302,7 @@ class SlateTests(unittest.TestCase):
                     resid_std=10.0,
                     positions=["QB"],
                     training_cutoff="2025-10-06T02:00:00Z",
+                    feature_timing_version="stage1a",
                 ),
                 Path(td) / "model_passing_yards.joblib",
             )
@@ -383,6 +384,7 @@ class SlateTests(unittest.TestCase):
                     resid_std=10.0,
                     positions=["QB"],
                     training_cutoff="2024-10-06T02:00Z",
+                    feature_timing_version="stage1a",
                 ),
                 Path(td) / "model_passing_yards.joblib",
             )

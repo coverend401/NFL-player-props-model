@@ -104,6 +104,8 @@ features = _load_features(_mtime("data/player_features.parquet"))
 slate = _load_slate(_mtime("data/slate.parquet"))
 LATEST = _latest_lookup(features, _mtime("data/player_features.parquet"))
 ledger, ledger_warning = get_ledger()
+if slate is not None and "feature_timing_version" not in slate:
+    st.warning("Legacy forecast artifacts loaded. Stage 1A requires a coordinated feature, model and slate refresh before using corrected forecasts.")
 
 
 def load_settings():
@@ -199,7 +201,7 @@ with tabs[1]:
         filtered = slate[slate["market"].isin(market_filter)] if market_filter else slate
         st.dataframe(
             filtered.sort_values(["market", "projection"], ascending=[True, False])
-            [["market", "player", "team", "opponent", "projection", "career_avg", "recent_form", "games_played_prior"]],
+            [["market", "player", "team", "opponent", "projection", "career_avg", "recent_form", "games_played_prior"] + (["projection_status"] if "projection_status" in filtered else [])],
             width="stretch", hide_index=True)
         st.caption("No bookmaker odds baked in yet - check any interesting projection against "
                    "a real sportsbook price in the Single Prop Lookup tab to see edge and EV.")
@@ -235,6 +237,11 @@ with tabs[2]:
         st.caption(f"Upcoming Week {int(projection_row['week'])}; {games_played} prior participating games."
                    + (f" Prediction timestamp: {projection_row['prediction_at']}." if "prediction_at" in projection_row else ""))
 
+        if projection_row.get("projection_status", "complete") != "complete":
+            st.warning(f"Roof unresolved: indoor/outdoor scenario range "
+                       f"{projection_row['roof_scenario_low']:.1f}–{projection_row['roof_scenario_high']:.1f}. "
+                       "The displayed midpoint is exploratory; pricing is unavailable.")
+            return
         st.subheader("Compare against a bookmaker price")
         line = st.number_input("Bookmaker line", value=float(round(prediction, 1)), step=0.5)
         col1, col2 = st.columns(2)

@@ -104,6 +104,12 @@ def get_current_qb_starters(current_year: int, prediction_at=None) -> dict:
     return dict(zip(qb1_latest["team"], qb1_latest["gsis_id"]))
 
 
+def get_upcoming_qb_starters(schedule, prediction_at):
+    """NFL season follows the fixture, including January of the next year."""
+    _, games = get_upcoming_week(schedule, prediction_at)
+    return get_current_qb_starters(int(games["season"].iloc[0]), prediction_at)
+
+
 def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timestamp,
                  current_qb_starters: dict = None, completed_before=None, model_dir="data", allow_unverified_models=False,
                  allow_unverified_context=False, qb_starters_as_of=None) -> pd.DataFrame:
@@ -126,10 +132,15 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
     opp_map = build_opponent_map(week_games)
     latest_per_player = upcoming_player_state(history, STAT_COLS, AUX_STAT_COLS)
     current_season = int(week_games["season"].iloc[0])
-    # Carry prior-season history into opening week; do not revive older players
-    # in midseason merely because their former team has a fixture.
+    # A timestamped QB1 snapshot can confirm a returning/traded QB even when
+    # his latest participating game belongs to the previous season or team.
+    confirmed_qb = pd.Series(False, index=latest_per_player.index)
+    if current_qb_starters:
+        team_by_qb = {pid: team for team, pid in current_qb_starters.items()}
+        confirmed_qb = latest_per_player.player_id.isin(team_by_qb) & latest_per_player.position.eq("QB")
+        latest_per_player.loc[confirmed_qb, "team"] = latest_per_player.loc[confirmed_qb, "player_id"].map(team_by_qb)
     allowed_seasons = [current_season, current_season - 1] if week == 1 else [current_season]
-    active = latest_per_player[latest_per_player.season.isin(allowed_seasons) &
+    active = latest_per_player[(latest_per_player.season.isin(allowed_seasons) | confirmed_qb) &
                                latest_per_player.team.isin(opp_map)].copy()
     active["upcoming_opponent"] = active.team.map(opp_map)
 
@@ -156,6 +167,8 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
                 raise ValueError(f"{market_key}: model training cutoff missing; retrain before forecasting")
         elif utc_timestamp(training_cutoff) >= cutoff:
             raise ValueError(f"{market_key}: model contains training outcomes at/after completed-game cutoff")
+        if bundle.get("feature_timing_version") != "stage1a" and not allow_unverified_models:
+            raise ValueError(f"{market_key}: incompatible feature timing; coordinated model refresh required")
         model, feature_cols, resid_std, positions = (
             bundle["model"], bundle["features"], bundle["resid_std"], bundle["positions"]
         )
@@ -167,12 +180,25 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         for col in opp_feature_cols:
             eligible[col] = eligible["upcoming_opponent"].map(team_defense[col])
 
-        eligible = eligible.dropna(subset=feature_cols)
+        # Unknown roof is not an observed outdoor game. Keep complete player
+        # forecasts as explicitly hypothetical indoor/outdoor scenarios; these
+        # rows are not eligible for pricing or Top Picks until roof is known.
+        other_cols = [c for c in feature_cols if c != "indoor"]
+        eligible = eligible.dropna(subset=other_cols)
         if eligible.empty:
             continue
 
-        X = eligible[feature_cols]
-        preds = model.predict(X)
+        X = eligible[feature_cols].copy()
+        unknown_roof = eligible["indoor"].isna() if "indoor" in feature_cols else pd.Series(False, index=eligible.index)
+        if "indoor" in feature_cols:
+            X.loc[unknown_roof, "indoor"] = 0.0
+        outdoor_preds = model.predict(X)
+        if unknown_roof.any():
+            X.loc[unknown_roof, "indoor"] = 1.0
+            indoor_preds = model.predict(X)
+        else:
+            indoor_preds = outdoor_preds
+        preds = np.where(unknown_roof, (outdoor_preds + indoor_preds) / 2, outdoor_preds)
 
         # feature_cols[0] is always the market's own *_season_avg (career-long) -
         # feature_cols[1] is always *_last3_avg, a much more realistic stand-in
@@ -199,11 +225,15 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
                 "last_completed_game_at": r["completed_at"].isoformat(),
                 "completion_time_basis": r["completion_time_basis"],
                 "context_timing_verified": "context_available_at" in week_games,
+                "projection_status": "roof_scenarios_only" if bool(unknown_roof.iloc[i]) else "complete",
+                "roof_scenario_low": round(min(outdoor_preds[i], indoor_preds[i]), 1),
+                "roof_scenario_high": round(max(outdoor_preds[i], indoor_preds[i]), 1),
+                "feature_timing_version": "stage1a",
             })
 
     columns = ["market", "player", "team", "opponent", "position", "projection", "career_avg",
                "recent_form", "resid_std", "games_played_prior", "week", "season", "player_id",
-               "game_id", "prediction_at", "completed_before", "last_completed_game_at", "completion_time_basis", "context_timing_verified"]
+               "game_id", "prediction_at", "completed_before", "last_completed_game_at", "completion_time_basis", "context_timing_verified", "projection_status", "roof_scenario_low", "roof_scenario_high", "feature_timing_version"]
     return pd.DataFrame(rows, columns=columns)
 
 
@@ -231,6 +261,8 @@ def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: i
     from scipy.stats import norm
 
     picks = slate.copy()
+    if "projection_status" in picks:
+        picks = picks[picks.projection_status.eq("complete")].copy()
     if picks.empty:
         return picks.assign(side=pd.Series(dtype=str), model_probability=pd.Series(dtype=float), confidence=pd.Series(dtype=float))
     prob_over = 1 - norm.cdf(picks["recent_form"], picks["projection"], picks["resid_std"])
@@ -257,11 +289,10 @@ def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: i
 if __name__ == "__main__":
     import nflreadpy as nfl
     prediction_at = datetime.now(timezone.utc)
-    current_year = prediction_at.year
     # Previous seasons are required to reconstruct inclusive career history.
     schedule = nfl.load_schedules(seasons=True).to_pandas()
     features = pd.read_parquet("data/player_features.parquet")
-    qb_starters = get_current_qb_starters(current_year)
+    qb_starters = get_upcoming_qb_starters(schedule, prediction_at)
     # This freshly downloaded context is observed now, never retroactively at
     # the start of the week. Historical replays must supply archived timestamps.
     prediction_at = datetime.now(timezone.utc)

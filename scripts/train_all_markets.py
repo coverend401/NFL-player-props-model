@@ -18,9 +18,9 @@ from scipy.stats import norm
 import joblib
 
 try:
-    from .forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status
+    from .forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status, utc_timestamp
 except ImportError:
-    from forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status
+    from forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status, utc_timestamp
 
 MARKETS = {
     "passing_yards": {
@@ -107,13 +107,17 @@ for _config in MARKETS.values():
     _config["features"] = _config["features"] + GAME_CONTEXT_FEATURES
 
 
-def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
+def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict, as_of=None) -> pd.DataFrame:
     # Pregame candidate selection is separate from outcome observability.
     # Positive actual snaps establish participation, not target/carry eligibility.
     df = features[pregame_eligible(features, config["positions"])].copy()
     df = df[observation_status(df).eq("participated")]
     if "completed_at" in df:
         df = df[df["completed_at"].notna()]
+        if as_of is not None:
+            df = df[pd.to_datetime(df["completed_at"], utc=True) < utc_timestamp(as_of)]
+    elif as_of is not None:
+        raise ValueError("Training as-of filtering requires completed_at provenance")
     return df.dropna(subset=config["features"] + [target_col])
 
 
@@ -172,13 +176,15 @@ def calibration_summary(preds, y_test, resid_std, baseline_line, n_bins=5):
     return "\n".join(lines)
 
 
-def train_market(features: pd.DataFrame, market: str, config: dict):
+def train_market(features: pd.DataFrame, market: str, config: dict, training_as_of=None):
     label = config.get("model_name", market)
     target_col = config.get("target_col", market)
     print(f"\n{'='*60}\nMARKET: {label}  (target column: {target_col})\n{'='*60}")
 
-    print("Coverage:", coverage_report(features, target_col, config))
-    df = prepare_dataset(features, target_col, config)
+    print("Coverage before training-time cutoff:", coverage_report(features, target_col, config))
+    training_as_of = utc_timestamp(training_as_of if training_as_of is not None else pd.Timestamp.now(tz="UTC"))
+    df = prepare_dataset(features, target_col, config, as_of=training_as_of)
+    print(f"Training as-of {training_as_of.isoformat()}: {len(df)} available observations")
     if len(df) < 200:
         print(f"SKIPPED - only {len(df)} usable rows, too small to train/validate honestly.")
         return None
@@ -239,8 +245,9 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
     out_path = f"data/model_{label}.joblib"
     joblib.dump({"model": final_model, "features": config["features"], "resid_std": final_resid_std,
                  "market": market, "positions": config["positions"],
-                 "training_cutoff": df["completed_at"].max().isoformat() if "completed_at" in df else None,
+                 "training_cutoff": pd.to_datetime(df["completed_at"], utc=True).max().isoformat(),
                  "feature_timing_version": "stage1a",
+                 "training_as_of": training_as_of.isoformat(),
                  "validated_mae": min(ridge_mae, gbr_mae), "validated_against_season": int(test_season)},
                 out_path)
     print(f"Saved -> {out_path} (retrained on full data through the current season)")
@@ -250,8 +257,9 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
 if __name__ == "__main__":
     features = pd.read_parquet("data/player_features.parquet")
     saved = []
+    training_as_of = pd.Timestamp.now(tz="UTC")
     for market, config in MARKETS.items():
-        result = train_market(features, market, config)
+        result = train_market(features, market, config, training_as_of=training_as_of)
         if result:
             saved.append(result)
 

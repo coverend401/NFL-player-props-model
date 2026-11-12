@@ -36,6 +36,13 @@ def schedule_times(schedule):
             "America/New_York", ambiguous="raise", nonexistent="raise"
         ).dt.tz_convert("UTC")
     final = s[["home_score", "away_score"]].notna().all(axis=1)
+    # Scores alone are not proof of finality for suspended/live fixtures.
+    # Honour explicit status when supplied; nflverse lacks this in its default
+    # schedule, so the eight-hour fallback remains an acknowledged proxy.
+    status_column = next((c for c in ["game_status", "status"] if c in s), None)
+    if status_column:
+        final &= s[status_column].astype(str).str.lower().isin(["final", "completed", "closed", "final/ot"])
+
     if "completion_time_basis" not in s:
         s["completion_time_basis"] = (
             "provided_completion_time"
@@ -46,12 +53,14 @@ def schedule_times(schedule):
         s["completed_at"] = pd.to_datetime(s["completed_at"], utc=True).where(final)
     else:
         s["completed_at"] = (s["kickoff_at"] + pd.Timedelta(hours=8)).where(final)
+    if (s["completed_at"] < s["kickoff_at"]).any():
+        raise ValueError("Completion time cannot precede kickoff")
     if "stats_available_at" in s:
         available = pd.to_datetime(s["stats_available_at"], utc=True)
         s["completed_at"] = (
             pd.concat([s["completed_at"], available], axis=1)
             .max(axis=1)
-            .where(final & available.notna())
+            .where(final & available.notna() & s["completed_at"].notna())
         )
     return s
 

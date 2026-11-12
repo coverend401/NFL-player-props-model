@@ -42,6 +42,8 @@ def price_prop(*, market, file_label, player, side, line, odds_raw, odds_other_r
             row = m.iloc[0]
 
     if row is not None:
+        if row.get("projection_status", "complete") != "complete":
+            return {"error": "roof unresolved: indoor/outdoor scenarios are exploratory projections, not a priced forecast"}
         projection, resid_std = float(row["projection"]), float(row["resid_std"])
         recent, career = float(row["recent_form"]), float(row["career_avg"])
         games = int(row["games_played_prior"])
