@@ -3,10 +3,19 @@
 import json
 from pathlib import Path
 import unittest
+import tempfile
+import shutil
+import sys
 import numpy as np
 import pandas as pd
-from stage1c.contracts import team, availability, effective_identity, assert_development
-from stage1c.context import states, attach, FixtureStates, FAMILIES
+from stage1c.contracts import (
+    team,
+    availability,
+    effective_identity,
+    assert_development,
+    development_filters,
+)
+from stage1c.context import states, attach, FixtureStates, FAMILIES, volume_cdf
 from stage1c.inputs import aggregate_pbp, position_aggregates
 from stage1c.models import fit, curve
 from stage1c.runner import evaluate
@@ -136,6 +145,20 @@ class ContractTests(unittest.TestCase):
         ]:
             with self.assertRaises(ValueError):
                 assert_development(pd.DataFrame([r]))
+
+    def test_parquet_predicates_do_not_materialise_final_rows(self):
+        d = pd.DataFrame(
+            [
+                dict(season=2025, week=1, season_type="REG", value=1),
+                dict(season=2026, week=11, season_type="REG", value=999999),
+                dict(season=2027, week=1, season_type="REG", value=999999),
+            ]
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "synthetic.parquet"
+            d.to_parquet(path, index=False)
+            filtered = pd.read_parquet(path, filters=development_filters())
+            self.assertEqual(filtered.value.tolist(), [1])
 
     def test_partial_positional_totals_are_unknown_not_zero(self):
         stats = [
@@ -297,6 +320,19 @@ class FixtureTests(unittest.TestCase):
         for cols in FAMILIES.values():
             self.assertEqual(len(cols), len(set(cols)))
 
+    def test_team_count_mixture_support_and_moments(self):
+        c = self.ctx.query("game_id=='2022-1' and kind=='pass'").reset_index(drop=True)
+        for quantity, mean_col, var_col in [
+            ("plays", "expected_plays", "expected_play_variance"),
+            ("dropbacks", "expected_dropbacks", "expected_dropback_variance"),
+        ]:
+            cdf = volume_cdf(c, quantity)
+            np.testing.assert_allclose(cdf(np.repeat(-1, len(c))), 0)
+            np.testing.assert_allclose(cdf(np.repeat(500, len(c))), 1, atol=1e-10)
+            mean = sum(1 - cdf(np.repeat(n, len(c))) for n in range(300))
+            np.testing.assert_allclose(mean, c[mean_col], atol=1e-5, rtol=1e-5)
+            self.assertTrue((c[var_col] >= c[mean_col]).all())
+
     def test_all_player_rows_attach_and_missing_fixture_fails(self):
         d = market_panel(prepare_panel(self.src, P), "passing_yards")
         x = attach(d, self.ctx, "passing_yards")
@@ -351,6 +387,52 @@ class ForecastTests(unittest.TestCase):
         self.assertTrue((cdf(-1) == 0).all())
         self.assertEqual(len(q), len(f) * 3)
         self.assertLess(pd.Timestamp(self.info["selection_max"]), f.prediction_at.min())
+
+
+@unittest.skipUnless(
+    sys.version_info[:2] == (3, 14), "Frozen research runtime is Python 3.14"
+)
+class ArchiveTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.path = ROOT / "experiments/stage1c/c0-c2-20261113-v1"
+        if not cls.path.exists():
+            raise unittest.SkipTest("Full experiment not present")
+
+    def test_all_versions_preserve_benchmark_and_model_matrix(self):
+        from stage1c.artifacts import validate
+
+        result = validate(self.path, ROOT)
+        self.assertEqual(result["player_market_games"], 55303)
+        self.assertEqual(result["versions"], 7)
+        self.assertEqual(result["models"], 270)
+        self.assertTrue(result["final_sealed"])
+
+    def test_missing_or_changed_payload_fails_integrity(self):
+        from stage1c.artifacts import validate
+
+        with tempfile.TemporaryDirectory() as tmp:
+            copied = Path(tmp) / "archive"
+            shutil.copytree(self.path, copied)
+            (copied / "accuracy.csv").write_text("tampered")
+            with self.assertRaisesRegex(ValueError, "payload mismatch"):
+                validate(copied, ROOT)
+
+    def test_recomputed_hash_does_not_bypass_final_seal(self):
+        from stage1c.artifacts import validate
+        from stage1b.artifacts import digest
+
+        with tempfile.TemporaryDirectory() as tmp:
+            copied = Path(tmp) / "archive"
+            shutil.copytree(self.path, copied)
+            f = pd.read_parquet(copied / "forecasts.parquet")
+            f.loc[0, ["season", "week"]] = [2026, 11]
+            f.to_parquet(copied / "forecasts.parquet", index=False)
+            m = json.loads((copied / "manifest.json").read_text())
+            m["files"]["forecasts.parquet"] = digest(copied / "forecasts.parquet")
+            (copied / "manifest.json").write_text(json.dumps(m))
+            with self.assertRaisesRegex(ValueError, "Sealed final"):
+                validate(copied, ROOT)
 
 
 if __name__ == "__main__":

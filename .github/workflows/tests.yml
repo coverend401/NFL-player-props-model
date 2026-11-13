@@ -43,3 +43,9 @@ jobs:
           for manifest in experiments/stage1b1/*/manifest.json; do
             if [ -f "$manifest" ]; then python scripts/verify_stage1b1.py "$(dirname "$manifest")"; fi
           done
+      - name: Validate C0-C2 research ablations and replay every model
+        if: matrix.python-version == '3.14'
+        run: |
+          for manifest in experiments/stage1c/*/manifest.json; do
+            if [ -f "$manifest" ]; then python -m stage1c.artifacts "$(dirname "$manifest")" --replay; fi
+          done

@@ -1,3 +1,7 @@
+> Historical proposal: bounded C0–C2 implementation was subsequently approved.
+> See `STAGE1C_C0_C2_PROTOCOL.md` and `STAGE1C_C0_C2_RESULTS.md` for its
+> implementation and measured results. C3–C6 remain unapproved proposals.
+
 # Stage 1C proposal: fixture-specific player forecasting
 
 **Status: architecture and priorities for review only. No Stage 1C implementation
