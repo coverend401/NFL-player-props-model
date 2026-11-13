@@ -323,6 +323,7 @@ class QuoteFixture(unittest.TestCase):
             side="Over",
             line=2.5,
             odds=1.91,
+            odds_format="decimal",
             quoted_at="2023-01-01T00:00Z",
             available_at="2023-01-01T00:00Z",
             decision_at="2023-01-01T00:01Z",
@@ -473,6 +474,31 @@ class FullQuoteBacktestTests(QuoteFixture):
         self.assertEqual(len(bets), 1)
         self.assertAlmostEqual(s["profit"], 0.91)
         self.assertAlmostEqual(s["ending_bankroll"], 1000.91)
+
+    def test_missing_opposite_probability_is_not_silently_zero(self):
+        from stage1b.backtest import run_verified_backtest
+
+        f = self.forecast()
+        f["p_over"] = np.nan
+        f["p_under"] = 1.0
+        self.quote["side"] = "Under"
+        path = self.root / "extract.json"
+        path.write_text(json.dumps({"quotes": [self.quote]}))
+        self.evidence["e1"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
+        with self.assertRaisesRegex(ValueError, "partition"):
+            run_verified_backtest(
+                pd.DataFrame([self.quote]), self.evidence, self.root, f, PROTOCOL
+            )
+
+    def test_outcome_cannot_be_known_before_game_starts(self):
+        from stage1b.backtest import run_verified_backtest
+
+        f = self.forecast()
+        f["outcome_available_at"] = "2023-01-01T00:30Z"
+        with self.assertRaisesRegex(ValueError, "before kickoff"):
+            run_verified_backtest(
+                pd.DataFrame([self.quote]), self.evidence, self.root, f, PROTOCOL
+            )
 
     def test_future_model_rejected_before_any_stake(self):
         from stage1b.backtest import run_verified_backtest
@@ -643,6 +669,17 @@ class SettlementProvenanceTests(QuoteFixture):
     def test_rules_must_have_existed_before_decision(self):
         self.evidence["e1"]["settlement_rule"]["available_at"] = "2024-01-01T00:00Z"
         with self.assertRaisesRegex(ValueError, "Retrospective settlement"):
+            verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
+
+    def test_string_false_is_not_reviewed_licence_confirmation(self):
+        self.evidence["e1"]["licence_confirmed"] = "false"
+        with self.assertRaisesRegex(ValueError, "Provenance"):
+            verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
+
+    def test_american_prices_cannot_be_misread_as_decimal(self):
+        self.quote["odds_format"] = "american"
+        self.quote["odds"] = 110
+        with self.assertRaisesRegex(ValueError, "decimal"):
             verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
 
     def test_missing_rule_archive_blocks_returns(self):

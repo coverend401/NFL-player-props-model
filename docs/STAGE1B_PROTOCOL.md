@@ -67,8 +67,8 @@ In the pinned Python 3.14 environment, from repository root:
 
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s tests -v
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v4
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v4
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v5
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v5
 streamlit run stage1b_dashboard.py
 ```
 
@@ -96,8 +96,9 @@ Do not tune on the final period or silently exclude losing markets/cohorts.
 No authentic quote data is bundled. The initial betting status explicitly has
 zero quotes/bets and null realised profit. Synthetic tests are not trading results.
 
-Reviewed quote CSV fields: `quote_id,bookmaker,game_id,player_id,market,side,line,odds,
+Reviewed quote CSV fields: `quote_id,bookmaker,game_id,player_id,market,side,line,odds,odds_format,
 quoted_at,available_at,decision_at,kickoff_at,rule_id,evidence_id`.
+`odds_format` must be `decimal`; American prices are not silently interpreted.
 Times must be UTC-aware. Lines/prices must exist before the exact forecast decision;
 only one-hour decision features are available in this protocol. The default maximum
 price age is five minutes; do not assume an earlier price was still executable.
@@ -112,7 +113,7 @@ to the original provider response. Each entry also requires a `settlement_rule` 
 a caller-created hash cannot authenticate a historical price.
 
 ```bash
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v4 \
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v5 \
   --quotes /path/to/reviewed-quotes.csv \
   --evidence-manifest /path/to/evidence.json --evidence-root /path/to/archive \
   --output /path/to/new-research-backtest

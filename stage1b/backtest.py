@@ -24,6 +24,7 @@ QUOTE_FIELDS = [
     "side",
     "line",
     "odds",
+    "odds_format",
     "quoted_at",
     "available_at",
     "decision_at",
@@ -53,6 +54,8 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
             raise ValueError("Missing quote identity: " + field)
     if q.quote_id.duplicated().any():
         raise ValueError("Duplicate quote ID")
+    if not q.odds_format.eq("decimal").all():
+        raise ValueError("Historical archive prices must explicitly use decimal odds")
     if not q.side.isin(["Over", "Under"]).all() or not q.rule_id.isin(RULES).all():
         raise ValueError("Unsupported side or bookmaker settlement rule")
     for c in ["quoted_at", "available_at", "decision_at", "kickoff_at"]:
@@ -78,8 +81,9 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
         if (
             not e
             or e.get("classification") != "authentic_provider_archive"
-            or not e.get("reviewed_by")
-            or not e.get("licence_confirmed")
+            or not isinstance(e.get("reviewed_by"), str)
+            or not e["reviewed_by"].strip()
+            or e.get("licence_confirmed") is not True
         ):
             raise ValueError(
                 "Provenance not independently reviewed; no genuine return claim permitted"
@@ -93,6 +97,7 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
         host = urlparse(url).hostname
         if (
             urlparse(url).scheme != "https"
+            or not host
             or host != e.get("provider_host")
             or urlparse(url).query
             or urlparse(url).username
@@ -146,6 +151,7 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
             "side",
             "line",
             "odds",
+            "odds_format",
             "rule_id",
         ]:
             if (
@@ -306,10 +312,17 @@ def run_verified_backtest(
     if not (pd.to_datetime(q.history_available_at, utc=True) < q.decision_at).all():
         raise ValueError("Future history used")
     if (
-        not np.allclose(q[["p_over", "p_under", "p_push"]].sum(axis=1), 1)
+        not np.isfinite(q[["p_over", "p_under", "p_push"]].to_numpy(float)).all()
+        or not np.allclose(q[["p_over", "p_under", "p_push"]].sum(axis=1), 1)
         or (q[["p_over", "p_under", "p_push"]] < 0).any().any()
     ):
         raise ValueError("Invalid outcome probability partition")
+    action = q.action_status.eq("action")
+    if (
+        pd.to_datetime(q.loc[action, "outcome_available_at"], utc=True)
+        <= q.loc[action, "kickoff_at"]
+    ).any():
+        raise ValueError("Played-game outcome cannot be available before kickoff")
     q["ev"] = [
         economics(r.p_over if r.side == "Over" else r.p_under, r.p_push, r.odds)[
             "ev_per_unit"
