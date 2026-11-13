@@ -1,0 +1,50 @@
+{
+  "version": "stage1b1-v1",
+  "seed": 41017,
+  "evaluation_seasons": [
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "final_start": "2026-11-19T00:00:00Z",
+  "final_season": 2026,
+  "final_week": 11,
+  "prediction_lead_hours": 1,
+  "distribution_fit_last_week": 6,
+  "calibration_last_week": 10,
+  "probe_multipliers": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "bootstrap_replicates": 500,
+  "bootstrap_week_block": 4,
+  "minimum_phase_rows": 40,
+  "betting_policy": {
+    "minimum_ev": 0.03,
+    "fixed_stake": 1.0,
+    "fractional_kelly": 0.125,
+    "maximum_bankroll_fraction": 0.005
+  },
+  "final_status": "SEALED: runner has no final-unseal option; separate approval and frozen protocol required",
+  "historical_tier": "retrospective-statistics replay; publication timestamps and pregame roster snapshots unavailable",
+  "baseline_experiment": "baseline-20261113-v5",
+  "point_minimum_relative_gain": 0.02,
+  "point_bootstrap_replicates": 500,
+  "tail_weight": 0.15,
+  "probability_minimum_log_loss_gain": 0.005,
+  "probability_minimum_brier_gain": 0.0,
+  "interval_minimum_relative_gain": 0.01,
+  "cqr_alpha": 0.1,
+  "calibration_penalty": 0.01,
+  "nb_prior_strength": 100,
+  "nb_prior_alpha": 0.25,
+  "probability_changed_markets": [
+    "passing_yards",
+    "passing_attempts",
+    "completions"
+  ],
+  "minimum_gate_weeks": 8
+}

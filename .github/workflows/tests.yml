@@ -41,5 +41,5 @@ jobs:
         if: matrix.python-version == '3.14'
         run: |
           for manifest in experiments/stage1b1/*/manifest.json; do
-            if [ -f "$manifest" ]; then python -m stage1b1.artifacts "$(dirname "$manifest")"; fi
+            if [ -f "$manifest" ]; then python scripts/verify_stage1b1.py "$(dirname "$manifest")"; fi
           done

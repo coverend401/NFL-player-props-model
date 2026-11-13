@@ -1,0 +1,2837 @@
+[
+  {
+    "market": "passing_yards",
+    "season": 2022,
+    "point_method": "career_mean",
+    "probability_method": "dense_quantile|sigmoid",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution": 186,
+      "calibration": 126,
+      "selection": 263,
+      "evaluation": 550
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [
+      {
+        "candidate": "career_mean",
+        "mae": 70.27561305800292,
+        "delta_low": 0.0,
+        "delta_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "recent3",
+        "mae": 72.4645717806531,
+        "delta_low": -1.2274644931577978,
+        "delta_high": 4.399414802302105,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent3",
+        "mae": 69.2967072129035,
+        "delta_low": -1.886159841532808,
+        "delta_high": -0.43601427196554826,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent5",
+        "mae": 69.63335567424537,
+        "delta_low": -2.079419211297139,
+        "delta_high": 0.6403833946759365,
+        "accepted": false
+      },
+      {
+        "candidate": "blended_recent",
+        "mae": 69.78183544981243,
+        "delta_low": -2.656126404428674,
+        "delta_high": 0.9074965665124983,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_ridge100",
+        "mae": 68.97320070570316,
+        "delta_low": -2.978724544346555,
+        "delta_high": -0.08226170430609804,
+        "accepted": false
+      }
+    ],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.4272881861698913,
+        "selection_brier": 0.14004847101706816,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.4176189544821462,
+        "selection_brier": 0.13647955320125157,
+        "delta_log_loss_low": -0.012502798742265342,
+        "delta_log_loss_high": -0.008572482818749085,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4439913458380481,
+        "selection_brier": 0.14605807947265237,
+        "delta_log_loss_low": 0.01570051464519198,
+        "delta_log_loss_high": 0.018828698832664716,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.41903687198247114,
+        "selection_brier": 0.13675381723298585,
+        "delta_log_loss_low": -0.010844474364908064,
+        "delta_log_loss_high": -0.007224287672448828,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.46872570830494353,
+        "selection_brier": 0.15320254219125343,
+        "delta_log_loss_low": 0.037223658559261796,
+        "delta_log_loss_high": 0.047393894188258026,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.44622059455672763,
+        "selection_brier": 0.143938582357899,
+        "delta_log_loss_low": 0.014558557140158345,
+        "delta_log_loss_high": 0.019585376838078653,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4294229610439941,
+        "selection_brier": 0.13962804459219974,
+        "delta_log_loss_low": -0.004920059422415931,
+        "delta_log_loss_high": 0.021877708746719734,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.41211560568964933,
+        "selection_brier": 0.1328124323467657,
+        "delta_log_loss_low": -0.0308495964583142,
+        "delta_log_loss_high": -0.0018992845571144884,
+        "accepted": true
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 357.2319391634981,
+        "coverage": 0.9315589353612167,
+        "width": 304.6083650190114
+      },
+      "cqr": {
+        "score": 335.05703422053233,
+        "coverage": 0.908745247148289,
+        "width": 274.7528517110266
+      }
+    }
+  },
+  {
+    "market": "passing_yards",
+    "season": 2023,
+    "point_method": "career_mean",
+    "probability_method": "dense_quantile|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution": 186,
+      "calibration": 113,
+      "selection": 251,
+      "evaluation": 581
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [
+      {
+        "candidate": "career_mean",
+        "mae": 68.47084044950562,
+        "delta_low": 0.0,
+        "delta_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "recent3",
+        "mae": 72.14840579710145,
+        "delta_low": 1.603983788700787,
+        "delta_high": 7.036294080956003,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent3",
+        "mae": 67.69835173689354,
+        "delta_low": -1.316165081611432,
+        "delta_high": 0.25175620372910795,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent5",
+        "mae": 67.42316709099427,
+        "delta_low": -2.5505828245252227,
+        "delta_high": 0.7669916499703692,
+        "accepted": false
+      },
+      {
+        "candidate": "blended_recent",
+        "mae": 68.71618001398785,
+        "delta_low": -1.4433494112792693,
+        "delta_high": 2.8264678360377364,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_ridge100",
+        "mae": 67.9879938169878,
+        "delta_low": -2.177359676701853,
+        "delta_high": 2.1205473194032898,
+        "accepted": false
+      }
+    ],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.452202594141962,
+        "selection_brier": 0.14886959682699563,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.4615109810157463,
+        "selection_brier": 0.15241627758550733,
+        "delta_log_loss_low": 0.005054859942755279,
+        "delta_log_loss_high": 0.011874572766888216,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4570671768424645,
+        "selection_brier": 0.1506448385702609,
+        "delta_log_loss_low": 0.0022209881428973,
+        "delta_log_loss_high": 0.007092422075631001,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.4630832805807195,
+        "selection_brier": 0.15275223568630314,
+        "delta_log_loss_low": 0.005995548812989009,
+        "delta_log_loss_high": 0.013465051593277651,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.48092119730833766,
+        "selection_brier": 0.15616321353586707,
+        "delta_log_loss_low": 0.024786693424566995,
+        "delta_log_loss_high": 0.034961503823518446,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.48773288283574723,
+        "selection_brier": 0.15849686386896694,
+        "delta_log_loss_low": 0.028212734660927392,
+        "delta_log_loss_high": 0.042141909932538094,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.43730636882979124,
+        "selection_brier": 0.14196645211679051,
+        "delta_log_loss_low": -0.02432860795610206,
+        "delta_log_loss_high": -0.005362013743125001,
+        "accepted": true
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4445192158645532,
+        "selection_brier": 0.1433319455270975,
+        "delta_log_loss_low": -0.020175356452954932,
+        "delta_log_loss_high": 0.0034965051617726647,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 347.54183266932273,
+        "coverage": 0.8725099601593626,
+        "width": 247.70119521912352
+      },
+      "cqr": {
+        "score": 337.73306772908364,
+        "coverage": 0.9282868525896414,
+        "width": 288.80876494023903
+      }
+    }
+  },
+  {
+    "market": "passing_yards",
+    "season": 2024,
+    "point_method": "scaled_ridge100",
+    "probability_method": "reference|identity",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution": 196,
+      "calibration": 116,
+      "selection": 269,
+      "evaluation": 577
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [
+      {
+        "candidate": "career_mean",
+        "mae": 62.48339780767919,
+        "delta_low": 0.0,
+        "delta_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "recent3",
+        "mae": 67.48,
+        "delta_low": 3.3140924615135083,
+        "delta_high": 6.526585856996652,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent3",
+        "mae": 61.319072406150546,
+        "delta_low": -1.9020891206600703,
+        "delta_high": -0.5600031456088638,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent5",
+        "mae": 61.419362608228745,
+        "delta_low": -1.8185585370931732,
+        "delta_high": -0.5200439675844647,
+        "accepted": false
+      },
+      {
+        "candidate": "blended_recent",
+        "mae": 63.20776500524605,
+        "delta_low": -0.3651126555738872,
+        "delta_high": 1.7138208697550756,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_ridge100",
+        "mae": 60.99354327919364,
+        "delta_low": -2.163809322245586,
+        "delta_high": -0.21137003511259217,
+        "accepted": true
+      }
+    ],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.4814402635816278,
+        "selection_brier": 0.15937614412603612,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.48235446387922154,
+        "selection_brier": 0.1596232401492237,
+        "delta_log_loss_low": 0.0008113231505581921,
+        "delta_log_loss_high": 0.001855293356411378,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.48196424051094233,
+        "selection_brier": 0.1597217921185366,
+        "delta_log_loss_low": -0.0018472980795710414,
+        "delta_log_loss_high": 0.0016350504307711567,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.48204780068278763,
+        "selection_brier": 0.15960970183841094,
+        "delta_log_loss_low": 0.0002874940982641342,
+        "delta_log_loss_high": 0.002042610655729353,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.5035614436958282,
+        "selection_brier": 0.1650310776134932,
+        "delta_log_loss_low": 0.013575454762232524,
+        "delta_log_loss_high": 0.033349182127061956,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.50580720424818,
+        "selection_brier": 0.1657752435635819,
+        "delta_log_loss_low": 0.015515170708239955,
+        "delta_log_loss_high": 0.03754765770093679,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.48156815571998435,
+        "selection_brier": 0.1589939004455344,
+        "delta_log_loss_low": -0.005363275591283842,
+        "delta_log_loss_high": 0.008674192601896237,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4813101782601939,
+        "selection_brier": 0.15881951137468733,
+        "delta_log_loss_low": -0.005756350505125812,
+        "delta_log_loss_high": 0.008794049149303054,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 354.7806691449814,
+        "coverage": 0.9182156133828996,
+        "width": 293.36802973977694
+      },
+      "cqr": {
+        "score": 351.9368029739777,
+        "coverage": 0.8996282527881041,
+        "width": 278.40520446096656
+      }
+    }
+  },
+  {
+    "market": "passing_yards",
+    "season": 2025,
+    "point_method": "scaled_ridge100",
+    "probability_method": "reference|identity",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution": 189,
+      "calibration": 127,
+      "selection": 261,
+      "evaluation": 580
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [
+      {
+        "candidate": "career_mean",
+        "mae": 75.36678439987114,
+        "delta_low": 0.0,
+        "delta_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "recent3",
+        "mae": 72.75674125071717,
+        "delta_low": -5.835406446335304,
+        "delta_high": -0.4816318754903316,
+        "accepted": true
+      },
+      {
+        "candidate": "shrunk_recent3",
+        "mae": 72.10997063034125,
+        "delta_low": -4.263311633089827,
+        "delta_high": -2.539581837128177,
+        "accepted": true
+      },
+      {
+        "candidate": "shrunk_recent5",
+        "mae": 70.65305341926434,
+        "delta_low": -5.979304914869916,
+        "delta_high": -3.9127997005395114,
+        "accepted": true
+      },
+      {
+        "candidate": "blended_recent",
+        "mae": 69.88641971687505,
+        "delta_low": -7.693505868278613,
+        "delta_high": -3.7887170844979705,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_ridge100",
+        "mae": 68.91702683691082,
+        "delta_low": -8.337699515305173,
+        "delta_high": -5.29613778752997,
+        "accepted": true
+      }
+    ],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.44437940154937167,
+        "selection_brier": 0.14483566137316772,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.4453570514553732,
+        "selection_brier": 0.14517355699555579,
+        "delta_log_loss_low": -0.0009120461376500272,
+        "delta_log_loss_high": 0.001454017267321698,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4487588094790457,
+        "selection_brier": 0.14618310316197147,
+        "delta_log_loss_low": -0.0002731032375377267,
+        "delta_log_loss_high": 0.005353837235102018,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.44617614645289205,
+        "selection_brier": 0.14534035257027675,
+        "delta_log_loss_low": -0.0006455763151700551,
+        "delta_log_loss_high": 0.002553067823511578,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.4730269285636718,
+        "selection_brier": 0.15294295112601314,
+        "delta_log_loss_low": 0.002622875470498087,
+        "delta_log_loss_high": 0.04444553991091143,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.470101977583638,
+        "selection_brier": 0.15202762030680692,
+        "delta_log_loss_low": 0.001853541291800702,
+        "delta_log_loss_high": 0.04090913405823837,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.44308842013637695,
+        "selection_brier": 0.14373890786187699,
+        "delta_log_loss_low": -0.0032791758288810294,
+        "delta_log_loss_high": 0.0042038222321097345,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.44446996111152953,
+        "selection_brier": 0.14425386122008374,
+        "delta_log_loss_low": -0.002502772880832292,
+        "delta_log_loss_high": 0.0044141375368181145,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 361.8888888888889,
+        "coverage": 0.8888888888888888,
+        "width": 259.7432950191571
+      },
+      "cqr": {
+        "score": 359.8735632183908,
+        "coverage": 0.8544061302681992,
+        "width": 260.48659003831415
+      }
+    }
+  },
+  {
+    "market": "passing_yards",
+    "season": 2026,
+    "point_method": "scaled_ridge100",
+    "probability_method": "normal_oos|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution": 187,
+      "calibration": 123,
+      "selection": 270,
+      "evaluation": 289
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [
+      {
+        "candidate": "career_mean",
+        "mae": 68.97154054223638,
+        "delta_low": 0.0,
+        "delta_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "recent3",
+        "mae": 70.60716348931253,
+        "delta_low": -1.0723630529584771,
+        "delta_high": 3.5607556807484997,
+        "accepted": false
+      },
+      {
+        "candidate": "shrunk_recent3",
+        "mae": 66.6765267042135,
+        "delta_low": -2.8953505307214753,
+        "delta_high": -1.7506725596775656,
+        "accepted": true
+      },
+      {
+        "candidate": "shrunk_recent5",
+        "mae": 67.12283128088569,
+        "delta_low": -2.726627952813974,
+        "delta_high": -0.9100173263160611,
+        "accepted": true
+      },
+      {
+        "candidate": "blended_recent",
+        "mae": 67.23150292505436,
+        "delta_low": -3.330929678338572,
+        "delta_high": -0.21361932384211116,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_ridge100",
+        "mae": 65.348425667274,
+        "delta_low": -4.849843413946354,
+        "delta_high": -2.5831516879009295,
+        "accepted": true
+      }
+    ],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.46997260861284246,
+        "selection_brier": 0.15535525575866826,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.46591195841530586,
+        "selection_brier": 0.15392049822125226,
+        "delta_log_loss_low": -0.005031740418732586,
+        "delta_log_loss_high": -0.001573524336388749,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.46337669134354403,
+        "selection_brier": 0.15308795066878222,
+        "delta_log_loss_low": -0.006824550427529073,
+        "delta_log_loss_high": -0.003541291732609541,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.464915824311744,
+        "selection_brier": 0.15366261530869832,
+        "delta_log_loss_low": -0.006234417357348652,
+        "delta_log_loss_high": -0.0022893304276859643,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.4839286711001524,
+        "selection_brier": 0.15933512198644204,
+        "delta_log_loss_low": 0.006236340374861089,
+        "delta_log_loss_high": 0.017444410891597626,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.4849932981368213,
+        "selection_brier": 0.15982992521981637,
+        "delta_log_loss_low": 0.006709115083925829,
+        "delta_log_loss_high": 0.02092290605299847,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4750179284749034,
+        "selection_brier": 0.1575043995220007,
+        "delta_log_loss_low": 0.00011433279475262306,
+        "delta_log_loss_high": 0.008731180041373838,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4750274594082962,
+        "selection_brier": 0.15736204835323842,
+        "delta_log_loss_low": -0.003157446912912346,
+        "delta_log_loss_high": 0.01263133663879508,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 376.52962962962965,
+        "coverage": 0.8777777777777778,
+        "width": 278.7518518518518
+      },
+      "cqr": {
+        "score": 372.0444444444444,
+        "coverage": 0.8518518518518519,
+        "width": 252.11851851851853
+      }
+    }
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "dense_quantile|sigmoid",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution": 186,
+      "calibration": 126,
+      "selection": 263,
+      "evaluation": 550
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.3985793025584915,
+        "selection_brier": 0.13093595213017678,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.39749157661563517,
+        "selection_brier": 0.13094358454256136,
+        "delta_log_loss_low": -0.0036177164054700985,
+        "delta_log_loss_high": 0.0006124979214068533,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.40429639855093,
+        "selection_brier": 0.13151235394295566,
+        "delta_log_loss_low": 0.003168049514599638,
+        "delta_log_loss_high": 0.007322023251608014,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.3980345515485375,
+        "selection_brier": 0.13095294669019772,
+        "delta_log_loss_low": -0.00310689930516706,
+        "delta_log_loss_high": 0.0008140315274259009,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.41972512844287796,
+        "selection_brier": 0.1353542923319071,
+        "delta_log_loss_low": 0.016247503672524536,
+        "delta_log_loss_high": 0.023800651974316148,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.41374332535985775,
+        "selection_brier": 0.1344487282698566,
+        "delta_log_loss_low": 0.009368670721073905,
+        "delta_log_loss_high": 0.01516402280136631,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.3853991960391961,
+        "selection_brier": 0.12600173590320174,
+        "delta_log_loss_low": -0.024699111011270706,
+        "delta_log_loss_high": 0.004109303710963498,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.3814393126975741,
+        "selection_brier": 0.12429774557620858,
+        "delta_log_loss_low": -0.03421186521602897,
+        "delta_log_loss_high": -0.0027323682136438992,
+        "accepted": true
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.42113578348481123,
+        "selection_brier": 0.13452083639032492,
+        "delta_log_loss_low": 0.008588178291564493,
+        "delta_log_loss_high": 0.042007126625718975,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4197425631628077,
+        "selection_brier": 0.13550998164633168,
+        "delta_log_loss_low": 0.0017874317265224298,
+        "delta_log_loss_high": 0.041154474089595085,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 47.06844106463878,
+        "coverage": 0.9315589353612167,
+        "width": 40.22433460076046
+      },
+      "cqr": {
+        "score": 41.43346007604563,
+        "coverage": 0.9429657794676806,
+        "width": 35.653992395437264
+      }
+    }
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution": 186,
+      "calibration": 113,
+      "selection": 251,
+      "evaluation": 581
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.3894020566635208,
+        "selection_brier": 0.12523099475586644,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.3867091408264611,
+        "selection_brier": 0.12425080187136658,
+        "delta_log_loss_low": -0.006716470608823632,
+        "delta_log_loss_high": 0.0021016958231480716,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.39218700780138616,
+        "selection_brier": 0.12612259101271764,
+        "delta_log_loss_low": 0.0008412199732674851,
+        "delta_log_loss_high": 0.005182069811024696,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.3873546154608198,
+        "selection_brier": 0.12432248619410761,
+        "delta_log_loss_low": -0.0064403016997976025,
+        "delta_log_loss_high": 0.002696839653892834,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.398526748683727,
+        "selection_brier": 0.12787403210334397,
+        "delta_log_loss_low": 0.007000684077562856,
+        "delta_log_loss_high": 0.013065433975127118,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.3934250908854253,
+        "selection_brier": 0.1262459388095491,
+        "delta_log_loss_low": -0.001261981425237572,
+        "delta_log_loss_high": 0.01000014016219987,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.38970986394761775,
+        "selection_brier": 0.12671309508165482,
+        "delta_log_loss_low": -0.002445396709018806,
+        "delta_log_loss_high": 0.00719552240252057,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.3904279881746991,
+        "selection_brier": 0.12717069984653506,
+        "delta_log_loss_low": -0.0017417488249308296,
+        "delta_log_loss_high": 0.010362036173486452,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.41218331332354696,
+        "selection_brier": 0.12933662214754885,
+        "delta_log_loss_low": 0.020010136464942967,
+        "delta_log_loss_high": 0.023124823969142623,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.411920976141344,
+        "selection_brier": 0.12894204858097316,
+        "delta_log_loss_low": 0.01678355563306514,
+        "delta_log_loss_high": 0.026828652923043775,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 43.62948207171315,
+        "coverage": 0.9203187250996016,
+        "width": 32.47410358565737
+      },
+      "cqr": {
+        "score": 42.36254980079681,
+        "coverage": 0.9203187250996016,
+        "width": 30.49003984063745
+      }
+    }
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution": 196,
+      "calibration": 116,
+      "selection": 269,
+      "evaluation": 577
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.40802900930092056,
+        "selection_brier": 0.13311118023468563,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.40874434632386,
+        "selection_brier": 0.13357112810481742,
+        "delta_log_loss_low": 0.0001762007720376653,
+        "delta_log_loss_high": 0.0029260461850473102,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4105585683748175,
+        "selection_brier": 0.13354054579658617,
+        "delta_log_loss_low": 0.0014030970370576018,
+        "delta_log_loss_high": 0.006253053574499381,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.4088522197858104,
+        "selection_brier": 0.133676114362742,
+        "delta_log_loss_low": 0.0004951559004003781,
+        "delta_log_loss_high": 0.0037693823822286744,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.41900312999480405,
+        "selection_brier": 0.13547906425635015,
+        "delta_log_loss_low": 0.006364133088958018,
+        "delta_log_loss_high": 0.018148083884683083,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.4198853323717605,
+        "selection_brier": 0.13610689727736078,
+        "delta_log_loss_low": 0.004937283171724345,
+        "delta_log_loss_high": 0.021359508309499304,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4052917345844621,
+        "selection_brier": 0.13192678399167324,
+        "delta_log_loss_low": -0.005403388998898911,
+        "delta_log_loss_high": -0.00083550757318369,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.405754478126222,
+        "selection_brier": 0.13245546314318782,
+        "delta_log_loss_low": -0.006443100418752996,
+        "delta_log_loss_high": 0.0013841919113034666,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.43440258718468333,
+        "selection_brier": 0.13932581730398305,
+        "delta_log_loss_low": 0.023459123048714784,
+        "delta_log_loss_high": 0.03564271211225215,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4354269190694876,
+        "selection_brier": 0.1396439184818087,
+        "delta_log_loss_low": 0.020191373065534292,
+        "delta_log_loss_high": 0.037486255205233916,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 43.152416356877325,
+        "coverage": 0.9405204460966543,
+        "width": 37.87360594795539
+      },
+      "cqr": {
+        "score": 41.765799256505574,
+        "coverage": 0.9033457249070632,
+        "width": 32.026022304832715
+      }
+    }
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "dense_quantile|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution": 189,
+      "calibration": 127,
+      "selection": 261,
+      "evaluation": 580
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.40373724847127807,
+        "selection_brier": 0.13032677812733126,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.4034015245864786,
+        "selection_brier": 0.1306858066635751,
+        "delta_log_loss_low": -0.0017354238934982954,
+        "delta_log_loss_high": 0.00219194261074528,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.40422149323022766,
+        "selection_brier": 0.13103697014337784,
+        "delta_log_loss_low": -0.0009560027032417206,
+        "delta_log_loss_high": 0.004474095464164722,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.4035306285324858,
+        "selection_brier": 0.13082704108525572,
+        "delta_log_loss_low": -0.0011608210669390407,
+        "delta_log_loss_high": 0.003432919322806183,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.41816430907638685,
+        "selection_brier": 0.1343160127409338,
+        "delta_log_loss_low": 0.003974805508105052,
+        "delta_log_loss_high": 0.025286155087608064,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.4178440649192305,
+        "selection_brier": 0.13415339213325944,
+        "delta_log_loss_low": 0.0037874146361988733,
+        "delta_log_loss_high": 0.02493910930499758,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.39845160761535914,
+        "selection_brier": 0.12868785095837013,
+        "delta_log_loss_low": -0.014622718727767832,
+        "delta_log_loss_high": -0.0035061064363049624,
+        "accepted": true
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.39945046905117837,
+        "selection_brier": 0.12960357082611554,
+        "delta_log_loss_low": -0.01307557741389734,
+        "delta_log_loss_high": -0.0019440085048096213,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.43822060395246193,
+        "selection_brier": 0.13969964239474966,
+        "delta_log_loss_low": 0.012934360393826314,
+        "delta_log_loss_high": 0.048060254931053016,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.43950854933566397,
+        "selection_brier": 0.14074225944012328,
+        "delta_log_loss_low": 0.012498860651240139,
+        "delta_log_loss_high": 0.051248807011155834,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 44.86973180076628,
+        "coverage": 0.9157088122605364,
+        "width": 34.60153256704981
+      },
+      "cqr": {
+        "score": 43.13409961685824,
+        "coverage": 0.89272030651341,
+        "width": 31.63984674329502
+      }
+    }
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "dense_quantile|sigmoid",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution": 187,
+      "calibration": 123,
+      "selection": 270,
+      "evaluation": 289
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.4495371871673143,
+        "selection_brier": 0.14497506002251037,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.44157412593962997,
+        "selection_brier": 0.14334864252270665,
+        "delta_log_loss_low": -0.012276505967401803,
+        "delta_log_loss_high": -0.005479652817761113,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4379318400137429,
+        "selection_brier": 0.14261315674411326,
+        "delta_log_loss_low": -0.01642749134533564,
+        "delta_log_loss_high": -0.007338490633225827,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.44001731153704,
+        "selection_brier": 0.14319435555575757,
+        "delta_log_loss_low": -0.014497445073875527,
+        "delta_log_loss_high": -0.006637284224847621,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.4458117848027488,
+        "selection_brier": 0.1445715869335093,
+        "delta_log_loss_low": -0.009301848720047964,
+        "delta_log_loss_high": -0.0018575194154840083,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.44637453837430807,
+        "selection_brier": 0.1447258372410924,
+        "delta_log_loss_low": -0.00904088442452294,
+        "delta_log_loss_high": -0.0011466767058903558,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.43071282098715863,
+        "selection_brier": 0.14151953621503388,
+        "delta_log_loss_low": -0.02631095883931948,
+        "delta_log_loss_high": -0.013461632295716633,
+        "accepted": true
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.42820518812893976,
+        "selection_brier": 0.14092748269179156,
+        "delta_log_loss_low": -0.033019834943714466,
+        "delta_log_loss_high": -0.01908960080141944,
+        "accepted": true
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.4347225869154976,
+        "selection_brier": 0.13897801559747006,
+        "delta_log_loss_low": -0.02083488754996118,
+        "delta_log_loss_high": -0.0041333378512878275,
+        "accepted": true
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4343418763920054,
+        "selection_brier": 0.1389046606179657,
+        "delta_log_loss_low": -0.02056399705093783,
+        "delta_log_loss_high": -0.007039500125006996,
+        "accepted": true
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 49.977777777777774,
+        "coverage": 0.8851851851851852,
+        "width": 36.79259259259259
+      },
+      "cqr": {
+        "score": 45.477777777777774,
+        "coverage": 0.8962962962962963,
+        "width": 33.03333333333333
+      }
+    }
+  },
+  {
+    "market": "completions",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|sigmoid",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution": 186,
+      "calibration": 126,
+      "selection": 263,
+      "evaluation": 550
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.42098280816023204,
+        "selection_brier": 0.137974498591253,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.41453696536070045,
+        "selection_brier": 0.13565271770146098,
+        "delta_log_loss_low": -0.009739603715954436,
+        "delta_log_loss_high": -0.0040625159168184025,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.424554013101344,
+        "selection_brier": 0.138603425642743,
+        "delta_log_loss_low": 0.00019420222750972266,
+        "delta_log_loss_high": 0.006902413160524138,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.4148042531036622,
+        "selection_brier": 0.13561848705359278,
+        "delta_log_loss_low": -0.008857136309709373,
+        "delta_log_loss_high": -0.004196988640627783,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.4393213640134169,
+        "selection_brier": 0.14332060228925422,
+        "delta_log_loss_low": 0.014912649469359291,
+        "delta_log_loss_high": 0.024187526878846424,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.43036779369171924,
+        "selection_brier": 0.14028774840706504,
+        "delta_log_loss_low": 0.009384985531487198,
+        "delta_log_loss_high": 0.01308529654637116,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4228911681741043,
+        "selection_brier": 0.13835956945742534,
+        "delta_log_loss_low": -0.0012393984128925607,
+        "delta_log_loss_high": 0.0019083600138722985,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.41517317855810265,
+        "selection_brier": 0.13503872957836827,
+        "delta_log_loss_low": -0.011012035537913582,
+        "delta_log_loss_high": -0.004601207159954672,
+        "accepted": true
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.4523677556605377,
+        "selection_brier": 0.14488467912690642,
+        "delta_log_loss_low": 0.025969168642464107,
+        "delta_log_loss_high": 0.03545167420157293,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.45151756571560153,
+        "selection_brier": 0.14574413361872435,
+        "delta_log_loss_low": 0.02856275113226001,
+        "delta_log_loss_high": 0.03341849589644773,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 30.55133079847909,
+        "coverage": 0.9391634980988594,
+        "width": 26.749049429657795
+      },
+      "cqr": {
+        "score": 30.59315589353612,
+        "coverage": 0.8631178707224335,
+        "width": 22.456273764258555
+      }
+    }
+  },
+  {
+    "market": "completions",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution": 186,
+      "calibration": 113,
+      "selection": 251,
+      "evaluation": 581
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.39444119810951506,
+        "selection_brier": 0.12639275719669643,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.39168945788320914,
+        "selection_brier": 0.12543504252494114,
+        "delta_log_loss_low": -0.005679855468608673,
+        "delta_log_loss_high": 3.783361716458828e-05,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.39294125430157884,
+        "selection_brier": 0.12597883794541223,
+        "delta_log_loss_low": -0.0031101452305430785,
+        "delta_log_loss_high": 2.521711485105091e-05,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.3917625613706512,
+        "selection_brier": 0.1253901202493832,
+        "delta_log_loss_low": -0.00583863372494767,
+        "delta_log_loss_high": 0.00031858474728659877,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.3923047323819151,
+        "selection_brier": 0.12547353528695313,
+        "delta_log_loss_low": -0.00464614667499978,
+        "delta_log_loss_high": 0.0003112227824505063,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.39160948643978577,
+        "selection_brier": 0.12529581804394618,
+        "delta_log_loss_low": -0.006950205844462861,
+        "delta_log_loss_high": 0.0012118316303161532,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.40124396245528066,
+        "selection_brier": 0.13044666365474514,
+        "delta_log_loss_low": 0.006572616159228475,
+        "delta_log_loss_high": 0.014303734877412422,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4066473488442912,
+        "selection_brier": 0.13240322771701374,
+        "delta_log_loss_low": 0.011381241255502526,
+        "delta_log_loss_high": 0.020373152768552533,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.40733904804622156,
+        "selection_brier": 0.1282035509025828,
+        "delta_log_loss_low": 0.007659436476210463,
+        "delta_log_loss_high": 0.015784354290800433,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4054518415474525,
+        "selection_brier": 0.12766343776190942,
+        "delta_log_loss_low": 0.002281523210994523,
+        "delta_log_loss_high": 0.015938777341673323,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 29.07171314741036,
+        "coverage": 0.9163346613545816,
+        "width": 22.139442231075698
+      },
+      "cqr": {
+        "score": 28.741035856573706,
+        "coverage": 0.9123505976095617,
+        "width": 21.649402390438247
+      }
+    }
+  },
+  {
+    "market": "completions",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|identity",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution": 196,
+      "calibration": 116,
+      "selection": 269,
+      "evaluation": 577
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.42579977607172914,
+        "selection_brier": 0.13873146709880768,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.42906123643916666,
+        "selection_brier": 0.14023808675052044,
+        "delta_log_loss_low": 0.001062411409340549,
+        "delta_log_loss_high": 0.00628130361860136,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4287479818740798,
+        "selection_brier": 0.1395892960626745,
+        "delta_log_loss_low": 0.0011397195702161184,
+        "delta_log_loss_high": 0.004590210374699206,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.4285213377092543,
+        "selection_brier": 0.14030247292138412,
+        "delta_log_loss_low": 0.0005277332972271305,
+        "delta_log_loss_high": 0.005779855368710445,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.433250236524253,
+        "selection_brier": 0.14059309582836738,
+        "delta_log_loss_low": 0.005109638504664434,
+        "delta_log_loss_high": 0.011879056659097881,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.43497428058766896,
+        "selection_brier": 0.14231068258320798,
+        "delta_log_loss_low": 0.0033800214260369024,
+        "delta_log_loss_high": 0.019162140247555727,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4242457825123943,
+        "selection_brier": 0.1383242701978375,
+        "delta_log_loss_low": -0.006103295018198273,
+        "delta_log_loss_high": 0.0006220448574392632,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4251604464960679,
+        "selection_brier": 0.1392337321596015,
+        "delta_log_loss_low": -0.006163722540295228,
+        "delta_log_loss_high": -0.0003773969548354451,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.4517112904316506,
+        "selection_brier": 0.14635888573482148,
+        "delta_log_loss_low": 0.02506984467046168,
+        "delta_log_loss_high": 0.03675249152306606,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4565460171285717,
+        "selection_brier": 0.14764713280692324,
+        "delta_log_loss_low": 0.02460995307141746,
+        "delta_log_loss_high": 0.04405182113090407,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 29.828996282527882,
+        "coverage": 0.9442379182156134,
+        "width": 26.260223048327138
+      },
+      "cqr": {
+        "score": 28.30111524163569,
+        "coverage": 0.9219330855018587,
+        "width": 23.54275092936803
+      }
+    }
+  },
+  {
+    "market": "completions",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "reference|identity",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution": 189,
+      "calibration": 127,
+      "selection": 261,
+      "evaluation": 580
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.4088353589393912,
+        "selection_brier": 0.1317281120253784,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.4127926838598908,
+        "selection_brier": 0.13358211501523232,
+        "delta_log_loss_low": -0.0027431068569431544,
+        "delta_log_loss_high": 0.005183125607873307,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.413663145354117,
+        "selection_brier": 0.13386139055873741,
+        "delta_log_loss_low": 0.0017404817306162202,
+        "delta_log_loss_high": 0.004827786414725776,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.41446598727549205,
+        "selection_brier": 0.13410162251622734,
+        "delta_log_loss_low": -0.0014809661058745812,
+        "delta_log_loss_high": 0.0066623417573126766,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.42167057555366666,
+        "selection_brier": 0.13635384396905287,
+        "delta_log_loss_low": 0.004487664077604403,
+        "delta_log_loss_high": 0.01687894687702747,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.42438930918420087,
+        "selection_brier": 0.13732847920657953,
+        "delta_log_loss_low": 0.004029418178397134,
+        "delta_log_loss_high": 0.018843608262920374,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.4153093350032274,
+        "selection_brier": 0.13367962400297861,
+        "delta_log_loss_low": 0.003449087440973555,
+        "delta_log_loss_high": 0.010468706597462006,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.42357620062336004,
+        "selection_brier": 0.13681019385747378,
+        "delta_log_loss_low": 0.011996517564821778,
+        "delta_log_loss_high": 0.01511428011151938,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.436224724083796,
+        "selection_brier": 0.14049812679365403,
+        "delta_log_loss_low": 0.009564940317731276,
+        "delta_log_loss_high": 0.03635537737537663,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.4412496063903925,
+        "selection_brier": 0.14309348032856473,
+        "delta_log_loss_low": 0.012540068499046137,
+        "delta_log_loss_high": 0.0404160425578561,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 28.885057471264368,
+        "coverage": 0.9080459770114943,
+        "width": 23.291187739463602
+      },
+      "cqr": {
+        "score": 29.56704980842912,
+        "coverage": 0.9003831417624522,
+        "width": 22.593869731800766
+      }
+    }
+  },
+  {
+    "market": "completions",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "normal_oos|sigmoid",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution": 187,
+      "calibration": 123,
+      "selection": 270,
+      "evaluation": 289
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [
+      {
+        "candidate": "reference|identity",
+        "selection_log_loss": 0.4424711150847268,
+        "selection_brier": 0.14397233412379482,
+        "delta_log_loss_low": 0.0,
+        "delta_log_loss_high": 0.0,
+        "accepted": true
+      },
+      {
+        "candidate": "reference|sigmoid",
+        "selection_log_loss": 0.43483739152120426,
+        "selection_brier": 0.14138339217007342,
+        "delta_log_loss_low": -0.011896276881149909,
+        "delta_log_loss_high": -0.0076337235635224945,
+        "accepted": true
+      },
+      {
+        "candidate": "normal_oos|identity",
+        "selection_log_loss": 0.4377251336207885,
+        "selection_brier": 0.1423711294581521,
+        "delta_log_loss_low": -0.006673224078154994,
+        "delta_log_loss_high": -0.0041344353368983535,
+        "accepted": false
+      },
+      {
+        "candidate": "normal_oos|sigmoid",
+        "selection_log_loss": 0.43432601587815256,
+        "selection_brier": 0.14126114809726067,
+        "delta_log_loss_low": -0.012812393396418851,
+        "delta_log_loss_high": -0.008142091714702019,
+        "accepted": true
+      },
+      {
+        "candidate": "scaled_empirical|identity",
+        "selection_log_loss": 0.44766043906567604,
+        "selection_brier": 0.14491141587816533,
+        "delta_log_loss_low": 0.0036132685993419985,
+        "delta_log_loss_high": 0.007179370507595096,
+        "accepted": false
+      },
+      {
+        "candidate": "scaled_empirical|sigmoid",
+        "selection_log_loss": 0.44324728628249754,
+        "selection_brier": 0.14334415538176648,
+        "delta_log_loss_low": -0.0034785418494573434,
+        "delta_log_loss_high": 0.0025949047734855333,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|identity",
+        "selection_log_loss": 0.44769557925208825,
+        "selection_brier": 0.14634480793216484,
+        "delta_log_loss_low": -0.001684978738597051,
+        "delta_log_loss_high": 0.006669390668160097,
+        "accepted": false
+      },
+      {
+        "candidate": "dense_quantile|sigmoid",
+        "selection_log_loss": 0.4414289087263437,
+        "selection_brier": 0.14391849014931274,
+        "delta_log_loss_low": -0.011984238615130451,
+        "delta_log_loss_high": 6.564147955892243e-05,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|identity",
+        "selection_log_loss": 0.4502992085756653,
+        "selection_brier": 0.14341151566969898,
+        "delta_log_loss_low": 0.004482807444667973,
+        "delta_log_loss_high": 0.014997567504832481,
+        "accepted": false
+      },
+      {
+        "candidate": "nb2|sigmoid",
+        "selection_log_loss": 0.44734297287343777,
+        "selection_brier": 0.14235371994396906,
+        "delta_log_loss_low": 0.00036746306871996055,
+        "delta_log_loss_high": 0.010731925560392507,
+        "accepted": false
+      }
+    ],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 31.788888888888888,
+        "coverage": 0.9037037037037037,
+        "width": 24.751851851851853
+      },
+      "cqr": {
+        "score": 31.08888888888889,
+        "coverage": 0.8851851851851852,
+        "width": 21.903703703703705
+      }
+    }
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 883,
+      "point_select": 1056,
+      "refit_train": 1939,
+      "distribution": 372,
+      "calibration": 230,
+      "selection": 503,
+      "evaluation": 1186
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 162.15705765407554,
+        "coverage": 0.8866799204771372,
+        "width": 100.00994035785288
+      },
+      "cqr": {
+        "score": 138.06361829025846,
+        "coverage": 0.8588469184890656,
+        "width": 85.6182902584493
+      }
+    }
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 1939,
+      "point_select": 1105,
+      "refit_train": 3044,
+      "distribution": 379,
+      "calibration": 258,
+      "selection": 549,
+      "evaluation": 1148
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 138.29872495446267,
+        "coverage": 0.9289617486338798,
+        "width": 107.77049180327869
+      },
+      "cqr": {
+        "score": 118.01092896174863,
+        "coverage": 0.9034608378870674,
+        "width": 87.22768670309654
+      }
+    }
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 3044,
+      "point_select": 1186,
+      "refit_train": 4230,
+      "distribution": 362,
+      "calibration": 251,
+      "selection": 535,
+      "evaluation": 1150
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 135.17383177570093,
+        "coverage": 0.9327102803738317,
+        "width": 102.38878504672897
+      },
+      "cqr": {
+        "score": 113.93831775700934,
+        "coverage": 0.9121495327102803,
+        "width": 89.56448598130841
+      }
+    }
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 4230,
+      "point_select": 1148,
+      "refit_train": 5378,
+      "distribution": 358,
+      "calibration": 267,
+      "selection": 525,
+      "evaluation": 1201
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 133.54666666666665,
+        "coverage": 0.9352380952380952,
+        "width": 106.08
+      },
+      "cqr": {
+        "score": 111.59428571428572,
+        "coverage": 0.9257142857142857,
+        "width": 84.92761904761905
+      }
+    }
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 5378,
+      "point_select": 1150,
+      "refit_train": 6528,
+      "distribution": 369,
+      "calibration": 262,
+      "selection": 570,
+      "evaluation": 578
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 139.25263157894736,
+        "coverage": 0.9087719298245615,
+        "width": 99.42807017543859
+      },
+      "cqr": {
+        "score": 119.77543859649123,
+        "coverage": 0.9192982456140351,
+        "width": 88.19649122807017
+      }
+    }
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 883,
+      "point_select": 1056,
+      "refit_train": 1939,
+      "distribution": 372,
+      "calibration": 230,
+      "selection": 503,
+      "evaluation": 1186
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 22.24652087475149,
+        "coverage": 0.9125248508946322,
+        "width": 16.560636182902584
+      },
+      "cqr": {
+        "score": 23.95228628230616,
+        "coverage": 0.9304174950298211,
+        "width": 18.743538767395627
+      }
+    }
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 1939,
+      "point_select": 1105,
+      "refit_train": 3044,
+      "distribution": 379,
+      "calibration": 258,
+      "selection": 549,
+      "evaluation": 1148
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 19.207650273224044,
+        "coverage": 0.9435336976320583,
+        "width": 15.746812386156648
+      },
+      "cqr": {
+        "score": 19.500910746812387,
+        "coverage": 0.941712204007286,
+        "width": 16.62295081967213
+      }
+    }
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 3044,
+      "point_select": 1186,
+      "refit_train": 4230,
+      "distribution": 362,
+      "calibration": 251,
+      "selection": 535,
+      "evaluation": 1150
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 20.370093457943927,
+        "coverage": 0.9476635514018692,
+        "width": 16.594392523364487
+      },
+      "cqr": {
+        "score": 21.074766355140188,
+        "coverage": 0.9102803738317757,
+        "width": 15.05607476635514
+      }
+    }
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 4230,
+      "point_select": 1148,
+      "refit_train": 5378,
+      "distribution": 358,
+      "calibration": 267,
+      "selection": 525,
+      "evaluation": 1201
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 18.925714285714285,
+        "coverage": 0.939047619047619,
+        "width": 15.992380952380952
+      },
+      "cqr": {
+        "score": 20.337142857142858,
+        "coverage": 0.9638095238095238,
+        "width": 17.822857142857142
+      }
+    }
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 5378,
+      "point_select": 1150,
+      "refit_train": 6528,
+      "distribution": 369,
+      "calibration": 262,
+      "selection": 570,
+      "evaluation": 578
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 20.257894736842104,
+        "coverage": 0.9052631578947369,
+        "width": 14.047368421052632
+      },
+      "cqr": {
+        "score": 21.075438596491228,
+        "coverage": 0.9649122807017544,
+        "width": 18.09298245614035
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution": 186,
+      "calibration": 126,
+      "selection": 263,
+      "evaluation": 550
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 81.19391634980988,
+        "coverage": 0.908745247148289,
+        "width": 54.958174904942965
+      },
+      "cqr": {
+        "score": 63.88212927756654,
+        "coverage": 0.8973384030418251,
+        "width": 41.82889733840304
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution": 186,
+      "calibration": 113,
+      "selection": 251,
+      "evaluation": 581
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 84.82470119521912,
+        "coverage": 0.900398406374502,
+        "width": 54.22709163346614
+      },
+      "cqr": {
+        "score": 68.41035856573706,
+        "coverage": 0.9442231075697212,
+        "width": 51.51792828685259
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution": 196,
+      "calibration": 116,
+      "selection": 269,
+      "evaluation": 577
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 76.23791821561338,
+        "coverage": 0.9070631970260223,
+        "width": 49.76951672862454
+      },
+      "cqr": {
+        "score": 62.41263940520446,
+        "coverage": 0.895910780669145,
+        "width": 46.72490706319702
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution": 189,
+      "calibration": 127,
+      "selection": 261,
+      "evaluation": 580
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 80.23371647509579,
+        "coverage": 0.8888888888888888,
+        "width": 55.17624521072797
+      },
+      "cqr": {
+        "score": 67.77777777777777,
+        "coverage": 0.9272030651340997,
+        "width": 51.22605363984675
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution": 187,
+      "calibration": 123,
+      "selection": 270,
+      "evaluation": 289
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 71.22592592592592,
+        "coverage": 0.8888888888888888,
+        "width": 53.44814814814815
+      },
+      "cqr": {
+        "score": 54.55925925925926,
+        "coverage": 0.9148148148148149,
+        "width": 44.55925925925926
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution": 186,
+      "calibration": 126,
+      "selection": 263,
+      "evaluation": 550
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 10.277566539923955,
+        "coverage": 0.9391634980988594,
+        "width": 7.5399239543726235
+      },
+      "cqr": {
+        "score": 9.505703422053232,
+        "coverage": 0.9429657794676806,
+        "width": 7.072243346007604
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution": 186,
+      "calibration": 113,
+      "selection": 251,
+      "evaluation": 581
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 10.565737051792828,
+        "coverage": 0.952191235059761,
+        "width": 7.776892430278885
+      },
+      "cqr": {
+        "score": 10.549800796812749,
+        "coverage": 0.952191235059761,
+        "width": 8.0
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution": 196,
+      "calibration": 116,
+      "selection": 269,
+      "evaluation": 577
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 9.41263940520446,
+        "coverage": 0.9591078066914498,
+        "width": 7.628252788104089
+      },
+      "cqr": {
+        "score": 9.557620817843866,
+        "coverage": 0.9553903345724907,
+        "width": 7.847583643122676
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution": 189,
+      "calibration": 127,
+      "selection": 261,
+      "evaluation": 580
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 9.157088122605364,
+        "coverage": 0.9386973180076629,
+        "width": 7.088122605363985
+      },
+      "cqr": {
+        "score": 9.191570881226054,
+        "coverage": 0.9655172413793104,
+        "width": 8.118773946360154
+      }
+    }
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution": 187,
+      "calibration": 123,
+      "selection": 270,
+      "evaluation": 289
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 8.051851851851852,
+        "coverage": 0.9777777777777777,
+        "width": 7.533333333333333
+      },
+      "cqr": {
+        "score": 8.27037037037037,
+        "coverage": 0.9777777777777777,
+        "width": 7.677777777777778
+      }
+    }
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 2670,
+      "point_select": 3304,
+      "refit_train": 5974,
+      "distribution": 1189,
+      "calibration": 730,
+      "selection": 1575,
+      "evaluation": 3486
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 123.75047619047619,
+        "coverage": 0.9130158730158731,
+        "width": 93.40126984126984
+      },
+      "cqr": {
+        "score": 97.9168253968254,
+        "coverage": 0.9288888888888889,
+        "width": 76.50730158730158
+      }
+    }
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 5974,
+      "point_select": 3494,
+      "refit_train": 9468,
+      "distribution": 1156,
+      "calibration": 728,
+      "selection": 1602,
+      "evaluation": 3553
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 118.51310861423221,
+        "coverage": 0.9332084893882646,
+        "width": 92.00873907615481
+      },
+      "cqr": {
+        "score": 96.11173533083645,
+        "coverage": 0.9194756554307116,
+        "width": 71.30524344569288
+      }
+    }
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 9468,
+      "point_select": 3486,
+      "refit_train": 12954,
+      "distribution": 1150,
+      "calibration": 775,
+      "selection": 1628,
+      "evaluation": 3490
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 126.57002457002457,
+        "coverage": 0.914004914004914,
+        "width": 90.16953316953317
+      },
+      "cqr": {
+        "score": 100.43673218673219,
+        "coverage": 0.9078624078624079,
+        "width": 72.51289926289927
+      }
+    }
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 12954,
+      "point_select": 3553,
+      "refit_train": 16507,
+      "distribution": 1088,
+      "calibration": 788,
+      "selection": 1614,
+      "evaluation": 3583
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 123.85625774473358,
+        "coverage": 0.9169764560099133,
+        "width": 86.64436183395291
+      },
+      "cqr": {
+        "score": 99.18029739776952,
+        "coverage": 0.9175960346964065,
+        "width": 72.56319702602231
+      }
+    }
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 16507,
+      "point_select": 3490,
+      "refit_train": 19997,
+      "distribution": 1146,
+      "calibration": 762,
+      "selection": 1675,
+      "evaluation": 1834
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 121.71104477611941,
+        "coverage": 0.9104477611940298,
+        "width": 85.36477611940299
+      },
+      "cqr": {
+        "score": 95.75880597014925,
+        "coverage": 0.9134328358208955,
+        "width": 69.9558208955224
+      }
+    }
+  },
+  {
+    "market": "receptions",
+    "season": 2022,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 2670,
+      "point_select": 3304,
+      "refit_train": 5974,
+      "distribution": 1189,
+      "calibration": 730,
+      "selection": 1575,
+      "evaluation": 3486
+    },
+    "maximum_training_information": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_information": "2022-01-10T09:20:00+00:00",
+    "evaluation_first_decision": "2022-09-08T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 7.67047619047619,
+        "coverage": 0.9714285714285714,
+        "width": 6.527619047619048
+      },
+      "cqr": {
+        "score": 7.819047619047619,
+        "coverage": 0.9777777777777777,
+        "width": 6.968253968253968
+      }
+    }
+  },
+  {
+    "market": "receptions",
+    "season": 2023,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 5974,
+      "point_select": 3494,
+      "refit_train": 9468,
+      "distribution": 1156,
+      "calibration": 728,
+      "selection": 1602,
+      "evaluation": 3553
+    },
+    "maximum_training_information": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_information": "2023-01-09T09:20:00+00:00",
+    "evaluation_first_decision": "2023-09-07T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 7.549937578027466,
+        "coverage": 0.968789013732834,
+        "width": 6.501248439450687
+      },
+      "cqr": {
+        "score": 7.335205992509363,
+        "coverage": 0.9775280898876404,
+        "width": 6.486267166042447
+      }
+    }
+  },
+  {
+    "market": "receptions",
+    "season": 2024,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 9468,
+      "point_select": 3486,
+      "refit_train": 12954,
+      "distribution": 1150,
+      "calibration": 775,
+      "selection": 1628,
+      "evaluation": 3490
+    },
+    "maximum_training_information": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_information": "2024-01-08T09:20:00+00:00",
+    "evaluation_first_decision": "2024-09-05T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 7.291769041769042,
+        "coverage": 0.9686732186732187,
+        "width": 6.247542997542998
+      },
+      "cqr": {
+        "score": 7.225429975429975,
+        "coverage": 0.9778869778869779,
+        "width": 6.451474201474201
+      }
+    }
+  },
+  {
+    "market": "receptions",
+    "season": 2025,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "cqr",
+    "phase_n": {
+      "point_train": 12954,
+      "point_select": 3553,
+      "refit_train": 16507,
+      "distribution": 1088,
+      "calibration": 788,
+      "selection": 1614,
+      "evaluation": 3583
+    },
+    "maximum_training_information": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_information": "2025-01-06T09:20:00+00:00",
+    "evaluation_first_decision": "2025-09-04T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 7.6536555142503095,
+        "coverage": 0.9572490706319703,
+        "width": 6.14188351920694
+      },
+      "cqr": {
+        "score": 7.399628252788104,
+        "coverage": 0.9727385377942999,
+        "width": 6.569392812887236
+      }
+    }
+  },
+  {
+    "market": "receptions",
+    "season": 2026,
+    "point_method": "retain_stage1b",
+    "probability_method": "retain_stage1b",
+    "interval_method": "normal_oos",
+    "phase_n": {
+      "point_train": 16507,
+      "point_select": 3490,
+      "refit_train": 19997,
+      "distribution": 1146,
+      "calibration": 762,
+      "selection": 1675,
+      "evaluation": 1834
+    },
+    "maximum_training_information": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_information": "2026-01-05T09:20:00+00:00",
+    "evaluation_first_decision": "2026-09-09T23:20:00+00:00",
+    "point_candidates": [],
+    "probability_candidates": [],
+    "interval_candidates": {
+      "normal_oos": {
+        "score": 7.177313432835821,
+        "coverage": 0.9611940298507463,
+        "width": 5.816119402985074
+      },
+      "cqr": {
+        "score": 7.2208955223880595,
+        "coverage": 0.9791044776119403,
+        "width": 6.3373134328358205
+      }
+    }
+  }
+]

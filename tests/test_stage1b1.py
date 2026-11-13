@@ -6,6 +6,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from types import SimpleNamespace
 import tempfile
+import shutil
+import sys
 import unittest
 from unittest.mock import Mock, patch
 
@@ -300,6 +302,54 @@ class CaptureTests(unittest.TestCase):
             self.assertIn("not inferred", meta["rule_effective_date"])
             self.assertFalse(meta["backtest_ready"])
             self.assertFalse(get.call_args.kwargs["allow_redirects"])
+
+
+@unittest.skipUnless(
+    sys.version_info[:2] == (3, 14),
+    "Archive runtime is pinned to production Python 3.14",
+)
+class ArchivedIntegrityTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.directory = ROOT / "experiments/stage1b1/improvements-20261113-v1"
+        if not cls.directory.exists():
+            raise unittest.SkipTest("Full frozen experiment not present yet")
+
+    def test_full_archive_has_all_models_and_exact_benchmark_population(self):
+        from stage1b1.artifacts import validate_results
+
+        result = validate_results(self.directory, ROOT)
+        self.assertEqual(result["models"], 45)
+        self.assertEqual(result["player_market_games"], 55303)
+        self.assertTrue(result["final_sealed"])
+
+    def test_payload_mutation_is_rejected(self):
+        from stage1b1.artifacts import validate
+
+        with tempfile.TemporaryDirectory() as t:
+            copy = Path(t) / "archive"
+            shutil.copytree(self.directory, copy)
+            with (copy / "accuracy.csv").open("a") as f:
+                f.write("tampered")
+            with self.assertRaisesRegex(ValueError, "Payload integrity mismatch"):
+                validate(copy, ROOT)
+
+    def test_sealed_period_rejected_even_with_recomputed_payload_hash(self):
+        from stage1b1.artifacts import validate_results
+        from stage1b.artifacts import digest
+
+        with tempfile.TemporaryDirectory() as t:
+            copy = Path(t) / "archive"
+            shutil.copytree(self.directory, copy)
+            f = pd.read_parquet(copy / "forecasts.parquet")
+            f.loc[0, "prediction_at"] = pd.Timestamp("2026-11-20T00:00Z")
+            f.to_parquet(copy / "forecasts.parquet", index=False)
+            m = json.loads((copy / "manifest.json").read_text())
+            m["files"]["forecasts.parquet"] = digest(copy / "forecasts.parquet")
+            (copy / "manifest.json").write_text(json.dumps(m))
+            # The frozen chronology check may reject before the explicit seal check.
+            with self.assertRaisesRegex(ValueError, "chronology changed|unsealed"):
+                validate_results(copy, ROOT)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,595 @@
+{
+  "experiment_id": "improvements-20261113-v1",
+  "source_commit": "f27f20d3d3aad750f0f6d03d69b21dc720208b71",
+  "manifest_sha256": "a8c13933a5254fc207990c77677f6dc99ad925cf6630e72471e6599f85c16eef",
+  "audit": {
+    "player_market_games": 55303,
+    "models": 45,
+    "final_sealed": true
+  },
+  "coverage": [
+    {
+      "evaluation_tier": "development_oos",
+      "n": 49034,
+      "zeros": 6709
+    },
+    {
+      "evaluation_tier": "monitoring",
+      "n": 6269,
+      "zeros": 903
+    }
+  ],
+  "aggregates": {
+    "development_oos": {
+      "stage1b": {
+        "brier": 0.18955034548431648,
+        "log_loss": 0.5615026782968557,
+        "n": 49034
+      },
+      "stage1b1": {
+        "brier": 0.189407644243774,
+        "log_loss": 0.5578758108548305,
+        "n": 49034
+      }
+    },
+    "monitoring": {
+      "stage1b": {
+        "brier": 0.19204491139875213,
+        "log_loss": 0.5632799071295699,
+        "n": 6269
+      },
+      "stage1b1": {
+        "brier": 0.1916598645360606,
+        "log_loss": 0.5621281269602676,
+        "n": 6269
+      }
+    }
+  },
+  "passing_yards_vs_naive": {
+    "delta": -1.7817186541305698,
+    "interval": [
+      -2.8049267857101725,
+      -0.8518981128936525
+    ]
+  },
+  "tail_diagnostics": [
+    {
+      "market": "completions",
+      "version": "stage1b",
+      "n_wrong_extreme": 17,
+      "n_probes": 6864,
+      "logloss_share": 0.11260454595140852
+    },
+    {
+      "market": "completions",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "passing_attempts",
+      "version": "stage1b",
+      "n_wrong_extreme": 2,
+      "n_probes": 6864,
+      "logloss_share": 0.014780796953589193
+    },
+    {
+      "market": "passing_attempts",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "passing_yards",
+      "version": "stage1b",
+      "n_wrong_extreme": 9,
+      "n_probes": 6864,
+      "logloss_share": 0.05841406571157947
+    },
+    {
+      "market": "passing_yards",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "version": "stage1b",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "qb_rushing_yards",
+      "version": "stage1b",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "qb_rushing_yards",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 6864,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "receiving_yards",
+      "version": "stage1b",
+      "n_wrong_extreme": 2,
+      "n_probes": 42336,
+      "logloss_share": 0.0016235042142558663
+    },
+    {
+      "market": "receiving_yards",
+      "version": "stage1b1",
+      "n_wrong_extreme": 2,
+      "n_probes": 42336,
+      "logloss_share": 0.0016235042142558663
+    },
+    {
+      "market": "receptions",
+      "version": "stage1b",
+      "n_wrong_extreme": 0,
+      "n_probes": 42336,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "receptions",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 42336,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "rushing_attempts",
+      "version": "stage1b",
+      "n_wrong_extreme": 0,
+      "n_probes": 14055,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "rushing_attempts",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 14055,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "rushing_yards",
+      "version": "stage1b",
+      "n_wrong_extreme": 0,
+      "n_probes": 14055,
+      "logloss_share": 0.0
+    },
+    {
+      "market": "rushing_yards",
+      "version": "stage1b1",
+      "n_wrong_extreme": 0,
+      "n_probes": 14055,
+      "logloss_share": 0.0
+    }
+  ],
+  "selections": [
+    {
+      "market": "passing_yards",
+      "season": 2022,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "career_mean",
+      "new_probability": "dense_quantile|sigmoid",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_yards",
+      "season": 2023,
+      "old_kind": "empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "career_mean",
+      "new_probability": "dense_quantile|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_yards",
+      "season": 2024,
+      "old_kind": "quantile",
+      "old_calibration": "isotonic",
+      "new_point": "scaled_ridge100",
+      "new_probability": "reference|identity",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "passing_yards",
+      "season": 2025,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "scaled_ridge100",
+      "new_probability": "reference|identity",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "passing_yards",
+      "season": 2026,
+      "old_kind": "normal_oos",
+      "old_calibration": "sigmoid",
+      "new_point": "scaled_ridge100",
+      "new_probability": "normal_oos|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_attempts",
+      "season": 2022,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "dense_quantile|sigmoid",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_attempts",
+      "season": 2023,
+      "old_kind": "normal_oos",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_attempts",
+      "season": 2024,
+      "old_kind": "hurdle",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_attempts",
+      "season": 2025,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "dense_quantile|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "passing_attempts",
+      "season": 2026,
+      "old_kind": "poisson",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "dense_quantile|sigmoid",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "completions",
+      "season": 2022,
+      "old_kind": "empirical",
+      "old_calibration": "isotonic",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|sigmoid",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "completions",
+      "season": 2023,
+      "old_kind": "empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "completions",
+      "season": 2024,
+      "old_kind": "quantile",
+      "old_calibration": "isotonic",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|identity",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "completions",
+      "season": 2025,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "reference|identity",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "completions",
+      "season": 2026,
+      "old_kind": "normal_oos",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "normal_oos|sigmoid",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_yards",
+      "season": 2022,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_yards",
+      "season": 2023,
+      "old_kind": "empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_yards",
+      "season": 2024,
+      "old_kind": "hurdle",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_yards",
+      "season": 2025,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_yards",
+      "season": 2026,
+      "old_kind": "quantile",
+      "old_calibration": "isotonic",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "rushing_attempts",
+      "season": 2022,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "rushing_attempts",
+      "season": 2023,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "rushing_attempts",
+      "season": 2024,
+      "old_kind": "empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "rushing_attempts",
+      "season": 2025,
+      "old_kind": "normal_oos",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "rushing_attempts",
+      "season": 2026,
+      "old_kind": "empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "qb_rushing_yards",
+      "season": 2022,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_yards",
+      "season": 2023,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_yards",
+      "season": 2024,
+      "old_kind": "empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_yards",
+      "season": 2025,
+      "old_kind": "quantile",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_yards",
+      "season": 2026,
+      "old_kind": "hurdle",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "season": 2022,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "season": 2023,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "season": 2024,
+      "old_kind": "negative_binomial",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "season": 2025,
+      "old_kind": "negative_binomial",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "season": 2026,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "receiving_yards",
+      "season": 2022,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receiving_yards",
+      "season": 2023,
+      "old_kind": "empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receiving_yards",
+      "season": 2024,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receiving_yards",
+      "season": 2025,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receiving_yards",
+      "season": 2026,
+      "old_kind": "quantile",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receptions",
+      "season": 2022,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "receptions",
+      "season": 2023,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receptions",
+      "season": 2024,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    },
+    {
+      "market": "receptions",
+      "season": 2025,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "sigmoid",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "cqr"
+    },
+    {
+      "market": "receptions",
+      "season": 2026,
+      "old_kind": "scaled_empirical",
+      "old_calibration": "identity",
+      "new_point": "retain_stage1b",
+      "new_probability": "retain_stage1b",
+      "new_interval": "normal_oos"
+    }
+  ],
+  "genuine_quotes": 0,
+  "betting_profit": null,
+  "provider_selected": false,
+  "production_release": "stage1a-20261113-py314-arrow24-r2",
+  "final_period_sealed": true
+}
