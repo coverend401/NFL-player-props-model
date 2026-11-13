@@ -1,9 +1,12 @@
 """Full-cohort regression for the Arrow 24 compatibility rebuild."""
 
 from pathlib import Path
+import json
 import unittest
 
 import pandas as pd
+
+from scripts.build_slate import build_slate, compute_top_picks
 
 
 ROOT = Path(__file__).resolve().parents[1] / "release_candidates"
@@ -13,8 +16,21 @@ NEW = sorted(ROOT.glob("stage1a-20261113-py314-arrow24-r*"))[-1]
 
 class ArrowReleaseRegressionTests(unittest.TestCase):
     def test_every_data_and_forecast_value_is_preserved(self):
-        # Only release identity and when the fresh forecast was generated may
-        # change. No projection, eligibility, zero or missing value is ignored.
+        # Hold fixture context fixed to isolate the dependency change. The
+        # fresh release may legitimately observe updated sportsbook totals;
+        # its own full replay is independently enforced by validate_release.
+        fresh = pd.read_parquet(NEW / "data/slate.parquet")
+        qb = json.loads((OLD / "inputs/qb_starters.json").read_text())
+        replay = build_slate(
+            pd.read_parquet(NEW / "data/player_features.parquet"),
+            pd.read_parquet(OLD / "inputs/schedule.parquet"),
+            fresh.prediction_at.iloc[0], qb["starters"],
+            qb_starters_as_of=qb["as_of"],
+            completed_before=fresh.completed_before.iloc[0],
+            model_dir=NEW / "data",
+        )
+        controlled = {"slate": replay,
+                      "top_picks": compute_top_picks(replay, side_filter="Over")}
         for name, count in [("weekly_player_data", 139346),
                             ("player_features", 185912),
                             ("slate", 780), ("top_picks", 18)]:
@@ -23,10 +39,15 @@ class ArrowReleaseRegressionTests(unittest.TestCase):
                 new = pd.read_parquet(NEW / "data" / f"{name}.parquet")
                 self.assertEqual(len(new), count)
                 self.assertEqual(set(old.columns), set(new.columns))
+                if name in controlled:
+                    new = controlled[name].copy()
+                    new["release_id"] = "controlled compatibility replay"
+                self.assertEqual(len(new), count)
                 ignored = [c for c in ["release_id", "prediction_at", "completed_before"]
                            if c in old.columns]
                 pd.testing.assert_frame_equal(
-                    old.drop(columns=ignored), new.drop(columns=ignored),
+                    old.drop(columns=ignored).reset_index(drop=True),
+                    new.drop(columns=ignored).reset_index(drop=True),
                     check_exact=False, rtol=0, atol=1e-10,
                 )
 

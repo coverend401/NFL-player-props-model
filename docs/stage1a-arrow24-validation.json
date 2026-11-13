@@ -1,0 +1,186 @@
+{
+  "release_id": "stage1a-20261113-py314-arrow24-r2",
+  "source_commit": "3bb726a40191a5df3a0b0713cd92a8442308797c",
+  "build_started_at": "2026-11-13T17:09:16.503566+00:00",
+  "built_at": "2026-11-13T17:10:47.413846+00:00",
+  "activate_before": "2026-11-15T14:30:00+00:00",
+  "python": "3.14.10",
+  "pyarrow": "24.0.0",
+  "pinned_packages": 69,
+  "manifest_sha256": "507f5cf07c7613ea9b4c1d0c4ff4c8397f399a150091bfebfb33d46ab3e3ddd2",
+  "checks": {
+    "release_id": "stage1a-20261113-py314-arrow24-r2",
+    "models": {
+      "passing_yards": {
+        "rows": 4022,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "passing_attempts": {
+        "rows": 4062,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "completions": {
+        "rows": 4022,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "rushing_yards": {
+        "rows": 8235,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "rushing_attempts": {
+        "rows": 8243,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "qb_rushing_yards": {
+        "rows": 4058,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "qb_rushing_attempts": {
+        "rows": 4062,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "receiving_yards": {
+        "rows": 25144,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "receptions": {
+        "rows": 25218,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      }
+    },
+    "slate_rows": 780,
+    "statuses": {
+      "complete": 566,
+      "roof_scenarios_only": 214
+    },
+    "top_picks": 18,
+    "replayed_all_predictions": true,
+    "app_smoke": true
+  },
+  "models_vs_previous": {
+    "passing_yards": {
+      "observations": 4022,
+      "max_abs_prediction_difference": 0.0,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "passing_attempts": {
+      "observations": 4062,
+      "max_abs_prediction_difference": 0.0,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "completions": {
+      "observations": 4022,
+      "max_abs_prediction_difference": 0.0,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "rushing_yards": {
+      "observations": 8235,
+      "max_abs_prediction_difference": 5.115907697472721e-13,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "rushing_attempts": {
+      "observations": 8243,
+      "max_abs_prediction_difference": 1.7763568394002505e-14,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "qb_rushing_yards": {
+      "observations": 4058,
+      "max_abs_prediction_difference": 1.9895196601282805e-13,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "qb_rushing_attempts": {
+      "observations": 4062,
+      "max_abs_prediction_difference": 8.881784197001252e-15,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "receiving_yards": {
+      "observations": 25144,
+      "max_abs_prediction_difference": 5.115907697472721e-13,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    },
+    "receptions": {
+      "observations": 25218,
+      "max_abs_prediction_difference": 3.552713678800501e-14,
+      "new_training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "new_training_cutoff": "2026-11-13T09:15:00+00:00",
+      "file_hash_changed": true
+    }
+  },
+  "legacy_arrow_26_compatibility": {
+    "pyarrow": "24.0.0",
+    "mode": "compare",
+    "tables": [
+      {
+        "file": "data/weekly_player_data.parquet",
+        "rows": 139346,
+        "passed": true
+      },
+      {
+        "file": "data/player_features.parquet",
+        "rows": 185912,
+        "passed": true
+      },
+      {
+        "file": "data/slate.parquet",
+        "rows": 780,
+        "passed": true
+      },
+      {
+        "file": "data/top_picks.parquet",
+        "rows": 18,
+        "passed": true
+      },
+      {
+        "file": "inputs/schedule.parquet",
+        "rows": 7548,
+        "passed": true
+      }
+    ],
+    "models": {
+      "passing_yards": 4022,
+      "passing_attempts": 4062,
+      "completions": 4022,
+      "rushing_yards": 8235,
+      "rushing_attempts": 8243,
+      "qb_rushing_yards": 4058,
+      "qb_rushing_attempts": 4062,
+      "receiving_yards": 25144,
+      "receptions": 25218
+    },
+    "all_passed": true
+  },
+  "regression_tests": {
+    "python_3.14": 55,
+    "python_3.12": 55
+  },
+  "cloud_override_evidence": "User-supplied Cloud installation log: Detected pyarrow 26.0.1 (known segfault, apache/arrow#50471). Replacing with pyarrow<25.",
+  "other_hosted_overrides": "Not established. Original traceback passed 37 pins before pyarrow, did not check the following 31. All 69 pins checked locally and remain enforced on hosting.",
+  "production_changed": false,
+  "deployment_approved": false,
+  "fresh_context_change": {
+    "game_id": "2026_10_MIN_GB",
+    "total_line_old": 41.5,
+    "total_line_new": 42.5,
+    "changed_projection_rows": 37,
+    "changed_top_pick_values": 1,
+    "slate_membership_changed": false,
+    "top_pick_membership_changed": false,
+    "controlled_old_context_replay": "All 780 rows and 18 picks match old release with newly trained Arrow 24 models; ignores only identity/timestamps."
+  }
+}

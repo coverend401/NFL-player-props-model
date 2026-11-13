@@ -1,0 +1,248 @@
+{
+  "schema_version": 1,
+  "release_id": "stage1a-20261113-py314-arrow24-r2",
+  "feature_timing_version": "stage1a",
+  "build_started_at": "2026-11-13T17:09:16.503566+00:00",
+  "built_at": "2026-11-13T17:10:47.413846+00:00",
+  "activate_before": "2026-11-15T14:30:00+00:00",
+  "game_kickoffs": {
+    "2026_10_PIT_CIN": "2026-11-16T01:20:00+00:00",
+    "2026_10_LA_ARI": "2026-11-15T21:05:00+00:00",
+    "2026_10_MIN_GB": "2026-11-15T18:00:00+00:00",
+    "2026_10_BUF_NYJ": "2026-11-15T18:00:00+00:00",
+    "2026_10_SF_DAL": "2026-11-15T21:25:00+00:00",
+    "2026_10_NE_DET": "2026-11-15T14:30:00+00:00",
+    "2026_10_LAC_BAL": "2026-11-17T01:15:00+00:00",
+    "2026_10_HOU_CLE": "2026-11-15T18:00:00+00:00",
+    "2026_10_KC_ATL": "2026-11-15T18:00:00+00:00",
+    "2026_10_SEA_LV": "2026-11-15T21:05:00+00:00",
+    "2026_10_MIA_IND": "2026-11-15T18:00:00+00:00",
+    "2026_10_JAX_TEN": "2026-11-15T18:00:00+00:00",
+    "2026_10_CAR_NO": "2026-11-15T18:00:00+00:00"
+  },
+  "runtime": {
+    "python_minor": "3.14",
+    "python_build": "3.14.10",
+    "packages": {
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "MarkupSafe": "3.0.4",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "24.0.0",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "PyJWT": "2.15.1",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    }
+  },
+  "legacy_data_git_commit": "0c6029002be0820c0502d957372d5261610ba927",
+  "source_commit": "3bb726a40191a5df3a0b0713cd92a8442308797c",
+  "source_sha256": {
+    "app.py": "714bac580967dde572749139c20d308ac7d7ba0ce2af93c7d77263bea765a854",
+    "pricing.py": "039fdbf73f3ddcb8699ca51693b95b4fbef67d9bde2e9731c745ef4e0f47ca5b",
+    "betting_engine.py": "8f8711fdd3a18fd42955de9ba7502b814d989d0422bb16d59b577fc17bfacf5e",
+    "ledger.py": "be61e5b555969097f5c56d369fe3777563804d519cc7de610a3a714af2042364",
+    "odds_utils.py": "f1e6f6f1aef86508fd55cea128c70b17335a7c54f72ad7b7bd10bb8a16534a8d",
+    "performance.py": "7aee0d3d48a6e9144e51453a94e5de1e86837dfd3987f1486c19a8b7a54d6e11",
+    "release_utils.py": "7f5c30974ef16cc0b1a9734c1f8245f1c70cde0a9ef937fcfeb184cd276ceaf3",
+    "release_runtime.json": "1810f63dc5ada9abfff8f25755df3594ecbb3fb35cfd668408cfccaaf9dfd78f",
+    "requirements.txt": "994820a5da0d56108bcd5afe5120ebc45b054f3168a5ba75d15b2dd09ceeab06",
+    "requirements-production.lock": "334faec3090341f9e027beccd521904e8640cf4eb755f3197ae9a905449d374c",
+    "scripts/update_data.py": "8b158c65a075bb3d72dd6a3588d44e2c3aaef5f8cc4995e4e8bf389836f89d5b",
+    "scripts/build_features.py": "0797bc703dd2301363898ea4dea5ba61efe243b178839fa4966f92abfbee8403",
+    "scripts/forecast_features.py": "f2bc8e91a867fab8166a82027a8c694d16050d0f37b655cb0d09ec19d466a707",
+    "scripts/train_all_markets.py": "eb286ddc3bda0de4551b3d6ae121454c6312d8e409a347012f6e1812e34b0584",
+    "scripts/build_slate.py": "fe88bc2713b00eddcdf1866c2bfaf0dbedc9650108b7996983ce4f990b38db08",
+    "scripts/prepare_release.py": "1543956db3918fbd3a73a0176a97b2adaa5fab068a949805fe14c0d667944706",
+    "scripts/validate_release.py": "e70b13e2385a64e3cc74ec16ba5ea7f942fb843170a1bf2ed281ef7b70b4c38e",
+    "scripts/activate_release.py": "1f36f0f6e3ae4814865ff8a5a5a993ba82ec0dd4e9deb2ad90d0cb585b845ab6"
+  },
+  "files": {
+    "data/weekly_player_data.parquet": {
+      "sha256": "5ec5ac9e3d68384a7cca0ae8822bce97bd88c8838fc51aeedf64b3f801d9d0a8",
+      "bytes": 5334733
+    },
+    "data/player_features.parquet": {
+      "sha256": "433af7883540e168ed4c345b0223713212b1838cd96ac430c69fac904db313e2",
+      "bytes": 21261760
+    },
+    "data/slate.parquet": {
+      "sha256": "dc40390559417fb93eeddd9504e80611410317e9a277410a0106e6115c928329",
+      "bytes": 37488
+    },
+    "data/top_picks.parquet": {
+      "sha256": "24dfe4f30c87ba4d033021cbff23d3a0743a7fee1aff9bd09160930f9705e4a2",
+      "bytes": 18259
+    },
+    "data/model_passing_yards.joblib": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "bytes": 263266
+    },
+    "data/model_passing_attempts.joblib": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "bytes": 252867
+    },
+    "data/model_completions.joblib": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "bytes": 266628
+    },
+    "data/model_rushing_yards.joblib": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "bytes": 2080
+    },
+    "data/model_rushing_attempts.joblib": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "bytes": 1805
+    },
+    "data/model_qb_rushing_yards.joblib": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "bytes": 2034
+    },
+    "data/model_qb_rushing_attempts.joblib": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "bytes": 1743
+    },
+    "data/model_receiving_yards.joblib": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "bytes": 2347
+    },
+    "data/model_receptions.joblib": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "bytes": 2096
+    },
+    "inputs/schedule.parquet": {
+      "sha256": "f20e19f648791c31dfc7d184daca7a0c48e55556b8a0679b86f408da1b1c57e4",
+      "bytes": 532133
+    },
+    "inputs/qb_starters.json": {
+      "sha256": "c96a8068a27fba3360718e083547fc33a251b46197f123644b8479861f64cde0",
+      "bytes": 862
+    }
+  },
+  "legacy_data_sha256": {
+    "weekly_player_data.parquet": "fa4e7bf5d358a4dbba5a52caed0b143382ee7a94e675827813ce37298050a82e",
+    "player_features.parquet": "cc6bce676a63c73ae60a31caa092588d8b989d3af795e75972c10abcd92202c9",
+    "slate.parquet": "a5955588d7ab5aea060935a5fc142dafa2e6b8791c3eaa324ab5e0e2ba976b2b",
+    "top_picks.parquet": "dd376c1258ea66fed6ae88f8066cd03a9213901f633829f362c51dc3c2ac8467",
+    "model_passing_yards.joblib": "e74d2b48e50235016e8f533316a273f12b3a4946221da65ae216cae537baaa15",
+    "model_passing_attempts.joblib": "b9b263c319691570e834fc486b0fab43e180af5909c5efbfad0a397d44ad0564",
+    "model_completions.joblib": "5cad046b41e5abab1709520944fc0743ef6a205e19ec5337763cb4f8ef3ac2e7",
+    "model_rushing_yards.joblib": "b2321ec05a40bd91b3fbbb4ab7ea0b44b0422acf8952c8420c593644e9743fc7",
+    "model_rushing_attempts.joblib": "83fd636e0763c4e7625431a7f6547f167647e494e82efe57a3ed1c70f8a17b2e",
+    "model_qb_rushing_yards.joblib": "6ea8e1ad03ce7edb79b6ab2e1c52f9b6bcf3106b3cd8b93639157dc1a39fe55b",
+    "model_qb_rushing_attempts.joblib": "902ecf0e1fb77b3d10767d701ac02e9e0774d0fe05c3d7578ee0d397f0dcbde6",
+    "model_receiving_yards.joblib": "be169823223f257c8a15ef5dbcccd7602a65008bd296d762e08ef506b76b526e",
+    "model_receptions.joblib": "1e7c71bd47f757cded82c665af0793f9e1c1aa418d8d5fa6db3cde1e892f743b"
+  },
+  "validation_status": "passed",
+  "checks": {
+    "release_id": "stage1a-20261113-py314-arrow24-r2",
+    "models": {
+      "passing_yards": {
+        "rows": 4022,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "passing_attempts": {
+        "rows": 4062,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "completions": {
+        "rows": 4022,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "rushing_yards": {
+        "rows": 8235,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "rushing_attempts": {
+        "rows": 8243,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "qb_rushing_yards": {
+        "rows": 4058,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "qb_rushing_attempts": {
+        "rows": 4062,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "receiving_yards": {
+        "rows": 25144,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      },
+      "receptions": {
+        "rows": 25218,
+        "training_cutoff": "2026-11-13T09:15:00+00:00"
+      }
+    },
+    "slate_rows": 780,
+    "statuses": {
+      "complete": 566,
+      "roof_scenarios_only": 214
+    },
+    "top_picks": 18,
+    "replayed_all_predictions": true,
+    "app_smoke": true
+  },
+  "validated_at": "2026-11-13T17:11:48.747640+00:00"
+}

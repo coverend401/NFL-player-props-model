@@ -1,0 +1,298 @@
+[
+  {
+    "player_id":"00-0036264",
+    "market":"Passing Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Love",
+    "projection_new":236.7,
+    "projection_old":235.6
+  },
+  {
+    "player_id":"00-0029604",
+    "market":"Passing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Kirk Cousins",
+    "projection_new":31.2,
+    "projection_old":30.9
+  },
+  {
+    "player_id":"00-0036264",
+    "market":"Passing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Love",
+    "projection_new":30.6,
+    "projection_old":30.4
+  },
+  {
+    "player_id":"00-0029604",
+    "market":"Completions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Kirk Cousins",
+    "projection_new":20.5,
+    "projection_old":20.4
+  },
+  {
+    "player_id":"00-0036425",
+    "market":"Rushing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"DeeJay Dallas",
+    "projection_new":1.4,
+    "projection_old":1.5
+  },
+  {
+    "player_id":"00-0037525",
+    "market":"Rushing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Mason",
+    "projection_new":9.4,
+    "projection_old":9.5
+  },
+  {
+    "player_id":"00-0038685",
+    "market":"Rushing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Chris Brooks",
+    "projection_new":4.0,
+    "projection_old":4.1
+  },
+  {
+    "player_id":"00-0040142",
+    "market":"Rushing Attempts",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Kaleb Johnson",
+    "projection_new":6.6,
+    "projection_old":6.7
+  },
+  {
+    "player_id":"00-0029604",
+    "market":"QB Rushing Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Kirk Cousins",
+    "projection_new":2.2,
+    "projection_old":2.1
+  },
+  {
+    "player_id":"00-0036264",
+    "market":"QB Rushing Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Love",
+    "projection_new":5.5,
+    "projection_old":5.4
+  },
+  {
+    "player_id":"00-0033293",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Aaron Jones",
+    "projection_new":10.4,
+    "projection_old":10.1
+  },
+  {
+    "player_id":"00-0035229",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"T.J. Hockenson",
+    "projection_new":38.4,
+    "projection_old":38.1
+  },
+  {
+    "player_id":"00-0035249",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Josh Oliver",
+    "projection_new":11.0,
+    "projection_old":10.7
+  },
+  {
+    "player_id":"00-0035700",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Josh Jacobs",
+    "projection_new":18.0,
+    "projection_old":17.7
+  },
+  {
+    "player_id":"00-0036259",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jauan Jennings",
+    "projection_new":22.1,
+    "projection_old":21.8
+  },
+  {
+    "player_id":"00-0036322",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Justin Jefferson",
+    "projection_new":65.3,
+    "projection_old":65.0
+  },
+  {
+    "player_id":"00-0036425",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"DeeJay Dallas",
+    "projection_new":1.7,
+    "projection_old":1.5
+  },
+  {
+    "player_id":"00-0037091",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Bo Melton",
+    "projection_new":9.1,
+    "projection_old":8.9
+  },
+  {
+    "player_id":"00-0037525",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Mason",
+    "projection_new":3.8,
+    "projection_old":3.5
+  },
+  {
+    "player_id":"00-0038090",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Skyy Moore",
+    "projection_new":13.3,
+    "projection_old":13.0
+  },
+  {
+    "player_id":"00-0038124",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Christian Watson",
+    "projection_new":67.9,
+    "projection_old":67.6
+  },
+  {
+    "player_id":"00-0038685",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Chris Brooks",
+    "projection_new":5.9,
+    "projection_old":5.7
+  },
+  {
+    "player_id":"00-0038994",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Addison",
+    "projection_new":45.5,
+    "projection_old":45.2
+  },
+  {
+    "player_id":"00-0038996",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Tucker Kraft",
+    "projection_new":36.9,
+    "projection_old":36.7
+  },
+  {
+    "player_id":"00-0039811",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"MarShawn Lloyd",
+    "projection_new":10.2,
+    "projection_old":10.0
+  },
+  {
+    "player_id":"00-0040009",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Savion Williams",
+    "projection_new":16.5,
+    "projection_old":16.2
+  },
+  {
+    "player_id":"00-0040142",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Kaleb Johnson",
+    "projection_new":1.7,
+    "projection_old":1.4
+  },
+  {
+    "player_id":"00-0040506",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Myles Price",
+    "projection_new":6.2,
+    "projection_old":5.9
+  },
+  {
+    "player_id":"00-0040667",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Matthew Golden",
+    "projection_new":69.5,
+    "projection_old":69.3
+  },
+  {
+    "player_id":"00-0040948",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"J. Michael Sturdivant",
+    "projection_new":7.2,
+    "projection_old":6.9
+  },
+  {
+    "player_id":"00-0041104",
+    "market":"Receiving Yards",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Demond Claiborne",
+    "projection_new":0.6,
+    "projection_old":0.3
+  },
+  {
+    "player_id":"00-0035229",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"T.J. Hockenson",
+    "projection_new":4.1,
+    "projection_old":4.0
+  },
+  {
+    "player_id":"00-0036259",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jauan Jennings",
+    "projection_new":1.9,
+    "projection_old":1.8
+  },
+  {
+    "player_id":"00-0036322",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Justin Jefferson",
+    "projection_new":4.8,
+    "projection_old":4.7
+  },
+  {
+    "player_id":"00-0036425",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"DeeJay Dallas",
+    "projection_new":0.7,
+    "projection_old":0.6
+  },
+  {
+    "player_id":"00-0037525",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Jordan Mason",
+    "projection_new":0.7,
+    "projection_old":0.6
+  },
+  {
+    "player_id":"00-0038685",
+    "market":"Receptions",
+    "game_id":"2026_10_MIN_GB",
+    "player":"Chris Brooks",
+    "projection_new":0.9,
+    "projection_old":0.8
+  }
+]
