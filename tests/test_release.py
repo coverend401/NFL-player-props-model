@@ -177,3 +177,34 @@ class ReleaseGuardTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Legacy fallback changed"):
             rollback_release(self.root, "a")
         self.assertEqual(resolve_release(self.root)[1]["release_id"], "a")
+
+
+class DataRefreshSeasonTests(unittest.TestCase):
+    def test_january_refresh_does_not_request_nonexistent_next_season(self):
+        import contextlib
+        from datetime import date
+        import io
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        import pandas as pd
+        from scripts.update_data import update_data
+
+        class JanuaryDate(date):
+            @classmethod
+            def today(cls):
+                return cls(2027, 1, 5)
+
+        frame = pd.DataFrame({"passing_interceptions": [0], "season": [2026]})
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            patch("nflreadpy.utils_date.date", JanuaryDate),
+            patch(
+                "scripts.update_data.nfl.load_player_stats",
+                return_value=SimpleNamespace(to_pandas=lambda: frame),
+            ) as load,
+            contextlib.redirect_stdout(io.StringIO()),
+        ):
+            update_data(tmp)
+            load.assert_called_once_with(seasons=list(range(2019, 2027)))
+            saved = pd.read_parquet(Path(tmp) / "weekly_player_data.parquet")
+            self.assertEqual(saved.interceptions.tolist(), [0])

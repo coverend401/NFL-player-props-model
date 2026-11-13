@@ -24,5 +24,6 @@ jobs:
         run: |
           if [ -d release_candidates ]; then
             python scripts/validate_release.py --all-candidates --app-smoke
+            python scripts/rehearse_release.py --all-current-candidates
           fi
           python -c 'from pathlib import Path; from release_utils import resolve_release; resolve_release(Path.cwd())'

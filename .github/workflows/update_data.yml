@@ -27,7 +27,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: reviewed-forecast-candidate-${{ github.run_id }}-${{ github.run_attempt }}
-          path: release_candidates/
+          path: release_candidates/scheduled-${{ github.run_id }}-${{ github.run_attempt }}
           if-no-files-found: error
           retention-days: 14
 # No git add/commit/push, active pointer change, production secrets or deployment step.
