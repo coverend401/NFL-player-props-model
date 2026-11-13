@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "evidence_tier": "retrospective",
+  "source_records": [
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2019.parquet",
+      "sha256": "60c3067017db2d28a78f66a79b657268be8578d9a5288e6a827efdcd7fe42540",
+      "bytes": 19119729,
+      "retrieved_at": "2026-11-13T21:55:04.356587+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2020.parquet",
+      "sha256": "8889f5d8782b5c5dce3c3644acdc0322b228a7e9cb13fa36cbac250e260e9f60",
+      "bytes": 19286459,
+      "retrieved_at": "2026-11-13T21:55:05.410515+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2021.parquet",
+      "sha256": "333ad34378e5339d5172717cc83378e908daf02c8699416ab3e17c2ec10f78d8",
+      "bytes": 20249925,
+      "retrieved_at": "2026-11-13T21:55:06.509256+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2022.parquet",
+      "sha256": "931121d8897779d7944e2a293e92ed8799c8e5cceef84096ac42339003fedc09",
+      "bytes": 20426548,
+      "retrieved_at": "2026-11-13T21:55:07.436650+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2023.parquet",
+      "sha256": "bd3484731408def6b0ec93225bba2bd7b2c65769ca707a2b9444d891abdc6776",
+      "bytes": 20534088,
+      "retrieved_at": "2026-11-13T21:55:08.210277+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2024.parquet",
+      "sha256": "3fd2896bc0b911b615142d2f1fabae54a4bbba5ab7b73b28187b118ef8af6a3b",
+      "bytes": 20597560,
+      "retrieved_at": "2026-11-13T21:55:09.177624+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2025.parquet",
+      "sha256": "c6ecedd6d678cc37ed316b23ef84ee1ec6abb69c514bb11868a7ebd5a367df29",
+      "bytes": 20337029,
+      "retrieved_at": "2026-11-13T21:53:35.156799+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.parquet",
+      "sha256": "63d725b49ed1d28d17bc63b32685903c0b4c5d7748e1bd8081b986b09aa2d841",
+      "bytes": 10197719,
+      "retrieved_at": "2026-11-13T21:55:09.985686+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    }
+  ],
+  "player_snapshot_sha256": "433af7883540e168ed4c345b0223713212b1838cd96ac430c69fac904db313e2",
+  "schedule_sha256": "f20e19f648791c31dfc7d184daca7a0c48e55556b8a0679b86f408da1b1c57e4",
+  "final_period_sealed": true,
+  "files": {
+    "team_games.parquet": "6e73f8845329f905bccd10a2f67237d948e539140b39e775487fe5b7fbd7349b",
+    "position_totals.parquet": "67a401969ca643a99e5483bf3053c1f2a464d1ed10c1a8eaeab8e9299054293f"
+  },
+  "rows": 4016,
+  "note": "Current corrected statistics; no historical publication archive. No genuine verified predecision claim."
+}
