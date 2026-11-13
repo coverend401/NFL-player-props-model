@@ -50,6 +50,16 @@ def edge_assessment(
     """Disagreement range is not a statistical confidence interval."""
     if bankroll <= 0 or not 0 <= fraction <= 1 or not 0 <= cap <= 1:
         raise ValueError("Invalid research risk limits")
+    probabilities = np.asarray(probabilities, dtype=float)
+    if (
+        probabilities.ndim != 2
+        or probabilities.shape[1] != 3
+        or len(probabilities) == 0
+        or not np.isfinite(probabilities).all()
+        or (probabilities < 0).any()
+        or not np.allclose(probabilities.sum(axis=1), 1)
+    ):
+        raise ValueError("Incoherent win/loss/push partition")
     scores = [economics(float(p[0]), float(p[2]), odds) for p in probabilities]
     if not scores:
         raise ValueError("At least one forecast is required")

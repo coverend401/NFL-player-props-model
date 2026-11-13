@@ -561,5 +561,58 @@ class ProvenanceAndCaptureTests(unittest.TestCase):
                 self.assertFalse((root / "experiments" / "capture").exists())
 
 
+class ModelPortabilityTests(unittest.TestCase):
+    def test_baseline_pickle_loads_in_an_independent_process(self):
+        import subprocess, sys, joblib
+        from stage1b.point_models import CareerMean
+
+        with tempfile.TemporaryDirectory() as t:
+            path = Path(t) / "baseline.joblib"
+            joblib.dump(CareerMean(), path)
+            result = subprocess.run(
+                [
+                    sys.executable,
+                    "-c",
+                    "import sys,joblib; print(float(joblib.load(sys.argv[1]).predict([[3.]])[0]))",
+                    str(path),
+                ],
+                cwd=ROOT,
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            self.assertEqual(result.returncode, 0, result.stderr)
+            self.assertEqual(result.stdout.strip(), "3.0")
+
+
+class AdditionalRiskGuards(unittest.TestCase):
+    def test_incoherent_outcome_probabilities_cannot_generate_stakes(self):
+        with self.assertRaisesRegex(ValueError, "partition"):
+            edge_assessment(
+                [[0.6, 0.9, 0.1]], 2.0, n_calibration_games=1000, validated=True
+            )
+
+    def test_unknown_settlement_time_blocks_accounting(self):
+        row = dict(
+            stake=1,
+            decision_at="2023-01-01T00:00Z",
+            outcome_available_at=pd.NaT,
+            action_status="unknown",
+        )
+        with self.assertRaisesRegex(ValueError, "timing"):
+            settle_single(row)
+
+    def test_naive_quote_timestamps_are_not_silently_localised(self):
+        fixture = QuoteEvidenceTests()
+        fixture.setUp()
+        try:
+            q = fixture.quote.copy()
+            q["quoted_at"] = "2023-01-01 00:00"
+            with self.assertRaisesRegex(ValueError, "timezone"):
+                verify_quotes(pd.DataFrame([q]), fixture.evidence, fixture.root)
+        finally:
+            fixture.doCleanups()
+
+
 if __name__ == "__main__":
     unittest.main()

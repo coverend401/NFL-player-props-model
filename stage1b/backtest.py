@@ -56,6 +56,8 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
     if not q.side.isin(["Over", "Under"]).all() or not q.rule_id.isin(RULES).all():
         raise ValueError("Unsupported side or bookmaker settlement rule")
     for c in ["quoted_at", "available_at", "decision_at", "kickoff_at"]:
+        if any(pd.isna(x) or pd.Timestamp(x).tzinfo is None for x in q[c]):
+            raise ValueError("Quote timestamps require explicit timezone offsets")
         q[c] = pd.to_datetime(q[c], utc=True, errors="raise")
     if q[["quoted_at", "available_at", "decision_at", "kickoff_at"]].isna().any().any():
         raise ValueError("Missing quote timing")
@@ -144,6 +146,13 @@ def settle_single(row):
         raise ValueError("Invalid stake")
     decision = pd.Timestamp(row["decision_at"])
     available = pd.Timestamp(row["outcome_available_at"])
+    if (
+        pd.isna(available)
+        or pd.isna(decision)
+        or available.tzinfo is None
+        or decision.tzinfo is None
+    ):
+        raise ValueError("Settlement timing must be observed and timezone-aware")
     if available <= decision:
         raise ValueError("Outcome was already known at decision time")
     action = row["action_status"]

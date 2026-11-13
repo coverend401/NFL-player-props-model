@@ -67,8 +67,8 @@ In the pinned Python 3.14 environment, from repository root:
 
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s tests -v
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v2
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v2
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v3
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v3
 streamlit run stage1b_dashboard.py
 ```
 
@@ -107,7 +107,7 @@ to the original provider response. Independent manual verification is required;
 a caller-created hash cannot authenticate a historical price.
 
 ```bash
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v2 \
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v3 \
   --quotes /path/to/reviewed-quotes.csv \
   --evidence-manifest /path/to/evidence.json --evidence-root /path/to/archive \
   --output /path/to/new-research-backtest

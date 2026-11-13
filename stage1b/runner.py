@@ -16,6 +16,7 @@ from sklearn.linear_model import Ridge, LogisticRegression, PoissonRegressor
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
 
+from stage1b.point_models import CareerMean
 from stage1b.data import (
     prepare_panel,
     market_panel,
@@ -40,11 +41,6 @@ from stage1b.artifacts import (
     freeze_sources,
     verify_sources,
 )
-
-
-class CareerMean:
-    def predict(self, x):
-        return np.asarray(x)[:, 0]
 
 
 def probe_lines(d, market, protocol):
