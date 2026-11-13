@@ -26,6 +26,8 @@ def capture(experiment, root, features, output, raw_snapshots):
     manifest = validate(experiment, root)
     protocol = json.loads((experiment / "protocol.json").read_text())
     now = pd.Timestamp(datetime.now(timezone.utc))
+    if pd.Timestamp(manifest["finished_at"]) >= now:
+        raise ValueError("Frozen model did not exist before prospective capture")
     if output.exists():
         raise ValueError("Prospective records are immutable")
     if (

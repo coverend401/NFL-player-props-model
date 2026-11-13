@@ -67,8 +67,8 @@ In the pinned Python 3.14 environment, from repository root:
 
 ```bash
 OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m unittest discover -s tests -v
-OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v3
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v3
+OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 python -m stage1b.runner --id baseline-20261113-v4
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v4
 streamlit run stage1b_dashboard.py
 ```
 
@@ -82,7 +82,10 @@ Artifacts include row-level forecasts, explicitly hypothetical probability probe
 coverage, point metrics/cohorts, probability scores by season, probability-band
 reliability, paired uncertainty intervals, earlier-phase candidate selection and
 all-candidate outer diagnostics. Diagnostic outer scores do not choose a winner;
-the frozen selection code never reads evaluation labels. Saved models permit
+the frozen selection code never reads evaluation labels. Historical timestamps are registered replay decisions, not claims that these
+models were deployed then. The archive records the actual experiment build time
+and the latest information used; it never fabricates a historical fit time.
+Saved models permit
 exact-line pricing later if genuine historical quotes are acquired.
 
 A candidate family may regress out of sample despite winning earlier selection.
@@ -103,11 +106,13 @@ Evidence manifest maps each ID to `classification=authentic_provider_archive`,
 `reviewed_by`, `licence_confirmed`, `provider_host`, credential-free `source_url`,
 `original_path`, `original_sha256`, reviewed extraction `path`, and `sha256`.
 The extraction JSON has `quotes` entries binding economic/identity/timestamp fields
-to the original provider response. Independent manual verification is required;
+to the original provider response. Each entry also requires a `settlement_rule` archive with `rule_id`, `path`,
+`sha256`, timezone-aware `available_at` before the decision, and credential-free
+`source_url`. Independent manual verification is required;
 a caller-created hash cannot authenticate a historical price.
 
 ```bash
-python -m stage1b.cli experiments/stage1b/baseline-20261113-v3 \
+python -m stage1b.cli experiments/stage1b/baseline-20261113-v4 \
   --quotes /path/to/reviewed-quotes.csv \
   --evidence-manifest /path/to/evidence.json --evidence-root /path/to/archive \
   --output /path/to/new-research-backtest

@@ -106,8 +106,8 @@ def validate_results(directory):
     for (market, year), g in f.groupby(["market", "season"]):
         bundle = joblib.load(directory / "models" / f"{market}-{year}.joblib")
         if not (
-            pd.Timestamp(bundle["model_information_cutoff"])
-            < pd.Timestamp(bundle["model_fit_available_at"])
+            pd.Timestamp(bundle["max_training_outcome_available"])
+            < pd.Timestamp(bundle["model_information_available_at"])
             < g.prediction_at.min()
         ):
             raise ValueError("Late model or probability selection")
@@ -131,3 +131,20 @@ def verify_sources(root, expected):
         raise ValueError(
             "Source/config changed during experiment; discard partial results"
         )
+
+
+def require_committed_sources(root):
+    import subprocess
+
+    root = Path(root).resolve()
+    paths = [str(p.relative_to(root)) for p in sources(root)]
+    dirty = subprocess.check_output(
+        ["git", "status", "--porcelain", "--", *paths], cwd=root, text=True
+    )
+    if dirty.strip():
+        raise ValueError(
+            "Commit scientific source/config before starting an experiment"
+        )
+    return subprocess.check_output(
+        ["git", "rev-parse", "HEAD"], cwd=root, text=True
+    ).strip()

@@ -142,6 +142,9 @@ class TemporalTests(unittest.TestCase):
         changed = d.copy()
         changed.loc[changed.season == 2022, "y"] = 99999
         b2, info2, scores2 = fit_fold(changed, "passing_attempts", 2022, PROTOCOL)
+        self.assertEqual(
+            b["model_information_available_at"], info["maximum_selection_outcome"]
+        )
         self.assertEqual(info, info2)
         self.assertEqual(scores, scores2)
         self.assertLess(
@@ -306,7 +309,7 @@ class EconomicTests(unittest.TestCase):
         )
 
 
-class QuoteEvidenceTests(unittest.TestCase):
+class QuoteFixture(unittest.TestCase):
     def setUp(self):
         self.temp = tempfile.TemporaryDirectory()
         self.addCleanup(self.temp.cleanup)
@@ -331,11 +334,22 @@ class QuoteEvidenceTests(unittest.TestCase):
         raw.write_text('{"synthetic_test_only": true}')
         extract = self.root / "extract.json"
         extract.write_text(json.dumps({"quotes": [self.quote]}))
+        rule = self.root / "rules.json"
+        rule.write_text(
+            '{"synthetic_test_rule_only": "positive offensive participation"}'
+        )
         self.evidence = {
             "e1": dict(
                 classification="authentic_provider_archive",
                 reviewed_by="SYNTHETIC_UNIT_TEST_NOT_AUTHENTIC",
                 licence_confirmed=True,
+                settlement_rule=dict(
+                    rule_id="offensive_snap_action_v1",
+                    path="rules.json",
+                    sha256=hashlib.sha256(rule.read_bytes()).hexdigest(),
+                    available_at="2022-01-01T00:00Z",
+                    source_url="https://example.com/rules",
+                ),
                 path="extract.json",
                 sha256=hashlib.sha256(extract.read_bytes()).hexdigest(),
                 original_path="original.json",
@@ -345,6 +359,8 @@ class QuoteEvidenceTests(unittest.TestCase):
             )
         }
 
+
+class QuoteEvidenceTests(QuoteFixture):
     def test_bound_quote_is_accepted_by_integrity_logic_only(self):
         q = verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
         self.assertEqual(len(q), 1)
@@ -420,7 +436,7 @@ class ArchiveGuardTests(unittest.TestCase):
             validate(self.path, ROOT, check_runtime=False)
 
 
-class FullQuoteBacktestTests(QuoteEvidenceTests):
+class FullQuoteBacktestTests(QuoteFixture):
     def forecast(self):
         return pd.DataFrame(
             [
@@ -431,7 +447,7 @@ class FullQuoteBacktestTests(QuoteEvidenceTests):
                     line=2.5,
                     decision_at=self.quote["decision_at"],
                     history_available_at="2022-12-31T00:00Z",
-                    model_fit_available_at="2022-12-01T00:00Z",
+                    model_information_available_at="2022-12-01T00:00Z",
                     p_over=0.7,
                     p_under=0.3,
                     p_push=0.0,
@@ -462,8 +478,8 @@ class FullQuoteBacktestTests(QuoteEvidenceTests):
         from stage1b.backtest import run_verified_backtest
 
         f = self.forecast()
-        f["model_fit_available_at"] = "2023-01-01T00:02Z"
-        with self.assertRaisesRegex(ValueError, "Model fitted"):
+        f["model_information_available_at"] = "2023-01-01T00:02Z"
+        with self.assertRaisesRegex(ValueError, "Model information"):
             run_verified_backtest(
                 pd.DataFrame([self.quote]), self.evidence, self.root, f, PROTOCOL
             )
@@ -514,7 +530,10 @@ class ProvenanceAndCaptureTests(unittest.TestCase):
 
         with tempfile.TemporaryDirectory() as t:
             root, exp, x = self.capture_fixture(t)
-            with patch("stage1b.prospective.validate", return_value={}):
+            with patch(
+                "stage1b.prospective.validate",
+                return_value={"finished_at": "2026-11-13T00:00:00Z"},
+            ):
                 with self.assertRaisesRegex(ValueError, "production"):
                     capture(exp, root, x, root / "data" / "new", {})
 
@@ -524,7 +543,10 @@ class ProvenanceAndCaptureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as t:
             root, exp, x = self.capture_fixture(t)
             with (
-                patch("stage1b.prospective.validate", return_value={}),
+                patch(
+                    "stage1b.prospective.validate",
+                    return_value={"finished_at": "2026-11-13T00:00:00Z"},
+                ),
                 patch(
                     "stage1b.prospective.joblib.load",
                     return_value={"features": feature_columns("passing_attempts")},
@@ -546,7 +568,10 @@ class ProvenanceAndCaptureTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as t:
             root, exp, x = self.capture_fixture(t)
             with (
-                patch("stage1b.prospective.validate", return_value={}),
+                patch(
+                    "stage1b.prospective.validate",
+                    return_value={"finished_at": "2026-11-13T00:00:00Z"},
+                ),
                 patch(
                     "stage1b.prospective.joblib.load",
                     return_value={"features": feature_columns("passing_attempts")},
@@ -612,6 +637,52 @@ class AdditionalRiskGuards(unittest.TestCase):
                 verify_quotes(pd.DataFrame([q]), fixture.evidence, fixture.root)
         finally:
             fixture.doCleanups()
+
+
+class SettlementProvenanceTests(QuoteFixture):
+    def test_rules_must_have_existed_before_decision(self):
+        self.evidence["e1"]["settlement_rule"]["available_at"] = "2024-01-01T00:00Z"
+        with self.assertRaisesRegex(ValueError, "Retrospective settlement"):
+            verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
+
+    def test_missing_rule_archive_blocks_returns(self):
+        self.evidence["e1"].pop("settlement_rule")
+        with self.assertRaisesRegex(ValueError, "settlement rule evidence"):
+            verify_quotes(pd.DataFrame([self.quote]), self.evidence, self.root)
+
+
+class CommittedSourceTests(unittest.TestCase):
+    def test_experiment_cannot_claim_a_commit_with_uncommitted_scientific_code(self):
+        import subprocess
+        from stage1b.artifacts import sources, require_committed_sources
+
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / "stage1b").mkdir()
+            (root / "scripts").mkdir()
+            for p in sources(root):
+                p.parent.mkdir(parents=True, exist_ok=True)
+                p.write_text("fixture")
+            subprocess.run(["git", "init", "-q"], cwd=root, check=True)
+            subprocess.run(["git", "add", "."], cwd=root, check=True)
+            subprocess.run(
+                [
+                    "git",
+                    "-c",
+                    "user.name=Test",
+                    "-c",
+                    "user.email=test@localhost",
+                    "commit",
+                    "-qm",
+                    "fixture",
+                ],
+                cwd=root,
+                check=True,
+            )
+            require_committed_sources(root)
+            (root / "stage1b/protocol.json").write_text("uncommitted protocol")
+            with self.assertRaisesRegex(ValueError, "Commit scientific"):
+                require_committed_sources(root)
 
 
 if __name__ == "__main__":

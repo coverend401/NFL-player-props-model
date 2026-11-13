@@ -5,7 +5,6 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import shutil
-import subprocess
 import tempfile
 
 import joblib
@@ -40,6 +39,7 @@ from stage1b.artifacts import (
     validate_results,
     freeze_sources,
     verify_sources,
+    require_committed_sources,
 )
 
 
@@ -202,7 +202,8 @@ def fit_fold(d, market, year, protocol):
         "year": year,
         "train_completed_before": residual_cutoff.isoformat(),
         "max_training_outcome_available": train.completed_at.max().isoformat(),
-        "model_fit_available_at": (eval_cutoff - pd.Timedelta(minutes=1)).isoformat(),
+        "model_information_available_at": selection.completed_at.max().isoformat(),
+        "replay_status": "counterfactual reconstruction; not a historically published forecast",
         "model_information_cutoff": selection.completed_at.max().isoformat(),
     }
     rpred = model_predictions(bundle, residual)
@@ -390,6 +391,7 @@ def run(root, experiment_id):
     if target.exists():
         raise ValueError("Experiment IDs are immutable")
     rt = runtime(root)
+    source_commit = require_committed_sources(root)
     source_hashes = freeze_sources(root)
     from release_utils import resolve_release
 
@@ -472,9 +474,7 @@ def run(root, experiment_id):
             "final_period_sealed": True,
             "started_at": started,
             "finished_at": datetime.now(timezone.utc).isoformat(),
-            "source_commit": subprocess.check_output(
-                ["git", "rev-parse", "HEAD"], cwd=root, text=True
-            ).strip(),
+            "source_commit": source_commit,
             "input_release": release["release_id"],
             "input_relative_path": str(source.relative_to(root)),
             "input_sha256": input_hash,

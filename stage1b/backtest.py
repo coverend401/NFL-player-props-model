@@ -98,6 +98,31 @@ def verify_quotes(quotes, evidence_manifest, evidence_root):
             or urlparse(url).username
         ):
             raise ValueError("Invalid reviewed provider source")
+        rule = e.get("settlement_rule")
+        if not rule or rule.get("rule_id") != row["rule_id"]:
+            raise ValueError("Archived settlement rule evidence required")
+        rule_path = (root / rule["path"]).resolve()
+        if (
+            root not in rule_path.parents
+            or rule_path.is_symlink()
+            or hashlib.sha256(rule_path.read_bytes()).hexdigest() != rule["sha256"]
+        ):
+            raise ValueError("Settlement rule evidence missing or modified")
+        rule_time = pd.Timestamp(rule["available_at"])
+        if (
+            pd.isna(rule_time)
+            or rule_time.tzinfo is None
+            or rule_time > row["decision_at"]
+        ):
+            raise ValueError("Retrospective settlement rules cannot be assumed")
+        rule_url = urlparse(rule.get("source_url", ""))
+        if (
+            rule_url.scheme != "https"
+            or not rule_url.hostname
+            or rule_url.query
+            or rule_url.username
+        ):
+            raise ValueError("Invalid reviewed settlement rule source")
         payload = json.loads(path.read_text())
         # Reviewed normalized extraction MUST bind every economic/identity field
         # to the archived source. Preserve the original provider response too.
@@ -274,8 +299,10 @@ def run_verified_backtest(
     q = q.merge(f, on=keys, how="left", validate="many_to_one", indicator=True)
     if not q._merge.eq("both").all():
         raise ValueError("No exact predecision forecast for quote")
-    if not (pd.to_datetime(q.model_fit_available_at, utc=True) < q.decision_at).all():
-        raise ValueError("Model fitted after decision")
+    if not (
+        pd.to_datetime(q.model_information_available_at, utc=True) < q.decision_at
+    ).all():
+        raise ValueError("Model information after decision")
     if not (pd.to_datetime(q.history_available_at, utc=True) < q.decision_at).all():
         raise ValueError("Future history used")
     if (

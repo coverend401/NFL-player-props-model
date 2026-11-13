@@ -48,9 +48,9 @@ def reprice_quotes(quotes, experiment, root):
         for year, h in joined.groupby("season"):
             bundle = joblib.load(experiment / "models" / f"{market}-{int(year)}.joblib")
             if not (
-                h.decision_at > pd.Timestamp(bundle["model_fit_available_at"])
+                h.decision_at > pd.Timestamp(bundle["model_information_available_at"])
             ).all():
-                raise ValueError("Model unavailable at decision")
+                raise ValueError("Model information unavailable at decision")
             probabilities = price_bundle(bundle, h, h.line.to_numpy())
             z = h[
                 [
@@ -62,7 +62,9 @@ def reprice_quotes(quotes, experiment, root):
                     "history_available_at",
                 ]
             ].copy()
-            z["model_fit_available_at"] = bundle["model_fit_available_at"]
+            z["model_information_available_at"] = bundle[
+                "model_information_available_at"
+            ]
             z[["p_over", "p_under", "p_push"]] = probabilities
             z["outcome"] = h.y.to_numpy()
             z["outcome_available_at"] = h.completed_at.to_numpy()
