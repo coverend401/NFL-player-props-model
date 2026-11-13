@@ -1,0 +1,1082 @@
+[
+  {
+    "market": "passing_yards",
+    "season": 2022,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 70.27561305800292,
+      "ridge": 69.12621184086524,
+      "gradient_boosting": 72.31093467547905
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution_fit": 280,
+      "calibration": 163,
+      "method_selection": 132
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "passing_yards",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 68.47084044950562,
+      "ridge": 68.05911534586218,
+      "gradient_boosting": 69.90894178593277
+    },
+    "selected": "empirical|sigmoid",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution_fit": 272,
+      "calibration": 154,
+      "method_selection": 124
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "passing_yards",
+    "season": 2024,
+    "point_method": "gradient_boosting",
+    "point_selection_mae": {
+      "career_mean": 62.48339780767919,
+      "ridge": 61.0051686738848,
+      "gradient_boosting": 60.680958963857464
+    },
+    "selected": "quantile|isotonic",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution_fit": 280,
+      "calibration": 161,
+      "method_selection": 140
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "passing_yards",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 75.36678439987114,
+      "ridge": 68.82407262319222,
+      "gradient_boosting": 80.47786535238433
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution_fit": 287,
+      "calibration": 157,
+      "method_selection": 133
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "passing_yards",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 68.97154054223638,
+      "ridge": 65.33857139548667,
+      "gradient_boosting": 67.85546971877257
+    },
+    "selected": "normal_oos|sigmoid",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution_fit": 280,
+      "calibration": 156,
+      "method_selection": 144
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2022,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 8.46066055323437,
+      "ridge": 8.491118648249811,
+      "gradient_boosting": 8.622746264268715
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution_fit": 280,
+      "calibration": 163,
+      "method_selection": 132
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 8.565801940736225,
+      "ridge": 8.15810544639578,
+      "gradient_boosting": 9.147970246753546
+    },
+    "selected": "normal_oos|sigmoid",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution_fit": 272,
+      "calibration": 154,
+      "method_selection": 124
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 7.7201865702362635,
+      "ridge": 7.532908400543955,
+      "gradient_boosting": 7.687145714778262
+    },
+    "selected": "hurdle|sigmoid",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution_fit": 280,
+      "calibration": 161,
+      "method_selection": 140
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 8.843324022369394,
+      "ridge": 8.073526833545202,
+      "gradient_boosting": 8.24994217810864
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution_fit": 287,
+      "calibration": 157,
+      "method_selection": 133
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "passing_attempts",
+    "season": 2026,
+    "point_method": "gradient_boosting",
+    "point_selection_mae": {
+      "career_mean": 8.36610958356637,
+      "ridge": 7.960741009455493,
+      "gradient_boosting": 7.957373200104023
+    },
+    "selected": "poisson|sigmoid",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution_fit": 280,
+      "calibration": 156,
+      "method_selection": 144
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "completions",
+    "season": 2022,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 5.889412268458151,
+      "ridge": 5.798042663376842,
+      "gradient_boosting": 5.955874349727298
+    },
+    "selected": "empirical|isotonic",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution_fit": 280,
+      "calibration": 163,
+      "method_selection": 132
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "completions",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 5.892875885548637,
+      "ridge": 5.756674197310551,
+      "gradient_boosting": 6.0968830525631095
+    },
+    "selected": "empirical|sigmoid",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution_fit": 272,
+      "calibration": 154,
+      "method_selection": 124
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "completions",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 5.302355568653959,
+      "ridge": 5.182629393995258,
+      "gradient_boosting": 5.36400191032905
+    },
+    "selected": "quantile|isotonic",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution_fit": 280,
+      "calibration": 161,
+      "method_selection": 140
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "completions",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 6.13993443128186,
+      "ridge": 5.668330987683105,
+      "gradient_boosting": 6.337921857210744
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution_fit": 287,
+      "calibration": 157,
+      "method_selection": 133
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "completions",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 5.689888852636134,
+      "ridge": 5.391890367503134,
+      "gradient_boosting": 5.511789974381141
+    },
+    "selected": "normal_oos|sigmoid",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution_fit": 280,
+      "calibration": 156,
+      "method_selection": 144
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2022,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 23.77794468516309,
+      "ridge": 23.95526391295607,
+      "gradient_boosting": 26.1632563835488
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 883,
+      "point_select": 1056,
+      "refit_train": 1939,
+      "distribution_fit": 547,
+      "calibration": 294,
+      "method_selection": 264
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 24.19549150404995,
+      "ridge": 23.45627038639134,
+      "gradient_boosting": 24.66650465012502
+    },
+    "selected": "empirical|identity",
+    "phase_n": {
+      "point_train": 1939,
+      "point_select": 1105,
+      "refit_train": 3044,
+      "distribution_fit": 569,
+      "calibration": 334,
+      "method_selection": 283
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 23.955020666237772,
+      "ridge": 23.310958473502144,
+      "gradient_boosting": 23.943925835858444
+    },
+    "selected": "hurdle|sigmoid",
+    "phase_n": {
+      "point_train": 3044,
+      "point_select": 1186,
+      "refit_train": 4230,
+      "distribution_fit": 548,
+      "calibration": 325,
+      "method_selection": 275
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 24.501765109111574,
+      "ridge": 21.838904870317567,
+      "gradient_boosting": 22.262350182237686
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 4230,
+      "point_select": 1148,
+      "refit_train": 5378,
+      "distribution_fit": 559,
+      "calibration": 318,
+      "method_selection": 273
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_yards",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 24.77438285191151,
+      "ridge": 22.672270368853216,
+      "gradient_boosting": 22.792546840432465
+    },
+    "selected": "quantile|isotonic",
+    "phase_n": {
+      "point_train": 5378,
+      "point_select": 1150,
+      "refit_train": 6528,
+      "distribution_fit": 563,
+      "calibration": 345,
+      "method_selection": 293
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2022,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 4.215014687399149,
+      "ridge": 4.036780295161504,
+      "gradient_boosting": 4.362674662009187
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 883,
+      "point_select": 1056,
+      "refit_train": 1939,
+      "distribution_fit": 547,
+      "calibration": 294,
+      "method_selection": 264
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 4.6056502435307785,
+      "ridge": 4.22081859149397,
+      "gradient_boosting": 4.517083505572414
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 1939,
+      "point_select": 1105,
+      "refit_train": 3044,
+      "distribution_fit": 569,
+      "calibration": 334,
+      "method_selection": 283
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 4.132767978533212,
+      "ridge": 3.9524028352347322,
+      "gradient_boosting": 4.107624187732689
+    },
+    "selected": "empirical|identity",
+    "phase_n": {
+      "point_train": 3044,
+      "point_select": 1186,
+      "refit_train": 4230,
+      "distribution_fit": 548,
+      "calibration": 325,
+      "method_selection": 275
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 4.561518141468853,
+      "ridge": 3.986574530135563,
+      "gradient_boosting": 4.0338849563987145
+    },
+    "selected": "normal_oos|identity",
+    "phase_n": {
+      "point_train": 4230,
+      "point_select": 1148,
+      "refit_train": 5378,
+      "distribution_fit": 559,
+      "calibration": 318,
+      "method_selection": 273
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "rushing_attempts",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 4.409705131863507,
+      "ridge": 3.885122092003104,
+      "gradient_boosting": 4.115563521990674
+    },
+    "selected": "empirical|sigmoid",
+    "phase_n": {
+      "point_train": 5378,
+      "point_select": 1150,
+      "refit_train": 6528,
+      "distribution_fit": 563,
+      "calibration": 345,
+      "method_selection": 293
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2022,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 11.126015870225695,
+      "ridge": 11.183579987255365,
+      "gradient_boosting": 13.074521643805758
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution_fit": 280,
+      "calibration": 163,
+      "method_selection": 132
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2023,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 11.028737289053106,
+      "ridge": 11.428956685712732,
+      "gradient_boosting": 12.445616784222304
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution_fit": 272,
+      "calibration": 154,
+      "method_selection": 124
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 11.999322309180075,
+      "ridge": 11.911655876568378,
+      "gradient_boosting": 12.452665001370296
+    },
+    "selected": "empirical|sigmoid",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution_fit": 280,
+      "calibration": 161,
+      "method_selection": 140
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 11.723263490397617,
+      "ridge": 11.55791383544143,
+      "gradient_boosting": 11.980674097329358
+    },
+    "selected": "quantile|identity",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution_fit": 287,
+      "calibration": 157,
+      "method_selection": 133
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_yards",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 12.738964767927818,
+      "ridge": 12.227481495264891,
+      "gradient_boosting": 13.597611309908979
+    },
+    "selected": "hurdle|identity",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution_fit": 280,
+      "calibration": 156,
+      "method_selection": 144
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2022,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 1.8187890760151535,
+      "ridge": 1.829868607913436,
+      "gradient_boosting": 2.0998896271464087
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 394,
+      "point_select": 541,
+      "refit_train": 935,
+      "distribution_fit": 280,
+      "calibration": 163,
+      "method_selection": 132
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2023,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 1.7895643755505073,
+      "ridge": 1.857744850764278,
+      "gradient_boosting": 1.9005501980400252
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 935,
+      "point_select": 575,
+      "refit_train": 1510,
+      "distribution_fit": 272,
+      "calibration": 154,
+      "method_selection": 124
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.831626597071007,
+      "ridge": 1.8210601786841385,
+      "gradient_boosting": 1.83506855737262
+    },
+    "selected": "negative_binomial|sigmoid",
+    "phase_n": {
+      "point_train": 1510,
+      "point_select": 550,
+      "refit_train": 2060,
+      "distribution_fit": 280,
+      "calibration": 161,
+      "method_selection": 140
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.8414877303737296,
+      "ridge": 1.835131812579012,
+      "gradient_boosting": 1.8890382881902348
+    },
+    "selected": "negative_binomial|sigmoid",
+    "phase_n": {
+      "point_train": 2060,
+      "point_select": 581,
+      "refit_train": 2641,
+      "distribution_fit": 287,
+      "calibration": 157,
+      "method_selection": 133
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "qb_rushing_attempts",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.8418914970985372,
+      "ridge": 1.778094735820499,
+      "gradient_boosting": 2.239717367336446
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 2641,
+      "point_select": 577,
+      "refit_train": 3218,
+      "distribution_fit": 280,
+      "calibration": 156,
+      "method_selection": 144
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2022,
+    "point_method": "career_mean",
+    "point_selection_mae": {
+      "career_mean": 20.177238420717657,
+      "ridge": 20.192308917794104,
+      "gradient_boosting": 20.411121084096884
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 2670,
+      "point_select": 3304,
+      "refit_train": 5974,
+      "distribution_fit": 1731,
+      "calibration": 946,
+      "method_selection": 817
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 20.590832119182068,
+      "ridge": 20.339896893570923,
+      "gradient_boosting": 20.56384485839066
+    },
+    "selected": "empirical|sigmoid",
+    "phase_n": {
+      "point_train": 5974,
+      "point_select": 3494,
+      "refit_train": 9468,
+      "distribution_fit": 1691,
+      "calibration": 964,
+      "method_selection": 831
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 19.486644196151946,
+      "ridge": 19.188308720326106,
+      "gradient_boosting": 19.4395071515196
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 9468,
+      "point_select": 3486,
+      "refit_train": 12954,
+      "distribution_fit": 1734,
+      "calibration": 986,
+      "method_selection": 833
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 20.35126147573009,
+      "ridge": 19.414704058344345,
+      "gradient_boosting": 19.564517221253134
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 12954,
+      "point_select": 3553,
+      "refit_train": 16507,
+      "distribution_fit": 1691,
+      "calibration": 958,
+      "method_selection": 841
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "receiving_yards",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 19.48658726920947,
+      "ridge": 18.722375487794636,
+      "gradient_boosting": 18.942080718254452
+    },
+    "selected": "quantile|sigmoid",
+    "phase_n": {
+      "point_train": 16507,
+      "point_select": 3490,
+      "refit_train": 19997,
+      "distribution_fit": 1714,
+      "calibration": 1009,
+      "method_selection": 860
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  },
+  {
+    "market": "receptions",
+    "season": 2022,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.5730113872058922,
+      "ridge": 1.5365710111505393,
+      "gradient_boosting": 1.5713632566120705
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 2670,
+      "point_select": 3304,
+      "refit_train": 5974,
+      "distribution_fit": 1731,
+      "calibration": 946,
+      "method_selection": 817
+    },
+    "train_cutoff": "2021-09-09T23:20:00+00:00",
+    "calibration_cutoff": "2021-12-17T00:20:00+00:00",
+    "selection_cutoff": "2022-09-08T23:20:00+00:00",
+    "maximum_training_outcome": "2021-01-04T09:20:00+00:00",
+    "maximum_selection_outcome": "2022-01-10T09:20:00+00:00"
+  },
+  {
+    "market": "receptions",
+    "season": 2023,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.5935472635427264,
+      "ridge": 1.5635203521414986,
+      "gradient_boosting": 1.6053789131245986
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 5974,
+      "point_select": 3494,
+      "refit_train": 9468,
+      "distribution_fit": 1691,
+      "calibration": 964,
+      "method_selection": 831
+    },
+    "train_cutoff": "2022-09-08T23:20:00+00:00",
+    "calibration_cutoff": "2022-12-16T00:15:00+00:00",
+    "selection_cutoff": "2023-09-07T23:20:00+00:00",
+    "maximum_training_outcome": "2022-01-10T09:20:00+00:00",
+    "maximum_selection_outcome": "2023-01-09T09:20:00+00:00"
+  },
+  {
+    "market": "receptions",
+    "season": 2024,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.5543789170075486,
+      "ridge": 1.5226555349325477,
+      "gradient_boosting": 1.5713501830639787
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 9468,
+      "point_select": 3486,
+      "refit_train": 12954,
+      "distribution_fit": 1734,
+      "calibration": 986,
+      "method_selection": 833
+    },
+    "train_cutoff": "2023-09-07T23:20:00+00:00",
+    "calibration_cutoff": "2023-12-15T00:15:00+00:00",
+    "selection_cutoff": "2024-09-05T23:20:00+00:00",
+    "maximum_training_outcome": "2023-01-09T09:20:00+00:00",
+    "maximum_selection_outcome": "2024-01-08T09:20:00+00:00"
+  },
+  {
+    "market": "receptions",
+    "season": 2025,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.5560897880281814,
+      "ridge": 1.4726031251352918,
+      "gradient_boosting": 1.485882590722237
+    },
+    "selected": "scaled_empirical|sigmoid",
+    "phase_n": {
+      "point_train": 12954,
+      "point_select": 3553,
+      "refit_train": 16507,
+      "distribution_fit": 1691,
+      "calibration": 958,
+      "method_selection": 841
+    },
+    "train_cutoff": "2024-09-05T23:20:00+00:00",
+    "calibration_cutoff": "2024-12-13T00:15:00+00:00",
+    "selection_cutoff": "2025-09-04T23:20:00+00:00",
+    "maximum_training_outcome": "2024-01-08T09:20:00+00:00",
+    "maximum_selection_outcome": "2025-01-06T09:20:00+00:00"
+  },
+  {
+    "market": "receptions",
+    "season": 2026,
+    "point_method": "ridge",
+    "point_selection_mae": {
+      "career_mean": 1.5316839970226153,
+      "ridge": 1.451622832236802,
+      "gradient_boosting": 1.4740902482879017
+    },
+    "selected": "scaled_empirical|identity",
+    "phase_n": {
+      "point_train": 16507,
+      "point_select": 3490,
+      "refit_train": 19997,
+      "distribution_fit": 1714,
+      "calibration": 1009,
+      "method_selection": 860
+    },
+    "train_cutoff": "2025-09-04T23:20:00+00:00",
+    "calibration_cutoff": "2025-12-12T00:15:00+00:00",
+    "selection_cutoff": "2026-09-09T23:20:00+00:00",
+    "maximum_training_outcome": "2025-01-06T09:20:00+00:00",
+    "maximum_selection_outcome": "2026-01-05T09:20:00+00:00"
+  }
+]

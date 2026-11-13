@@ -1,0 +1,18 @@
+{
+  "version": "stage1b-v1",
+  "seed": 41017,
+  "evaluation_seasons": [2022, 2023, 2024, 2025, 2026],
+  "final_start": "2026-11-19T00:00:00Z",
+  "final_season": 2026,
+  "final_week": 11,
+  "prediction_lead_hours": 1,
+  "distribution_fit_last_week": 9,
+  "calibration_last_week": 14,
+  "probe_multipliers": [0.5, 1.0, 1.5],
+  "bootstrap_replicates": 500,
+  "bootstrap_week_block": 4,
+  "minimum_phase_rows": 40,
+  "betting_policy": {"minimum_ev": 0.03, "fixed_stake": 1.0, "fractional_kelly": 0.125, "maximum_bankroll_fraction": 0.005},
+  "final_status": "SEALED: runner has no final-unseal option; separate approval and frozen protocol required",
+  "historical_tier": "retrospective-statistics replay; publication timestamps and pregame roster snapshots unavailable"
+}

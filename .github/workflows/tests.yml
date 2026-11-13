@@ -7,6 +7,9 @@ permissions:
   contents: read
 jobs:
   regression:
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -27,3 +30,10 @@ jobs:
             python scripts/rehearse_release.py --all-current-candidates
           fi
           python -c 'from pathlib import Path; from release_utils import resolve_release; resolve_release(Path.cwd())'
+      - name: Validate isolated Stage 1B research artifacts and dashboard
+        if: matrix.python-version == '3.14'
+        run: |
+          for manifest in experiments/stage1b/*/manifest.json; do
+            if [ -f "$manifest" ]; then python -m stage1b.cli "$(dirname "$manifest")"; fi
+          done
+          python -c 'from streamlit.testing.v1 import AppTest; a=AppTest.from_file("stage1b_dashboard.py",default_timeout=90).run(); assert not a.exception, [e.message for e in a.exception]'
