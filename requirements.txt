@@ -1,2 +1,3 @@
 # Shared, tested production and training environment. See release_runtime.json.
+# Cloud compatibility release: pyarrow 24.0.0; rebuild the hosted environment.
 -r requirements-production.lock
