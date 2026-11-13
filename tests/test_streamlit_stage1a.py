@@ -97,6 +97,22 @@ class StreamlitStage1ATests(unittest.TestCase):
         self.assertTrue(any("Roof unresolved" in w.value for w in at.warning))
         self.assertFalse(any(m.label == "Model probability Over" for m in at.metric))
 
+    def test_started_fixtures_are_hidden_from_an_already_selected_release(self):
+        slate = self.slate()
+        slate["game_id"] = "started"
+        manifest = {
+            "release_id": "test",
+            "built_at": "test",
+            "game_kickoffs": {"started": "2000-01-01T00:00Z"},
+        }
+
+        def selected(root):
+            return Path(root) / "data", manifest
+
+        with patch("release_utils.resolve_release", side_effect=selected):
+            at = self.run_app(slate)
+        self.assertFalse(any(m.label.startswith("Model projection") for m in at.metric))
+
     def test_empty_slate_renders_without_historical_prediction_fallback(self):
         at = self.run_app(self.slate().iloc[:0])
         self.assertFalse(any(m.label.startswith("Model projection") for m in at.metric))

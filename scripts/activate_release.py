@@ -1,6 +1,7 @@
 """Validate a future approved selection. Default is dry-run; never pushes or deploys."""
 
 import argparse
+from datetime import datetime, timezone
 from pathlib import Path
 import sys
 
@@ -30,6 +31,17 @@ if __name__ == "__main__":
     if not args.candidate:
         raise SystemExit("A candidate path is required")
     path = checked_path(ROOT, args.candidate)
+    from release_utils import read_json
+
+    manifest = read_json(path / "manifest.json")
+    if datetime.now(timezone.utc) >= datetime.fromisoformat(
+        manifest["activate_before"]
+    ):
+        raise SystemExit("Candidate deadline has passed; regenerate before activation")
+    pointer = ROOT / "active_release.json"
+    actual = read_json(pointer)["release_id"] if pointer.exists() else "legacy"
+    if actual != args.expected_current:
+        raise SystemExit("Current selection changed; review the expected release ID")
     validate_bundle(path, app_smoke=True)
     if args.write_pointer:
         print(select_release(ROOT, args.candidate, args.expected_current))

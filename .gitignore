@@ -4,3 +4,7 @@ ledger_local.db*
 .release-switch.lock
 .release-pointer-*
 release_candidates/.*.tmp/
+
+.env
+.streamlit/secrets.toml
+.venv/

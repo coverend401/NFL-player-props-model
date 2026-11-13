@@ -13,7 +13,7 @@ sys.path.insert(0, str(ROOT))
 import joblib
 import numpy as np
 import pandas as pd
-from release_utils import validate_manifest, SOURCE_FILES, select_release
+from release_utils import validate_manifest, SOURCE_FILES, select_release, sha256
 from scripts.build_slate import build_slate, compute_top_picks, MARKETS as SLATE_MARKETS
 from scripts.train_all_markets import MARKETS, prepare_dataset
 
@@ -168,7 +168,25 @@ def smoke_app(directory, repo):
         # Legacy files are not needed by the active bundle; copy no ledger/secrets.
         target = root / "release_candidates" / directory.name
         shutil.copytree(directory, target)
-        select_release(root, str(target.relative_to(root)), expected_current="legacy")
+        manifest = validate_manifest(target, root)
+        if pd.Timestamp.now(tz="UTC") < pd.Timestamp(manifest["activate_before"]):
+            select_release(
+                root, str(target.relative_to(root)), expected_current="legacy"
+            )
+        else:
+            # Rehearse an ALREADY ACTIVE older release in temporary storage.
+            # Real activation still rejects stale candidates. The app must hide
+            # started fixtures rather than force future weekly builds to delete
+            # the last approved rollback bundle.
+            (root / "active_release.json").write_text(
+                json.dumps(
+                    {
+                        "release_id": manifest["release_id"],
+                        "path": str(target.relative_to(root)),
+                        "manifest_sha256": sha256(target / "manifest.json"),
+                    }
+                )
+            )
         try:
             os.chdir(root)
             with (
@@ -185,8 +203,23 @@ def smoke_app(directory, repo):
                 if at.exception:
                     raise ValueError([e.message for e in at.exception])
                 slate = pd.read_parquet(target / "data/slate.parquet")
+                now = pd.Timestamp.now(tz="UTC")
+                kickoff = pd.to_datetime(
+                    slate.game_id.map(manifest["game_kickoffs"]), utc=True
+                )
+                slate = slate[kickoff > now]
+                if slate.empty:
+                    if any(m.label == "Model probability Over" for m in at.metric):
+                        raise ValueError("Started fixtures remain priced")
+                    return
                 for market in SLATE_MARKETS.values():
                     at.selectbox[0].select(market).run()
+                    available = slate[
+                        (slate.market == market)
+                        & slate.projection_status.eq("complete")
+                    ]
+                    if available.empty:
+                        continue
                     player = (
                         slate[
                             (slate.market == market)
@@ -238,6 +271,24 @@ if __name__ == "__main__":
     if not paths:
         raise SystemExit("No release candidates found")
     for path in paths:
+        archived = validate_manifest(
+            path.parent, ROOT, check_source=False, check_runtime=False
+        )
+        source_matches = all(
+            sha256(ROOT / name) == digest
+            for name, digest in archived["source_sha256"].items()
+        )
+        if args.all_candidates and not source_matches:
+            print(
+                json.dumps(
+                    {
+                        "release_id": archived["release_id"],
+                        "archived_integrity_verified": True,
+                        "selection_compatible_with_current_code": False,
+                    }
+                )
+            )
+            continue
         print(
             json.dumps(validate_bundle(path.parent, app_smoke=args.app_smoke), indent=2)
         )
