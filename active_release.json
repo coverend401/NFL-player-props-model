@@ -1,0 +1,21 @@
+{
+  "release_id": "stage1a-20261113-py314-r3",
+  "path": "release_candidates/stage1a-20261113-py314-r3",
+  "manifest_sha256": "3203f8ebec75f9364d472fdfa1310236592a002ac768f10bb8e52a81d8866bdd",
+  "previous": null,
+  "legacy_data_sha256": {
+    "weekly_player_data.parquet": "fa4e7bf5d358a4dbba5a52caed0b143382ee7a94e675827813ce37298050a82e",
+    "player_features.parquet": "cc6bce676a63c73ae60a31caa092588d8b989d3af795e75972c10abcd92202c9",
+    "slate.parquet": "a5955588d7ab5aea060935a5fc142dafa2e6b8791c3eaa324ab5e0e2ba976b2b",
+    "top_picks.parquet": "dd376c1258ea66fed6ae88f8066cd03a9213901f633829f362c51dc3c2ac8467",
+    "model_passing_yards.joblib": "e74d2b48e50235016e8f533316a273f12b3a4946221da65ae216cae537baaa15",
+    "model_passing_attempts.joblib": "b9b263c319691570e834fc486b0fab43e180af5909c5efbfad0a397d44ad0564",
+    "model_completions.joblib": "5cad046b41e5abab1709520944fc0743ef6a205e19ec5337763cb4f8ef3ac2e7",
+    "model_rushing_yards.joblib": "b2321ec05a40bd91b3fbbb4ab7ea0b44b0422acf8952c8420c593644e9743fc7",
+    "model_rushing_attempts.joblib": "83fd636e0763c4e7625431a7f6547f167647e494e82efe57a3ed1c70f8a17b2e",
+    "model_qb_rushing_yards.joblib": "6ea8e1ad03ce7edb79b6ab2e1c52f9b6bcf3106b3cd8b93639157dc1a39fe55b",
+    "model_qb_rushing_attempts.joblib": "902ecf0e1fb77b3d10767d701ac02e9e0774d0fe05c3d7578ee0d397f0dcbde6",
+    "model_receiving_yards.joblib": "be169823223f257c8a15ef5dbcccd7602a65008bd296d762e08ef506b76b526e",
+    "model_receptions.joblib": "1e7c71bd47f757cded82c665af0793f9e1c1aa418d8d5fa6db3cde1e892f743b"
+  }
+}
