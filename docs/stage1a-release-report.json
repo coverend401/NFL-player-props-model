@@ -1,0 +1,200 @@
+{
+  "release_id": "stage1a-20261113-py314-r3",
+  "candidate_path": "release_candidates/stage1a-20261113-py314-r3",
+  "manifest_sha256": "3203f8ebec75f9364d472fdfa1310236592a002ac768f10bb8e52a81d8866bdd",
+  "source_commit": "388bdee2da0e9f0841b5054256c6ae3ce1fd57a0",
+  "build_started_at": "2026-11-13T14:39:35.823497+00:00",
+  "built_at": "2026-11-13T14:40:59.168334+00:00",
+  "validated_at": "2026-11-13T14:42:01.500873+00:00",
+  "activation_deadline_utc": "2026-11-15T14:30:00+00:00",
+  "ready_for_review": true,
+  "production_selection_written": false,
+  "production_main_checked": "0c6029002be0820c0502d957372d5261610ba927",
+  "original_data_unchanged": true,
+  "runtime_recommendation": "Keep existing Python 3.14; do not change production settings",
+  "tested_python": "3.14.10",
+  "pinned_runtime": {
+    "python_minor": "3.14",
+    "python_build": "3.14.10",
+    "packages": {
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "MarkupSafe": "3.0.4",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "26.0.1",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "PyJWT": "2.15.1",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    }
+  },
+  "compatibility_checks": {
+    "unit_tests_python314": 51,
+    "unit_tests_python312": 51,
+    "existing_model_files_loaded_and_roundtripped": 18,
+    "reference_prediction_max_abs_delta_312_vs_314": 0.0,
+    "reference_prediction_tolerance": 1e-10,
+    "original_main_app_on314": "passed initial render and odds lookup",
+    "cold_pinned_dependency_install_on314": "passed",
+    "pip_check": "passed",
+    "native_release_models": 9,
+    "all_forecasts_replayed": true,
+    "top_picks_replayed": true,
+    "release_app_all_nine_markets": "passed",
+    "dry_run": "passed without changing selection"
+  },
+  "table_rows": {
+    "weekly_player_data.parquet": 139346,
+    "player_features.parquet": 185912,
+    "slate.parquet": 780,
+    "top_picks.parquet": 18
+  },
+  "slate_statuses": {
+    "complete": 566,
+    "roof_scenarios_only": 214
+  },
+  "models": {
+    "model_passing_yards.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_passing_attempts.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_completions.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_rushing_yards.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_rushing_attempts.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_qb_rushing_yards.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_qb_rushing_attempts.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_receiving_yards.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    },
+    "model_receptions.joblib": {
+      "training_as_of": "2026-11-13T14:39:55.342874+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00",
+      "release_id": "stage1a-20261113-py314-r3"
+    }
+  },
+  "rollback_rehearsal": {
+    "release_id": "stage1a-20261113-py314-r3",
+    "manifest_sha256": "3203f8ebec75f9364d472fdfa1310236592a002ac768f10bb8e52a81d8866bdd",
+    "checks": {
+      "missing_model": {
+        "rejected": true,
+        "reason": "Missing or unexpected release data files"
+      },
+      "future_training": {
+        "rejected": true,
+        "reason": "Future/stale build provenance: passing_yards"
+      },
+      "wrong_release_id": {
+        "rejected": true,
+        "reason": "Mixed or legacy model: passing_yards"
+      },
+      "incorrect_projection": {
+        "rejected": true,
+        "reason": "DataFrame.iloc[:, 5] (column name=\"projection\") are different"
+      },
+      "rollback": {
+        "restored_verified_legacy": true,
+        "bet_marker_unchanged": true
+      }
+    }
+  },
+  "remaining_preflight": [
+    "Explicit approval for selection/merge/deployment",
+    "Confirm live bet/settings backup or persistent storage and existing secret bindings",
+    "Recheck candidate deadline and unchanged main before cutover; regenerate if stale",
+    "Existing main scheduled updater is unchanged until approved replacement; pause only with approval if needed"
+  ],
+  "not_claimed": [
+    "live betting profitability",
+    "hosted production database integration testing",
+    "zero-downtime hosting guarantee"
+  ]
+}

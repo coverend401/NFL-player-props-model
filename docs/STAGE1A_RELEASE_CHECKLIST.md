@@ -14,14 +14,15 @@ Changing to 3.12 would introduce a hosting migration without a demonstrated bene
 2. **Check the live app is still working.** Keep its Python 3.14 setting. Confirm the app entry point and branch, and preserve its private settings securely; do not paste secrets into chat or commit them.
 3. **Protect betting history.** Export/back up bets and settings and confirm whether storage is persistent. Local SQLite storage on Streamlit can disappear on a restart. The release does not migrate, reset, copy or overwrite the live ledger. Connected production storage is not exercised by local smoke tests.
 4. **Check the candidate is still timely.** It must be selected before its earliest listed fixture starts. If the deadline has passed, rebuild and recheck a new candidate; do not override the expiry guard.
-5. **Give explicit approval covering the candidate, selection and production cutover.** Merging into the app's tracked branch may automatically rebuild/deploy the app. Do not treat “merge” and “deploy” as safely separate actions on Community Cloud.
+5. **Recheck the existing schedule and branch.** Until this PR is approved and merged, `main` still has its old automatic updater (Tuesday 09:00 UTC). If needed, obtain explicit approval to pause it before cutover; this preparation has not changed it. Regenerate if `main` or the retained fallback data changed.
+6. **Give explicit approval covering the candidate, selection and production cutover.** Merging into the app's tracked branch may automatically rebuild/deploy the app. Do not treat “merge” and “deploy” as safely separate actions on Community Cloud.
 
 ## After approval — not performed yet
 
-6. **Prepare the selection for review on the development branch.** The owner runs the dry-run validation, then the guarded selection command below. It creates one small `active_release.json` file; it does not push or deploy. Commit that file on the existing branch and wait for green CI again. The full versioned bundle is already staged with the code; never copy individual model files into production.
-7. **Merge/deploy only at the approved time.** Use the approved PR/commit, unchanged Python 3.14 and the pinned dependencies. The app checks every selected artifact and runtime before loading forecasts. A partial or mismatched release displays an unavailable message instead of mixing files.
-8. **Check the live result.** Confirm the displayed release ID, forecast week, one complete market lookup, one unresolved-roof scenario, and the existing betting history/settings. Scenario-only rows must not produce prices or Top Picks. No automated real bet is placed by this release.
-9. **If a check fails, stop using the new forecasts and follow rollback below.** Do not repair a live release by replacing isolated files.
+7. **Prepare the selection for review on the development branch.** The owner runs the dry-run validation, then the guarded selection command below. It creates one small `active_release.json` file; it does not push or deploy. Commit that file on the existing branch and wait for green CI again. The full versioned bundle is already staged with the code; never copy individual model files into production.
+8. **Merge/deploy only at the approved time.** Use the approved PR/commit, unchanged Python 3.14 and the pinned dependencies. The app checks every selected artifact and runtime before loading forecasts. A partial or mismatched release displays an unavailable message instead of mixing files.
+9. **Check the live result.** Confirm the displayed release ID, forecast week, one complete market lookup, one unresolved-roof scenario, and the existing betting history/settings. Scenario-only rows must not produce prices or Top Picks. No automated real bet is placed by this release.
+10. **If a check fails, stop using the new forecasts and follow rollback below.** Do not repair a live release by replacing isolated files.
 
 ## Weekly updates
 
@@ -34,7 +35,7 @@ Once a release is selected, games that have already started are removed from the
 - Keep the previous Git commit, selected-release ID and complete bundle. Every selection records the previous pointer; the original legacy data files are retained unchanged and hashed.
 - **Forecast-only rollback with compatible code:** after approval, use the guarded rollback command below, commit the pointer change on the development branch, rerun CI, then approve/merge that rollback. Switching the pointer is atomic. It does not modify the ledger or any release files.
 - On the first release, rollback can return to the retained legacy forecast files only if their recorded hashes still match. The app clearly labels this as legacy data; it is not a claim that the original modelling errors have been corrected.
-- **Code or dependency failure:** restore the complete previously approved code/dependency/selection commit, not only the data pointer. Validate that combination in isolation before approving its merge/deployment. Do not downgrade Python or delete the app as an improvised rollback.
+- **Code or dependency failure:** preserve the preparation-only scheduler; do not blindly restore the old auto-push workflow. For the first release, the tested fallback is original app commit `0c6029002be0820c0502d957372d5261610ba927` plus the original data/models and this pinned Python 3.14 dependency lock. Restore the complete previously approved code/dependency/selection commit, not only the data pointer. Validate that combination in isolation before approving its merge/deployment. Do not downgrade Python or delete the app as an improvised rollback.
 - An expired previous bundle may have no remaining future fixtures; an empty forecast view is safer than stale betting recommendations. Regenerate a fresh candidate before restoring normal forecast coverage.
 
 ## Owner command reference
