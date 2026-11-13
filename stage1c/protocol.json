@@ -1,0 +1,55 @@
+{
+  "version": "stage1c-c0-c2-v1",
+  "seed": 41017,
+  "evaluation_seasons": [
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "final_start": "2026-11-19T00:00:00Z",
+  "final_season": 2026,
+  "final_week": 11,
+  "prediction_lead_hours": 1,
+  "distribution_fit_last_week": 6,
+  "calibration_last_week": 10,
+  "probe_multipliers": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "bootstrap_replicates": 500,
+  "bootstrap_week_block": 4,
+  "minimum_phase_rows": 40,
+  "final_status": "SEALED: runner has no final-unseal option; separate approval and frozen protocol required",
+  "historical_tier": "retrospective revised statistics; 36-hour source-availability proxy, NOT verified historical publication",
+  "baseline_experiment": "improvements-20261113-v1",
+  "point_minimum_relative_gain": 0.02,
+  "tail_weight": 0.15,
+  "probability_minimum_log_loss_gain": 0.005,
+  "probability_minimum_brier_gain": 0.0,
+  "interval_minimum_relative_gain": 0.01,
+  "cqr_alpha": 0.1,
+  "calibration_penalty": 0.01,
+  "minimum_gate_weeks": 8,
+  "input_bundle": "research_inputs/stage1c/public-20261113-v3",
+  "context_lag_hours": 36,
+  "families": [
+    "player_control",
+    "c1_opportunity",
+    "c1_efficiency",
+    "c1_schedule",
+    "c2_volume",
+    "c1_c2"
+  ],
+  "point_candidates": [
+    "career_mean",
+    "scaled_ridge100",
+    "hist100"
+  ],
+  "scope": "C0-C2 only; no player allocation, injury, scheme or joint outcome model",
+  "primary_market": "passing_yards",
+  "minimum_research_mae_gain": 0.01,
+  "market_information": "unavailable: market-free only"
+}
