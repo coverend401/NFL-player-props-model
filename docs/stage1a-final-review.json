@@ -1,0 +1,209 @@
+{
+  "baseline_commit": "0c6029002be0820c0502d957372d5261610ba927",
+  "reviewed_pr_commit": "de61892691507fa292fe9676488c3b91c7de7495",
+  "prediction_at": "2026-11-12T20:00:00Z",
+  "note": "Frozen legacy models and archived sources, no QB1 override. Diagnostic only; model/context provenance is unverified.",
+  "original_counts": {
+    "baseline": 1270,
+    "original_pr": 689,
+    "lost": 581
+  },
+  "original_primary_exclusions": {
+    "missing fixture context": 333,
+    "missing recent statistical history": 196,
+    "insufficient prior participation or position mismatch": 36,
+    "prior-season only": 15,
+    "no verified offensive participation history": 1
+  },
+  "after_review": {
+    "complete": 689,
+    "scenarios": 249,
+    "total": 938,
+    "withheld": 332
+  },
+  "markets": [
+    {
+      "market": "Completions",
+      "baseline": 51,
+      "original_pr": 30,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 1,
+        "missing fixture context": 14,
+        "missing recent statistical history": 6,
+        "no verified offensive participation history": 0,
+        "prior-season only": 0
+      },
+      "complete_after_review": 30,
+      "scenarios_after_review": 13
+    },
+    {
+      "market": "Passing Attempts",
+      "baseline": 51,
+      "original_pr": 30,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 1,
+        "missing fixture context": 14,
+        "missing recent statistical history": 6,
+        "no verified offensive participation history": 0,
+        "prior-season only": 0
+      },
+      "complete_after_review": 30,
+      "scenarios_after_review": 13
+    },
+    {
+      "market": "Passing Yards",
+      "baseline": 51,
+      "original_pr": 30,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 1,
+        "missing fixture context": 14,
+        "missing recent statistical history": 6,
+        "no verified offensive participation history": 0,
+        "prior-season only": 0
+      },
+      "complete_after_review": 30,
+      "scenarios_after_review": 13
+    },
+    {
+      "market": "QB Rushing Attempts",
+      "baseline": 51,
+      "original_pr": 30,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 1,
+        "missing fixture context": 14,
+        "missing recent statistical history": 6,
+        "no verified offensive participation history": 0,
+        "prior-season only": 0
+      },
+      "complete_after_review": 30,
+      "scenarios_after_review": 13
+    },
+    {
+      "market": "QB Rushing Yards",
+      "baseline": 51,
+      "original_pr": 30,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 1,
+        "missing fixture context": 14,
+        "missing recent statistical history": 6,
+        "no verified offensive participation history": 0,
+        "prior-season only": 0
+      },
+      "complete_after_review": 30,
+      "scenarios_after_review": 13
+    },
+    {
+      "market": "Receiving Yards",
+      "baseline": 388,
+      "original_pr": 200,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 8,
+        "missing fixture context": 106,
+        "missing recent statistical history": 69,
+        "no verified offensive participation history": 0,
+        "prior-season only": 5
+      },
+      "complete_after_review": 200,
+      "scenarios_after_review": 72
+    },
+    {
+      "market": "Receptions",
+      "baseline": 395,
+      "original_pr": 201,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 9,
+        "missing fixture context": 107,
+        "missing recent statistical history": 72,
+        "no verified offensive participation history": 0,
+        "prior-season only": 6
+      },
+      "complete_after_review": 201,
+      "scenarios_after_review": 72
+    },
+    {
+      "market": "Rushing Attempts",
+      "baseline": 120,
+      "original_pr": 69,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 10,
+        "missing fixture context": 25,
+        "missing recent statistical history": 13,
+        "no verified offensive participation history": 1,
+        "prior-season only": 2
+      },
+      "complete_after_review": 69,
+      "scenarios_after_review": 20
+    },
+    {
+      "market": "Rushing Yards",
+      "baseline": 112,
+      "original_pr": 69,
+      "exclusions": {
+        "insufficient prior participation or position mismatch": 4,
+        "missing fixture context": 25,
+        "missing recent statistical history": 12,
+        "no verified offensive participation history": 0,
+        "prior-season only": 2
+      },
+      "complete_after_review": 69,
+      "scenarios_after_review": 20
+    }
+  ],
+  "live_validation": {
+    "total": 848,
+    "by_status": {
+      "complete": 634,
+      "roof_scenarios_only": 214
+    },
+    "prediction_at": "2026-11-12T23:03:33.583743+00:00",
+    "models": {
+      "model_passing_yards.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_qb_rushing_yards.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_receiving_yards.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_completions.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_passing_attempts.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_rushing_yards.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_rushing_attempts.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_receptions.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      },
+      "model_qb_rushing_attempts.joblib": {
+        "feature_timing_version": "stage1a",
+        "training_cutoff": "2026-11-10T09:15:00+00:00",
+        "training_as_of": "2026-11-12T22:57:00.817560+00:00"
+      }
+    },
+    "local_tests_passed": 36,
+    "weekly_job_utc": "Tuesday 12:00"
+  }
+}

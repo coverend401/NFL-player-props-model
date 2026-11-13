@@ -1,0 +1,28 @@
+[
+  {
+    "release_id": "stage1a-20261113-py314-r3",
+    "manifest_sha256": "3203f8ebec75f9364d472fdfa1310236592a002ac768f10bb8e52a81d8866bdd",
+    "checks": {
+      "missing_model": {
+        "rejected": true,
+        "reason": "Missing or unexpected release data files"
+      },
+      "future_training": {
+        "rejected": true,
+        "reason": "Future/stale build provenance: passing_yards"
+      },
+      "wrong_release_id": {
+        "rejected": true,
+        "reason": "Mixed or legacy model: passing_yards"
+      },
+      "incorrect_projection": {
+        "rejected": true,
+        "reason": "DataFrame.iloc[:, 5] (column name=\"projection\") are different"
+      },
+      "rollback": {
+        "restored_verified_legacy": true,
+        "bet_marker_unchanged": true
+      }
+    }
+  }
+]

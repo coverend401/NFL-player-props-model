@@ -1,5 +1,9 @@
 import json
 import os
+from pathlib import Path
+import logging
+
+from release_utils import resolve_release
 from datetime import datetime, timezone
 
 import joblib
@@ -35,6 +39,24 @@ if _pw:
             st.error("Wrong password.")
         st.stop()
 
+APP_ROOT = Path(os.environ.get("NFL_APP_ROOT", Path(__file__).resolve().parent)).resolve()
+try:
+    DATA_DIR, RELEASE = resolve_release(APP_ROOT)
+except Exception:
+    logging.exception("Forecast release validation failed")
+    st.error("Forecast data is unavailable: the selected release failed integrity or compatibility checks. No predictions were loaded.")
+    st.stop()
+if RELEASE:
+    st.caption(f"Forecast release: {RELEASE['release_id']} · generated {RELEASE['built_at']}")
+
+
+def future_games(frame):
+    if RELEASE is None or frame is None or frame.empty:
+        return frame
+    kickoff = frame["game_id"].map(RELEASE["game_kickoffs"])
+    return frame[pd.to_datetime(kickoff, utc=True) > pd.Timestamp.now(tz="UTC")].copy()
+
+
 # ---------------------------------------------------------------- shared setup
 MARKETS = {
     "Passing Yards": "passing_yards",
@@ -59,28 +81,29 @@ def _mtime(path):
 
 
 @st.cache_data(ttl=1800)
-def _load_features(v):
-    return pd.read_parquet("data/player_features.parquet")
+def _load_features(path, v):
+    return pd.read_parquet(path)
 
 
 @st.cache_data(ttl=1800)
-def _load_slate(v):
+def _load_slate(path, v):
     try:
-        return pd.read_parquet("data/slate.parquet")
+        return pd.read_parquet(path)
     except FileNotFoundError:
         return None
 
 
 @st.cache_resource(ttl=1800)
-def _load_model(file_label, v):
+def _load_model(path, v):
     try:
-        return joblib.load(f"data/model_{file_label}.joblib")
+        return joblib.load(path)
     except FileNotFoundError:
         return None
 
 
 def load_model(file_label):
-    return _load_model(file_label, _mtime(f"data/model_{file_label}.joblib"))
+    path = str(DATA_DIR / f"model_{file_label}.joblib")
+    return _load_model(path, _mtime(path))
 
 
 @st.cache_data(ttl=1800)
@@ -100,10 +123,14 @@ def get_ledger():
     return Ledger(SQLiteBackend("ledger_local.db")), "Supabase not configured - bets are stored in a TEMPORARY file that is wiped when the app restarts."
 
 
-features = _load_features(_mtime("data/player_features.parquet"))
-slate = _load_slate(_mtime("data/slate.parquet"))
-LATEST = _latest_lookup(features, _mtime("data/player_features.parquet"))
+features_path = str(DATA_DIR / "player_features.parquet")
+slate_path = str(DATA_DIR / "slate.parquet")
+features = _load_features(features_path, _mtime(features_path))
+slate = future_games(_load_slate(slate_path, _mtime(slate_path)))
+LATEST = _latest_lookup(features, (features_path, _mtime(features_path)))
 ledger, ledger_warning = get_ledger()
+if slate is not None and "feature_timing_version" not in slate:
+    st.warning("Legacy forecast artifacts loaded. Stage 1A requires a coordinated feature, model and slate refresh before using corrected forecasts.")
 
 
 def load_settings():
@@ -170,7 +197,7 @@ with tabs[0]:
                "not confirmed betting value - check any pick against a real sportsbook price in "
                "Single Prop Lookup before betting it.")
     try:
-        top_picks = pd.read_parquet("data/top_picks.parquet")
+        top_picks = future_games(pd.read_parquet(DATA_DIR / "top_picks.parquet"))
         for _, r in top_picks.iterrows():
             st.markdown(f"**{r['player']}** ({r['team']} vs {r['opponent']}) — "
                         f"Over {r['recent_form']} {r['market']} "
@@ -190,6 +217,8 @@ with tabs[1]:
     st.subheader("This week's projections")
     if slate is None:
         st.warning("Slate not generated yet - run the workflow to build it.")
+    elif slate.empty:
+        st.info("No eligible upcoming projections available.")
     else:
         week_num = slate["week"].iloc[0] if len(slate) else "?"
         st.caption(f"Week {week_num} - {len(slate)} player-market projections")
@@ -197,7 +226,7 @@ with tabs[1]:
         filtered = slate[slate["market"].isin(market_filter)] if market_filter else slate
         st.dataframe(
             filtered.sort_values(["market", "projection"], ascending=[True, False])
-            [["market", "player", "team", "opponent", "projection", "career_avg", "recent_form", "games_played_prior"]],
+            [["market", "player", "team", "opponent", "projection", "career_avg", "recent_form", "games_played_prior"] + (["projection_status"] if "projection_status" in filtered else [])],
             width="stretch", hide_index=True)
         st.caption("No bookmaker odds baked in yet - check any interesting projection against "
                    "a real sportsbook price in the Single Prop Lookup tab to see edge and EV.")
@@ -215,23 +244,29 @@ with tabs[2]:
         model, resid_std = bundle["model"], bundle["resid_std"]
         feature_cols, positions = bundle["features"], bundle["positions"]
 
-        eligible = features[features["position"].isin(positions)]
-        players = sorted(eligible["player_display_name"].dropna().unique())
-        player = st.selectbox("Player", players)
-        player_rows = eligible[eligible["player_display_name"] == player].dropna(subset=feature_cols)
-        if player_rows.empty:
-            st.warning("Not enough game history for this player yet.")
+        if slate is None or slate.empty:
+            st.warning("No upcoming projections available. Run the data workflow before pricing a prop.")
             return
-
-        latest = player_rows.sort_values(["season", "week"]).iloc[-1]
-        X = latest[feature_cols].astype(float).to_frame().T
-        prediction = model.predict(X)[0]
-        games_played = int(latest["games_played_prior"])
+        market_slate = slate[slate["market"] == market_label]
+        players = sorted(market_slate["player"].dropna().unique())
+        if not players:
+            st.warning(f"No eligible upcoming projections for {market_label}.")
+            return
+        player = st.selectbox("Player", players)
+        projection_row = market_slate[market_slate["player"] == player].iloc[0]
+        prediction = float(projection_row["projection"])
+        resid_std = float(projection_row["resid_std"])
+        games_played = int(projection_row["games_played_prior"])
 
         st.metric(f"Model projection - {market_label}", f"{prediction:.1f}")
-        st.caption(f"Based on data through Season {int(latest['season'])}, Week {int(latest['week'])} "
-                   f"({games_played} prior games on record).")
+        st.caption(f"Upcoming Week {int(projection_row['week'])}; {games_played} prior participating games."
+                   + (f" Prediction timestamp: {projection_row['prediction_at']}." if "prediction_at" in projection_row else ""))
 
+        if projection_row.get("projection_status", "complete") != "complete":
+            st.warning(f"Roof unresolved: indoor/outdoor scenario range "
+                       f"{projection_row['roof_scenario_low']:.1f}–{projection_row['roof_scenario_high']:.1f}. "
+                       "The displayed midpoint is exploratory; pricing is unavailable.")
+            return
         st.subheader("Compare against a bookmaker price")
         line = st.number_input("Bookmaker line", value=float(round(prediction, 1)), step=0.5)
         col1, col2 = st.columns(2)

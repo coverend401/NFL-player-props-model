@@ -12,7 +12,19 @@ which stays a manual step (no free odds API exists for this project).
 import pandas as pd
 import numpy as np
 import joblib
-from datetime import datetime
+import os
+import json
+from pathlib import Path
+from datetime import datetime, timezone
+
+try:
+    from .forecast_features import (completed_history, defense_features, upcoming_player_state,
+                                    pregame_eligible, schedule_times, utc_timestamp)
+    from .build_features import STAT_COLS, AUX_STAT_COLS
+except ImportError:
+    from forecast_features import (completed_history, defense_features, upcoming_player_state,
+                                   pregame_eligible, schedule_times, utc_timestamp)
+    from build_features import STAT_COLS, AUX_STAT_COLS
 
 MARKETS = {
     "passing_yards": "Passing Yards",
@@ -28,15 +40,14 @@ MARKETS = {
 
 
 def get_upcoming_week(schedule: pd.DataFrame, as_of: pd.Timestamp):
-    """The next week that has at least one game not yet played."""
-    schedule = schedule.copy()
-    schedule["gameday"] = pd.to_datetime(schedule["gameday"])
-    reg = schedule[schedule["game_type"] == "REG"]
-    upcoming = reg[reg["gameday"] >= as_of]
+    """Only not-yet-started games in the next season/week, in kickoff order."""
+    schedule = schedule_times(schedule)
+    upcoming = schedule[(schedule.game_type == "REG") &
+                        (schedule.kickoff_at > utc_timestamp(as_of))]
     if upcoming.empty:
         raise ValueError("No upcoming regular-season games found in the schedule.")
-    week = int(upcoming["week"].min())
-    return week, reg[reg["week"] == week]
+    first = upcoming.sort_values("kickoff_at").iloc[0]
+    return int(first.week), upcoming[(upcoming.season == first.season) & (upcoming.week == first.week)].copy()
 
 
 def build_opponent_map(week_games: pd.DataFrame) -> dict:
@@ -49,19 +60,10 @@ def build_opponent_map(week_games: pd.DataFrame) -> dict:
 
 
 def latest_team_defense(features: pd.DataFrame) -> pd.DataFrame:
-    """Each team's most recent (i.e. current, entering the next game) defensive
-    allowed-average numbers, reusing the same opp_*_allowed_season_avg columns
-    already computed per-game in build_features.py."""
-    opp_cols = [c for c in features.columns if c.startswith("opp_") and c.endswith("_allowed_season_avg")]
-    team_rows = (
-        features[["opponent_team", "season", "week"] + opp_cols]
-        .rename(columns={"opponent_team": "team"})
-        .sort_values(["team", "season", "week"])
-        .groupby("team")
-        .tail(1)
-        .set_index("team")
-    )
-    return team_rows[opp_cols]
+    """Inclusive defense state from an already cutoff-filtered history."""
+    totals = defense_features(features, STAT_COLS, include_current=True)
+    cols = [c for c in totals if c.startswith("opp_")]
+    return totals.groupby("opponent_team").tail(1).set_index("opponent_team")[cols]
 
 
 def build_game_context_for_week(week_games: pd.DataFrame) -> pd.DataFrame:
@@ -71,7 +73,7 @@ def build_game_context_for_week(week_games: pd.DataFrame) -> pd.DataFrame:
     wg = week_games.copy()
     wg["home_implied_total"] = (wg["total_line"] + wg["spread_line"]) / 2
     wg["away_implied_total"] = (wg["total_line"] - wg["spread_line"]) / 2
-    wg["indoor"] = wg["roof"].isin(["dome", "closed"]).astype(int)
+    wg["indoor"] = wg["roof"].map({"dome": 1, "closed": 1, "outdoors": 0, "open": 0})
 
     home_rows = wg[["home_team", "home_implied_total", "away_implied_total", "indoor"]].rename(
         columns={"home_team": "team", "home_implied_total": "team_implied_total",
@@ -88,7 +90,7 @@ def build_game_context_for_week(week_games: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([home_rows, away_rows], ignore_index=True).set_index("team")
 
 
-def get_current_qb_starters(current_year: int) -> dict:
+def get_current_qb_starters(current_year: int, prediction_at=None) -> dict:
     """
     Live depth-chart data (updated daily, not tied to game history) - the
     ONLY reliable free source for "who is actually starting THIS week,"
@@ -99,29 +101,51 @@ def get_current_qb_starters(current_year: int) -> dict:
     import nflreadpy as nfl
     dc = nfl.load_depth_charts(seasons=[current_year]).to_pandas()
     qb1 = dc[(dc["pos_abb"] == "QB") & (dc["pos_rank"] == 1)]
-    latest_dt = qb1["dt"].max()
-    qb1_latest = qb1[qb1["dt"] == latest_dt]
+    cutoff = utc_timestamp(prediction_at if prediction_at is not None else datetime.now(timezone.utc))
+    qb1 = qb1[pd.to_datetime(qb1["dt"], utc=True) <= cutoff]
+    qb1_latest = qb1.sort_values("dt").groupby("team").tail(1)
     return dict(zip(qb1_latest["team"], qb1_latest["gsis_id"]))
 
 
+def get_upcoming_qb_starters(schedule, prediction_at):
+    """NFL season follows the fixture, including January of the next year."""
+    _, games = get_upcoming_week(schedule, prediction_at)
+    return get_current_qb_starters(int(games["season"].iloc[0]), prediction_at)
+
+
 def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timestamp,
-                 current_qb_starters: dict = None) -> pd.DataFrame:
-    week, week_games = get_upcoming_week(schedule, as_of)
-    schedule_current_season = week_games["season"].iloc[0]
-    opp_map = build_opponent_map(week_games)
-    team_defense = latest_team_defense(features)
+                 current_qb_starters: dict = None, completed_before=None, model_dir="data", allow_unverified_models=False,
+                 allow_unverified_context=False, qb_starters_as_of=None) -> pd.DataFrame:
+    prediction_at = utc_timestamp(as_of)
+    cutoff = prediction_at if completed_before is None else utc_timestamp(completed_before)
+    week, week_games = get_upcoming_week(schedule, prediction_at)
+    if "context_available_at" not in week_games:
+        if not allow_unverified_context:
+            raise ValueError("Game context timestamp missing; replay requires an as-of schedule/lines snapshot")
+    else:
+        available = pd.to_datetime(week_games.context_available_at, utc=True)
+        unknown = available.isna() | (available > prediction_at)
+        week_games.loc[unknown, ["spread_line", "total_line", "roof"]] = np.nan
+    if current_qb_starters is not None:
+        if qb_starters_as_of is None or utc_timestamp(qb_starters_as_of) > prediction_at:
+            raise ValueError("QB starters require a snapshot timestamp at/before prediction_at")
+    history = completed_history(features, schedule, prediction_at, cutoff)
+    team_defense = latest_team_defense(history)
     game_context = build_game_context_for_week(week_games)
-
-    latest_per_player = (
-        features.sort_values(["player_id", "season", "week"])
-        .groupby("player_id")
-        .tail(1)
-    )
-    current_season = int(schedule_current_season)
-    latest_per_player = latest_per_player[latest_per_player["season"] == current_season]
-
-    active = latest_per_player[latest_per_player["team"].isin(opp_map.keys())].copy()
-    active["upcoming_opponent"] = active["team"].map(opp_map)
+    opp_map = build_opponent_map(week_games)
+    latest_per_player = upcoming_player_state(history, STAT_COLS, AUX_STAT_COLS)
+    current_season = int(week_games["season"].iloc[0])
+    # A timestamped QB1 snapshot can confirm a returning/traded QB even when
+    # his latest participating game belongs to the previous season or team.
+    confirmed_qb = pd.Series(False, index=latest_per_player.index)
+    if current_qb_starters:
+        team_by_qb = {pid: team for team, pid in current_qb_starters.items()}
+        confirmed_qb = latest_per_player.player_id.isin(team_by_qb) & latest_per_player.position.eq("QB")
+        latest_per_player.loc[confirmed_qb, "team"] = latest_per_player.loc[confirmed_qb, "player_id"].map(team_by_qb)
+    allowed_seasons = [current_season, current_season - 1] if week == 1 else [current_season]
+    active = latest_per_player[(latest_per_player.season.isin(allowed_seasons) | confirmed_qb) &
+                               latest_per_player.team.isin(opp_map)].copy()
+    active["upcoming_opponent"] = active.team.map(opp_map)
 
     # Drop backup/benched QBs: a QB's LAST recorded game doesn't tell you if
     # someone else has since taken over (e.g. the starter returning from
@@ -137,13 +161,21 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
     rows = []
     for market_key, market_label in MARKETS.items():
         try:
-            bundle = joblib.load(f"data/model_{market_key}.joblib")
+            bundle = joblib.load(f"{model_dir}/model_{market_key}.joblib")
         except FileNotFoundError:
             continue
+        training_cutoff = bundle.get("training_cutoff")
+        if training_cutoff is None:
+            if not allow_unverified_models:
+                raise ValueError(f"{market_key}: model training cutoff missing; retrain before forecasting")
+        elif utc_timestamp(training_cutoff) >= cutoff:
+            raise ValueError(f"{market_key}: model contains training outcomes at/after completed-game cutoff")
+        if bundle.get("feature_timing_version") != "stage1a" and not allow_unverified_models:
+            raise ValueError(f"{market_key}: incompatible feature timing; coordinated model refresh required")
         model, feature_cols, resid_std, positions = (
             bundle["model"], bundle["features"], bundle["resid_std"], bundle["positions"]
         )
-        eligible = active[active["position"].isin(positions)].copy()
+        eligible = active[pregame_eligible(active, positions)].copy()
         if eligible.empty:
             continue
 
@@ -151,12 +183,25 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
         for col in opp_feature_cols:
             eligible[col] = eligible["upcoming_opponent"].map(team_defense[col])
 
-        eligible = eligible.dropna(subset=feature_cols)
+        # Unknown roof is not an observed outdoor game. Keep complete player
+        # forecasts as explicitly hypothetical indoor/outdoor scenarios; these
+        # rows are not eligible for pricing or Top Picks until roof is known.
+        other_cols = [c for c in feature_cols if c != "indoor"]
+        eligible = eligible.dropna(subset=other_cols)
         if eligible.empty:
             continue
 
-        X = eligible[feature_cols]
-        preds = model.predict(X)
+        X = eligible[feature_cols].copy()
+        unknown_roof = eligible["indoor"].isna() if "indoor" in feature_cols else pd.Series(False, index=eligible.index)
+        if "indoor" in feature_cols:
+            X.loc[unknown_roof, "indoor"] = 0.0
+        outdoor_preds = model.predict(X)
+        if unknown_roof.any():
+            X.loc[unknown_roof, "indoor"] = 1.0
+            indoor_preds = model.predict(X)
+        else:
+            indoor_preds = outdoor_preds
+        preds = np.where(unknown_roof, (outdoor_preds + indoor_preds) / 2, outdoor_preds)
 
         # feature_cols[0] is always the market's own *_season_avg (career-long) -
         # feature_cols[1] is always *_last3_avg, a much more realistic stand-in
@@ -175,9 +220,24 @@ def build_slate(features: pd.DataFrame, schedule: pd.DataFrame, as_of: pd.Timest
                 "resid_std": round(resid_std, 2),
                 "games_played_prior": int(r["games_played_prior"]),
                 "week": week,
+                "season": current_season,
+                "player_id": r["player_id"],
+                "game_id": week_games.loc[(week_games.home_team == r["team"]) | (week_games.away_team == r["team"]), "game_id"].iloc[0],
+                "prediction_at": prediction_at.isoformat(),
+                "completed_before": cutoff.isoformat(),
+                "last_completed_game_at": r["completed_at"].isoformat(),
+                "completion_time_basis": r["completion_time_basis"],
+                "context_timing_verified": "context_available_at" in week_games,
+                "projection_status": "roof_scenarios_only" if bool(unknown_roof.iloc[i]) else "complete",
+                "roof_scenario_low": round(min(outdoor_preds[i], indoor_preds[i]), 1),
+                "roof_scenario_high": round(max(outdoor_preds[i], indoor_preds[i]), 1),
+                "feature_timing_version": "stage1a",
             })
 
-    return pd.DataFrame(rows)
+    columns = ["market", "player", "team", "opponent", "position", "projection", "career_avg",
+               "recent_form", "resid_std", "games_played_prior", "week", "season", "player_id",
+               "game_id", "prediction_at", "completed_before", "last_completed_game_at", "completion_time_basis", "context_timing_verified", "projection_status", "roof_scenario_low", "roof_scenario_high", "feature_timing_version"]
+    return pd.DataFrame(rows, columns=columns)
 
 
 def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: int = 2,
@@ -204,6 +264,10 @@ def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: i
     from scipy.stats import norm
 
     picks = slate.copy()
+    if "projection_status" in picks:
+        picks = picks[picks.projection_status.eq("complete")].copy()
+    if picks.empty:
+        return picks.assign(side=pd.Series(dtype=str), model_probability=pd.Series(dtype=float), confidence=pd.Series(dtype=float))
     prob_over = 1 - norm.cdf(picks["recent_form"], picks["projection"], picks["resid_std"])
     picks["side"] = np.where(prob_over >= 0.5, "Over", "Under")
     picks["model_probability"] = np.where(prob_over >= 0.5, prob_over, 1 - prob_over)
@@ -227,12 +291,24 @@ def compute_top_picks(slate: pd.DataFrame, min_games: int = 8, top_n_per_game: i
 
 if __name__ == "__main__":
     import nflreadpy as nfl
-    current_year = datetime.now().year
-    schedule = nfl.load_schedules(seasons=[current_year]).to_pandas()
+    prediction_at = datetime.now(timezone.utc)
+    # Previous seasons are required to reconstruct inclusive career history.
+    schedule = nfl.load_schedules(seasons=True).to_pandas()
     features = pd.read_parquet("data/player_features.parquet")
-    qb_starters = get_current_qb_starters(current_year)
-
-    slate = build_slate(features, schedule, pd.Timestamp(datetime.now().date()), qb_starters)
+    qb_starters = get_upcoming_qb_starters(schedule, prediction_at)
+    # This freshly downloaded context is observed now, never retroactively at
+    # the start of the week. Historical replays must supply archived timestamps.
+    prediction_at = datetime.now(timezone.utc)
+    schedule["context_available_at"] = pd.Timestamp(prediction_at)
+    input_dir = os.environ.get("NFL_RELEASE_INPUT_DIR")
+    if input_dir:
+        inputs = Path(input_dir)
+        inputs.mkdir(parents=True, exist_ok=True)
+        schedule.to_parquet(inputs/"schedule.parquet", index=False)
+        (inputs/"qb_starters.json").write_text(json.dumps({
+            "as_of": prediction_at.isoformat(), "starters": qb_starters}, indent=2) + "\n")
+    slate = build_slate(features, schedule, pd.Timestamp(prediction_at), qb_starters,
+                        qb_starters_as_of=prediction_at)
     print(f"Slate built: {len(slate)} player-market rows for week {slate['week'].iloc[0] if len(slate) else '?'}")
     slate.to_parquet("data/slate.parquet", index=False)
 

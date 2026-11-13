@@ -1,43 +1,33 @@
-name: Update NFL Data
-
+name: Prepare weekly forecast candidate
 on:
   schedule:
-    - cron: '0 9 * * 2'
+    - cron: '0 12 * * 2'
   workflow_dispatch:
-
+# Preparation only: this token cannot update a branch or deploy the app.
 permissions:
-  contents: write
-
+  contents: read
+concurrency:
+  group: forecast-candidate-preparation
+  cancel-in-progress: false
 jobs:
-  update-data:
+  prepare:
     runs-on: ubuntu-latest
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
         with:
-          python-version: '3.11'
-
-      - name: Install dependencies
-        run: pip install nflreadpy pandas pyarrow scikit-learn scipy joblib
-
-      - name: Run update script
-        run: python scripts/update_data.py
-
-      - name: Build features
-        run: python scripts/build_features.py
-
-      - name: Train models
-        run: python scripts/train_all_markets.py
-      
-      - name: build slate
-        run: python scripts/build_slate.py
-
-      - name: Commit updated data
-        run: |
-          git config user.name "github-actions"
-          git config user.email "actions@github.com"
-          git add data/
-          git commit -m "Automated data + model update" || echo "No changes to commit"
-          git push
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip check
+      - name: Build and validate a fresh candidate without production files
+        run: python scripts/prepare_release.py --id scheduled-${{ github.run_id }}-${{ github.run_attempt }}
+      - uses: actions/upload-artifact@v4
+        with:
+          name: reviewed-forecast-candidate-${{ github.run_id }}-${{ github.run_attempt }}
+          path: release_candidates/scheduled-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 14
+# No git add/commit/push, active pointer change, production secrets or deployment step.

@@ -1,0 +1,337 @@
+{
+  "prediction_at": "2026-11-12T20:00:00Z",
+  "baseline_ref": "0c6029002be0820c0502d957372d5261610ba927",
+  "original_feature_rows": 133353,
+  "new_feature_rows": 185820,
+  "missing_positive_snap_outcomes_by_position": {
+    "C": 3242,
+    "C/G": 89,
+    "CB": 5,
+    "DE": 1,
+    "DL": 4,
+    "DT": 9,
+    "FB": 577,
+    "FB/D": 6,
+    "FB/R": 5,
+    "FB/T": 7,
+    "FS": 2,
+    "G": 6245,
+    "G/C": 60,
+    "G/OT": 3,
+    "G/T": 91,
+    "HB": 3,
+    "LB": 25,
+    "LB/F": 7,
+    "LS": 31,
+    "NT": 2,
+    "OL": 1666,
+    "OT": 43,
+    "QB": 106,
+    "RB": 475,
+    "RB/F": 2,
+    "SS": 1,
+    "T": 6761,
+    "T/G": 10,
+    "TE": 3028,
+    "WR": 2090
+  },
+  "unmapped_positive_snap_rows": 120,
+  "markets": {
+    "passing_yards": {
+      "old_retained": 4110,
+      "new_retained": 4019,
+      "added": 110,
+      "removed": 201,
+      "by_position": [
+        {
+          "position": "QB",
+          "source_rows": 4930,
+          "excluded_pregame": 477,
+          "excluded_unknown_or_no_offensive_snaps": 13,
+          "excluded_missing_features_or_outcome": 421,
+          "retained": 4019,
+          "retained_zero_outcomes": 152,
+          "before_retained": 4110,
+          "added_vs_baseline": 110,
+          "removed_vs_baseline": 201
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 559,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 65.8642001390391,
+        "after": 65.81081555694591
+      }
+    },
+    "passing_attempts": {
+      "old_retained": 4144,
+      "new_retained": 4059,
+      "added": 125,
+      "removed": 210,
+      "by_position": [
+        {
+          "position": "QB",
+          "source_rows": 4930,
+          "excluded_pregame": 477,
+          "excluded_unknown_or_no_offensive_snaps": 13,
+          "excluded_missing_features_or_outcome": 381,
+          "retained": 4059,
+          "retained_zero_outcomes": 125,
+          "before_retained": 4144,
+          "added_vs_baseline": 125,
+          "removed_vs_baseline": 210
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 560,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 7.7805129994950155,
+        "after": 7.7756241567316495
+      }
+    },
+    "completions": {
+      "old_retained": 4110,
+      "new_retained": 4019,
+      "added": 110,
+      "removed": 201,
+      "by_position": [
+        {
+          "position": "QB",
+          "source_rows": 4930,
+          "excluded_pregame": 477,
+          "excluded_unknown_or_no_offensive_snaps": 13,
+          "excluded_missing_features_or_outcome": 421,
+          "retained": 4019,
+          "retained_zero_outcomes": 148,
+          "before_retained": 4110,
+          "added_vs_baseline": 110,
+          "removed_vs_baseline": 201
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 559,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 5.333060300380996,
+        "after": 5.355180227175839
+      }
+    },
+    "rushing_yards": {
+      "old_retained": 8641,
+      "new_retained": 8232,
+      "added": 523,
+      "removed": 932,
+      "by_position": [
+        {
+          "position": "RB",
+          "source_rows": 12756,
+          "excluded_pregame": 1571,
+          "excluded_unknown_or_no_offensive_snaps": 1107,
+          "excluded_missing_features_or_outcome": 1846,
+          "retained": 8232,
+          "retained_zero_outcomes": 605,
+          "before_retained": 8641,
+          "added_vs_baseline": 523,
+          "removed_vs_baseline": 932
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 1102,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 22.603679436713207,
+        "after": 22.427214313210545
+      }
+    },
+    "rushing_attempts": {
+      "old_retained": 8665,
+      "new_retained": 8240,
+      "added": 529,
+      "removed": 954,
+      "by_position": [
+        {
+          "position": "RB",
+          "source_rows": 12756,
+          "excluded_pregame": 1571,
+          "excluded_unknown_or_no_offensive_snaps": 1107,
+          "excluded_missing_features_or_outcome": 1838,
+          "retained": 8240,
+          "retained_zero_outcomes": 529,
+          "before_retained": 8665,
+          "added_vs_baseline": 529,
+          "removed_vs_baseline": 954
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 1102,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 3.6776618808725408,
+        "after": 3.652675395599156
+      }
+    },
+    "qb_rushing_yards": {
+      "old_retained": 3785,
+      "new_retained": 4055,
+      "added": 484,
+      "removed": 214,
+      "by_position": [
+        {
+          "position": "QB",
+          "source_rows": 4930,
+          "excluded_pregame": 477,
+          "excluded_unknown_or_no_offensive_snaps": 13,
+          "excluded_missing_features_or_outcome": 385,
+          "retained": 4055,
+          "retained_zero_outcomes": 611,
+          "before_retained": 3785,
+          "added_vs_baseline": 484,
+          "removed_vs_baseline": 214
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 512,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 12.28076539432936,
+        "after": 12.124609747155805
+      }
+    },
+    "qb_rushing_attempts": {
+      "old_retained": 3787,
+      "new_retained": 4059,
+      "added": 486,
+      "removed": 214,
+      "by_position": [
+        {
+          "position": "QB",
+          "source_rows": 4930,
+          "excluded_pregame": 477,
+          "excluded_unknown_or_no_offensive_snaps": 13,
+          "excluded_missing_features_or_outcome": 381,
+          "retained": 4059,
+          "retained_zero_outcomes": 486,
+          "before_retained": 3787,
+          "added_vs_baseline": 486,
+          "removed_vs_baseline": 214
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 512,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 1.681978049869402,
+        "after": 1.6655701944395047
+      }
+    },
+    "receiving_yards": {
+      "old_retained": 28778,
+      "new_retained": 25132,
+      "added": 2734,
+      "removed": 6380,
+      "by_position": [
+        {
+          "position": "WR",
+          "source_rows": 20564,
+          "excluded_pregame": 2079,
+          "excluded_unknown_or_no_offensive_snaps": 766,
+          "excluded_missing_features_or_outcome": 5460,
+          "retained": 12259,
+          "retained_zero_outcomes": 1746,
+          "before_retained": 14229,
+          "added_vs_baseline": 866,
+          "removed_vs_baseline": 2836
+        },
+        {
+          "position": "TE",
+          "source_rows": 12405,
+          "excluded_pregame": 1079,
+          "excluded_unknown_or_no_offensive_snaps": 263,
+          "excluded_missing_features_or_outcome": 6369,
+          "retained": 4694,
+          "retained_zero_outcomes": 485,
+          "before_retained": 7300,
+          "added_vs_baseline": 174,
+          "removed_vs_baseline": 2780
+        },
+        {
+          "position": "RB",
+          "source_rows": 12756,
+          "excluded_pregame": 1571,
+          "excluded_unknown_or_no_offensive_snaps": 1107,
+          "excluded_missing_features_or_outcome": 1899,
+          "retained": 8179,
+          "retained_zero_outcomes": 2299,
+          "before_retained": 7249,
+          "added_vs_baseline": 1694,
+          "removed_vs_baseline": 764
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 3115,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 19.793256029907198,
+        "after": 19.74899377222286
+      }
+    },
+    "receptions": {
+      "old_retained": 28829,
+      "new_retained": 25206,
+      "added": 2783,
+      "removed": 6406,
+      "by_position": [
+        {
+          "position": "WR",
+          "source_rows": 20564,
+          "excluded_pregame": 2079,
+          "excluded_unknown_or_no_offensive_snaps": 766,
+          "excluded_missing_features_or_outcome": 5447,
+          "retained": 12272,
+          "retained_zero_outcomes": 1713,
+          "before_retained": 14237,
+          "added_vs_baseline": 874,
+          "removed_vs_baseline": 2839
+        },
+        {
+          "position": "TE",
+          "source_rows": 12405,
+          "excluded_pregame": 1079,
+          "excluded_unknown_or_no_offensive_snaps": 263,
+          "excluded_missing_features_or_outcome": 6369,
+          "retained": 4694,
+          "retained_zero_outcomes": 466,
+          "before_retained": 7301,
+          "added_vs_baseline": 174,
+          "removed_vs_baseline": 2781
+        },
+        {
+          "position": "RB",
+          "source_rows": 12756,
+          "excluded_pregame": 1571,
+          "excluded_unknown_or_no_offensive_snaps": 1107,
+          "excluded_missing_features_or_outcome": 1838,
+          "retained": 8240,
+          "retained_zero_outcomes": 2245,
+          "before_retained": 7291,
+          "added_vs_baseline": 1735,
+          "removed_vs_baseline": 786
+        }
+      ],
+      "diagnostic_ridge_common_2025_n": 3118,
+      "diagnostic_ridge_common_2025_mae": {
+        "before": 1.4579917832104006,
+        "after": 1.4635108439364182
+      }
+    }
+  },
+  "forecast_comparison": {
+    "before_rows": 1270,
+    "after_rows": 689,
+    "common_rows": 689,
+    "mean_absolute_change_by_market": {
+      "Completions": 0.8566666666666671,
+      "Passing Attempts": 1.2666666666666664,
+      "Passing Yards": 10.599999999999998,
+      "QB Rushing Attempts": 0.2733333333333333,
+      "QB Rushing Yards": 1.74,
+      "Receiving Yards": 2.01,
+      "Receptions": 0.15522388059701495,
+      "Rushing Attempts": 0.710144927536232,
+      "Rushing Yards": 2.7985507246376815
+    },
+    "note": "Frozen model weights; baseline and corrected code with same model weights; no QB starter override. No accuracy claim."
+  },
+  "source_sha256": {
+    "schedules.parquet": "5effac8739edb5280dcec0fdf4ad94b15379b7cbe237e0037d2d968141ecd900",
+    "players.parquet": "25e863a3bbae1e273cff27a63831a35c0e1f431daa7d5e81a51b58472e867e8e",
+    "snaps.parquet": "4ecb6f09a355de9ef4ed6966017cb9181cc52cdab7d522fc5d4526facfb17326",
+    "team_stats.parquet": "673038ecc9885df3bc217cca90a37ff76bd6870fa8519bb28771f0de1b6dcd4f"
+  }
+}

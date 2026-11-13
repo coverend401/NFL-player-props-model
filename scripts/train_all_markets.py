@@ -7,8 +7,7 @@ recent complete season), compare against a naive baseline, pick whichever
 model actually beats that baseline, check calibration, save the model.
 
 Each market defines its own:
-  - which positions/snap-type are eligible (e.g. rushing markets need RBs
-    who actually got a carry that game, not every offensive player)
+  - eligible positions and prior offensive participation (never same-game opportunities)
   - which engineered feature columns to use (built by build_features.py)
 """
 import pandas as pd
@@ -18,12 +17,14 @@ from sklearn.ensemble import GradientBoostingRegressor
 from scipy.stats import norm
 import joblib
 
-MIN_PRIOR_GAMES = 3
+try:
+    from .forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status, utc_timestamp
+except ImportError:
+    from forecast_features import MIN_PRIOR_GAMES, pregame_eligible, observation_status, utc_timestamp
 
 MARKETS = {
     "passing_yards": {
         "positions": ["QB"],
-        "snap_filter": ("attempts", 0),
         "features": ["passing_yards_season_avg", "passing_yards_last3_avg", "passing_yards_last5_avg",
                      "passing_yards_trend", "attempts_season_avg", "attempts_last3_avg",
                      "games_played_prior",
@@ -33,14 +34,12 @@ MARKETS = {
     },
     "attempts": {  # passing attempts (QB)
         "positions": ["QB"],
-        "snap_filter": ("attempts", 0),
         "features": ["attempts_season_avg", "attempts_last3_avg", "attempts_last5_avg", "attempts_trend",
                      "games_played_prior", "offense_pct_season_avg"],
         "model_name": "passing_attempts",  # avoid clashing with rushing "carries" file naming
     },
     "completions": {
         "positions": ["QB"],
-        "snap_filter": ("attempts", 0),
         "features": ["completions_season_avg", "completions_last3_avg", "completions_last5_avg",
                      "completions_trend", "attempts_season_avg", "attempts_last3_avg",
                      "games_played_prior", "pass_completions_exp_season_avg",
@@ -48,7 +47,6 @@ MARKETS = {
     },
     "rushing_yards": {
         "positions": ["RB"],
-        "snap_filter": ("carries", 0),
         "features": ["rushing_yards_season_avg", "rushing_yards_last3_avg", "rushing_yards_last5_avg",
                      "rushing_yards_trend", "carries_season_avg", "carries_last3_avg",
                      "games_played_prior", "rush_yards_gained_exp_season_avg",
@@ -56,14 +54,12 @@ MARKETS = {
     },
     "carries": {  # rushing attempts
         "positions": ["RB"],
-        "snap_filter": ("carries", 0),
         "features": ["carries_season_avg", "carries_last3_avg", "carries_last5_avg", "carries_trend",
                      "games_played_prior", "offense_pct_season_avg"],
         "model_name": "rushing_attempts",
     },
     "qb_rushing_yards": {
         "positions": ["QB"],
-        "snap_filter": ("carries", 0),
         "features": ["rushing_yards_season_avg", "rushing_yards_last3_avg", "rushing_yards_last5_avg",
                      "rushing_yards_trend", "carries_season_avg", "carries_last3_avg",
                      "games_played_prior", "rush_yards_gained_exp_season_avg", "rushing_epa_season_avg"],
@@ -72,7 +68,6 @@ MARKETS = {
     },
     "qb_carries": {
         "positions": ["QB"],
-        "snap_filter": ("carries", 0),
         "features": ["carries_season_avg", "carries_last3_avg", "carries_last5_avg", "carries_trend",
                      "games_played_prior"],
         "model_name": "qb_rushing_attempts",
@@ -80,7 +75,6 @@ MARKETS = {
     },
     "receiving_yards": {
         "positions": ["WR", "TE", "RB"],
-        "snap_filter": ("targets", 0),
         "features": ["receiving_yards_season_avg", "receiving_yards_last3_avg", "receiving_yards_last5_avg",
                      "receiving_yards_trend", "targets_season_avg", "targets_last3_avg",
                      "games_played_prior", "receptions_exp_season_avg", "rec_yards_gained_exp_season_avg",
@@ -89,7 +83,6 @@ MARKETS = {
     },
     "receptions": {
         "positions": ["WR", "TE", "RB"],
-        "snap_filter": ("targets", 0),
         "features": ["receptions_season_avg", "receptions_last3_avg", "receptions_last5_avg",
                      "receptions_trend", "targets_season_avg", "targets_last3_avg",
                      "games_played_prior", "receptions_exp_season_avg",
@@ -114,14 +107,38 @@ for _config in MARKETS.values():
     _config["features"] = _config["features"] + GAME_CONTEXT_FEATURES
 
 
-def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict) -> pd.DataFrame:
-    snap_col, min_val = config["snap_filter"]
-    df = features[
-        features["position"].isin(config["positions"]) & (features[snap_col] > min_val)
-    ].copy()
-    df = df[df["games_played_prior"] >= MIN_PRIOR_GAMES]
-    df = df.dropna(subset=config["features"] + [target_col])
-    return df
+def prepare_dataset(features: pd.DataFrame, target_col: str, config: dict, as_of=None) -> pd.DataFrame:
+    # Pregame candidate selection is separate from outcome observability.
+    # Positive actual snaps establish participation, not target/carry eligibility.
+    df = features[pregame_eligible(features, config["positions"])].copy()
+    df = df[observation_status(df).eq("participated")]
+    if "completed_at" in df:
+        df = df[df["completed_at"].notna()]
+        if as_of is not None:
+            df = df[pd.to_datetime(df["completed_at"], utc=True) < utc_timestamp(as_of)]
+    elif as_of is not None:
+        raise ValueError("Training as-of filtering requires completed_at provenance")
+    return df.dropna(subset=config["features"] + [target_col])
+
+
+def coverage_report(features, target_col, config):
+    """Disjoint exclusion counts per position, with observed zeros retained."""
+    records = []
+    for position in config["positions"]:
+        d = features[features.position.eq(position)]
+        candidate = pregame_eligible(d, [position])
+        participated = observation_status(d).eq("participated")
+        complete = d[config["features"] + [target_col]].notna().all(axis=1)
+        if "completed_at" in d:
+            complete &= d.completed_at.notna()
+        kept = candidate & participated & complete
+        records.append(dict(position=position, source_rows=len(d),
+                            excluded_pregame=int((~candidate).sum()),
+                            excluded_unknown_or_no_offensive_snaps=int((candidate & ~participated).sum()),
+                            excluded_missing_features_or_outcome=int((candidate & participated & ~complete).sum()),
+                            retained=int(kept.sum()), retained_zero_outcomes=int((kept & d[target_col].eq(0)).sum())))
+    return records
+
 
 
 def time_based_split(df: pd.DataFrame):
@@ -159,12 +176,15 @@ def calibration_summary(preds, y_test, resid_std, baseline_line, n_bins=5):
     return "\n".join(lines)
 
 
-def train_market(features: pd.DataFrame, market: str, config: dict):
+def train_market(features: pd.DataFrame, market: str, config: dict, training_as_of=None):
     label = config.get("model_name", market)
     target_col = config.get("target_col", market)
     print(f"\n{'='*60}\nMARKET: {label}  (target column: {target_col})\n{'='*60}")
 
-    df = prepare_dataset(features, target_col, config)
+    print("Coverage before training-time cutoff:", coverage_report(features, target_col, config))
+    training_as_of = utc_timestamp(training_as_of if training_as_of is not None else pd.Timestamp.now(tz="UTC"))
+    df = prepare_dataset(features, target_col, config, as_of=training_as_of)
+    print(f"Training as-of {training_as_of.isoformat()}: {len(df)} available observations")
     if len(df) < 200:
         print(f"SKIPPED - only {len(df)} usable rows, too small to train/validate honestly.")
         return None
@@ -225,6 +245,9 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
     out_path = f"data/model_{label}.joblib"
     joblib.dump({"model": final_model, "features": config["features"], "resid_std": final_resid_std,
                  "market": market, "positions": config["positions"],
+                 "training_cutoff": pd.to_datetime(df["completed_at"], utc=True).max().isoformat(),
+                 "feature_timing_version": "stage1a",
+                 "training_as_of": training_as_of.isoformat(),
                  "validated_mae": min(ridge_mae, gbr_mae), "validated_against_season": int(test_season)},
                 out_path)
     print(f"Saved -> {out_path} (retrained on full data through the current season)")
@@ -234,8 +257,9 @@ def train_market(features: pd.DataFrame, market: str, config: dict):
 if __name__ == "__main__":
     features = pd.read_parquet("data/player_features.parquet")
     saved = []
+    training_as_of = pd.Timestamp.now(tz="UTC")
     for market, config in MARKETS.items():
-        result = train_market(features, market, config)
+        result = train_market(features, market, config, training_as_of=training_as_of)
         if result:
             saved.append(result)
 
