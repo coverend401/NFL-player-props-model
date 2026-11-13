@@ -18,7 +18,11 @@ from stage1b.probability import outcomes
 
 
 def capture(experiment, root, features, output, raw_snapshots):
-    experiment, root, output = Path(experiment), Path(root), Path(output)
+    experiment, root, output = (
+        Path(experiment).resolve(),
+        Path(root).resolve(),
+        Path(output).resolve(),
+    )
     manifest = validate(experiment, root)
     protocol = json.loads((experiment / "protocol.json").read_text())
     now = pd.Timestamp(datetime.now(timezone.utc))
@@ -30,6 +34,10 @@ def capture(experiment, root, features, output, raw_snapshots):
         or root / "release_candidates" in output.resolve().parents
     ):
         raise ValueError("Research capture cannot write production directories")
+    if root in output.parents and root / "experiments" not in output.parents:
+        raise ValueError(
+            "Captures inside the checkout must stay in research experiments"
+        )
     records = []
     for market, d in features.groupby("market"):
         bundle = joblib.load(experiment / "models" / f"{market}-2026.joblib")

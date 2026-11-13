@@ -91,11 +91,12 @@ Calibrated probe probabilities need not transfer to actual offered market lines.
 Report MAE/RMSE/bias, zeros, sample sizes, naive career-mean accuracy, quantile
 pinball scores, 90% interval width/coverage, proper scores, probability-band
 reliability and selected method by market/year/cohort. Main score uncertainty and
-paired differences use a seeded four-week moving-block bootstrap. This handles
+paired differences and probability-band gaps use a seeded four-observed-week moving-block bootstrap. This handles
 within-week dependence and some serial persistence, not arbitrary long-run player
 or multi-season dependence. Wilson bands in the reliability table are explicitly
 **descriptive**, not independent-observation or individual-probability intervals.
-Multiple methods/markets and small QB selection cohorts still create selection
+These intervals condition on fitted fold decisions; they do not refit the entire
+model-selection pipeline. Multiple methods/markets and small QB selection cohorts still create selection
 risk. All retrospective periods are development/monitoring, not a final claim.
 
 ## Available odds and settlement evidence

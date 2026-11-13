@@ -119,3 +119,15 @@ def validate_results(directory):
         "hypothetical_probes": len(p),
         "final_sealed": True,
     }
+
+
+def freeze_sources(root):
+    root = Path(root).resolve()
+    return {str(p.relative_to(root)): digest(p) for p in sources(root)}
+
+
+def verify_sources(root, expected):
+    if freeze_sources(root) != expected:
+        raise ValueError(
+            "Source/config changed during experiment; discard partial results"
+        )

@@ -5,6 +5,8 @@ import json
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
+from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
@@ -465,6 +467,98 @@ class FullQuoteBacktestTests(QuoteEvidenceTests):
             run_verified_backtest(
                 pd.DataFrame([self.quote]), self.evidence, self.root, f, PROTOCOL
             )
+
+
+class ProvenanceAndCaptureTests(unittest.TestCase):
+    def test_changed_source_or_added_source_aborts(self):
+        from stage1b.artifacts import sources, freeze_sources, verify_sources
+
+        with tempfile.TemporaryDirectory() as t:
+            root = Path(t)
+            (root / "stage1b").mkdir()
+            (root / "scripts").mkdir()
+            (root / "stage1b/a.py").write_text("original")
+            for p in sources(root):
+                p.parent.mkdir(parents=True, exist_ok=True)
+                if not p.exists():
+                    p.write_text("fixture")
+            frozen = freeze_sources(root)
+            verify_sources(root, frozen)
+            (root / "stage1b/a.py").write_text("changed during experiment")
+            with self.assertRaisesRegex(ValueError, "changed during"):
+                verify_sources(root, frozen)
+            (root / "stage1b/a.py").write_text("original")
+            (root / "stage1b/new.py").write_text("unregistered source")
+            with self.assertRaises(ValueError):
+                verify_sources(root, frozen)
+
+    def capture_fixture(self, t):
+        root = Path(t)
+        exp = root / "experiment"
+        exp.mkdir()
+        (exp / "protocol.json").write_text(json.dumps(PROTOCOL))
+        x = {k: 4.0 for k in feature_columns("passing_attempts")}
+        x.update(
+            market="passing_attempts",
+            player_id="p",
+            game_id="g",
+            line=4.5,
+            kickoff_at="2026-11-20T01:15Z",
+            history_available_at="2026-11-18T00:00Z",
+            source_snapshot_sha256="0" * 64,
+        )
+        return root, exp, pd.DataFrame([x])
+
+    def test_capture_cannot_write_production_directories(self):
+        from stage1b.prospective import capture
+
+        with tempfile.TemporaryDirectory() as t:
+            root, exp, x = self.capture_fixture(t)
+            with patch("stage1b.prospective.validate", return_value={}):
+                with self.assertRaisesRegex(ValueError, "production"):
+                    capture(exp, root, x, root / "data" / "new", {})
+
+    def test_capture_rejects_after_kickoff_and_outcomes(self):
+        from stage1b.prospective import capture
+
+        with tempfile.TemporaryDirectory() as t:
+            root, exp, x = self.capture_fixture(t)
+            with (
+                patch("stage1b.prospective.validate", return_value={}),
+                patch(
+                    "stage1b.prospective.joblib.load",
+                    return_value={"features": feature_columns("passing_attempts")},
+                ),
+                patch("stage1b.prospective.datetime") as clock,
+            ):
+                clock.now.return_value = datetime(
+                    2026, 11, 20, 1, 16, tzinfo=timezone.utc
+                )
+                with self.assertRaisesRegex(ValueError, "decision window"):
+                    capture(exp, root, x, root / "experiments" / "capture", {})
+                x["y"] = 5
+                with self.assertRaisesRegex(ValueError, "Unexpected fields"):
+                    capture(exp, root, x, root / "experiments" / "capture", {})
+
+    def test_capture_requires_original_snapshot_not_just_a_claimed_hash(self):
+        from stage1b.prospective import capture
+
+        with tempfile.TemporaryDirectory() as t:
+            root, exp, x = self.capture_fixture(t)
+            with (
+                patch("stage1b.prospective.validate", return_value={}),
+                patch(
+                    "stage1b.prospective.joblib.load",
+                    return_value={"features": feature_columns("passing_attempts")},
+                ),
+                patch("stage1b.prospective.datetime") as clock,
+            ):
+                clock.now.return_value = datetime(
+                    2026, 11, 20, 0, 16, tzinfo=timezone.utc
+                )
+                with self.assertRaisesRegex(ValueError, "snapshot is missing"):
+                    capture(exp, root, x, root / "experiments" / "capture", {})
+                self.assertFalse((root / "experiments" / "capture").exists())
 
 
 if __name__ == "__main__":

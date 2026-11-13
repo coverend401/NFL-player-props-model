@@ -24,12 +24,27 @@ def wilson(wins, n):
     return max(0.0, c - h), min(1.0, c + h)
 
 
-def reliability(probes):
+def reliability(probes, protocol=None):
+    protocol = protocol or {"bootstrap_replicates": 500, "bootstrap_week_block": 4}
     d = probes.copy()
     d["band"] = np.minimum((d.probability * 10).astype(int), 9)
     rows = []
     for keys, g in d.groupby(["market", "version", "evaluation_tier", "band"]):
         low, high = wilson(g.event.sum(), len(g))
+        g = g.copy()
+        g["calibration_gap"] = g.event - g.probability
+        block_low, block_high = week_block_interval(
+            g,
+            "event",
+            reps=protocol["bootstrap_replicates"],
+            block=protocol["bootstrap_week_block"],
+        )
+        gap_low, gap_high = week_block_interval(
+            g,
+            "calibration_gap",
+            reps=protocol["bootstrap_replicates"],
+            block=protocol["bootstrap_week_block"],
+        )
         rows.append(
             dict(
                 zip(["market", "version", "evaluation_tier", "band"], keys),
@@ -39,6 +54,11 @@ def reliability(probes):
                 observed=float(g.event.mean()),
                 brier=float(g.brier.mean()),
                 log_loss=float(g.log_loss.mean()),
+                observed_block_low=block_low,
+                observed_block_high=block_high,
+                calibration_gap_block_low=gap_low,
+                calibration_gap_block_high=gap_high,
+                n_observed_weeks=g[["season", "week"]].drop_duplicates().shape[0],
                 descriptive_wilson_low=low,
                 descriptive_wilson_high=high,
             )

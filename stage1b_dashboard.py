@@ -68,7 +68,7 @@ with tabs[1]:
     )
     st.dataframe(data, hide_index=True)
     st.caption(
-        "Diagonal means calibrated. Wilson bands are descriptive probe-level intervals and do not account for repeated thresholds/players; do not treat them as individual probability confidence intervals. Main score intervals use paired four-week block bootstrap."
+        "Diagonal means calibrated. Wilson bands are descriptive probe-level intervals and do not account for repeated thresholds/players; do not treat them as individual probability confidence intervals. Band and main score intervals use week-block bootstrap; sparse bands may have no interval. These intervals condition on fitted models and do not include full model-selection uncertainty."
     )
 with tabs[2]:
     differences = pd.read_csv(path / "paired_differences.csv")

@@ -38,6 +38,8 @@ def main():
         or root / "release_candidates" in output.parents
     ):
         raise ValueError("Use a new isolated research output directory")
+    if root in output.parents and root / "experiments" not in output.parents:
+        raise ValueError("Backtests inside checkout must stay in research experiments")
     quotes = pd.read_csv(
         args.quotes,
         dtype={

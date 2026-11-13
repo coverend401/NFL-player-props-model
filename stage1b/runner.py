@@ -32,7 +32,14 @@ from stage1b.metrics import (
     probability_summary,
     paired_improvements,
 )
-from stage1b.artifacts import digest, sources, runtime, validate, validate_results
+from stage1b.artifacts import (
+    digest,
+    runtime,
+    validate,
+    validate_results,
+    freeze_sources,
+    verify_sources,
+)
 
 
 class CareerMean:
@@ -387,11 +394,15 @@ def run(root, experiment_id):
     if target.exists():
         raise ValueError("Experiment IDs are immutable")
     rt = runtime(root)
+    source_hashes = freeze_sources(root)
     from release_utils import resolve_release
 
     data, release = resolve_release(root)
     source = data / "player_features.parquet"
+    input_hash = digest(source)
     panel = prepare_panel(read_development_snapshot(source, protocol), protocol)
+    if digest(source) != input_hash:
+        raise ValueError("Input snapshot changed during loading")
     started = datetime.now(timezone.utc).isoformat()
     with tempfile.TemporaryDirectory(prefix="nfl-stage1b-") as tmp:
         work = Path(tmp)
@@ -429,7 +440,7 @@ def run(root, experiment_id):
         f.to_parquet(work / "forecasts.parquet", index=False)
         p.to_parquet(work / "probes.parquet", index=False)
         accuracy(f).to_csv(work / "accuracy.csv", index=False)
-        reliability(p).to_csv(work / "reliability.csv", index=False)
+        reliability(p, protocol).to_csv(work / "reliability.csv", index=False)
         probability_summary(p, protocol).to_csv(
             work / "probability_metrics.csv", index=False
         )
@@ -455,6 +466,9 @@ def run(root, experiment_id):
             )
             + "\n"
         )
+        verify_sources(root, source_hashes)
+        if digest(source) != input_hash:
+            raise ValueError("Input snapshot changed during experiment")
         manifest = {
             "schema_version": 1,
             "experiment_id": experiment_id,
@@ -467,11 +481,9 @@ def run(root, experiment_id):
             ).strip(),
             "input_release": release["release_id"],
             "input_relative_path": str(source.relative_to(root)),
-            "input_sha256": digest(source),
+            "input_sha256": input_hash,
             "runtime": rt,
-            "source_hashes": {
-                str(s.relative_to(root)): digest(s) for s in sources(root)
-            },
+            "source_hashes": source_hashes,
             "files": {
                 str(s.relative_to(work)): digest(s)
                 for s in sorted(work.rglob("*"))
