@@ -1,0 +1,257 @@
+{
+  "experiment": "baseline-20261113-v5",
+  "source_commit": "5131b6c23b2926489652b14324540b01661a8df1",
+  "audit": {
+    "player_market_games": 55303,
+    "hypothetical_probes": 331818,
+    "final_sealed": true
+  },
+  "aggregate": {
+    "development_oos": {
+      "selected_stage1b": {
+        "n": 49034,
+        "brier": 0.18955034548431648,
+        "log_loss": 0.5615026782968557,
+        "equal_market_brier": 0.17782807038895102,
+        "equal_market_log_loss": 0.5350651512183542
+      },
+      "stage1a_normal_rule": {
+        "n": 49034,
+        "brier": 0.19592723554523514,
+        "log_loss": 0.5744024446436771,
+        "equal_market_brier": 0.18266794100061712,
+        "equal_market_log_loss": 0.5414580830057225
+      }
+    },
+    "monitoring": {
+      "selected_stage1b": {
+        "n": 6269,
+        "brier": 0.19204491139875213,
+        "log_loss": 0.5632799071295699,
+        "equal_market_brier": 0.17808889503728365,
+        "equal_market_log_loss": 0.5279716901610222
+      },
+      "stage1a_normal_rule": {
+        "n": 6269,
+        "brier": 0.19479281908399365,
+        "log_loss": 0.5701907559370092,
+        "equal_market_brier": 0.17961798674178972,
+        "equal_market_log_loss": 0.5309662110766695
+      }
+    }
+  },
+  "development_probe_strata": [
+    {
+      "probe_multiplier": 0.5,
+      "version": "selected_stage1b",
+      "brier": 0.18742723740498926,
+      "log_loss": 0.5542409170204126
+    },
+    {
+      "probe_multiplier": 0.5,
+      "version": "stage1a_normal_rule",
+      "brier": 0.19170818809827847,
+      "log_loss": 0.5648271974102133
+    },
+    {
+      "probe_multiplier": 1.0,
+      "version": "selected_stage1b",
+      "brier": 0.23017238305338172,
+      "log_loss": 0.6522320473449785
+    },
+    {
+      "probe_multiplier": 1.0,
+      "version": "stage1a_normal_rule",
+      "brier": 0.23778612974215124,
+      "log_loss": 0.6695928890359325
+    },
+    {
+      "probe_multiplier": 1.5,
+      "version": "selected_stage1b",
+      "brier": 0.15105141599457841,
+      "log_loss": 0.4780350705251761
+    },
+    {
+      "probe_multiplier": 1.5,
+      "version": "stage1a_normal_rule",
+      "brier": 0.15828738879527565,
+      "log_loss": 0.48878724748488567
+    }
+  ],
+  "paired_development_brier_delta_95_block_interval": [
+    -0.007284444848125646,
+    -0.005702901858489227
+  ],
+  "development_zero_outcomes_retained": 6709,
+  "per_market_differences": [
+    {
+      "market": "completions",
+      "evaluation_tier": "development_oos",
+      "n": 2288,
+      "delta_brier": 0.0017145919948222186,
+      "delta_log_loss": 0.04606562365008676,
+      "delta_brier_low": 0.00039023443776500555,
+      "delta_brier_high": 0.002903428119594347
+    },
+    {
+      "market": "completions",
+      "evaluation_tier": "monitoring",
+      "n": 289,
+      "delta_brier": 0.002710759223811407,
+      "delta_log_loss": 0.007857117487477765,
+      "delta_brier_low": -0.0004676366774204785,
+      "delta_brier_high": 0.008913185581969574
+    },
+    {
+      "market": "passing_attempts",
+      "evaluation_tier": "development_oos",
+      "n": 2288,
+      "delta_brier": 0.0005804510111206654,
+      "delta_log_loss": 0.006345070784532914,
+      "delta_brier_low": -0.0014134368492669017,
+      "delta_brier_high": 0.002208933892563613
+    },
+    {
+      "market": "passing_attempts",
+      "evaluation_tier": "monitoring",
+      "n": 289,
+      "delta_brier": 0.003850111152302775,
+      "delta_log_loss": 0.012856338851168181,
+      "delta_brier_low": 0.0011810361833797303,
+      "delta_brier_high": 0.007640211121773783
+    },
+    {
+      "market": "passing_yards",
+      "evaluation_tier": "development_oos",
+      "n": 2288,
+      "delta_brier": -0.013639431813118814,
+      "delta_log_loss": -0.02857182424981679,
+      "delta_brier_low": -0.02530498737957186,
+      "delta_brier_high": -0.005374592988491236
+    },
+    {
+      "market": "passing_yards",
+      "evaluation_tier": "monitoring",
+      "n": 289,
+      "delta_brier": 0.0031504485271128878,
+      "delta_log_loss": 0.009396896759743976,
+      "delta_brier_low": 0.0015985033274713294,
+      "delta_brier_high": 0.0073492831128079104
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "evaluation_tier": "development_oos",
+      "n": 2288,
+      "delta_brier": -0.0004200173829531939,
+      "delta_log_loss": -0.005207428641763099,
+      "delta_brier_low": -0.002351977163901174,
+      "delta_brier_high": 0.0019256348689359458
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "evaluation_tier": "monitoring",
+      "n": 289,
+      "delta_brier": -0.002830885889612237,
+      "delta_log_loss": -0.006834534790403358,
+      "delta_brier_low": -0.004399185168298061,
+      "delta_brier_high": -0.0019380989383805723
+    },
+    {
+      "market": "qb_rushing_yards",
+      "evaluation_tier": "development_oos",
+      "n": 2288,
+      "delta_brier": -0.009541893998022933,
+      "delta_log_loss": -0.024747257550386204,
+      "delta_brier_low": -0.012124841694671908,
+      "delta_brier_high": -0.005936265715507381
+    },
+    {
+      "market": "qb_rushing_yards",
+      "evaluation_tier": "monitoring",
+      "n": 289,
+      "delta_brier": -0.013732027893863595,
+      "delta_log_loss": -0.033214521285900175,
+      "delta_brier_low": -0.019468343230301083,
+      "delta_brier_high": -0.012210039668966392
+    },
+    {
+      "market": "receiving_yards",
+      "evaluation_tier": "development_oos",
+      "n": 14112,
+      "delta_brier": -0.01001566513761376,
+      "delta_log_loss": -0.02235214396028833,
+      "delta_brier_low": -0.011047947342923201,
+      "delta_brier_high": -0.009055505185487315
+    },
+    {
+      "market": "receiving_yards",
+      "evaluation_tier": "monitoring",
+      "n": 1834,
+      "delta_brier": -0.005429257897438764,
+      "delta_log_loss": -0.01380110381441384,
+      "delta_brier_low": -0.006222718009844444,
+      "delta_brier_high": -0.0038025643614344753
+    },
+    {
+      "market": "receptions",
+      "evaluation_tier": "development_oos",
+      "n": 14112,
+      "delta_brier": -0.00692317908188188,
+      "delta_log_loss": -0.01770607023354472,
+      "delta_brier_low": -0.008063747720599887,
+      "delta_brier_high": -0.0061563506425374535
+    },
+    {
+      "market": "receptions",
+      "evaluation_tier": "monitoring",
+      "n": 1834,
+      "delta_brier": -0.0035296665869004986,
+      "delta_log_loss": -0.010577000111745893,
+      "delta_brier_low": -0.004473855292872979,
+      "delta_brier_high": -0.0021916751677075225
+    },
+    {
+      "market": "rushing_attempts",
+      "evaluation_tier": "development_oos",
+      "n": 4685,
+      "delta_brier": -0.0021236676985497793,
+      "delta_log_loss": -0.004889495759462825,
+      "delta_brier_low": -0.0035039210292275038,
+      "delta_brier_high": -0.0008737979539235012
+    },
+    {
+      "market": "rushing_attempts",
+      "evaluation_tier": "monitoring",
+      "n": 578,
+      "delta_brier": 0.0007451844667148604,
+      "delta_log_loss": 0.0016027285667720036,
+      "delta_brier_low": -0.0001452995199252706,
+      "delta_brier_high": 0.0016414456086014657
+    },
+    {
+      "market": "rushing_yards",
+      "evaluation_tier": "development_oos",
+      "n": 4685,
+      "delta_brier": -0.0031900233987972267,
+      "delta_log_loss": -0.006472860125672674,
+      "delta_brier_low": -0.006511517246539701,
+      "delta_brier_high": -0.0003039200234123219
+    },
+    {
+      "market": "rushing_yards",
+      "evaluation_tier": "monitoring",
+      "n": 578,
+      "delta_brier": 0.0013035095573182543,
+      "delta_log_loss": 0.00576339009647616,
+      "delta_brier_low": -0.005485856651346195,
+      "delta_brier_high": 0.005255694342845139
+    }
+  ],
+  "final_period_sealed": true,
+  "final_period_start": "2026-11-19T00:00:00Z",
+  "genuine_historical_quote_count": 0,
+  "genuine_bet_count": 0,
+  "realised_profit": null,
+  "production_replacement_recommended": false,
+  "comparison_warning": "Common safe-feature point engine; legacy normal probability rule only, not historical production pickles or bookmaker prices."
+}

@@ -151,3 +151,20 @@ in isolation first. Historical forecast scores remain conditional on observable
 participation and retrospective stat snapshots; absent publication/roster archives,
 this is not a fully authenticated historical deployment simulation. Authentic
 bookmaker ROI and final-period results are unavailable, not estimated substitutes.
+
+## Population and economics interpretation
+
+The recorded-history cohort is not true career experience before the source starts
+in 2019. A >21-day return gap includes offseasons; it is not an inferred injury.
+Forecast probabilities condition on the supported observed offensive-participation
+action population. Void probability is not separately estimated. Fair prices and
+resolved Kelly can be conditional on refundable action, but unconditional expected
+profit per offered bet also depends on action frequency. The backtest reports both
+all staked units and action stake, and labels its ROI denominator; it does not claim
+unconditional offer-level EV or executable live stakes.
+
+Binary log loss clips at 1e-9 solely for finite numerical scoring, equally for all
+methods. This does not modify saved probabilities or make hard-zero tail forecasts
+safe. Block intervals condition on fitted model decisions and observed-week blocks;
+they do not repeat the entire training/selection process or adjust multiple-market
+research. Final prospective evaluation is required before production promotion.
