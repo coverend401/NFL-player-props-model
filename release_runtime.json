@@ -1,0 +1,4 @@
+{
+  "python": "3.14",
+  "requirements": "requirements-production.lock"
+}

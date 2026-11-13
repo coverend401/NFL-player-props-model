@@ -1,5 +1,9 @@
 import json
 import os
+from pathlib import Path
+import logging
+
+from release_utils import resolve_release
 from datetime import datetime, timezone
 
 import joblib
@@ -35,6 +39,24 @@ if _pw:
             st.error("Wrong password.")
         st.stop()
 
+APP_ROOT = Path(os.environ.get("NFL_APP_ROOT", Path(__file__).resolve().parent)).resolve()
+try:
+    DATA_DIR, RELEASE = resolve_release(APP_ROOT)
+except Exception:
+    logging.exception("Forecast release validation failed")
+    st.error("Forecast data is unavailable: the selected release failed integrity or compatibility checks. No predictions were loaded.")
+    st.stop()
+if RELEASE:
+    st.caption(f"Forecast release: {RELEASE['release_id']} · generated {RELEASE['built_at']}")
+
+
+def future_games(frame):
+    if RELEASE is None or frame is None or frame.empty:
+        return frame
+    kickoff = frame["game_id"].map(RELEASE["game_kickoffs"])
+    return frame[pd.to_datetime(kickoff, utc=True) > pd.Timestamp.now(tz="UTC")].copy()
+
+
 # ---------------------------------------------------------------- shared setup
 MARKETS = {
     "Passing Yards": "passing_yards",
@@ -59,28 +81,29 @@ def _mtime(path):
 
 
 @st.cache_data(ttl=1800)
-def _load_features(v):
-    return pd.read_parquet("data/player_features.parquet")
+def _load_features(path, v):
+    return pd.read_parquet(path)
 
 
 @st.cache_data(ttl=1800)
-def _load_slate(v):
+def _load_slate(path, v):
     try:
-        return pd.read_parquet("data/slate.parquet")
+        return pd.read_parquet(path)
     except FileNotFoundError:
         return None
 
 
 @st.cache_resource(ttl=1800)
-def _load_model(file_label, v):
+def _load_model(path, v):
     try:
-        return joblib.load(f"data/model_{file_label}.joblib")
+        return joblib.load(path)
     except FileNotFoundError:
         return None
 
 
 def load_model(file_label):
-    return _load_model(file_label, _mtime(f"data/model_{file_label}.joblib"))
+    path = str(DATA_DIR / f"model_{file_label}.joblib")
+    return _load_model(path, _mtime(path))
 
 
 @st.cache_data(ttl=1800)
@@ -100,9 +123,11 @@ def get_ledger():
     return Ledger(SQLiteBackend("ledger_local.db")), "Supabase not configured - bets are stored in a TEMPORARY file that is wiped when the app restarts."
 
 
-features = _load_features(_mtime("data/player_features.parquet"))
-slate = _load_slate(_mtime("data/slate.parquet"))
-LATEST = _latest_lookup(features, _mtime("data/player_features.parquet"))
+features_path = str(DATA_DIR / "player_features.parquet")
+slate_path = str(DATA_DIR / "slate.parquet")
+features = _load_features(features_path, _mtime(features_path))
+slate = future_games(_load_slate(slate_path, _mtime(slate_path)))
+LATEST = _latest_lookup(features, (features_path, _mtime(features_path)))
 ledger, ledger_warning = get_ledger()
 if slate is not None and "feature_timing_version" not in slate:
     st.warning("Legacy forecast artifacts loaded. Stage 1A requires a coordinated feature, model and slate refresh before using corrected forecasts.")
@@ -172,7 +197,7 @@ with tabs[0]:
                "not confirmed betting value - check any pick against a real sportsbook price in "
                "Single Prop Lookup before betting it.")
     try:
-        top_picks = pd.read_parquet("data/top_picks.parquet")
+        top_picks = future_games(pd.read_parquet(DATA_DIR / "top_picks.parquet"))
         for _, r in top_picks.iterrows():
             st.markdown(f"**{r['player']}** ({r['team']} vs {r['opponent']}) — "
                         f"Over {r['recent_form']} {r['market']} "

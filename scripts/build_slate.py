@@ -12,6 +12,9 @@ which stays a manual step (no free odds API exists for this project).
 import pandas as pd
 import numpy as np
 import joblib
+import os
+import json
+from pathlib import Path
 from datetime import datetime, timezone
 
 try:
@@ -297,6 +300,13 @@ if __name__ == "__main__":
     # the start of the week. Historical replays must supply archived timestamps.
     prediction_at = datetime.now(timezone.utc)
     schedule["context_available_at"] = pd.Timestamp(prediction_at)
+    input_dir = os.environ.get("NFL_RELEASE_INPUT_DIR")
+    if input_dir:
+        inputs = Path(input_dir)
+        inputs.mkdir(parents=True, exist_ok=True)
+        schedule.to_parquet(inputs/"schedule.parquet", index=False)
+        (inputs/"qb_starters.json").write_text(json.dumps({
+            "as_of": prediction_at.isoformat(), "starters": qb_starters}, indent=2) + "\n")
     slate = build_slate(features, schedule, pd.Timestamp(prediction_at), qb_starters,
                         qb_starters_as_of=prediction_at)
     print(f"Slate built: {len(slate)} player-market rows for week {slate['week'].iloc[0] if len(slate) else '?'}")

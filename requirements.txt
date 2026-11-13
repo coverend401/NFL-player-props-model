@@ -1,8 +1,2 @@
-streamlit
-pandas
-nflreadpy
-pyarrow
-scikit-learn
-scipy
-joblib
-supabase
+# Shared, tested production and training environment. See release_runtime.json.
+-r requirements-production.lock

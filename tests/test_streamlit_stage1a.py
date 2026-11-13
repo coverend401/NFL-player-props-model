@@ -4,6 +4,7 @@ import os
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 import pandas as pd
 import streamlit as st
@@ -26,11 +27,29 @@ class StreamlitStage1ATests(unittest.TestCase):
         for path in (REPO / "data").glob("model_*.joblib"):
             (data / path.name).symlink_to(path)
         slate.to_parquet(data / "slate.parquet", index=False)
+        env = patch.dict(os.environ, {"NFL_APP_ROOT": td.name})
+        env.start()
+        self.addCleanup(env.stop)
         previous = Path.cwd()
         os.chdir(td.name)
         self.addCleanup(os.chdir, previous)
         self.addCleanup(st.cache_resource.clear)
-        at = AppTest.from_file(str(REPO / "app.py"), default_timeout=60).run()
+        from ledger import SQLiteBackend
+
+        connections = []
+
+        def temporary_backend(*args, **kwargs):
+            backend = SQLiteBackend(*args, **kwargs)
+            connections.append(backend.con)
+            return backend
+
+        db_patch = patch("ledger.SQLiteBackend", side_effect=temporary_backend)
+        db_patch.start()
+        self.addCleanup(db_patch.stop)
+        self.addCleanup(lambda: [connection.close() for connection in connections])
+        at = AppTest.from_file(str(REPO / "app.py"), default_timeout=60)
+        at.secrets.update({"APP_PASSWORD": "", "SUPABASE_URL": "", "SUPABASE_KEY": ""})
+        at.run()
         self.assertFalse(at.exception, [e.message for e in at.exception])
         return at
 
@@ -72,8 +91,8 @@ class StreamlitStage1ATests(unittest.TestCase):
     def test_unresolved_roof_scenarios_are_not_shown_as_betting_probabilities(self):
         slate = self.slate()
         slate["projection_status"] = "roof_scenarios_only"
-        slate["roof_scenario_low"] = 300.
-        slate["roof_scenario_high"] = 340.
+        slate["roof_scenario_low"] = 300.0
+        slate["roof_scenario_high"] = 340.0
         at = self.run_app(slate)
         self.assertTrue(any("Roof unresolved" in w.value for w in at.warning))
         self.assertFalse(any(m.label == "Model probability Over" for m in at.metric))
