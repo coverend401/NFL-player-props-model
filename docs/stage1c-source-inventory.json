@@ -1,0 +1,860 @@
+{
+  "inspected_at": "2026-11-13T21:41:55.849603+00:00",
+  "scope": "Documentation-only source review: local Parquet metadata, official static dictionaries/update guidance and GitHub asset metadata. No Stage 1C feature/model implementation or new outcome downloads.",
+  "active_release": "stage1a-20261113-py314-arrow24-r2",
+  "main_after_approved_research_merge": "bcb9df3ca45055ace7e7cde75cd3a9170686f1a6",
+  "local_metadata": {
+    "data/weekly_player_data.parquet": {
+      "rows": 139346,
+      "columns": [
+        "player_id",
+        "player_name",
+        "player_display_name",
+        "position",
+        "position_group",
+        "headshot_url",
+        "season",
+        "week",
+        "season_type",
+        "game_id",
+        "team",
+        "opponent_team",
+        "completions",
+        "attempts",
+        "passing_yards",
+        "passing_tds",
+        "interceptions",
+        "sacks_suffered",
+        "sack_yards_lost",
+        "sack_fumbles",
+        "sack_fumbles_lost",
+        "passing_air_yards",
+        "passing_yards_after_catch",
+        "passing_first_downs",
+        "passing_epa",
+        "passing_cpoe",
+        "passing_2pt_conversions",
+        "pacr",
+        "passing_10",
+        "passing_16",
+        "passing_20",
+        "passing_40",
+        "carries",
+        "rushing_yards",
+        "rushing_tds",
+        "rushing_fumbles",
+        "rushing_fumbles_lost",
+        "rushing_first_downs",
+        "rushing_epa",
+        "rushing_2pt_conversions",
+        "rushing_10",
+        "rushing_12",
+        "rushing_20",
+        "rushing_40",
+        "receptions",
+        "targets",
+        "receiving_yards",
+        "receiving_tds",
+        "receiving_fumbles",
+        "receiving_fumbles_lost",
+        "receiving_air_yards",
+        "receiving_yards_after_catch",
+        "receiving_first_downs",
+        "receiving_epa",
+        "receiving_2pt_conversions",
+        "receiving_10",
+        "receiving_16",
+        "receiving_20",
+        "receiving_40",
+        "racr",
+        "target_share",
+        "air_yards_share",
+        "wopr",
+        "special_teams_tds",
+        "def_tackles_solo",
+        "def_tackles_with_assist",
+        "def_tackle_assists",
+        "def_tackles_for_loss",
+        "def_tackles_for_loss_yards",
+        "def_fumbles_forced",
+        "def_sacks",
+        "def_sack_yards",
+        "def_qb_hits",
+        "def_interceptions",
+        "def_interception_yards",
+        "def_pass_defended",
+        "def_tds",
+        "def_fumbles",
+        "def_safeties",
+        "def_punt_blocks",
+        "def_pat_blocks",
+        "def_fg_blocks",
+        "def_2pt_atts",
+        "def_2pt_made",
+        "misc_yards",
+        "fumble_recovery_own",
+        "fumble_recovery_yards_own",
+        "fumble_recovery_opp",
+        "fumble_recovery_yards_opp",
+        "fumble_recovery_tds",
+        "penalties",
+        "penalty_yards",
+        "fumbles_forced_by_opp",
+        "fumbles_not_forced",
+        "fumbles_out_of_bounds",
+        "fumbles_total",
+        "fumbles_lost_total",
+        "punt_returns",
+        "punt_return_yards",
+        "kickoff_returns",
+        "kickoff_return_yards",
+        "fg_made",
+        "fg_att",
+        "fg_missed",
+        "fg_blocked",
+        "fg_long",
+        "fg_pct",
+        "fg_made_0_19",
+        "fg_made_20_29",
+        "fg_made_30_39",
+        "fg_made_40_49",
+        "fg_made_50_59",
+        "fg_made_60_",
+        "fg_missed_0_19",
+        "fg_missed_20_29",
+        "fg_missed_30_39",
+        "fg_missed_40_49",
+        "fg_missed_50_59",
+        "fg_missed_60_",
+        "fg_made_list",
+        "fg_missed_list",
+        "fg_blocked_list",
+        "fg_made_distance",
+        "fg_missed_distance",
+        "fg_blocked_distance",
+        "pat_made",
+        "pat_att",
+        "pat_missed",
+        "pat_blocked",
+        "pat_pct",
+        "gwfg_made",
+        "gwfg_att",
+        "gwfg_missed",
+        "gwfg_blocked",
+        "gwfg_distance",
+        "pt_att",
+        "pt_blocked",
+        "pt_long",
+        "pt_yards",
+        "pt_inside_20",
+        "pt_out_of_bounds",
+        "pt_downed",
+        "pt_touchback",
+        "pt_fair_caught",
+        "pt_returned",
+        "pt_return_yards",
+        "pt_return_tds",
+        "pt_net_yards",
+        "fantasy_points",
+        "fantasy_points_ppr",
+        "release_id"
+      ],
+      "inspection": "schema/footer only; no outcome values read"
+    },
+    "data/player_features.parquet": {
+      "rows": 185912,
+      "columns": [
+        "player_id",
+        "player_name",
+        "player_display_name",
+        "position",
+        "position_group",
+        "headshot_url",
+        "season",
+        "week",
+        "season_type",
+        "game_id",
+        "team",
+        "opponent_team",
+        "completions",
+        "attempts",
+        "passing_yards",
+        "passing_tds",
+        "interceptions",
+        "sacks_suffered",
+        "sack_yards_lost",
+        "sack_fumbles",
+        "sack_fumbles_lost",
+        "passing_air_yards",
+        "passing_yards_after_catch",
+        "passing_first_downs",
+        "passing_epa",
+        "passing_cpoe",
+        "passing_2pt_conversions",
+        "pacr",
+        "passing_10",
+        "passing_16",
+        "passing_20",
+        "passing_40",
+        "carries",
+        "rushing_yards",
+        "rushing_tds",
+        "rushing_fumbles",
+        "rushing_fumbles_lost",
+        "rushing_first_downs",
+        "rushing_epa",
+        "rushing_2pt_conversions",
+        "rushing_10",
+        "rushing_12",
+        "rushing_20",
+        "rushing_40",
+        "receptions",
+        "targets",
+        "receiving_yards",
+        "receiving_tds",
+        "receiving_fumbles",
+        "receiving_fumbles_lost",
+        "receiving_air_yards",
+        "receiving_yards_after_catch",
+        "receiving_first_downs",
+        "receiving_epa",
+        "receiving_2pt_conversions",
+        "receiving_10",
+        "receiving_16",
+        "receiving_20",
+        "receiving_40",
+        "racr",
+        "target_share",
+        "air_yards_share",
+        "wopr",
+        "special_teams_tds",
+        "def_tackles_solo",
+        "def_tackles_with_assist",
+        "def_tackle_assists",
+        "def_tackles_for_loss",
+        "def_tackles_for_loss_yards",
+        "def_fumbles_forced",
+        "def_sacks",
+        "def_sack_yards",
+        "def_qb_hits",
+        "def_interceptions",
+        "def_interception_yards",
+        "def_pass_defended",
+        "def_tds",
+        "def_fumbles",
+        "def_safeties",
+        "def_punt_blocks",
+        "def_pat_blocks",
+        "def_fg_blocks",
+        "def_2pt_atts",
+        "def_2pt_made",
+        "misc_yards",
+        "fumble_recovery_own",
+        "fumble_recovery_yards_own",
+        "fumble_recovery_opp",
+        "fumble_recovery_yards_opp",
+        "fumble_recovery_tds",
+        "penalties",
+        "penalty_yards",
+        "fumbles_forced_by_opp",
+        "fumbles_not_forced",
+        "fumbles_out_of_bounds",
+        "fumbles_total",
+        "fumbles_lost_total",
+        "punt_returns",
+        "punt_return_yards",
+        "kickoff_returns",
+        "kickoff_return_yards",
+        "fg_made",
+        "fg_att",
+        "fg_missed",
+        "fg_blocked",
+        "fg_long",
+        "fg_pct",
+        "fg_made_0_19",
+        "fg_made_20_29",
+        "fg_made_30_39",
+        "fg_made_40_49",
+        "fg_made_50_59",
+        "fg_made_60_",
+        "fg_missed_0_19",
+        "fg_missed_20_29",
+        "fg_missed_30_39",
+        "fg_missed_40_49",
+        "fg_missed_50_59",
+        "fg_missed_60_",
+        "fg_made_list",
+        "fg_missed_list",
+        "fg_blocked_list",
+        "fg_made_distance",
+        "fg_missed_distance",
+        "fg_blocked_distance",
+        "pat_made",
+        "pat_att",
+        "pat_missed",
+        "pat_blocked",
+        "pat_pct",
+        "gwfg_made",
+        "gwfg_att",
+        "gwfg_missed",
+        "gwfg_blocked",
+        "gwfg_distance",
+        "pt_att",
+        "pt_blocked",
+        "pt_long",
+        "pt_yards",
+        "pt_inside_20",
+        "pt_out_of_bounds",
+        "pt_downed",
+        "pt_touchback",
+        "pt_fair_caught",
+        "pt_returned",
+        "pt_return_yards",
+        "pt_return_tds",
+        "pt_net_yards",
+        "fantasy_points",
+        "fantasy_points_ppr",
+        "stats_observed",
+        "receptions_exp",
+        "rec_yards_gained_exp",
+        "pass_completions_exp",
+        "pass_yards_gained_exp",
+        "rush_yards_gained_exp",
+        "offense_pct",
+        "completion_pct_above_expectation",
+        "avg_time_to_throw",
+        "observation_status",
+        "kickoff_at",
+        "completed_at",
+        "prediction_at",
+        "passing_yards_season_avg",
+        "passing_yards_last3_avg",
+        "passing_yards_last5_avg",
+        "passing_yards_trend",
+        "passing_tds_season_avg",
+        "passing_tds_last3_avg",
+        "passing_tds_last5_avg",
+        "passing_tds_trend",
+        "interceptions_season_avg",
+        "interceptions_last3_avg",
+        "interceptions_last5_avg",
+        "interceptions_trend",
+        "completions_season_avg",
+        "completions_last3_avg",
+        "completions_last5_avg",
+        "completions_trend",
+        "attempts_season_avg",
+        "attempts_last3_avg",
+        "attempts_last5_avg",
+        "attempts_trend",
+        "carries_season_avg",
+        "carries_last3_avg",
+        "carries_last5_avg",
+        "carries_trend",
+        "rushing_yards_season_avg",
+        "rushing_yards_last3_avg",
+        "rushing_yards_last5_avg",
+        "rushing_yards_trend",
+        "rushing_tds_season_avg",
+        "rushing_tds_last3_avg",
+        "rushing_tds_last5_avg",
+        "rushing_tds_trend",
+        "receptions_season_avg",
+        "receptions_last3_avg",
+        "receptions_last5_avg",
+        "receptions_trend",
+        "targets_season_avg",
+        "targets_last3_avg",
+        "targets_last5_avg",
+        "targets_trend",
+        "receiving_yards_season_avg",
+        "receiving_yards_last3_avg",
+        "receiving_yards_last5_avg",
+        "receiving_yards_trend",
+        "receiving_tds_season_avg",
+        "receiving_tds_last3_avg",
+        "receiving_tds_last5_avg",
+        "receiving_tds_trend",
+        "receptions_exp_season_avg",
+        "receptions_exp_last3_avg",
+        "rec_yards_gained_exp_season_avg",
+        "rec_yards_gained_exp_last3_avg",
+        "pass_completions_exp_season_avg",
+        "pass_completions_exp_last3_avg",
+        "pass_yards_gained_exp_season_avg",
+        "pass_yards_gained_exp_last3_avg",
+        "rush_yards_gained_exp_season_avg",
+        "rush_yards_gained_exp_last3_avg",
+        "offense_pct_season_avg",
+        "offense_pct_last3_avg",
+        "completion_pct_above_expectation_season_avg",
+        "completion_pct_above_expectation_last3_avg",
+        "avg_time_to_throw_season_avg",
+        "avg_time_to_throw_last3_avg",
+        "target_share_season_avg",
+        "target_share_last3_avg",
+        "air_yards_share_season_avg",
+        "air_yards_share_last3_avg",
+        "wopr_season_avg",
+        "wopr_last3_avg",
+        "passing_epa_season_avg",
+        "passing_epa_last3_avg",
+        "rushing_epa_season_avg",
+        "rushing_epa_last3_avg",
+        "receiving_epa_season_avg",
+        "receiving_epa_last3_avg",
+        "games_played_prior",
+        "team_total_passing_yards",
+        "team_total_passing_tds",
+        "team_total_interceptions",
+        "team_total_completions",
+        "team_total_attempts",
+        "team_total_carries",
+        "team_total_rushing_yards",
+        "team_total_rushing_tds",
+        "team_total_receptions",
+        "team_total_targets",
+        "team_total_receiving_yards",
+        "team_total_receiving_tds",
+        "opp_passing_yards_allowed_season_avg",
+        "opp_passing_tds_allowed_season_avg",
+        "opp_interceptions_allowed_season_avg",
+        "opp_completions_allowed_season_avg",
+        "opp_attempts_allowed_season_avg",
+        "opp_carries_allowed_season_avg",
+        "opp_rushing_yards_allowed_season_avg",
+        "opp_rushing_tds_allowed_season_avg",
+        "opp_receptions_allowed_season_avg",
+        "opp_targets_allowed_season_avg",
+        "opp_receiving_yards_allowed_season_avg",
+        "opp_receiving_tds_allowed_season_avg",
+        "team_implied_total",
+        "opp_implied_total",
+        "total_line",
+        "indoor",
+        "is_home",
+        "release_id"
+      ],
+      "inspection": "schema/footer only; no outcome values read"
+    },
+    "inputs/schedule.parquet": {
+      "rows": 7548,
+      "columns": [
+        "game_id",
+        "season",
+        "game_type",
+        "week",
+        "gameday",
+        "weekday",
+        "gametime",
+        "away_team",
+        "away_score",
+        "home_team",
+        "home_score",
+        "location",
+        "result",
+        "total",
+        "overtime",
+        "old_game_id",
+        "gsis",
+        "nfl_detail_id",
+        "pfr",
+        "pff",
+        "espn",
+        "ftn",
+        "away_rest",
+        "home_rest",
+        "away_moneyline",
+        "home_moneyline",
+        "spread_line",
+        "away_spread_odds",
+        "home_spread_odds",
+        "total_line",
+        "under_odds",
+        "over_odds",
+        "div_game",
+        "roof",
+        "surface",
+        "temp",
+        "wind",
+        "away_qb_id",
+        "home_qb_id",
+        "away_qb_name",
+        "home_qb_name",
+        "away_coach",
+        "home_coach",
+        "referee",
+        "stadium_id",
+        "stadium",
+        "context_available_at"
+      ],
+      "inspection": "schema/footer only; no outcome values read"
+    }
+  },
+  "published_assets": {
+    "pbp": {
+      "url": "https://github.com/nflverse/nflverse-data/releases/tag/pbp",
+      "assets": [
+        {
+          "name": "play_by_play_1999.parquet",
+          "bytes": 13364401,
+          "updated_at": "2025-04-30T06:32:44Z"
+        },
+        {
+          "name": "play_by_play_2000.parquet",
+          "bytes": 13404971,
+          "updated_at": "2025-07-16T14:29:04Z"
+        },
+        {
+          "name": "play_by_play_2001.parquet",
+          "bytes": 14007738,
+          "updated_at": "2026-08-13T12:38:45Z"
+        },
+        {
+          "name": "play_by_play_2002.parquet",
+          "bytes": 14742308,
+          "updated_at": "2026-08-13T12:39:26Z"
+        },
+        {
+          "name": "play_by_play_2003.parquet",
+          "bytes": 14620361,
+          "updated_at": "2025-04-30T06:35:51Z"
+        },
+        {
+          "name": "play_by_play_2004.parquet",
+          "bytes": 14568240,
+          "updated_at": "2025-04-30T06:37:54Z"
+        },
+        {
+          "name": "play_by_play_2005.parquet",
+          "bytes": 14612857,
+          "updated_at": "2025-04-30T06:38:09Z"
+        },
+        {
+          "name": "play_by_play_2006.parquet",
+          "bytes": 18555685,
+          "updated_at": "2025-04-30T06:33:16Z"
+        },
+        {
+          "name": "play_by_play_2007.parquet",
+          "bytes": 18716524,
+          "updated_at": "2025-04-30T06:41:08Z"
+        },
+        {
+          "name": "play_by_play_2008.parquet",
+          "bytes": 18565820,
+          "updated_at": "2025-04-30T06:34:15Z"
+        },
+        {
+          "name": "play_by_play_2009.parquet",
+          "bytes": 18905386,
+          "updated_at": "2025-04-30T06:36:09Z"
+        },
+        {
+          "name": "play_by_play_2010.parquet",
+          "bytes": 19059048,
+          "updated_at": "2025-04-30T06:34:41Z"
+        },
+        {
+          "name": "play_by_play_2011.parquet",
+          "bytes": 19117830,
+          "updated_at": "2025-04-30T06:38:47Z"
+        },
+        {
+          "name": "play_by_play_2012.parquet",
+          "bytes": 19322039,
+          "updated_at": "2025-04-30T06:33:24Z"
+        },
+        {
+          "name": "play_by_play_2013.parquet",
+          "bytes": 19521610,
+          "updated_at": "2024-08-25T12:30:13Z"
+        },
+        {
+          "name": "play_by_play_2014.parquet",
+          "bytes": 19360792,
+          "updated_at": "2024-08-25T12:30:16Z"
+        },
+        {
+          "name": "play_by_play_2015.parquet",
+          "bytes": 19545842,
+          "updated_at": "2025-04-30T06:33:27Z"
+        },
+        {
+          "name": "play_by_play_2016.parquet",
+          "bytes": 19344382,
+          "updated_at": "2025-04-30T06:34:29Z"
+        },
+        {
+          "name": "play_by_play_2017.parquet",
+          "bytes": 19050401,
+          "updated_at": "2025-04-30T06:41:25Z"
+        },
+        {
+          "name": "play_by_play_2018.parquet",
+          "bytes": 19072097,
+          "updated_at": "2025-04-30T06:39:20Z"
+        },
+        {
+          "name": "play_by_play_2019.parquet",
+          "bytes": 19119729,
+          "updated_at": "2025-07-31T18:17:19Z"
+        },
+        {
+          "name": "play_by_play_2020.parquet",
+          "bytes": 19286459,
+          "updated_at": "2026-08-26T07:33:10Z"
+        },
+        {
+          "name": "play_by_play_2021.parquet",
+          "bytes": 20249925,
+          "updated_at": "2026-01-08T13:13:13Z"
+        },
+        {
+          "name": "play_by_play_2022.parquet",
+          "bytes": 20426548,
+          "updated_at": "2026-02-12T10:25:24Z"
+        },
+        {
+          "name": "play_by_play_2023.parquet",
+          "bytes": 20534088,
+          "updated_at": "2026-02-12T10:24:52Z"
+        },
+        {
+          "name": "play_by_play_2024.parquet",
+          "bytes": 20597560,
+          "updated_at": "2026-08-13T12:26:27Z"
+        },
+        {
+          "name": "play_by_play_2025.parquet",
+          "bytes": 20337029,
+          "updated_at": "2026-08-13T12:26:09Z"
+        },
+        {
+          "name": "play_by_play_2026.parquet",
+          "bytes": 10197719,
+          "updated_at": "2026-11-13T17:11:44Z"
+        }
+      ]
+    },
+    "pbp_participation": {
+      "url": "https://github.com/nflverse/nflverse-data/releases/tag/pbp_participation",
+      "assets": [
+        {
+          "name": "pbp_participation_2016.parquet",
+          "bytes": 3076917,
+          "updated_at": "2023-12-19T05:50:06Z"
+        },
+        {
+          "name": "pbp_participation_2017.parquet",
+          "bytes": 2943355,
+          "updated_at": "2023-12-19T05:57:32Z"
+        },
+        {
+          "name": "pbp_participation_2018.parquet",
+          "bytes": 2978916,
+          "updated_at": "2023-12-19T06:04:53Z"
+        },
+        {
+          "name": "pbp_participation_2019.parquet",
+          "bytes": 2992048,
+          "updated_at": "2023-12-19T06:12:05Z"
+        },
+        {
+          "name": "pbp_participation_2020.parquet",
+          "bytes": 2849568,
+          "updated_at": "2023-12-19T06:19:31Z"
+        },
+        {
+          "name": "pbp_participation_2021.parquet",
+          "bytes": 2949474,
+          "updated_at": "2023-12-19T06:27:15Z"
+        },
+        {
+          "name": "pbp_participation_2022.parquet",
+          "bytes": 2941018,
+          "updated_at": "2023-12-19T06:34:57Z"
+        },
+        {
+          "name": "pbp_participation_2023.parquet",
+          "bytes": 4700238,
+          "updated_at": "2025-09-04T10:25:29Z"
+        },
+        {
+          "name": "pbp_participation_2024.parquet",
+          "bytes": 4644767,
+          "updated_at": "2025-09-04T10:24:48Z"
+        },
+        {
+          "name": "pbp_participation_2025.parquet",
+          "bytes": 4741443,
+          "updated_at": "2026-02-10T18:54:07Z"
+        },
+        {
+          "name": "pbp_participation_old_2023.parquet",
+          "bytes": 2610189,
+          "updated_at": "2025-08-31T20:47:31Z"
+        }
+      ]
+    },
+    "ftn_charting": {
+      "url": "https://github.com/nflverse/nflverse-data/releases/tag/ftn_charting",
+      "assets": [
+        {
+          "name": "ftn_charting_2022.parquet",
+          "bytes": 501910,
+          "updated_at": "2024-10-10T01:13:45Z"
+        },
+        {
+          "name": "ftn_charting_2023.parquet",
+          "bytes": 567781,
+          "updated_at": "2024-09-06T23:50:21Z"
+        },
+        {
+          "name": "ftn_charting_2024.parquet",
+          "bytes": 563180,
+          "updated_at": "2025-09-01T01:29:36Z"
+        },
+        {
+          "name": "ftn_charting_2025.parquet",
+          "bytes": 556492,
+          "updated_at": "2026-09-23T03:14:30Z"
+        },
+        {
+          "name": "ftn_charting_2026.parquet",
+          "bytes": 287339,
+          "updated_at": "2026-11-12T00:01:30Z"
+        }
+      ]
+    },
+    "injuries": {
+      "url": "https://github.com/nflverse/nflverse-data/releases/tag/injuries",
+      "assets": [
+        {
+          "name": "injuries_2009.parquet",
+          "bytes": 83939,
+          "updated_at": "2022-07-26T05:22:16Z"
+        },
+        {
+          "name": "injuries_2010.parquet",
+          "bytes": 107893,
+          "updated_at": "2022-07-26T05:22:22Z"
+        },
+        {
+          "name": "injuries_2011.parquet",
+          "bytes": 115104,
+          "updated_at": "2022-07-26T05:22:29Z"
+        },
+        {
+          "name": "injuries_2012.parquet",
+          "bytes": 120441,
+          "updated_at": "2022-07-26T05:22:37Z"
+        },
+        {
+          "name": "injuries_2013.parquet",
+          "bytes": 114312,
+          "updated_at": "2022-07-26T05:22:44Z"
+        },
+        {
+          "name": "injuries_2014.parquet",
+          "bytes": 115033,
+          "updated_at": "2022-07-26T05:22:51Z"
+        },
+        {
+          "name": "injuries_2015.parquet",
+          "bytes": 117594,
+          "updated_at": "2022-07-26T05:22:57Z"
+        },
+        {
+          "name": "injuries_2016.parquet",
+          "bytes": 112500,
+          "updated_at": "2022-07-26T05:23:04Z"
+        },
+        {
+          "name": "injuries_2017.parquet",
+          "bytes": 114559,
+          "updated_at": "2022-07-26T05:23:11Z"
+        },
+        {
+          "name": "injuries_2018.parquet",
+          "bytes": 113740,
+          "updated_at": "2022-07-26T05:23:17Z"
+        },
+        {
+          "name": "injuries_2019.parquet",
+          "bytes": 119388,
+          "updated_at": "2022-07-26T05:23:23Z"
+        },
+        {
+          "name": "injuries_2020.parquet",
+          "bytes": 125134,
+          "updated_at": "2022-07-26T05:23:29Z"
+        },
+        {
+          "name": "injuries_2021.parquet",
+          "bytes": 126242,
+          "updated_at": "2022-08-31T07:37:32Z"
+        },
+        {
+          "name": "injuries_2022.parquet",
+          "bytes": 129611,
+          "updated_at": "2023-08-31T07:14:27Z"
+        },
+        {
+          "name": "injuries_2023.parquet",
+          "bytes": 126566,
+          "updated_at": "2024-09-04T07:15:42Z"
+        },
+        {
+          "name": "injuries_2024.parquet",
+          "bytes": 139253,
+          "updated_at": "2025-02-13T07:16:35Z"
+        },
+        {
+          "name": "injuries_2025.parquet",
+          "bytes": 97472,
+          "updated_at": "2026-09-07T12:23:41Z"
+        },
+        {
+          "name": "injuries_2026.parquet",
+          "bytes": 64908,
+          "updated_at": "2026-11-13T15:18:19Z"
+        }
+      ]
+    }
+  },
+  "retrieved_static_sources": {
+    "nflverse_data_schedule.Rmd": {
+      "sha256": "6ea71f130135c4ff7cebc7221319428e3c1ba69fc9b8f1d26a306d5271670278",
+      "bytes": 9462
+    },
+    "dictionary_participation.csv": {
+      "sha256": "ea1f390aab499695b33c0fc3411da239a63c9777b5e5468d1baddd9417b2f835",
+      "bytes": 3213
+    },
+    "dictionary_ftn_charting.csv": {
+      "sha256": "561f76818200cd6bb88a1fa3a74a4640c80e5e0fcf59ade9d01dac18c312e1f4",
+      "bytes": 2551
+    },
+    "dictionary_injuries.csv": {
+      "sha256": "b0580b5f30eb4fcd80c376233906f65e87e8ebe473e334f38c73e349d1f24b93",
+      "bytes": 1107
+    },
+    "load_participation.R": {
+      "sha256": "60a1497380a3c9271d72841f8f6e7e57c20b82d4611b9ee8b268606090fe2b9f",
+      "bytes": 2615
+    },
+    "load_injuries.R": {
+      "sha256": "abcb22de7eb3c258267e29245bfbf17e83de57c5fe6284042032c3053664a5a6",
+      "bytes": 1439
+    }
+  },
+  "critical_constraints": [
+    "2023+ participation published only after all postseason games: unavailable for within-season updating despite game dates.",
+    "No 2026 participation Parquet asset listed at inspection.",
+    "Injury/FTN/PBP 2026 asset existence is not proof of complete coverage or historical publication timing.",
+    "Routes for targeted receivers are not route participation counts for all eligible receivers.",
+    "No odds provider configured; no authentic historical bookmaker lines/prices archive."
+  ],
+  "sealed_final_period": "2026 week 11 onward, conservative cutoff 2026-11-19T00:00:00Z; all future seasons also excluded."
+}
