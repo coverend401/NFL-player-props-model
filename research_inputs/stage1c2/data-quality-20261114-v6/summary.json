@@ -1,0 +1,20 @@
+{
+  "scope": "Stage1C.2 Stage1 DATA QUALITY ONLY",
+  "models_fitted": 0,
+  "stage2_authorised": false,
+  "final_period_sealed": true,
+  "decision": "NO_GO_FOR_GENUINELY_FEASIBLE_PREGAME_ALLOCATION_FITTING",
+  "baseline_player_market_games": 55303,
+  "verified_feasible_games": 0,
+  "reviewed_team_games": 17,
+  "internally_repaired_team_games": 12,
+  "unresolved_team_games": 5,
+  "ambiguous_roster_identity_rows": 97,
+  "roster_missing_gsis_rows": 97,
+  "roster_duplicate_key_rows": 0,
+  "snap_unresolved_identity_rows": 225,
+  "snap_conflicting_identity_rows": 7,
+  "ambiguous_snap_crosswalk_rows": 0,
+  "no_independent_credit_corroboration_claim": true,
+  "evidence_limit": "Revised weekly status/membership snapshots lack historical original-version publication/receipt evidence; injury date_modified is publisher metadata, not a complete inactive list or an archived receipt"
+}

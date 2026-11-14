@@ -1,0 +1,26 @@
+[
+  {
+    "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/R/load_rosters_weekly.R",
+    "sha256": "b2b0c4b29f22d3cd0855ec97a29388885748c91ca708dc632924b33ac8763e8f",
+    "file_saved_at_utc": "2026-11-14T10:28:06.254972+00:00",
+    "finding": "Week-level rosters, not publication-stamped row history"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/data-raw/dictionary_rosters.csv",
+    "sha256": "86c058e9053066ee50ddf573164591dcc6eb16bf6c8b1c6fe7a48803a870d799",
+    "file_saved_at_utc": "2026-11-14T10:28:06.517540+00:00",
+    "finding": "Roster status includes active/inactive/reserve/practice conditions"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/R/load_participation.R",
+    "sha256": "60a1497380a3c9271d72841f8f6e7e57c20b82d4611b9ee8b268606090fe2b9f",
+    "file_saved_at_utc": "2026-11-14T10:31:10.687081+00:00",
+    "finding": "2023 onwards provided after all post-season games are completed"
+  },
+  {
+    "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/R/load_injuries.R",
+    "sha256": "abcb22de7eb3c258267e29245bfbf17e83de57c5fe6284042032c3053664a5a6",
+    "file_saved_at_utc": "2026-11-14T10:31:10.312949+00:00",
+    "finding": "Weekly API injury reports, not a complete inactive archive"
+  }
+]
