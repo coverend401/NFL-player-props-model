@@ -49,3 +49,9 @@ jobs:
           for manifest in experiments/stage1c/*/manifest.json; do
             if [ -f "$manifest" ]; then python -m stage1c.artifacts "$(dirname "$manifest")" --replay; fi
           done
+      - name: Validate controlled Stage 1C.1 diagnostics and replay every model
+        if: matrix.python-version == '3.14'
+        run: |
+          for manifest in experiments/stage1c1/*/manifest.json; do
+            if [ -f "$manifest" ]; then python -m stage1c1.artifacts "$(dirname "$manifest")" --replay; fi
+          done

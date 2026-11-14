@@ -1,0 +1,106 @@
+{
+  "seed": 41017,
+  "evaluation_seasons": [
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "final_start": "2026-11-19T00:00:00Z",
+  "final_season": 2026,
+  "final_week": 11,
+  "prediction_lead_hours": 1,
+  "distribution_fit_last_week": 6,
+  "calibration_last_week": 10,
+  "probe_multipliers": [
+    0.5,
+    1.0,
+    1.5
+  ],
+  "bootstrap_replicates": 500,
+  "bootstrap_week_block": 4,
+  "minimum_phase_rows": 40,
+  "point_minimum_relative_gain": 0.02,
+  "point_bootstrap_replicates": 500,
+  "minimum_gate_weeks": 8,
+  "calibration_penalty": 0.01,
+  "version": "stage1c1-v1",
+  "scope": "data quality and controlled diagnostics; no C3-C6",
+  "variants": {
+    "b1_none": {
+      "backbone": "b1",
+      "context": "player_control",
+      "source": "legacy",
+      "archived_point": true
+    },
+    "c0_none": {
+      "backbone": "c0",
+      "context": "player_control",
+      "source": "legacy",
+      "archived_point": true
+    },
+    "b1_context": {
+      "backbone": "b1",
+      "context": "c1_c2",
+      "source": "reconciled"
+    },
+    "c0_context": {
+      "backbone": "c0",
+      "context": "c1_c2",
+      "source": "reconciled"
+    },
+    "b1_context_legacy": {
+      "backbone": "b1",
+      "context": "c1_c2",
+      "source": "legacy"
+    },
+    "b1_context_fixed": {
+      "backbone": "b1",
+      "context": "c1_c2",
+      "source": "reconciled",
+      "fixed_choice": true
+    },
+    "b1_c1": {
+      "backbone": "b1",
+      "context": "c1_only",
+      "source": "reconciled"
+    },
+    "b1_c2": {
+      "backbone": "b1",
+      "context": "c2_volume",
+      "source": "reconciled"
+    }
+  },
+  "input_bundle": "research_inputs/stage1c1/reconciled-20261114-v2",
+  "context_lag_hours": 36,
+  "probability_method": "fixed_student5_penalized_sigmoid",
+  "interval_method": "inverse_same_calibrated_CDF_90",
+  "primary": "b1_context minus b1_none passing_yards MAE",
+  "secondary": "prespecified RB receiving_yards; no subgroup-specific fitting or weighting",
+  "minimum_useful_mae_gain": 0.01,
+  "permutation_repeats": 5,
+  "permutation_seed": 741011,
+  "oracle_policy": "HINDSIGHT_ONLY diagnostic strawman and counterfactual accounting; not candidate forecasts",
+  "evidence_tier": "retrospective_reconciled_not_publication_verified",
+  "final_status": "SEALED: no final-period option; source predicates and semantic guards unchanged",
+  "market_information": "none",
+  "diagnostic_history_games": 5,
+  "oracle_factors": [
+    "team_volume",
+    "player_share",
+    "efficiency",
+    "non_opportunity_credit"
+  ],
+  "zero_denominator_policy": "keep feasible efficiency when player N=0; keep feasible share when team T=0; attribute exceptional credits separately",
+  "calibration_slope_bounds": [
+    0.25,
+    4
+  ],
+  "calibration_intercept_bounds": [
+    -3,
+    3
+  ],
+  "probability_selection": "none: identical Student5 and penalized sigmoid algorithm for every arm",
+  "diagnostic_selection": "prior year weeks11-18 only; no diagnostic-driven model selection"
+}

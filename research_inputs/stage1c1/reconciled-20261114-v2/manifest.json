@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "scope": "opportunity diagnostic inputs, not replacement evaluation outcomes",
+  "evidence_tier": "retrospective_reconciled_not_publication_verified",
+  "source_player_sha256": "433af7883540e168ed4c345b0223713212b1838cd96ac430c69fac904db313e2",
+  "legacy_input_manifest_sha256": "639adeeb3c394c7e52bcfb550e7edbf9f13d9e8318d92295fb97ba625898da28",
+  "raw_sources": [
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2019.parquet",
+      "sha256": "60c3067017db2d28a78f66a79b657268be8578d9a5288e6a827efdcd7fe42540",
+      "bytes": 19119729,
+      "retrieved_at": "2026-11-13T21:55:04.356587+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2020.parquet",
+      "sha256": "8889f5d8782b5c5dce3c3644acdc0322b228a7e9cb13fa36cbac250e260e9f60",
+      "bytes": 19286459,
+      "retrieved_at": "2026-11-13T21:55:05.410515+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2021.parquet",
+      "sha256": "333ad34378e5339d5172717cc83378e908daf02c8699416ab3e17c2ec10f78d8",
+      "bytes": 20249925,
+      "retrieved_at": "2026-11-13T21:55:06.509256+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2022.parquet",
+      "sha256": "931121d8897779d7944e2a293e92ed8799c8e5cceef84096ac42339003fedc09",
+      "bytes": 20426548,
+      "retrieved_at": "2026-11-13T21:55:07.436650+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2023.parquet",
+      "sha256": "bd3484731408def6b0ec93225bba2bd7b2c65769ca707a2b9444d891abdc6776",
+      "bytes": 20534088,
+      "retrieved_at": "2026-11-13T21:55:08.210277+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2024.parquet",
+      "sha256": "3fd2896bc0b911b615142d2f1fabae54a4bbba5ab7b73b28187b118ef8af6a3b",
+      "bytes": 20597560,
+      "retrieved_at": "2026-11-13T21:55:09.177624+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2025.parquet",
+      "sha256": "c6ecedd6d678cc37ed316b23ef84ee1ec6abb69c514bb11868a7ebd5a367df29",
+      "bytes": 20337029,
+      "retrieved_at": "2026-11-13T21:53:35.156799+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    },
+    {
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.parquet",
+      "sha256": "63d725b49ed1d28d17bc63b32685903c0b4c5d7748e1bd8081b986b09aa2d841",
+      "bytes": 10197719,
+      "retrieved_at": "2026-11-13T21:55:09.985686+00:00",
+      "materialisation": "Parquet development predicates before column loading",
+      "publication_history_verified": false
+    }
+  ],
+  "files": {
+    "position_totals.parquet": "735ad49391f8d945f77e4a47adcfb5f7aee04986e9001fdf9cb3a1a7d72bcd96",
+    "team_reconciliation.parquet": "710df5ef8f947aacbebf914723aad5bc67553ef703a8c380e666569b04fe9835",
+    "player_reconciliation.parquet": "c9a37e91baaebe7f489703383f5ddb854ed850f7f5e87453702ab63772949c60",
+    "unresolved_events.parquet": "a626e57abe20db63da7867139f87aeb3132c0185931d77278cc1d65fc96c5dc9"
+  },
+  "final_period_sealed": true,
+  "note": "Totals share an upstream PBP source; reconciliation is internal consistency, not independent authenticity."
+}
