@@ -8,8 +8,8 @@ Use the unchanged Python 3.14 / PyArrow 24.0.0 dependency lock:
 export OPENBLAS_NUM_THREADS=1
 export OMP_NUM_THREADS=1
 python -m unittest discover -s tests -v
-python -m stage1c2_stage1.validate research_inputs/stage1c2/data-quality-20261114-v5 --replay
-python scripts/report_stage1c2_stage1.py research_inputs/stage1c2/data-quality-20261114-v5
+python -m stage1c2_stage1.validate research_inputs/stage1c2/data-quality-20261114-v6 --replay
+python scripts/report_stage1c2_stage1.py research_inputs/stage1c2/data-quality-20261114-v6
 python scripts/validate_release.py release_candidates/stage1a-20261113-py314-arrow24-r2 --app-smoke
 ```
 

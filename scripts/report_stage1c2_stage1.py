@@ -132,6 +132,27 @@ def report(directory, output):
         )
     injury = pd.DataFrame(tiers)
     injury.to_csv(output / "injury_timestamp_coverage.csv", index=False)
+    old_rates = pd.read_parquet(
+        ROOT / "research_inputs/stage1c1/reconciled-20261114-v2/position_totals.parquet"
+    )
+    new_rates = pd.read_parquet(directory / "position_totals.parquet")
+    groups = (
+        old_rates.groupby("kind")[["original_complete", "known_complete"]]
+        .sum()
+        .rename(
+            columns={
+                "original_complete": "original_complete",
+                "known_complete": "stage1c1_complete",
+            }
+        )
+        .join(
+            new_rates.groupby("kind")
+            .known_complete.sum()
+            .rename("stage1c2_stage1_complete")
+        )
+        .reset_index()
+    )
+    groups.to_csv(output / "positional_group_coverage.csv", index=False)
     text = [
         "# Stage 1C.2 Stage 1 — data quality and feasibility findings",
         "**Recommendation: NO-GO for Stage 2 fitting intended to establish genuinely feasible historical pregame allocation.** Opportunity labels and missing-box histories are substantially auditable; the examined sources do not establish complete historically versioned teammate/inactive states at T−60. Stage 2 remains unauthorised. No research model has been fitted, probability method changed, forecast activated or production file modified.",
@@ -145,6 +166,8 @@ def report(directory, output):
             for r in reg[reg.decision.eq("unresolved_no_patch")].itertuples()
         ),
         "The complete field-level before/after register and accepted source fragments are committed in the immutable audit bundle. Five unresolved games affect receiving-yard attribution, not an excuse to invent target counts or to alter frozen evaluation outcomes.",
+        "Positional category completeness (out of 4,016 team-games; includes production as well as opportunities):",
+        table(groups),
         "## Missing boxes and genuine zero opportunities",
         table(zero),
         "These represent 5,701 distinct offensive-participant missing-box player-games: 106 QB, 475 RB, 3,028 TE and 2,092 WR. The count ledgers support zero attempts, carries and targets for each of these records after the inclusion repairs. There are no recovered positive opportunities in this missing-box cohort. Three count-field overlay rows per player-game are not three independent observations. This is a source-backed count-history overlay only: no production zeros or new evaluation targets were manufactured, and zero opportunities do not rule out exceptional lateral production.",
@@ -170,7 +193,7 @@ def report(directory, output):
         "If historical provenance cannot be recovered, a narrower retrospective diagnostic could be proposed for separate approval, clearly barred from live-readiness claims. Prospective predecision input snapshots may improve future evidence, but sealed-period outcomes must remain sealed and no new scoring window may be opened without separate approval. The present input captures cannot be backdated to create historical verification.",
         "Retain the approved 2% target/carry accuracy thresholds, four/eight-week paired checks, season-consistency, coherence and all-nine-market/passing-yard safeguards for any future authorised fitting. Preserve the original frozen Stage 1B.1 probability recipes; the under-covering Stage 1C.1 wrapper is not adopted. No threshold or benchmark was retuned in this stage.",
         "## Reproduction and safeguards",
-        "Run `python -m stage1c2_stage1.validate research_inputs/stage1c2/data-quality-20261114-v5 --replay` on the exact Python 3.14 / Arrow 24 runtime. Replay recomputes credit repairs, histories, roster availability and participation-ID decisions from committed bounded inputs without downloading mutable replacements or fitting a model. Original raw cache hashes and source URLs/times are recorded; the raw bytes remain preserved outside Git. `scripts/report_stage1c2_stage1.py` regenerates these report tables.",
+        "Run `python -m stage1c2_stage1.validate research_inputs/stage1c2/data-quality-20261114-v6 --replay` on the exact Python 3.14 / Arrow 24 runtime. Replay recomputes credit repairs, histories, roster availability and participation-ID decisions from committed bounded inputs without downloading mutable replacements or fitting a model. Original raw cache hashes and source URLs/times are recorded; the raw bytes remain preserved outside Git. `scripts/report_stage1c2_stage1.py` regenerates these report tables.",
         "The final bundle declares models_fitted=0 and stage2_authorised=false. Hash/runtime/source/semantic validation and regression tests reject silent source changes, invented zero/verified states, altered frozen labels, final-period rows and attempts to relabel the audit as fitting approval. Stage 1A, Supabase, authentication, ledger/bankroll, dependency pins and all earlier benchmark code/archives remain unchanged. No merge, deployment, dashboard hosting or paid provider configuration is authorised or performed.",
     ]
     (output / "REPORT.md").write_text("\n\n".join(text) + "\n")

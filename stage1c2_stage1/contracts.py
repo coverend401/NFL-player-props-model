@@ -104,8 +104,14 @@ def predecision_verified(evidence, cutoff):
         "official_predecision_status", False
     ):
         return False
-    times = [pd.to_datetime(evidence.get(k), utc=True) for k in needed]
-    return all(pd.notna(t) and t < pd.Timestamp(cutoff) for t in times)
+    try:
+        times = [pd.Timestamp(evidence.get(k)) for k in needed]
+        decision = pd.Timestamp(cutoff)
+    except (TypeError, ValueError):
+        return False
+    if pd.isna(decision) or decision.tzinfo is None:
+        return False
+    return all(pd.notna(t) and t.tzinfo is not None and t < decision for t in times)
 
 
 def check_count_ledger(d):

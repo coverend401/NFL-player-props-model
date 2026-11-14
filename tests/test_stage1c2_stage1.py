@@ -21,7 +21,7 @@ from stage1c2_stage1.credits import repair
 from stage1c2_stage1.audit import roster_audit, snap_audit
 
 ROOT = Path(__file__).resolve().parents[1]
-ARCHIVE = ROOT / "research_inputs/stage1c2/data-quality-20261114-v5"
+ARCHIVE = ROOT / "research_inputs/stage1c2/data-quality-20261114-v6"
 
 
 def event():
@@ -110,6 +110,10 @@ class CountContractTests(unittest.TestCase):
             official_predecision_status=True,
         )
         self.assertTrue(predecision_verified(e, cutoff))
+        self.assertFalse(
+            predecision_verified({**e, "published_at": "2024-09-06T10:00"}, cutoff)
+        )
+        self.assertFalse(predecision_verified(e, "2024-09-08T16:00"))
         self.assertFalse(
             predecision_verified({**e, "received_at": "2024-09-08T16:01Z"}, cutoff)
         )
