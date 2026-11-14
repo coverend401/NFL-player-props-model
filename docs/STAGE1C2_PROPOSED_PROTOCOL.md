@@ -83,10 +83,12 @@ Keep a frozen native Stage 1B.1 reference, and a player-only recipe with origina
 | Arm | Team count | Player share | Purpose |
 | --- | --- | --- | --- |
 | P: player-only | Independent native player-history forecasts | Not a team allocation | Strong existing forecast reference; explicitly report its incoherence. |
-| A0: coherent control | Past-only team count baseline | Shrunk recent-share baseline | Measures normalisation/coherence itself relative to P. |
+| A0: coherent control | Past-only team count baseline | Shrunk recent-share baseline | Common coherent control for V/S/VS; contrast with P includes factorisation and must not be called a pure coherence effect. |
 | V: team-volume-only | Frozen market-free C2 count/bridge recipe | Same baseline share | Isolates team volume. |
 | S: player-share-only | Same baseline team count | Learned pregame shares | Isolates share learning. |
 | VS: combined | Same C2 count/bridge recipe as V | Same share model as S | Tests combination and the interaction. |
+
+Two deterministic matched controls prevent repeating the earlier backbone confounding: (a) independent player opportunity forecasts passed through the same efficiency bridge, and (b) those exact opportunity outputs normalised to the baseline team count with the same unknown-mass rule. Their difference measures the normalisation/team-total constraint intervention without changing the efficiency learner. Compare the bridged independent control with the native nine-market reference separately; that gap includes the factorised production bridge and is not attributed to shares. For passing/carry counts, the independent count engine is the frozen Stage 1B.1 count-point recipe; for targets (no frozen target model exists), preregister a single scaled Ridge(alpha=100) on the same past-only lag/usage features, trained on field-validated target labels, with a training-prior fallback. No additional target-backbone search. These controls do not enter the V/S/VS feature-selection grid or create an extra success endpoint. Report count and downstream errors for every control.
 
 Baseline team counts use trailing-five official team games, with training-only league/franchise shrinkage. Baseline shares use prior **team** games, including confirmed active zeros, shrunk to a training-only position/role prior and the unknown bucket. Distinguish confirmed inactive/no-membership from active zero or missing; expose days since last observation and counts of known observations. Do not drop zero-opportunity games or use only games with a positive target/carry.
 
