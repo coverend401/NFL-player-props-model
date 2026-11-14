@@ -37,3 +37,12 @@ Data decisions and boundaries:
 - The active Stage 1A bundle, production app, probability methods, Supabase/authentication and bankroll/ledger functionality are untouched. All earlier research packages and benchmark archives remain frozen.
 
 See `STAGE1C2_SOURCE_AUDIT.md` for source-specific limitations and `stage1c2-stage1-results/REPORT.md` for the quantified no-go recommendation. No genuine betting returns or forecast-performance improvement is claimed from a data-only audit.
+
+## Validation evidence
+
+- The full local suites ran 183 tests: Python 3.14 passed without skips; Python 3.12 passed with 11 intentional runtime-pinned archive skips.
+- After tightening the final explicit-timezone contract, all 14 new data-audit tests passed on Python 3.14, and the portable reference passed with two intentional archive skips.
+- The final `data-quality-20261114-v6` bundle passed full data-decision replay. Its recorded implementation commit is `dc219f4`; audit source bytes match that commit and the manifest hashes.
+- The active Stage 1A release passed production-bundle validation, all-prediction replay and local app smoke: nine models, 780 slate rows and 18 Top Picks. No production code or data changed.
+- Ruff undefined/unused-name checks, formatting and Git whitespace checks passed. No new model-fitting code exists in the data-audit namespace; `models_fitted=0` remains a hard artifact contract.
+- Main remains the authorised PR #6 research-only merge `88c6bf94b42b43d8f0dcf9d1e0774e7de72a6ecc`. The legacy updater remains disabled. Final-head PR CI provides the additional clean-checkout validation record.

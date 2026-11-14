@@ -1,0 +1,4 @@
+game_id,team,pfr_id,player_id,position,identity_method,identity_review_required_for_new_history
+2019_16_CIN_MIA,MIA,DaviJa06,00-0034446,DE,static_ID_crosswalk_discovered_retrospectively,True
+2019_17_MIA_NE,MIA,DaviJa06,00-0034446,DE,static_ID_crosswalk_discovered_retrospectively,True
+2021_12_CAR_MIA,MIA,DaviJa06,00-0034446,CB,static_ID_crosswalk_discovered_retrospectively,True
