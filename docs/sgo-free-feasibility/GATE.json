@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "status": "UNRESOLVED_NOT_PASSED",
+  "free_only": true,
+  "allowed_monthly_spend": 0,
+  "authenticated_api_evidence": false,
+  "official_pricing_retrieval": "blocked_by_proxy",
+  "monthly_objects": null,
+  "object_definition": null,
+  "bookmaker_uk_access": {
+    "William Hill": "unverified",
+    "Unibet": "unverified"
+  },
+  "canonical_market_free_uk_coverage": {
+    "passing_yards": "unverified",
+    "passing_attempts": "unverified",
+    "passing_completions": "unverified",
+    "rushing_yards": "unverified",
+    "rushing_attempts": "unverified",
+    "receiving_yards": "unverified",
+    "receptions": "unverified"
+  },
+  "documentary_requests_per_minute": {
+    "value": 10,
+    "basis": "first-party example README, not actual account confirmation"
+  },
+  "refresh_interval_seconds": null,
+  "retention_rights": null,
+  "commercial_restrictions": null,
+  "phases_2_to_5_started": false,
+  "scheduled_collection_active": false,
+  "ready_for_controlled_odds_trial": false,
+  "prepared_test": "account-only preflight; never fetches odds or passes this gate"
+}

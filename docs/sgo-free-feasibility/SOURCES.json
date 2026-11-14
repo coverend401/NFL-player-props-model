@@ -1,0 +1,130 @@
+{
+  "reviewed_at": "2026-11-14T13:43:47.883791+00:00",
+  "note": "Save/retrieval time is this research observation, not original source publication. Optional SDK fields are not plan entitlement. Proxy failures are not API responses.",
+  "sources": [
+    {
+      "key": "pricing",
+      "url": "https://sportsgameodds.com/pricing/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "overview",
+      "url": "https://sportsgameodds.com/docs/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "limits",
+      "url": "https://sportsgameodds.com/docs/guides/rate-limiting/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "books",
+      "url": "https://sportsgameodds.com/docs/data-types/bookmakers/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "markets",
+      "url": "https://sportsgameodds.com/docs/data-types/markets/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "usage",
+      "url": "https://sportsgameodds.com/docs/endpoints/account/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "faqs",
+      "url": "https://sportsgameodds.com/faq/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "api_noauth",
+      "url": "https://api.sportsgameodds.com/v2/events/?leagueID=NFL&oddsAvailable=true&limit=1",
+      "error": "ProxyError"
+    },
+    {
+      "key": "sdk_readme",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/README.md",
+      "status": 200,
+      "sha256": "f32e6a4c84d1c704bb8051ffe9694e48c58e95f77e8ff75621c5acbc26087274",
+      "saved_at_utc": "2026-11-14T13:33:51.342226+00:00"
+    },
+    {
+      "key": "sdk_api",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/api.md",
+      "status": 200,
+      "sha256": "210ba69b6a70bf2e78aa885a9da28e9ca7722513c70f1cd152c0634b86b8445a",
+      "saved_at_utc": "2026-11-14T13:33:51.399143+00:00"
+    },
+    {
+      "key": "props_readme",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/player-props-analyzer/main/README.md",
+      "status": 200,
+      "sha256": "4cacbd135594b58d85a32dcaf3ae179c2c22fb9d0c6d5480df5bf9cee8231ea6",
+      "saved_at_utc": "2026-11-14T13:33:51.423202+00:00"
+    },
+    {
+      "key": "tracker_readme",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/live-odds-tracker/main/README.md",
+      "status": 200,
+      "sha256": "e60db9b71b2449516c442875341b099cd029e03e84e8e4b723f26df304c02a07",
+      "saved_at_utc": "2026-11-14T13:33:51.401191+00:00"
+    },
+    {
+      "path": "resources/account.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/resources/account.py",
+      "status": 200,
+      "sha256": "8be15d02527bb92a09aa6ac99fa989df3eca20f65f2f665fbf71068758bd5a5f",
+      "saved_at_utc": "2026-11-14T13:34:09.283514+00:00"
+    },
+    {
+      "path": "types/account_usage.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/types/account_usage.py",
+      "status": 200,
+      "sha256": "f97c76cdfb348b8f224f517bda5ce2c274192956c7f36211bc895602c4ba905e",
+      "saved_at_utc": "2026-11-14T13:34:09.307493+00:00"
+    },
+    {
+      "path": "types/rate_limit_interval.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/types/rate_limit_interval.py",
+      "status": 200,
+      "sha256": "94a6473d09ff2638f32735a1e9866718f003847a6c71f71ef3dfacfb1bd174d8",
+      "saved_at_utc": "2026-11-14T13:34:09.266850+00:00"
+    },
+    {
+      "path": "types/event_get_params.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/types/event_get_params.py",
+      "status": 200,
+      "sha256": "de5aeace3065f9f2aa1ebefc1df9f9b34f37c2d5c551ea790e418c3bcbef753e",
+      "saved_at_utc": "2026-11-14T13:34:09.266850+00:00"
+    },
+    {
+      "path": "types/event.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/types/event.py",
+      "status": 200,
+      "sha256": "50154c9c93036e7aff3ad0c2382bb47ef781b3e94f1492457bd2bd5abc4aca99",
+      "saved_at_utc": "2026-11-14T13:34:09.310968+00:00"
+    },
+    {
+      "path": "resources/events.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/resources/events.py",
+      "status": 200,
+      "sha256": "13d42b90f34212a59c34581fbbccc94c836c454c03e6cf1ad054d9e3cb32ab6d",
+      "saved_at_utc": "2026-11-14T13:34:09.309517+00:00"
+    },
+    {
+      "path": "_client.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/_client.py",
+      "status": 200,
+      "sha256": "f5a3a5a6c3238730dc4f0757fa284c0bdf59d1fe851bc98b27f34923ef9314d3",
+      "saved_at_utc": "2026-11-14T13:34:09.555148+00:00"
+    },
+    {
+      "path": "types/market.py",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/src/sports_odds_api/types/market.py",
+      "status": 200,
+      "sha256": "f202f4f001db61bee7a6b096e55efb9261d275044b99821f6eb37213ebd6f86c",
+      "saved_at_utc": "2026-11-14T13:34:09.618146+00:00"
+    }
+  ]
+}
