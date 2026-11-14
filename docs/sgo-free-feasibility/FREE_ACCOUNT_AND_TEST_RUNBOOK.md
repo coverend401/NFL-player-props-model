@@ -9,7 +9,7 @@
    ```
 
    This makes one header-authenticated account request, discards identifying/billing fields and saves a mode-0600 private report outside the repository. It establishes no prop coverage. Reports should not be committed or posted publicly.
-4. For an explicitly approved **manual development trial**, use an already available persistent private volume outside the repository, owned by the development account. Configure `SGO_RESEARCH_STORE` to its SQLite file; `SGO_PERSISTENT_VOLUME_APPROVED=1` asserts it survives process/host restarts and is shared by all collectors for this key. Do not use temporary storage or Streamlit ephemeral storage for this assertion. Set `SGO_PRIVATE_CACHE_TERMS_ACK=1` only after accepting the limited private caching/data-use constraints. These nonsecret flags are deliberately not enabled by this PR. If a suitable free volume is unavailable, keep collection disabled.
+4. For an explicitly approved **manual development trial**, use an already available persistent private volume outside the repository, owned by the development account. Configure `SGO_RESEARCH_STORE` to its SQLite file; `SGO_PERSISTENT_VOLUME_APPROVED=1` asserts it survives process/host restarts and is shared by all collectors for this key. Do not use temporary storage or Streamlit ephemeral storage for this assertion. Set `SGO_PRIVATE_CACHE_TERMS_ACK=1` only after accepting the limited private caching/data-use constraints. Optionally lower `SGO_OBJECT_CAP` (integer 1–2,000); values above 2,000 fail closed. These nonsecret flags are deliberately not enabled by this PR. If a suitable free volume is unavailable, keep collection disabled.
 5. Choose a future NFL fixture window, at most eight days wide. Execute manually:
 
    ```sh

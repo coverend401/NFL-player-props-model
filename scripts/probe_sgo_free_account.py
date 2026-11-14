@@ -35,7 +35,7 @@ def account_only(api_key, *, get=requests.get):
     if not isinstance(api_key, str) or not api_key.strip():
         raise ProbeBlocked("No SPORTSGAMEODDS_API_KEY configured; no request made")
     api_key = api_key.strip()
-    if len(api_key) < 12 or any(c in api_key for c in "\r\n"):
+    if len(api_key) < 12 or not all(33 <= ord(c) <= 126 for c in api_key):
         raise ProbeBlocked("Invalid credential format; no request made")
     started = datetime.now(UTC)
     try:

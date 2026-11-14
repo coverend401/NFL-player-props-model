@@ -225,6 +225,14 @@ class PricingTests(unittest.TestCase):
         f = pd.concat([slate(), slate().assign(player_id="another")])
         self.assertTrue(all(not r["eligible"] for r in self.compare(f=f)))
 
+        # Distinct people sharing a name must not be resolved by which market
+        # each happens to have in the forecast slate.
+        split = slate()
+        split.loc[split.market.eq("Receptions"), "player_id"] = (
+            "different_person_same_name"
+        )
+        self.assertTrue(all(not r["eligible"] for r in self.compare(f=split)))
+
     def test_explicit_id_map_still_requires_team(self):
         s = snapshot()
         s["events"][0]["players"]["SYNTH_PLAYER_1_NFL"]["name"] = "Different Name"
@@ -328,6 +336,14 @@ class ClientTests(unittest.TestCase):
         with self.assertRaises(Unavailable):
             self.fetch()
         self.get.assert_not_called()
+
+    def test_configurable_cap_cannot_exceed_free_ceiling(self):
+        with self.assertRaises(Unavailable):
+            Client(KEY, self.store, object_cap=2501)
+        self.client.object_cap = 10
+        with self.assertRaises(Unavailable):
+            self.fetch()
+        self.assertEqual(self.get.call_count, 1)  # usage only; no events
 
     def test_missing_terms_no_http(self):
         self.client.terms_ack = False

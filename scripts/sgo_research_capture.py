@@ -41,6 +41,7 @@ def main():
             os.environ["SPORTSGAMEODDS_API_KEY"],
             Store(path, persistent=True),
             terms_ack=True,
+            object_cap=int(os.environ.get("SGO_OBJECT_CAP", "2000")),
         ).fetch(args.starts_after, args.starts_before, books=args.books.split(","))
         quotes, issues = normalise(snapshot)
         # Counts only. Private odds, identifiers and account metadata stay local.

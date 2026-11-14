@@ -100,11 +100,16 @@ def redact_events(events, now):
 
 
 class Client:
-    def __init__(self, key, store, *, terms_ack=False, get=requests.get, clock=None):
+    def __init__(
+        self, key, store, *, terms_ack=False, get=None, clock=None, object_cap=2000
+    ):
         self.key = key
         self.store = store
         self.terms_ack = terms_ack
-        self.get = get
+        self.get = get or requests.get
+        if type(object_cap) is not int or not 1 <= object_cap <= 2000:
+            raise Unavailable("Object cap must be an integer from 1 to 2000")
+        self.object_cap = object_cap
         self.clock = clock or (lambda: datetime.now(UTC))
 
     def _request(self, path, params=None):
@@ -182,7 +187,7 @@ class Client:
             return {**cached, "cache_hit": True}
         usage, _, _ = self._request("/account/usage")
         limits = account_limits(usage)
-        self.store.reserve(limits, limit, now)
+        self.store.reserve(limits, limit, now, cap=self.object_cap)
         body, received, raw_hash = self._request("/events", params)
         events = body.get("data")
         if not isinstance(events, list) or len(events) > limit:

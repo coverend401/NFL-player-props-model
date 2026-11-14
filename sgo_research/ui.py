@@ -74,7 +74,10 @@ def render(slate, release):
             "Retrieve upcoming odds (manual, free budget enforced)", key="sgo_fetch"
         ):
             st.session_state["sgo_snapshot"] = Client(
-                key, store, terms_ack=terms
+                key,
+                store,
+                terms_ack=terms,
+                object_cap=int(os.environ.get("SGO_OBJECT_CAP", "2000")),
             ).fetch(start.isoformat(), end.isoformat(), books=books)
         snapshot = st.session_state.get("sgo_snapshot")
         if not snapshot:

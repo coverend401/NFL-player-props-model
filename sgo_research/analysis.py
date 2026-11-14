@@ -202,6 +202,10 @@ def comparisons(
                 candidates.player.map(name_key).eq(name_key(q["player_name"]))
             ]
             confidence = "exact_unique_name_team_fixture"
+        if candidates.player_id.nunique() != 1:
+            row["comparison_status"] = "player_identity_ambiguous_or_unmatched"
+            rows.append(row)
+            continue
         market = q["model_market"]
         if market in ["Rushing Yards", "Rushing Attempts"]:
             positions = set(candidates.position)
@@ -283,6 +287,8 @@ def comparisons(
             reasons.append("missing_same_line_opposite_side")
         else:
             other = pair[0]
+            if other["main_line"] is not True:
+                reasons.append("opposite_side_main_line_unverified")
             row["over_odds"] = (
                 q["decimal_odds"] if q["side"] == "Over" else other["decimal_odds"]
             )

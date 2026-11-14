@@ -77,7 +77,7 @@ class Store:
             or objects > 16
             or cap < 1
             or cap > 2000
-            or headroom < 100
+            or headroom < 200
         ):
             raise Unavailable("Invalid quota reservation or expired provider interval")
         maximum = min(cap, month["max_entities"] - headroom, 2500 - headroom)
