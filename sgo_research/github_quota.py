@@ -30,6 +30,7 @@ def initial_state():
         "reservations": [],
         "calls": [],
         "halt": None,
+        "conditional_updates_verified": False,
     }
 
 
@@ -161,6 +162,8 @@ class GitHubQuotaStore:
 
     def http_slot(self, now):
         def mutate(s):
+            if s.get("conditional_updates_verified") is not True:
+                raise Unavailable("Private conditional-update verification required")
             if s["halt"]:
                 raise Unavailable("Collector halted; manual review required")
             if sum(utc(t) > now - timedelta(minutes=1) for t in s["calls"]) >= 6:
@@ -187,6 +190,8 @@ class GitHubQuotaStore:
             raise Unavailable("Monthly usage is not established")
 
         def mutate(s):
+            if s.get("conditional_updates_verified") is not True:
+                raise Unavailable("Private conditional-update verification required")
             if s["halt"]:
                 raise Unavailable("Collector halted")
             ceiling = min(cap, month["max_entities"] - headroom, 2500 - headroom)

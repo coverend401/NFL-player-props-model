@@ -6,13 +6,14 @@ Separate entry point: `odds_value_research.py`, on PR #8's development branch. *
 
 The approved early fixture kicks off at **14:30 UK**. Existing T−60 safeguards mean its eligible decision window closes at **13:30 UK**, earlier than the requested 14:00 preview target. The main 18:00 UK slate closes at **17:00 UK**. Late use is labelled frozen/descriptive only; the cutoff is not relaxed.
 
-Two decisions have been requested: creation of a separate **free private GitHub quota repository**, and whether the owner will create/approve a separate **free password-protected Streamlit research app**. Neither is created or deployed by the implementation. Without durable quota state there is no genuine odds collection; without an approved host there is no iPhone URL. Do not point the existing production app at this entry point or branch.
+Both the separate **free private GitHub quota repository** and **free password-protected Streamlit research app** have been approved. GitHub creation failed with integration HTTP 403: owner creation of the private repository plus a scoped `SGO_GITHUB_QUOTA_TOKEN` secret is required. Hosting requires an authenticated Streamlit connection or owner create-app step; no shared-browser control tools are currently offered. Neither resource has yet been created or deployed by this implementation. Without durable quota state there is no genuine odds collection; without an approved host there is no iPhone URL. Do not point the existing production app at this entry point or branch.
 
 ## Odds and quota safety
 
 The account-only API test confirms active Amateur and 2,500 monthly objects, but provides no reset timestamp. The original local interval-accounting backend still requires that timestamp. The new optional private GitHub backend uses a **stricter lifetime budget with no automatic reset** instead:
 
 - Separate private repository, verified before each transaction; never the production repository. The repository and initial `quota.json` must already exist. Missing/corrupt state is a stop, never a fresh budget.
+- Before provider calls, `scripts/initialise_sgo_quota.py --repository OWNER/PRIVATE_REPO --cache-path PRIVATE_PATH --initialise-and-verify` must verify a real stale-SHA rejection and new-client readback. An unverified counter blocks collection. No budget is reset.
 - GitHub Contents API's existing-file SHA is required for every write. Conflicts retry only the GitHub transaction, before any corresponding SportsGameOdds request. No provider retries.
 - At most 2,000 lifetime reserved event objects, configurable downward, plus at least 200 objects of headroom against the actual monthly allowance. Provider-reported usage **plus all lifetime reservations** is checked, deliberately double-counting.
 - Reservations precede requests and are never refunded after failures/empty responses. No automatic monthly/date reset or calendar inference. Provider account usage and the Amateur tier are rechecked before each uncached fetch. Six HTTP calls/minute maximum, including usage checks; actual stricter interval limits also apply.

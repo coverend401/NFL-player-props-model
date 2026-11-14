@@ -109,6 +109,25 @@ class MatchupTests(unittest.TestCase):
             self.assertTrue(app.error)
             self.assertFalse(any("sensitive research" in x.value for x in app.markdown))
 
+    def test_password_rotation_locks_old_session(self):
+        from streamlit.testing.v1 import AppTest
+
+        with patch.dict(
+            os.environ, {"RESEARCH_PREVIEW_PASSWORD": "synthetic_auth_only"}
+        ):
+            app = AppTest.from_string(
+                'from research_access import require_access\nimport streamlit as st\nrequire_access()\nst.write("sensitive research")'
+            ).run()
+            app.text_input[0].input("synthetic_auth_only")
+            app.button[0].click().run()
+            self.assertTrue(any("sensitive research" in x.value for x in app.markdown))
+        with patch.dict(
+            os.environ, {"RESEARCH_PREVIEW_PASSWORD": "rotated_synthetic_only"}
+        ):
+            app.run()
+            self.assertTrue(app.text_input)
+            self.assertFalse(any("sensitive research" in x.value for x in app.markdown))
+
     def test_game_script_mobile_cards_no_network(self):
         from streamlit.testing.v1 import AppTest
 

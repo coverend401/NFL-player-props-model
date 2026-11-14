@@ -17,11 +17,16 @@ from tests.test_sgo_research import KEY, KICK, NOW, event, response, usage
 class API:
     def __init__(self):
         self.state = initial_state()
+        self.state["conditional_updates_verified"] = True
         self.version = 1
         self.private = True
         self.conflict = 0
 
     def __call__(self, method, path, payload=None):
+        if method == "GET" and path.endswith("/contents"):
+            return [{"name": "README.md"}] + (
+                [{"name": "quota.json"}] if self.state is not None else []
+            )
         if method == "GET" and "/contents/" not in path:
             return {"private": self.private}
         if method == "GET":
@@ -33,7 +38,7 @@ class API:
             self.conflict -= 1
             self.version += 1
             return None
-        if payload["sha"] != str(self.version):
+        if self.state is not None and payload.get("sha") != str(self.version):
             return None
         self.state = json.loads(base64.b64decode(payload["content"]))
         self.version += 1
@@ -51,6 +56,11 @@ class PrivateQuotaTests(unittest.TestCase):
         self.body = usage()
         del self.body["data"]["rateLimits"]["per-month"]["currentIntervalEndTime"]
         self.limits = account_limits(self.body, require_end=False)
+
+    def test_unverified_remote_blocks_provider_calls(self):
+        self.api.state["conditional_updates_verified"] = False
+        with self.assertRaises(Unavailable):
+            self.store.http_slot(NOW)
 
     def test_old_local_contract_still_requires_reset(self):
         with self.assertRaises(Unavailable):
@@ -127,6 +137,58 @@ class PrivateQuotaTests(unittest.TestCase):
         self.assertEqual(self.api.state["reserved_objects"], 1)
         self.assertNotIn(KEY, json.dumps(self.api.state))
         self.assertNotIn("odds", json.dumps(self.api.state))
+
+
+class InitialisationTests(unittest.TestCase):
+    def test_real_proof_protocol_and_existing_budget_preserved(self):
+        from scripts.initialise_sgo_quota import initialise
+
+        with tempfile.TemporaryDirectory() as tmp:
+            api = API()
+            api.state = None
+            api.version = 0
+            path = Path(tmp) / "cache.db"
+            proof = initialise("example/private-quota", path, api=api)
+            self.assertTrue(proof["stale_sha_rejected"])
+            self.assertTrue(proof["new_client_readback_verified"])
+            store = GitHubQuotaStore("example/private-quota", path, api=api)
+            store.reserve(account_limits(usage()), 1, NOW)
+            version = api.version
+            again = initialise("example/private-quota", path, api=api)
+            self.assertTrue(again["existing_budget_preserved"])
+            self.assertEqual(again["reserved_objects"], 1)
+            self.assertEqual(api.version, version)
+
+    def test_conditional_failure_never_enables_provider(self):
+        from scripts.initialise_sgo_quota import initialise
+
+        class Unsafe(API):
+            def __call__(self, method, path, payload=None):
+                if method == "PUT" and self.state is not None:
+                    payload = {**payload, "sha": str(self.version)}
+                return super().__call__(method, path, payload)
+
+        with tempfile.TemporaryDirectory() as tmp:
+            api = Unsafe()
+            api.state = None
+            api.version = 0
+            path = Path(tmp) / "cache.db"
+            with self.assertRaises(Unavailable):
+                initialise("example/private-quota", path, api=api)
+            self.assertFalse(api.state["conditional_updates_verified"])
+            with self.assertRaises(Unavailable):
+                GitHubQuotaStore("example/private-quota", path, api=api).http_slot(NOW)
+
+    def test_public_repository_refused_before_bootstrap(self):
+        from scripts.initialise_sgo_quota import initialise
+
+        with tempfile.TemporaryDirectory() as tmp:
+            api = API()
+            api.private = False
+            api.state = None
+            with self.assertRaises(Unavailable):
+                initialise("example/private-quota", Path(tmp) / "c.db", api=api)
+            self.assertIsNone(api.state)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,6 @@
 """Separate preview authentication. No production password/settings are read."""
 
+import hashlib
 import hmac
 import os
 
@@ -23,7 +24,12 @@ def require_access():
             "Research preview locked: configure a separate RESEARCH_PREVIEW_PASSWORD secret. Do not reuse or change production authentication."
         )
         st.stop()
-    if st.session_state.get("research_authenticated"):
+    proof = hmac.new(
+        str(password).encode(), b"research-preview-session", hashlib.sha256
+    ).hexdigest()
+    if hmac.compare_digest(
+        str(st.session_state.get("research_authenticated", "")), proof
+    ):
         return
     with st.form("research_access"):
         entered = st.text_input(
@@ -31,7 +37,7 @@ def require_access():
         )
         submit = st.form_submit_button("Unlock research preview")
     if submit and hmac.compare_digest(str(entered), str(password)):
-        st.session_state["research_authenticated"] = True
+        st.session_state["research_authenticated"] = proof
         st.rerun()
     elif submit:
         st.error("Incorrect research password.")

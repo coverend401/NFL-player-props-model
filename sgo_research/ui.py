@@ -24,7 +24,7 @@ def research_key():
 def render(slate, release):
     st.subheader("Odds & Value — research only")
     st.caption(
-        "Stage 1A probabilities at actual bookmaker lines. No wagers, ledger changes or settlement. UK bookmaker variants and live coverage require verification."
+        "Provider: SportsGameOdds. Stage 1A probabilities at actual bookmaker lines. No wagers, ledger changes or settlement. UK bookmaker variants and live coverage require verification."
     )
     key = research_key()
     if not key:

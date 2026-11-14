@@ -19,6 +19,9 @@ try:
 except (OSError, ValueError, KeyError, TypeError):
     st.error("Approved release unavailable. Research comparison disabled.")
     st.stop()
+st.caption(
+    f"Sunday research preview r1 · baseline release {release['release_id']} · no production changes"
+)
 odds_tab, script_tab = st.tabs(["Odds & Value", "Game Script"])
 with odds_tab:
     render(slate, release)
