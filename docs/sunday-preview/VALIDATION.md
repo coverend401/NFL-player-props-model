@@ -1,0 +1,13 @@
+# Sunday preview validation checkpoint
+
+14 November 2026. No production change, merge, paid resource, scheduled collection or fitting.
+
+- Python 3.14 full regression suite: **249 tests passed**. After the final paired-price display/data-quality updates, **66 focused tests passed** (odds/probe, private quota, research authentication and matchup evidence).
+- Private quota tests cover private-repository enforcement, rejection of the production repository, missing/corrupt state, no automatic reset even when provider usage falls, conditional SHA conflict detection, conflict fail-closed, persistence across new clients, lifetime and rate caps, sticky halt, no provider data/credentials in state and the actual Amateur schema without a reset timestamp.
+- Game-script tests cover distinct QB-response hypotheses, missing-history handling, contact-label union (no double counting), snapshot/release integrity, predecision timestamps, all 12 fixtures and unsealed history IDs, authentication failure before data, and the descriptive cards without any network call.
+- Source eligibility: 2026 REG weeks below 11, completed game IDs only; NGS week-zero season aggregates excluded. PFR and NGS source bytes were captured before upcoming decisions with SHA-256 provenance. Original historical publication times remain unverified. No coverage/participation postseason charts used.
+- Production files, dependency locks, all nine model artifacts, forecasts, pricing, authentication, Supabase/ledger/bankroll, frozen research source/benchmarks and sealed-period protections are unchanged. The preview is a separate password-gated entry point.
+
+Pending integration gates: the current GitHub integration returned 403 for creation of a separate private repository. Owner setup of that free repository and a narrowly scoped secret has been requested. No odds event has been requested. Actual seven-market/William Hill/Unibet coverage, UK region/rules, object consumption, research hosting and authenticated iPhone verification remain unverified. The approved hosting still needs an authenticated deployment connection or an owner create-app step. No new app URL exists at this checkpoint.
+
+Mobile Chromium 390px checks are in progress. Synthetic odds are used only for local layout tests, clearly labelled; those screenshots are not actual coverage evidence. Final-head CI and any authenticated follow-up results are recorded on PR #8.

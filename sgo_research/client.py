@@ -189,7 +189,9 @@ class Client:
         if cached is not None:
             return {**cached, "cache_hit": True}
         usage, _, _ = self._request("/account/usage")
-        limits = account_limits(usage)
+        limits = account_limits(
+            usage, require_end=getattr(self.store, "requires_interval_end", True)
+        )
         self.store.reserve(limits, limit, now, cap=self.object_cap)
         body, received, raw_hash = self._request("/events", params)
         events = body.get("data")

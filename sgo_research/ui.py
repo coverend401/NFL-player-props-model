@@ -2,14 +2,13 @@
 
 import os
 from datetime import UTC, datetime, timedelta
-from pathlib import Path
 
 import streamlit as st
 
 from .analysis import comparisons
 from .client import Client
+from .config import quota_store
 from .contracts import FREE_BOOKS, STAT_MARKETS, Unavailable, utc
-from .store import Store
 
 
 def research_key():
@@ -47,16 +46,14 @@ def render(slate, release):
         default=["williamhill", "unibet"],
         key="sgo_books",
     )
-    path = os.environ.get("SGO_RESEARCH_STORE")
-    persistent = os.environ.get("SGO_PERSISTENT_VOLUME_APPROVED") == "1"
     terms = os.environ.get("SGO_PRIVATE_CACHE_TERMS_ACK") == "1"
-    if not path or not persistent or not terms:
+    if not terms:
         st.warning(
-            "Collection disabled: an approved persistent private quota store and data-use/cache acknowledgement are required. Ephemeral Streamlit storage cannot guarantee a durable free-tier limit."
+            "Collection disabled: private short-lived cache/data-use acknowledgement is required. No provider quotes will be archived or settled."
         )
         return
     try:
-        store = Store(Path(path), persistent=True)
+        store = quota_store()
         times = [
             utc(t)
             for gid, t in release.get("game_kickoffs", {}).items()
@@ -90,7 +87,7 @@ def render(slate, release):
         )
         return
     st.caption(
-        f"Last retrieved: {snapshot['retrieved_at']} · {snapshot['account_tier']} · 10-minute cache · hard local ceiling 2,000 objects per provider interval (plus safety headroom)."
+        f"Last retrieved: {snapshot['retrieved_at']} · {snapshot['account_tier']} · 10-minute cache · hard local ceiling 2,000 objects maximum (plus safety headroom); private GitHub counters never reset automatically."
     )
     if snapshot.get("provider_notice"):
         st.caption(snapshot["provider_notice"])
@@ -98,24 +95,25 @@ def render(slate, release):
         st.warning(
             "Response truncated: coverage is incomplete. No automatic pagination."
         )
-    markets = st.multiselect(
-        "Markets",
-        list(STAT_MARKETS.values()),
-        default=list(STAT_MARKETS.values()),
-        key="sgo_markets",
-    )
-    game = st.selectbox(
-        "Game",
-        ["All"] + sorted({r.get("game_id", r["event_id"]) for r in rows}),
-        key="sgo_game",
-    )
-    player = st.text_input("Player contains", key="sgo_player").casefold()
-    minimum = st.number_input("Minimum estimated EV (%)", value=0.0, key="sgo_ev")
-    diagnostics = st.checkbox(
-        "Include incomplete, unmatched and stale comparisons",
-        value=True,
-        key="sgo_diagnostics",
-    )
+    with st.expander("Filter markets, game, player and EV", expanded=False):
+        markets = st.multiselect(
+            "Markets",
+            list(STAT_MARKETS.values()),
+            default=list(STAT_MARKETS.values()),
+            key="sgo_markets",
+        )
+        game = st.selectbox(
+            "Game",
+            ["All"] + sorted({r.get("game_id", r["event_id"]) for r in rows}),
+            key="sgo_game",
+        )
+        player = st.text_input("Player contains", key="sgo_player").casefold()
+        minimum = st.number_input("Minimum estimated EV (%)", value=0.0, key="sgo_ev")
+        diagnostics = st.checkbox(
+            "Include incomplete, unmatched and stale comparisons",
+            value=True,
+            key="sgo_diagnostics",
+        )
     visible = [
         r
         for r in rows
@@ -143,6 +141,13 @@ def render(slate, release):
             st.write(
                 f"{r['bookmaker']} · {r['side']} {r['line']:g} · decimal {r['decimal_odds']:.3f} · fractional {r['fractional_odds']}"
             )
+            if r.get("over_odds") and r.get("under_odds"):
+                st.write(
+                    f"Both sides at this line: Over {r['over_odds']:.3f} · Under {r['under_odds']:.3f} (decimal)"
+                )
+                st.caption(
+                    f"Over updated {r.get('over_provider_updated_at')} · Under updated {r.get('under_provider_updated_at')}"
+                )
             if r["model_probability"] is not None:
                 st.write(
                     f"Projection {r['projection']:.2f} · model probability {r['model_probability']:.1%} · bookmaker implied {r['implied_probability']:.1%}"

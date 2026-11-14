@@ -17,6 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class Store:
+    requires_interval_end = True
+
     def __init__(self, path, *, persistent=False):
         self.path = Path(path).expanduser().resolve()
         if self.path == ROOT or ROOT in self.path.parents:

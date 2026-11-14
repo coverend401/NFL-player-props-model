@@ -531,6 +531,7 @@ class PreviewTests(unittest.TestCase):
                 os.environ,
                 {
                     "SPORTSGAMEODDS_API_KEY": KEY,
+                    "SGO_QUOTA_REPOSITORY": "",
                     "SGO_RESEARCH_STORE": str(Path(temp) / "cards.db"),
                     "SGO_PERSISTENT_VOLUME_APPROVED": "1",
                     "SGO_PRIVATE_CACHE_TERMS_ACK": "1",
@@ -561,13 +562,22 @@ class PreviewTests(unittest.TestCase):
         from streamlit.testing.v1 import AppTest
 
         with (
-            patch.dict(os.environ, {"SPORTSGAMEODDS_API_KEY": ""}),
+            patch.dict(
+                os.environ,
+                {
+                    "SPORTSGAMEODDS_API_KEY": "",
+                    "RESEARCH_PREVIEW_PASSWORD": "synthetic_preview_only",
+                },
+            ),
             patch("requests.get") as get,
         ):
             app = AppTest.from_file(
                 str(Path(__file__).resolve().parents[1] / "odds_value_research.py"),
                 default_timeout=60,
             ).run()
+            self.assertFalse(app.exception, app.exception)
+            app.text_input(key="research_password").input("synthetic_preview_only")
+            app.button[0].click().run()
             self.assertFalse(app.exception, app.exception)
             self.assertTrue(any("No research API key" in v.value for v in app.info))
             get.assert_not_called()

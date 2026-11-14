@@ -290,6 +290,16 @@ def comparisons(
             reasons.append("missing_same_line_opposite_side")
         else:
             other = pair[0]
+            row["over_provider_updated_at"] = (
+                q["provider_updated_at"]
+                if q["side"] == "Over"
+                else other["provider_updated_at"]
+            )
+            row["under_provider_updated_at"] = (
+                q["provider_updated_at"]
+                if q["side"] == "Under"
+                else other["provider_updated_at"]
+            )
             if other["main_line"] is not True:
                 reasons.append("opposite_side_main_line_unverified")
             row["over_odds"] = (

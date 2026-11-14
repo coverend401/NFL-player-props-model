@@ -111,7 +111,7 @@ def odds_formats(raw):
     return 1 + float(profit), f"{profit.numerator}/{profit.denominator}"
 
 
-def account_limits(body):
+def account_limits(body, *, require_end=True):
     data = body.get("data", body)
     if (
         not isinstance(data, dict)
@@ -153,7 +153,7 @@ def account_limits(body):
     if (
         type(month["max_entities"]) is not int
         or type(month["used_entities"]) is not int
-        or not month["end"]
+        or (require_end and not month["end"])
     ):
         raise Unavailable("Exact monthly usage/reset unavailable; collection stopped")
     return out
