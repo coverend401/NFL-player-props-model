@@ -148,7 +148,7 @@ def render(slate, release):
                     f"Projection {r['projection']:.2f} · model probability {r['model_probability']:.1%} · bookmaker implied {r['implied_probability']:.1%}"
                 )
             st.write(
-                "EV: excluded (push unsupported)"
+                "EV: unavailable — see comparison status"
                 if r["ev_pct"] is None
                 else f"Estimated EV: {r['ev_pct']:.2f}% (unvalidated Stage 1A pricing)"
             )
