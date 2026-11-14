@@ -21,7 +21,10 @@ def redact_events(events, now):
             raise Unavailable("Unexpected event schema")
         if any(not isinstance(p, dict) for p in event.get("players", {}).values()):
             raise Unavailable("Unexpected player schema")
-        if any(not isinstance(t, dict) for t in event.get("teams", {}).values()):
+        if any(
+            not isinstance(t, dict) or not isinstance(t.get("names", {}), dict)
+            for t in event.get("teams", {}).values()
+        ):
             raise Unavailable("Unexpected team schema")
         status = event.get("status", {})
         if (

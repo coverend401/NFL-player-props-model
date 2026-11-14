@@ -299,6 +299,17 @@ class PricingTests(unittest.TestCase):
         self.assertEqual(len(quotes), 13)
         self.assertTrue(issues)
 
+    def test_team_totals_are_not_player_prop_coverage(self):
+        s = snapshot()
+        for o in s["events"][0]["odds"].values():
+            o["statEntityID"] = "home"
+        quotes, issues = normalise(s)
+        self.assertFalse(quotes)
+        self.assertEqual(len(issues), 14)
+        for o in s["events"][0]["odds"].values():
+            o["statEntityID"] = "missing_player"
+        self.assertFalse(normalise(s)[0])
+
 
 class ClientTests(unittest.TestCase):
     def setUp(self):
@@ -423,6 +434,10 @@ class ClientTests(unittest.TestCase):
             e["status"][field] = True
             with self.assertRaises(Unavailable):
                 redact_events([e], NOW)
+        e = event()
+        e["teams"]["home"]["names"] = None
+        with self.assertRaises(Unavailable):
+            redact_events([e], NOW)
         e = event()
         e["results"] = {"do_not_inspect": True}
         with self.assertRaises(Unavailable):

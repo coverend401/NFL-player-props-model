@@ -39,6 +39,9 @@ def normalise(snapshot):
                 continue
             pid = o.get("playerID") or o.get("statEntityID")
             player = e.get("players", {}).get(pid, {})
+            if not isinstance(player, dict) or not player:
+                issues.append({**identity, "reason": "player_not_in_event_metadata"})
+                continue
             for book, b in o.get("byBookmaker", {}).items():
                 try:
                     if book not in FREE_BOOKS:
@@ -47,7 +50,7 @@ def normalise(snapshot):
                         raise Unavailable("bookmaker_quote_unavailable")
                     price, fraction = odds_formats(b.get("odds"))
                     line = float(b.get("overUnder"))
-                    if not math.isfinite(line):
+                    if not math.isfinite(line) or abs(line) > 1_000_000:
                         raise Unavailable("invalid_line")
                 except (Unavailable, ValueError, TypeError) as error:
                     issues.append(
