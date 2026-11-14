@@ -1,0 +1,187 @@
+{
+  "reviewed_at": "2026-11-14T13:18:51.247239+00:00",
+  "scope": "read-only proposal research, not provider approval or data capture activation",
+  "note": "Saved-at time describes this review, not source publication. Blocked pages and 404 paths establish no price/coverage facts.",
+  "sources": [
+    {
+      "key": "odds_api_pricing",
+      "url": "https://the-odds-api.com/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "odds_api_books",
+      "url": "https://the-odds-api.com/sports-odds-data/bookmaker-apis.html",
+      "error": "ProxyError"
+    },
+    {
+      "key": "odds_api_markets",
+      "url": "https://the-odds-api.com/sports-odds-data/betting-markets.html",
+      "error": "ProxyError"
+    },
+    {
+      "key": "odds_api_docs",
+      "url": "https://the-odds-api.com/liveapi/guides/v4/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "odds_io_pricing",
+      "url": "https://odds-api.io/pricing",
+      "error": "ProxyError"
+    },
+    {
+      "key": "odds_io_bet365",
+      "url": "https://odds-api.io/sportsbooks/bet365",
+      "error": "ProxyError"
+    },
+    {
+      "key": "sgo_pricing",
+      "url": "https://sportsgameodds.com/pricing/",
+      "error": "ProxyError"
+    },
+    {
+      "key": "optic_pricing",
+      "url": "https://opticodds.com/pricing",
+      "error": "ProxyError"
+    },
+    {
+      "key": "supabase_pricing",
+      "url": "https://supabase.com/pricing",
+      "error": "ProxyError"
+    },
+    {
+      "key": "github_billing",
+      "url": "https://docs.github.com/en/billing/managing-billing-for-your-products/managing-billing-for-github-actions/about-billing-for-github-actions",
+      "error": "ProxyError"
+    },
+    {
+      "key": "github_cron",
+      "url": "https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule",
+      "error": "ProxyError"
+    },
+    {
+      "key": "nflverse_status",
+      "url": "https://nflreadr.nflverse.com/articles/nflverse_data_schedule.html",
+      "error": "ProxyError"
+    },
+    {
+      "key": "oddsapi_readme",
+      "url": "https://raw.githubusercontent.com/the-odds-api/samples-python/master/README.md",
+      "status": 200,
+      "bytes": 1019,
+      "sha256": "0d888e9d3e97e69793f8c6cf0e2aa850f3fb1afd9385134c3a976b5d5491b64b",
+      "saved_at_utc": "2026-11-14T13:07:20.199986+00:00"
+    },
+    {
+      "key": "oddsio_readme",
+      "url": "https://raw.githubusercontent.com/odds-api-io/odds-api-python/main/README.md",
+      "status": 200,
+      "bytes": 15512,
+      "sha256": "79126d242245a7ee8b5c839f5010b425fc38f9ecc8da35e195f16c46d799a179",
+      "saved_at_utc": "2026-11-14T13:07:20.208186+00:00"
+    },
+    {
+      "key": "sgo_readme",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/sports-odds-api-python/main/README.md",
+      "status": 200,
+      "bytes": 10995,
+      "sha256": "f32e6a4c84d1c704bb8051ffe9694e48c58e95f77e8ff75621c5acbc26087274",
+      "saved_at_utc": "2026-11-14T13:07:20.254211+00:00"
+    },
+    {
+      "key": "sgo_props",
+      "url": "https://raw.githubusercontent.com/SportsGameOdds/player-props-analyzer/main/README.md",
+      "status": 200,
+      "bytes": 12443,
+      "sha256": "4cacbd135594b58d85a32dcaf3ae179c2c22fb9d0c6d5480df5bf9cee8231ea6",
+      "saved_at_utc": "2026-11-14T13:07:20.205746+00:00"
+    },
+    {
+      "key": "github_cron_source",
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/actions/reference/workflows-and-actions/events-that-trigger-workflows.md",
+      "status": 200,
+      "bytes": 67972,
+      "sha256": "69e251c1510f84d7b0a05ff8a4146456e657f175133081213805e02b0a655f50",
+      "saved_at_utc": "2026-11-14T13:07:20.178775+00:00"
+    },
+    {
+      "key": "github_billing_source",
+      "url": "https://raw.githubusercontent.com/github/docs/main/content/billing/concepts/product-billing/github-actions.md",
+      "status": 200,
+      "bytes": 14808,
+      "sha256": "1eb412764f4d7f100d3cfe923ef85d447c06c7b6dd9df78966dfe6b9b4fbd9db",
+      "saved_at_utc": "2026-11-14T13:07:20.420970+00:00"
+    },
+    {
+      "key": "nflverse_schedule",
+      "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/vignettes/nflverse_data_schedule.Rmd",
+      "status": 404,
+      "bytes": 14,
+      "sha256": "6ea71f130135c4ff7cebc7221319428e3c1ba69fc9b8f1d26a306d5271670278",
+      "saved_at_utc": "2026-11-14T13:08:52.792800+00:00"
+    },
+    {
+      "key": "nflverse_license",
+      "url": "https://raw.githubusercontent.com/nflverse/nflverse-data/master/README.md",
+      "status": 200,
+      "bytes": 699,
+      "sha256": "a343c9cb9dbf2cef3e98cc51bab6568e8425f35f46a3d1f64c06da5169e3984c",
+      "saved_at_utc": "2026-11-14T13:07:20.436114+00:00"
+    },
+    {
+      "key": "supabase_plans",
+      "url": "https://raw.githubusercontent.com/supabase/supabase/master/apps/www/components/Pricing/PricingPlans.tsx",
+      "status": 200,
+      "sha256": "67ece197e15c7156f918c85f35bc89da4f3610ffa2eb1b4ed31f0bfc9c8adb73",
+      "saved_at_utc": "2026-11-14T13:08:52.761282+00:00"
+    },
+    {
+      "key": "supabase_table",
+      "url": "https://raw.githubusercontent.com/supabase/supabase/master/apps/www/components/Pricing/PricingComparisonTable.tsx",
+      "status": 200,
+      "sha256": "6c40dbd132f7cbb1b8586d96aed6095f9f73961ae13552dda69edcb6f9e7baf2",
+      "saved_at_utc": "2026-11-14T13:08:52.795704+00:00"
+    },
+    {
+      "key": "supabase_faq",
+      "url": "https://raw.githubusercontent.com/supabase/supabase/master/apps/www/data/PricingFAQ.json",
+      "status": 200,
+      "sha256": "86924f5e3c81c57033761bbaca33739774ba3aaa5b27bba1e9d4e6f736828470",
+      "saved_at_utc": "2026-11-14T13:08:52.814669+00:00"
+    },
+    {
+      "key": "nflverse_schedule",
+      "url": "https://raw.githubusercontent.com/nflverse/nflreadr/main/vignettes/articles/nflverse_data_schedule.Rmd",
+      "status": 200,
+      "sha256": "6ea71f130135c4ff7cebc7221319428e3c1ba69fc9b8f1d26a306d5271670278",
+      "saved_at_utc": "2026-11-14T13:08:52.792800+00:00"
+    },
+    {
+      "key": "supabase_plans_data",
+      "url": "https://raw.githubusercontent.com/supabase/supabase/master/packages/shared-data/plans.ts",
+      "status": 200,
+      "sha256": "b0086f620bb58192088e6faadfa4b52bac2ac3fb4cf0c3ffc5415bf773cbd6ae",
+      "saved_at_utc": "2026-11-14T13:12:02.247636+00:00"
+    },
+    {
+      "key": "supabase_pricing_data",
+      "url": "https://raw.githubusercontent.com/supabase/supabase/master/packages/shared-data/pricing.ts",
+      "status": 200,
+      "sha256": "0cec29b488a1d880e3bdb7106524423965a5a8a503e545e0a63563dcf1073e43",
+      "saved_at_utc": "2026-11-14T13:12:02.491993+00:00"
+    },
+    {
+      "key": "actions_quotas",
+      "url": "https://raw.githubusercontent.com/github/docs/main/data/reusables/billing/actions-included-quotas.md",
+      "status": 200,
+      "sha256": "bd70a06ac4338cf851284c158388521b39a7b76d5d2113f03e2bbbbb5eaabc60",
+      "saved_at_utc": "2026-11-14T13:07:59.242216+00:00"
+    },
+    {
+      "key": "actions_delays",
+      "url": "https://raw.githubusercontent.com/github/docs/main/data/reusables/actions/schedule-delay.md",
+      "status": 200,
+      "sha256": "569912134ce43127706c32290fafa64b43edc2e0d9ed9bff0d524b67ef3fb182",
+      "saved_at_utc": "2026-11-14T13:07:59.543031+00:00"
+    }
+  ]
+}
