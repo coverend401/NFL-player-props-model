@@ -1,12 +1,12 @@
 {
   "schema": 1,
-  "status": "UNRESOLVED_NOT_PASSED",
+  "status": "DOCUMENTARY_GATE_PASSED_LIVE_UNVERIFIED",
   "free_only": true,
   "allowed_monthly_spend": 0,
   "authenticated_api_evidence": false,
-  "official_pricing_retrieval": "blocked_by_proxy",
-  "monthly_objects": null,
-  "object_definition": null,
+  "official_pricing_retrieval": "HTTP_200",
+  "monthly_objects": 2500,
+  "object_definition": "top-level event per response; minimum one object per response",
   "bookmaker_uk_access": {
     "William Hill": "unverified",
     "Unibet": "unverified"
@@ -18,17 +18,21 @@
     "rushing_yards": "unverified",
     "rushing_attempts": "unverified",
     "receiving_yards": "unverified",
-    "receptions": "unverified"
+    "receiving_receptions": "unverified"
   },
   "documentary_requests_per_minute": {
     "value": 10,
-    "basis": "first-party example README, not actual account confirmation"
+    "basis": "official pricing"
   },
-  "refresh_interval_seconds": null,
-  "retention_rights": null,
-  "commercial_restrictions": null,
-  "phases_2_to_5_started": false,
+  "refresh_interval_seconds": 600,
+  "retention_rights": "Limited subscription-term use; no perpetual archival entitlement established; delete obtained data within 30 days after termination",
+  "commercial_restrictions": "No standalone feeds, bulk exports, resale or competing-model training; independent-value app condition",
+  "phases_2_to_5_started": true,
   "scheduled_collection_active": false,
   "ready_for_controlled_odds_trial": false,
-  "prepared_test": "account-only preflight; never fetches odds or passes this gate"
+  "prepared_test": "Account probe + manual future-only NFL coverage capture; no key configured",
+  "monthly_reset": "rolling 30 days from first use; actual interval-end required",
+  "durable_free_cloud_quota_store_verified": false,
+  "production_modified": false,
+  "settlement_enabled": false
 }

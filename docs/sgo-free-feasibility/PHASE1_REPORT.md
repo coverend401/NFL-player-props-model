@@ -1,93 +1,42 @@
-# SportsGameOdds free-only integration — Phase 1 evidence report
+# Free SportsGameOdds integration: resumed evidence review
 
-Review date: 2026-11-14. Branch: `sportsgameodds-free-feasibility`.
+Reviewed 14 November 2026. £0-only; no subscription, hosting/database upgrade or paid fallback.
 
-**Gate: UNRESOLVED / NOT PASSED. Stop before Phases 2–5.** This is not a finding that Amateur definitely excludes NFL props. It is a finding that the available evidence does not establish free entitlement, a usable UK bookmaker, the exact allowance or data-use rights. No adapter, value-analysis extension, Streamlit section, scheduled collector, paper ledger or database resource has been implemented/activated.
+**Documentary feasibility gate passed for isolated development. Live NFL coverage, UK jurisdiction, account entitlements and collection remain unverified.** Network restrictions are now resolved. Earlier blocked observations are retained in `SOURCES.json`; they were proxy failures, not API evidence. No key is configured in this Codex environment and no authenticated odds request has been made.
 
-The requirement is **$0 ongoing operation**: no paid API, hosting/database plan, upgrade, paid trial or automatic subscription fallback. The earlier prospective proposal's paid budget options are superseded for this project.
+## Official documentation versus live evidence
 
-## Evidence reviewed and limitations
+| Requirement | Documentary finding | Actual account/quote evidence |
+|---|---|---|
+| NFL player props on Amateur | Pricing's Amateur card explicitly includes NFL and Player Props (included checkmark icons inspected) | Not yet tested |
+| Free bookmakers | FanDuel, DraftKings, BetMGM, Caesars, ESPN BET, Bovada, Unibet, PointsBet, William Hill | Account/book/market availability unverified |
+| UK relevance | William Hill and Unibet names included | Provider IDs do not prove UK sportsbook versions, availability to a UK account or matching settlement rules |
+| Seven markets | Global market catalogue contains `passing_yards`, `passing_attempts`, `passing_completions`, `rushing_yards`, `rushing_attempts`, `receiving_yards`, `receiving_receptions` | NFL × bookmaker × seven-market coverage unverified; no claim all seven exist at either bookmaker |
+| Both sides and actual lines | Game `ou` odd IDs have `over`/`under`; each `byBookmaker` quote has American `odds`, `overUnder`, `available`, `isMainLine`, `lastUpdatedAt` | Completeness/freshness not yet tested |
+| Identity and timing | Event ID, NFL team IDs, provider player ID/name/team, kickoff, bookmaker update timestamp; client adds retrieval timestamp | No verified GSIS crosswalk; exact unique name/team/fixture matching only, otherwise unmatched |
 
-Official public pricing/documentation and API hosts `sportsgameodds.com` and `api.sportsgameodds.com` are blocked by the execution environment's proxy. Read-only access to those exact domains has been requested. Failed proxy connections are not provider 401/403 responses and establish nothing about free-plan entitlements.
+The API account endpoint is reachable and returns **401 without a key**. This is connectivity/authentication evidence only. The current client uses documented `/v2/account/usage` and `/v2/events`, not unofficial endpoints. Public documentation and SDK schema examples are not genuine bookmaker quote evidence. Synthetic unit-test payloads are clearly labelled.
 
-No `SPORTSGAMEODDS_API_KEY` or official-SDK default `SPORTS_ODDS_API_KEY_HEADER` is configured in this development environment. Production Streamlit secrets were not inspected or changed. No authenticated provider response or genuine bookmaker quote has been obtained. All probe test responses are explicitly synthetic, not NFL coverage evidence.
+Sources: [pricing](https://sportsgameodds.com/pricing), [market catalogue](https://sportsgameodds.com/docs/data-types/markets), [bookmaker catalogue](https://sportsgameodds.com/docs/data-types/bookmakers), [odds schema](https://sportsgameodds.com/docs/data-types/odds), [events](https://sportsgameodds.com/docs/endpoints/getEvents), [usage](https://sportsgameodds.com/docs/endpoints/getUsageData), [rate limits](https://sportsgameodds.com/docs/info/rate-limiting), [terms](https://sportsgameodds.com/terms). Retrieval hashes/statuses in `SOURCES.json` are observation evidence, not original publication times.
 
-First-party GitHub material **was** accessible:
+## Allowance, refresh and collection budget
 
-1. [Official player-props example](https://github.com/SportsGameOdds/player-props-analyzer): advertises NFL passing/rushing/receiving yards and receptions, alongside other sports; links to a free API key; its rate table lists Amateur (free), 10 requests/minute and "1 game at a time". Its default example is NBA. This is not an explicit current seven-market Amateur/UK entitlement matrix.
-2. [Official live tracker](https://github.com/SportsGameOdds/live-odds-tracker): also lists Amateur at 10 requests/minute and recommends a 60-second polling interval. Recommended client polling is **not** a confirmed provider price-refresh guarantee.
-3. [Official Python SDK](https://github.com/SportsGameOdds/sports-odds-api-python): defines events, players, markets, bookmaker-specific prices/lines, timestamps and `/account/usage`. Optional fields and global support types do not prove the free plan supplies those fields.
+Pricing: **2,500 top-level objects per rolling 30-day period from first use; 10 requests/minute; 10-minute feed update frequency; unlimited monthly request count.** An event is one object regardless of its books/markets, and every response has a minimum one-object charge. Pricing says account-usage requests do not count. A 429 stops this client; no retry/upgrade.
 
-The source inventory records URL, retrieval/file-save evidence, content hash and blocked/accessible status. Source code MIT licences do not confer odds-data retention, commercial-use or redistribution rights.
+The public pricing FAQ and rate guide disagree about the shared hourly object ceiling (250,000 versus 300,000). We do not resolve that by assumption: enforce the actual account's stricter limits and much smaller local limits. The actual provider interval-end timestamp is mandatory; there is no calendar-month reset assumption. Both current camelCase and older kebab-case usage schemas are supported; conflicting values fail closed.
 
-## Requested confirmations
+Illustrative **six snapshots × 16 games = 96 event objects/weekend**, 384 over four weekends (480 over five). Each uncached fetch also checks account usage; normally 12 HTTP requests/weekend for six batches, plus a one-off account probe. A ten-minute cache avoids repeated collection on reruns. This is a proposed manual trial budget, **not an activated schedule**, and does not guarantee each game has props at every snapshot.
 
-| Question | Verified documentation evidence | Live Amateur response evidence | Decision |
-| --- | --- | --- | --- |
-| NFL player props included in Amateur | First-party example advertises NFL props and a free tier, but no explicit per-tier NFL prop entitlement was obtainable | None | Unverified; do not infer access from marketing examples or a free key |
-| William Hill access | No accessible authoritative Amateur bookmaker list | None | Unverified; do not guess bookmaker IDs |
-| Unibet access | No accessible authoritative Amateur bookmaker list | None | Unverified; do not guess bookmaker IDs |
-| UK sportsbook jurisdiction | Brand name is insufficient; US/international variants may differ | None | Must identify exact UK product and independently compare sample lines/prices |
-| Both Over and Under | SDK has side IDs and includeOpposingOdds query support | None | Schema capability only; same-book/line pairs unverified |
-| Actual bookmaker lines/prices | SDK has byBookmaker odds/overUnder/available/isMainLine | None | Must use bookmaker-specific values, not aggregate bookOdds or fairOdds |
-| Player identifiers | SDK exposes playerID/statEntityID and event players | None | Real NFL mapping coverage unverified |
-| Update timestamps | Bookmaker objects have optional lastUpdatedAt | None | Presence, granularity, timezone and freshness unverified |
-| Exact monthly allowance | Account schema exposes per-month max-entities/current-entities and request counters | None | Numeric allowance and what counts as an object remain unknown |
-| Request limits | Two first-party examples list 10 requests/minute for Amateur | None | Published example, not account-confirmed current contract; other interval limits unknown |
-| Refresh interval | Tracker recommends 60-second client polling | None | Actual free-tier feed cadence/delay unknown |
-| Reset policy | No verified reset period/timezone, shared-key/account scope or over-limit behaviour | None | Unknown; no collection schedule can be approved on guessed resets |
-| Retention/commercial restrictions | SDK software licence available, provider data terms inaccessible | None | Unknown; no feed-data archive or redistribution authorised |
+Each request reserves its maximum 16 objects even for empty/error/partial responses; no refunds or automatic pagination. Budget test uses provider-reported consumption **plus all local reservations** (deliberate over-counting), capped at 2,000 and at least 200 below the reported monthly allowance. Thus 96 returned + 96 reserved = approximately 192 budget units/weekend, before other uses. All HTTP calls are capped at six/minute including usage calls. One private durable SQLite quota store must cover every collector using this key. External use of the same key can exhaust the allowance; account preflight and 429 halt protect against that, but simultaneous external clients cannot be made atomic by our store. Do not share the research key across collectors.
 
-### Seven canonical markets
+## Data use and retention
 
-| Canonical market | General NFL mention in the accessible official props example | Amateur + UK bookmaker + usable two-sided quote |
-| --- | --- | --- |
-| Passing yards | Yes | Unverified |
-| Passing attempts | Not established by the example | Unverified |
-| Passing completions | Not established by the example | Unverified |
-| Rushing yards | Yes | Unverified |
-| Rushing attempts | Not established by the example | Unverified |
-| Receiving yards | Yes | Unverified |
-| Receptions | Yes | Unverified |
+Terms version 3 (23 June 2026) grants subscription-term use and permits end-user applications with independent material value. It prohibits standalone data feeds, bulk exports, database access, resale/redistribution, competing-model training and public service benchmarks without permission. Broad derivative-work language needs clarification before expanding distribution or making a public historical quote archive. The rate guide recommends caching; that is **not** a perpetual data-retention licence.
 
-A missing example is not proof a market is unsupported. Generic NFL props are not proof that attempts/completions or either requested bookmaker are free. QB rushing uses the same two canonical rushing types, with player position matched separately; there are nine model markets but seven provider categories. No market identifiers, player identities or odds have been fabricated.
+On termination/expiry: cease data use and delete obtained data, including cache/backups, within 30 days (subject to narrow stated exceptions). The implementation provides a private short-lived pregame cache only; old quote-cache entries are pruned on access/write after 24 hours. The owner must remove remaining cache files on expiry/termination; inactive processes cannot perform automatic deletion. Quota counters contain no quotes. Provider notices are retained/displayed; there is no quote export or public API benchmark. Paper payload preparation exists, but archival and settlement deliberately remain disabled pending separate retention/seal approval. No results endpoints or sealed outcomes are requested.
 
-## Free-budget feasibility
+Free account signup must explicitly select **$0 Amateur**, not a paid trial. Terms allow payment information to be requested even for free plans and some trials convert to paid; we cannot promise no card will be requested. Do not select any chargeable/trial option or enable overages. No account/resource has been created by Codex.
 
-The six-observation schedule previously discussed would require up to **16 games × 6 = 96 event snapshots per NFL weekend**, approximately **384 per four-week month**, before discovery, usage checks, pagination or retries. A lean two-observation design would require 32 per weekend / 128 per four-week month.
+## Current decision
 
-These are event snapshots, **not confirmed billed objects**. The SDK explicitly says `limit` bounds the number of Events returned; it does not say that one returned Event costs one object or that filters reduce billing. If a snapshot cost one object, six-observation monthly use would be 384 objects plus overhead. At 100 charged objects per snapshot it would be 38,400 plus overhead. Neither is a measurement of this provider.
-
-For provider-confirmed monthly budget B, reserved headroom R and measured discovery/account overhead H, the candidate bound is `snapshots <= floor((B - R - H) / observed_charged_objects_per_snapshot)`. It also needs the actual per-minute/hour/day/request limits and documented reset semantics. Repeated unchanged responses might still be charged; assume nothing until documented and measured.
-
-**Estimated actual object consumption per NFL weekend: unverified.** The request-count plan is calculable, but free affordability cannot be confirmed without the allowance, object definition and before/after usage evidence. No claim is made that a 500-, 2,500- or other object allowance applies.
-
-If a free account supports only a small subset of fixtures/snapshots, propose an explicitly bounded free pilot rather than silently attempting the full schedule. If meaningful UK NFL coverage or the intended rights are unavailable free, stop. No paid fallback is permitted. Any future hard limiter must persist across restarts and all clients, reserve budget before calls, stop on unknown/exhausted state and prevent UI reruns from making unbounded requests. This limiter is a Phase 2 deliverable only after the gate passes; it is not implemented by the account probe.
-
-## Prepared Phase 1 test — not an integration
-
-`scripts/probe_sgo_free_account.py` is an **account-only**, manually invoked preflight. It uses the documented `/v2/account/usage` endpoint and `x-api-key` header, no SDK installation or query-string key. It makes at most one request, never follows redirects/retries, never requests odds, rejects a non-Amateur/inactive account and discards echoed credentials/error bodies. It saves only a whitelist of tier and numeric/unknown limit fields, outside the Git repository with owner-only file permissions. Email, customer ID and key identifiers are discarded. It always records `gate_passed=false` because an account tier alone is not prop/UK/licensing proof.
-
-The current generated SDK initialises both header and query credential options from the same default environment variable. The prepared probe deliberately avoids that path and does not install or invoke the SDK. Never put credentials in URLs, command arguments, logs or repository files.
-
-Safe account/key setup is in `FREE_ACCOUNT_AND_TEST_RUNBOOK.md`. The probe is ready for account verification **once network access and an owner-confirmed free Amateur key exist**, not for an odds-comparison live trial. No actual API coverage test has run.
-
-## Gate acceptance before feature development
-
-Require all of the following evidence, with sensitive account data excluded from Git:
-
-- Current official plan/billing evidence that Amateur is $0 recurring, no paid trial/card/auto-upgrade is required, and applicable data-use/retention/display terms permit the intended private research and authenticated UI.
-- An authenticated account report showing actual Amateur tier/limits, plus documented object charging/reset/refresh rules. A paid/trial response does not count as free evidence.
-- Genuine pregame NFL prop responses on that tier for at least one specifically verified UK-accessible bookmaker. William Hill/Unibet are priorities, not assumed valid brand aliases. Document every one of the seven market results; if only partial coverage is available, return it for review before changing the requested scope.
-- Bookmaker-specific line/price, both sides where offered, real event/player IDs and timestamp/freshness evidence; reject consensus/fair odds substituted for book quotes.
-- A measured, no-upgrade collection budget that fits the exact free allowance with headroom, including metadata/usage calls and all planned clients. No hypothetical object total can pass this check.
-
-A single empty response could reflect posting time rather than entitlement: check the documented pregame window and two suitable fixtures without uncontrolled retries. Missing rights or unresolved billing/jurisdiction remains a stop condition. Synthetic tests never satisfy these acceptance criteria.
-
-## What was and was not built
-
-Built: this evidence matrix, a secure account-only verification probe, seven mock-based probe safety tests, a credential/setup runbook and a bounded live-coverage test specification.
-
-Not built because the gate is unpassed: modular odds adapter; decimal/fractional conversion integration; player/projection matching; EV calculations; mobile Odds & Value page; scheduled collection; prospective paper storage/settlement. No paid/free cloud resource, subscription or production secret was configured. The real bankroll and Supabase ledger are untouched.
-
-Python 3.14 / PyArrow 24.0.0 pins, Stage 1A nine models/forecasts/auth/settings, the disabled legacy updater, all prior benchmark code/archives and the sealed 2026 week-11 onward period remain unchanged. The Phase 1 probe has no result/statistics endpoint and cannot inspect sealed outcomes. Any later paper settlement still needs a separate seal policy. The current proposal branch is not a production deployment.
+Continue offline/synthetic development; ready to prepare a controlled authenticated coverage test after the owner configures a free key and approves a private durable trial store. **Not yet ready for automated Community Cloud operation:** its ephemeral local disk cannot certify durable quota accounting. No production Supabase tables/resources were touched. A free persistent deployment design and data-use/UK-variant confirmation remain separate approval decisions. Do not purchase anything to resolve these gaps.

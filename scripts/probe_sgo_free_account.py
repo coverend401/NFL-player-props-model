@@ -5,9 +5,9 @@ SPORTSGAMEODDS_API_KEY is sent only in the documented x-api-key header.
 """
 
 import argparse
-from datetime import datetime, timezone
 import json
 import os
+from datetime import UTC, datetime
 from pathlib import Path
 
 import requests
@@ -37,7 +37,7 @@ def account_only(api_key, *, get=requests.get):
     api_key = api_key.strip()
     if len(api_key) < 12 or any(c in api_key for c in "\r\n"):
         raise ProbeBlocked("Invalid credential format; no request made")
-    started = datetime.now(timezone.utc)
+    started = datetime.now(UTC)
     try:
         response = get(
             URL,
@@ -86,39 +86,51 @@ def account_only(api_key, *, get=requests.get):
             raise ProbeBlocked("Malformed account rate limit")
         row = {}
         for field in LIMIT_FIELDS:
-            value = entry.get(field)
+            aliases = {
+                "max-entities": "maxEntitiesPerInterval",
+                "current-entities": "currentIntervalEntities",
+                "max-requests": "maxRequestsPerInterval",
+                "current-requests": "currentIntervalRequests",
+            }
+            alias = aliases[field]
+            if field in entry and alias in entry and entry[field] != entry[alias]:
+                raise ProbeBlocked("Conflicting account limit schemas")
+            value = entry.get(alias, entry.get(field))
             if value is None:
                 row[field] = None
-            elif type(value) is int and value >= 0:
-                row[field] = value
-            elif field.startswith("max-") and value == "unlimited":
+            elif (
+                type(value) is int
+                and value >= 0
+                or value == "n/a"
+                or (field.startswith("max-") and value == "unlimited")
+            ):
                 row[field] = value
             else:
                 raise ProbeBlocked("Unrecognised account limit; do not infer a quota")
         clean[interval] = row
-    return dict(
-        classification="PHASE1_ACCOUNT_ONLY_NOT_FREE_PROP_ENTITLEMENT_PROOF",
-        endpoint=URL,
-        request_started_at=started.isoformat(),
-        response_observed_at=datetime.now(timezone.utc).isoformat(),
-        tier="Amateur",
-        is_active=True,
-        rate_limits=clean,
-        monthly_entity_limit_reported=type(
+    return {
+        "classification": "PHASE1_ACCOUNT_ONLY_NOT_FREE_PROP_ENTITLEMENT_PROOF",
+        "endpoint": URL,
+        "request_started_at": started.isoformat(),
+        "response_observed_at": datetime.now(UTC).isoformat(),
+        "tier": "Amateur",
+        "is_active": True,
+        "rate_limits": clean,
+        "monthly_entity_limit_reported": type(
             clean.get("per-month", {}).get("max-entities")
         )
         is int,
-        network_requests=1,
-        odds_requests=0,
-        gate_passed=False,
-        remaining_requirements=[
+        "network_requests": 1,
+        "odds_requests": 0,
+        "gate_passed": False,
+        "remaining_requirements": [
             "current free-plan entitlement and object definition",
             "NFL prop responses",
             "UK bookmaker jurisdiction and seven-market coverage",
             "refresh/reset policy",
             "retention and commercial-use rights",
         ],
-    )
+    }
 
 
 def run(output, *, api_key=None, get=requests.get):
