@@ -17,7 +17,7 @@ from .market import US_BOOKS, benchmarks
 from .ui import research_key
 
 
-def render(slate, release):
+def render(slate, release, *, compact=False):
     st.subheader("Market Intelligence — US research benchmarks")
     st.info(
         "US bookmaker prices may not be available to UK bettors. Disagreement is not betting value. Independent Stage 1A forecasts remain unchanged."
@@ -121,6 +121,8 @@ def render(slate, release):
         st.caption(
             "Provider supplied a continuation cursor; additional coverage may exist. No automatic pagination."
         )
+    if compact:
+        return
     scoped = {
         **snap,
         "events": [

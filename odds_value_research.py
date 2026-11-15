@@ -5,12 +5,14 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from matchup_research.ui import render as render_matchups
 from release_utils import resolve_release
 from research_access import require_access
-from sgo_research.market_ui import render
+from research_platform.ui import CSS, render
 
-st.set_page_config(page_title="NFL research odds", layout="centered")
+st.set_page_config(
+    page_title="NFL Betting Intelligence · r6", page_icon="🏈", layout="centered"
+)
+st.markdown(CSS, unsafe_allow_html=True)
 require_access()
 root = Path(__file__).resolve().parent
 try:
@@ -19,11 +21,4 @@ try:
 except (OSError, ValueError, KeyError, TypeError):
     st.error("Approved release unavailable. Research comparison disabled.")
     st.stop()
-st.caption(
-    f"Sunday research preview r5 · baseline release {release['release_id']} · no production changes"
-)
-odds_tab, script_tab = st.tabs(["Market Intelligence", "Game-Script Intelligence"])
-with odds_tab:
-    render(slate, release)
-with script_tab:
-    render_matchups(release)
+render(slate, release)
