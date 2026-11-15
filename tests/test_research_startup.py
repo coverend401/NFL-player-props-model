@@ -3,6 +3,7 @@
 import os
 import sys
 import unittest
+from datetime import UTC, datetime
 from pathlib import Path
 from unittest.mock import patch
 
@@ -40,10 +41,13 @@ class ResearchStartupTests(unittest.TestCase):
             patch.dict(os.environ, {}, clear=True),
             patch("research_access.st.secrets", secrets),
             patch.object(dashboard, "render_collection", warm_r5_collection),
+            patch("sgo_research.market_ui.datetime") as collection_clock,
             patch("requests.get") as get,
             patch("requests.request") as request,
             patch("sgo_research.market_ui.quota_store") as quota,
         ):
+            # Fixed eligible time keeps the startup regression valid after this slate ends.
+            collection_clock.now.return_value = datetime(2026, 11, 15, 8, tzinfo=UTC)
             app = AppTest.from_file(
                 str(ROOT / "odds_value_research.py"), default_timeout=60
             ).run()
@@ -101,9 +105,12 @@ class ResearchStartupTests(unittest.TestCase):
                     "SPORTSGAMEODDS_API_KEY": "synthetic_key_never_sent",
                 },
             ),
+            patch("sgo_research.market_ui.datetime") as collection_clock,
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
+            # Fixed eligible time keeps the startup regression valid after this slate ends.
+            collection_clock.now.return_value = datetime(2026, 11, 15, 8, tzinfo=UTC)
             app = AppTest.from_file(
                 str(ROOT / "odds_value_research.py"), default_timeout=60
             ).run()
