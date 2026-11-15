@@ -181,6 +181,10 @@ class EventClient(Client):
             "events": clean,
             "retrieved_at": received.isoformat(),
             "request_scope": params,
+            "requested_event_aliases": {
+                spec["eventID"]: spec.get("event", {}).get("aliases", [])
+                for spec in (expected or ())
+            },
             "raw_sha256": digest,
             "cache_hit": False,
             "authenticated_response": True,

@@ -111,6 +111,19 @@ def price_merge(snapshots, now):
                     )
                 )
                 if ids:
+                    # IDs can migrate: a new response/catalogue may know an old
+                    # alias that the older cached quote could not yet know.
+                    for requested, aliases in n.get(
+                        "requested_event_aliases", {}
+                    ).items():
+                        if requested in ids:
+                            ids.update(aliases)
+                    for newer_event in n.get("events", []):
+                        names = {newer_event["eventID"]} | set(
+                            newer_event.get("aliases", [])
+                        )
+                        if names & ids:
+                            ids.update(names)
                     applies = bool(
                         ({event["eventID"]} | set(event.get("aliases", []))) & ids
                     )

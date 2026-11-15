@@ -367,6 +367,33 @@ class MultiFixtureTests(unittest.TestCase):
             all(not o["byBookmaker"] for o in got[0]["events"][0]["odds"].values())
         )
 
+    def test_migrated_event_alias_withdrawal_never_resurrects_old_quotes(self):
+        old = scoped_snapshot()
+        newer_event = {
+            **old["events"][0],
+            "eventID": "new-ID",
+            "aliases": ["synthetic_event"],
+            "odds": {},
+        }
+        for returned, known in [
+            ([newer_event], {}),
+            ([], {"new-ID": ["synthetic_event"]}),
+        ]:
+            new = {
+                **old,
+                "events": returned,
+                "request_scope": {
+                    "eventIDs": "new-ID",
+                    "bookmakerID": "fanduel,draftkings",
+                },
+                "requested_event_aliases": known,
+                "retrieved_at": (NOW + timedelta(seconds=1)).isoformat(),
+            }
+            got = price_merge([old, new], NOW + timedelta(seconds=2))
+            self.assertTrue(
+                all(not o["byBookmaker"] for o in got[0]["events"][0]["odds"].values())
+            )
+
     def test_expired_discovery_does_not_restore_quotes(self):
         s = scoped_snapshot()
         self.assertEqual(price_merge([s], NOW + timedelta(minutes=16)), [])
