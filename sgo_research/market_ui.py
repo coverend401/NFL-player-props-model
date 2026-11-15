@@ -11,6 +11,7 @@ from research_access import secret
 from .client import Client
 from .config import quota_store
 from .contracts import Unavailable, utc
+from .credentials import credential_status
 from .diagnostics import CollectionBlocked, safe_diagnostic
 from .market import US_BOOKS, benchmarks
 from .ui import research_key
@@ -49,6 +50,7 @@ def render(slate, release):
             "SGO_PRIVATE_CACHE_TERMS_ACK",
         ):
             st.caption(f"{setting}: {'configured' if secret(setting) else 'missing'}")
+        st.caption(credential_status())
         st.caption(
             f"Current UK time: {now.strftime('%H:%M:%S')} · selected fixture T−60 cutoff: {(utc(eligible[gid]) - timedelta(minutes=60)).isoformat()}"
         )

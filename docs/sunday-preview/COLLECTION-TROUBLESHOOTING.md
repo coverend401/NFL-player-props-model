@@ -36,3 +36,24 @@ No change to the production application, dependency versions, private database, 
 ## Regression evidence
 
 Python 3.14 / PyArrow 24.0.0 focused suite: **86 tests passed**, including eight new hosted-path tests. These cover root-level secrets without an environment-copy bridge, missing-token fail-closed before network/local-gh fallback, GitHub read/write 401/403/404 classifications, unchanged 409 conflict handling, unknown/network exception redaction, visible/logged safe codes, and post-network capture timing. Ruff and whitespace checks passed. The original hosted exception still requires the owner's new safe diagnostic; no successful remote retrieval is claimed.
+
+## r4 — quota authentication selection and transport
+
+A real hosted `GITHUB_READ_401` confirms GitHub rejected authentication **before** private quota state was read. It is not evidence of exhausted SportsGameOdds allowance, a cutoff failure or a missing Contents write permission. An active token in GitHub settings does not prove the same byte string reached GitHub from the host.
+
+Two replacement paths were found and removed:
+
+- The generic secret helper preferred process environment over Cloud Secrets. For the quota credential specifically, **root-level Streamlit Secrets is now authoritative**; environment is used only when that key is absent. An explicitly empty/malformed Cloud value fails closed rather than falling back to a different credential. This is scoped to the quota token; research authentication and production settings are untouched.
+- Requests can consult `.netrc` and replace an explicitly provided Authorization header if no explicit auth object is supplied. GitHub quota requests now use an explicit Bearer AuthBase object, which assigns exactly `Authorization: Bearer <selected-token>` during request preparation. Network proxy/TLS defaults remain enabled, redirects remain disabled, and unrelated GitHub/SGO credentials are not selected. Only surrounding whitespace is trimmed; quotes, Bearer prefixes and embedded whitespace are rejected, never guessed away.
+
+No evidence proves either replacement happened on Streamlit. Codex's managed GitHub proxy can supply its own repository identity, so its successful quota access did not independently authenticate the owner's PAT. The r4 changes make the independent hosted credential path explicit and testable without displaying any token part, length, hash or fingerprint.
+
+### Existing app update
+
+1. Keep the same research app, branch and entrypoint. After the PR #8 branch update, wait for Community Cloud to rebuild; confirm **research preview r4**. If necessary, use **Manage app → menu → Reboot app** on the research app only. No main merge, token rotation or counter reset.
+2. In this research app's **Settings → Secrets**, keep the existing token under the exact root-level name `SGO_GITHUB_QUOTA_TOKEN`. Correct TOML uses one pair of syntax quotes around the existing token value, not literal extra quotes inside the value. Do not include `Bearer `, a whole assignment as the value, a multi-line block, or a nested table. Preserve all other secrets. Do not paste the token in chat or GitHub.
+3. Unlock r4 and open Collection diagnostics. It should say **recognised format; source: Streamlit Secrets**. This is a local shape/source check, not a claim of validity. Missing and malformed are distinguished without a GitHub call. Supported current PAT formats are checked without printing their actual prefix or any credential-derived identifier.
+4. Select a T−60 eligible fixture and Retrieve once. A malformed-value diagnostic means no GitHub request was sent. A continuing `GITHUB_READ_401` means GitHub rejected a recognised-format token using the explicit Bearer path; report only that code and source label. Do not broaden permissions, regenerate the token, clear quota or keep retrying. We must investigate the remaining external credential/host issue without pretending it is resolved.
+5. On success, confirm fresh benchmark cards and the unchanged production baseline. Read permission success does not substitute for the atomic write/conflict protections, which remain mandatory.
+
+r4 focused validation: **94 tests passed**, including eight credential-resolution/transport regressions added to the hosted-path coverage. Tests verify authoritative Cloud secret selection, environment fallback only when absent, empty/malformed values failing closed without credential substitution, outer-whitespace-only normalisation, exact prepared Bearer headers with `.netrc` override prevented, no redirects, explicit empty-token rejection, and safe genuine-401 classification. No real credentials or quota writes are used by these tests. Ruff and whitespace checks pass; final-head CI remains a separate gate.

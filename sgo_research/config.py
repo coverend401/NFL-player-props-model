@@ -7,6 +7,7 @@ from pathlib import Path
 from research_access import secret
 
 from .contracts import Unavailable
+from .credentials import quota_credential
 from .diagnostics import CollectionBlocked
 from .github_quota import GitHubAPI, GitHubQuotaStore
 from .store import Store
@@ -21,10 +22,8 @@ def quota_store():
             "SGO_RESEARCH_STORE",
             str(Path(tempfile.gettempdir()) / "nfl-research-odds-cache.sqlite"),
         )
-        token = secret("SGO_GITHUB_QUOTA_TOKEN")
-        if not isinstance(token, str) or not token.strip():
-            raise CollectionBlocked("CONFIG_TOKEN")
-        return GitHubQuotaStore(repository.strip(), path, api=GitHubAPI(token.strip()))
+        token, _ = quota_credential()
+        return GitHubQuotaStore(repository.strip(), path, api=GitHubAPI(token))
     path = os.environ.get("SGO_RESEARCH_STORE")
     if not path or os.environ.get("SGO_PERSISTENT_VOLUME_APPROVED") != "1":
         raise Unavailable(

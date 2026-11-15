@@ -12,6 +12,7 @@ class CollectionBlocked(Unavailable):
 MESSAGES = {
     "CONFIG_REPOSITORY": "SGO_QUOTA_REPOSITORY must be a root-level string naming the existing separate private quota repository.",
     "CONFIG_STORE": "No approved durable quota store is configured. Add SGO_QUOTA_REPOSITORY and its narrowly scoped token to this research app. Do not approve ephemeral disk as persistent.",
+    "TOKEN_MALFORMED": 'The quota token is not a recognised GitHub PAT string. In Streamlit Secrets use TOML syntax NAME = "value" with no literal inner quotes, Bearer prefix, embedded spaces or line breaks. Nothing was sent to GitHub; no token content is shown.',
     "CONFIG_TOKEN": "SGO_GITHUB_QUOTA_TOKEN is missing. Add it as a root-level research-app secret; no provider request was made.",
     "CONFIG_CAP": "SGO_OBJECT_CAP must be an integer from 1 to 2000. Correct the research secret; do not raise the free ceiling.",
     "GITHUB_READ_401": "GitHub rejected quota authentication (HTTP 401). Check that the quota token is current and correctly entered in this research app.",

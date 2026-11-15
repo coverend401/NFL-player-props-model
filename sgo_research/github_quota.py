@@ -35,9 +35,24 @@ def initial_state():
     }
 
 
+class QuotaBearerAuth(requests.auth.AuthBase):
+    """Explicit auth prevents requests/netrc from replacing the Bearer header."""
+
+    def __init__(self, token):
+        self.token = token
+
+    def __call__(self, request):
+        request.headers["Authorization"] = "Bearer " + self.token
+        return request
+
+
 class GitHubAPI:
     def __init__(self, token=None):
-        self.token = token or os.environ.get("SGO_GITHUB_QUOTA_TOKEN")
+        if token is not None and (not isinstance(token, str) or not token.strip()):
+            raise CollectionBlocked("CONFIG_TOKEN")
+        self.token = (
+            token if token is not None else os.environ.get("SGO_GITHUB_QUOTA_TOKEN")
+        )
 
     def __call__(self, method, path, payload=None):
         if self.token:
@@ -50,6 +65,7 @@ class GitHubAPI:
                         "Accept": "application/vnd.github+json",
                         "X-GitHub-Api-Version": "2022-11-28",
                     },
+                    auth=QuotaBearerAuth(self.token),
                     json=payload,
                     timeout=(5, 20),
                     allow_redirects=False,
@@ -59,7 +75,9 @@ class GitHubAPI:
                 if r.status_code not in [200, 201]:
                     operation = "READ" if method == "GET" else "WRITE"
                     code = f"GITHUB_{operation}_{r.status_code}"
-                    raise CollectionBlocked(code if r.status_code in [401, 403, 404] else "GITHUB_HTTP")
+                    raise CollectionBlocked(
+                        code if r.status_code in [401, 403, 404] else "GITHUB_HTTP"
+                    )
                 return r.json()
             except (requests.RequestException, ValueError):
                 raise Unavailable(

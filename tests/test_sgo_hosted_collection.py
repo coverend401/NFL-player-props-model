@@ -21,7 +21,7 @@ class HostedCollectionTests(unittest.TestCase):
 
         secrets = {
             "SGO_QUOTA_REPOSITORY": "example/private-counter",
-            "SGO_GITHUB_QUOTA_TOKEN": " synthetic-token ",
+            "SGO_GITHUB_QUOTA_TOKEN": " github_pat_synthetic_token_only ",
             "SPORTSGAMEODDS_API_KEY": "synthetic-key",
         }
         with (
@@ -32,7 +32,7 @@ class HostedCollectionTests(unittest.TestCase):
             self.assertEqual(research_key(), "synthetic-key")
             quota_store()
             self.assertEqual(store.call_args.args[0], "example/private-counter")
-            self.assertEqual(store.call_args.kwargs["api"].token, "synthetic-token")
+            self.assertEqual(store.call_args.kwargs["api"].token, "github_pat_synthetic_token_only")
             self.assertNotIn("SGO_GITHUB_QUOTA_TOKEN", os.environ)
 
     def test_missing_hosted_token_never_falls_back_to_local_gh(self):
