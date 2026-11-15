@@ -185,7 +185,11 @@ def collection8(slate, release, only=None):
                 )
                 if result["snapshots"]:
                     st.session_state["market_snapshot"] = result["snapshots"][-1]
-                write_audit(client, result, release["release_id"])
+                write_audit(
+                    client,
+                    {**result, "audit": dict(st.session_state["r8_audit"])},
+                    release["release_id"],
+                )
                 st.rerun()
             except (
                 Unavailable,

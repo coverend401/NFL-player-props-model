@@ -293,7 +293,7 @@ def collect8(plan, slate, release, client, existing=(), catalogue=(), progress=N
     complete = False
     existing = price_merge(existing, client.clock())
     priced, _ = evaluate(existing, slate, release, client.clock())
-    covered = {r["game_id"] for r in priced}
+    covered = {r["game_id"] for r in priced if r.get("bookmaker") in plan["books"]}
     for gid in covered & set(plan["games"]):
         audit[gid] = {
             "stage": "fresh_bookmaker",

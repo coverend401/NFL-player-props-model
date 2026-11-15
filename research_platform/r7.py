@@ -103,8 +103,13 @@ def market_card(row, release, state):
         else f"{row['model_probability']:.1%}"
     )
     ev = "Unavailable" if row["ev_pct"] is None else f"{row['ev_pct']:+.1f}%"
+    ranking_note = (
+        "Ranks by positive quoted-price legacy estimated EV; not validated betting value."
+        if row["classification"] == "WATCH"
+        else "PASS: quoted-price or eligibility risks prevent WATCH classification. Research comparison only."
+    )
     st.markdown(
-        f"""<article class="desk-card watch"><div class="small">{esc(game_label(row["game_id"], release))}</div><h3>{esc(row["player"])}</h3><span class="desk-pill watch">{esc(row["classification"])} · EXPERIMENTAL</span><div class="desk-line">{esc(row["side"])} {row["line"]:g} · {esc(row["market"])}</div><div class="small">{esc(row["bookmaker"].upper())} · {row["decimal_odds"]:.3f} decimal · US benchmark</div><div class="desk-grid"><div><b>{row["projection"]:.1f}</b><span>MODEL FORECAST</span></div><div><b>{prob}</b><span>LEGACY PROBABILITY</span></div><div><b>{ev}</b><span>ESTIMATED EV / £1</span></div></div><p class="desk-note">Ranks by positive quoted-price legacy estimated EV; not validated betting value.</p><p class="desk-note">{esc(fact)}</p><p class="desk-note">{esc(opponent_note(state, row["player_id"], row["game_id"]))}</p><div class="desk-risk">Calibration, inactive/role status and UK availability unverified.</div><div class="small">Updated {esc(row["oldest_update"])} · expires {esc(row["valid_until"])}</div></article>""",
+        f"""<article class="desk-card watch"><div class="small">{esc(game_label(row["game_id"], release))}</div><h3>{esc(row["player"])}</h3><span class="desk-pill watch">{esc(row["classification"])} · EXPERIMENTAL</span><div class="desk-line">{esc(row["side"])} {row["line"]:g} · {esc(row["market"])}</div><div class="small">{esc(row["bookmaker"].upper())} · {row["decimal_odds"]:.3f} decimal · US benchmark</div><div class="desk-grid"><div><b>{row["projection"]:.1f}</b><span>MODEL FORECAST</span></div><div><b>{prob}</b><span>LEGACY PROBABILITY</span></div><div><b>{ev}</b><span>ESTIMATED EV / £1</span></div></div><p class="desk-note">{esc(ranking_note)}</p><p class="desk-note">{esc(fact)}</p><p class="desk-note">{esc(opponent_note(state, row["player_id"], row["game_id"]))}</p><div class="desk-risk">Calibration, inactive/role status and UK availability unverified.</div><div class="small">Updated {esc(row["oldest_update"])} · expires {esc(row["valid_until"])}</div></article>""",
         unsafe_allow_html=True,
     )
     with st.expander(

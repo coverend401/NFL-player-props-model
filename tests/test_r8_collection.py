@@ -299,6 +299,19 @@ class MultiFixtureTests(unittest.TestCase):
             all(not c.kwargs["player_ids"] for c in self.client.prices.call_args_list)
         )
 
+    def test_fresh_other_book_does_not_suppress_requested_book_collection(self):
+        self.plan = plan8(slate(), REL, NOW, ["betmgm"])
+        self.client.discover.return_value = {
+            "events": [event()],
+            "retrieved_at": NOW.isoformat(),
+        }
+        self.client.prices.return_value = {
+            "events": [],
+            "retrieved_at": NOW.isoformat(),
+        }
+        collect8(self.plan, slate(), REL, self.client, existing=[scoped_snapshot()])
+        self.client.prices.assert_called_once()
+
     def test_dynamic_states_do_not_infer_provider_absence_and_track_cache_loss(self):
         models = model_candidates(self.frame, self.rel, NOW)
         states = state8([], models, [], {}, self.plan, self.rel, NOW)
@@ -386,6 +399,20 @@ class MultiFixtureTests(unittest.TestCase):
 
 
 class R8JourneyTests(unittest.TestCase):
+    def test_pass_card_does_not_claim_positive_value(self):
+        from unittest.mock import patch
+
+        from research_platform.engine import evaluate
+        from research_platform.r7 import market_card
+
+        rows, _ = evaluate([scoped_snapshot()], slate(), REL, NOW)
+        row = next(r for r in rows if r["classification"] == "PASS")
+        with patch("research_platform.r7.st") as ui:
+            market_card(row, REL, {})
+        card = ui.markdown.call_args_list[0].args[0]
+        self.assertIn("PASS:", card)
+        self.assertNotIn("Ranks by positive", card)
+
     def test_cached_landing_cards_first_and_all_workspaces_no_network(self):
         import os
         from unittest.mock import patch
@@ -479,12 +506,16 @@ class R8JourneyTests(unittest.TestCase):
             app = AppTest.from_string(
                 "from tests.test_sgo_research import slate,REL\nfrom research_platform.r8 import render\nrender(slate(),REL)"
             ).run(timeout=30)
+            app.session_state["r8_audit"] = {
+                "earlier_fixture": {"stage": "matching_failed", "category": "D"}
+            }
             next(b for b in app.button if "Discover & collect" in b.label).click().run(
                 timeout=30
             )
             self.assertFalse(app.exception, app.exception)
             collect.assert_called_once()
             write.assert_called_once()
+            self.assertIn("earlier_fixture", write.call_args.args[1]["audit"])
             self.assertEqual(collect.call_args.args[0]["max_reserved_objects"], 33)
             self.assertTrue(
                 any("No provider event returned" in e.value for e in app.markdown)
