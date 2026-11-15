@@ -15,7 +15,7 @@ def research_key():
     key = os.environ.get("SPORTSGAMEODDS_API_KEY")
     if not key:
         try:
-            key = st.secrets.get("sportsgameodds", {}).get("api_key")
+            key = st.secrets.get("SPORTSGAMEODDS_API_KEY") or st.secrets.get("sportsgameodds", {}).get("api_key")
         except (FileNotFoundError, st.errors.StreamlitSecretNotFoundError):
             return None
     return key

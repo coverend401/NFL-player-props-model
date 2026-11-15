@@ -1,15 +1,17 @@
 """Password-gated standalone market benchmark cards; no production hooks."""
 
-import os
+import logging
 from datetime import UTC, datetime, timedelta
 
 import streamlit as st
 
 from matchup_research.ui import DEFAULT, load
+from research_access import secret
 
 from .client import Client
 from .config import quota_store
 from .contracts import Unavailable, utc
+from .diagnostics import CollectionBlocked, safe_diagnostic
 from .market import US_BOOKS, benchmarks
 from .ui import research_key
 
@@ -39,14 +41,42 @@ def render(slate, release):
     st.caption(
         "One selected fixture per request; no polling or pagination. Refresh no faster than the 10-minute cache. Stale or post-cutoff quotes never enter the median."
     )
+    with st.expander("Collection diagnostics (no credentials shown)"):
+        for setting in (
+            "SPORTSGAMEODDS_API_KEY",
+            "SGO_QUOTA_REPOSITORY",
+            "SGO_GITHUB_QUOTA_TOKEN",
+            "SGO_PRIVATE_CACHE_TERMS_ACK",
+        ):
+            st.caption(f"{setting}: {'configured' if secret(setting) else 'missing'}")
+        st.caption(
+            f"Current UK time: {now.strftime('%H:%M:%S')} · selected fixture T−60 cutoff: {(utc(eligible[gid]) - timedelta(minutes=60)).isoformat()}"
+        )
+        st.caption(
+            "Configuration status does not prove token permissions. Quota access is checked on collection; no automatic diagnostic API calls."
+        )
     if st.button("Retrieve selected fixture's market lines"):
+        stage = "configuration"
         try:
             kickoff = utc(eligible[gid])
+            try:
+                cap = int(secret("SGO_OBJECT_CAP") or "2000")
+                if not 1 <= cap <= 2000:
+                    raise ValueError
+            except (ValueError, TypeError):
+                raise CollectionBlocked("CONFIG_CAP") from None
+            if str(secret("SGO_PRIVATE_CACHE_TERMS_ACK")) != "1":
+                raise CollectionBlocked("TERMS")
+            if not books:
+                raise CollectionBlocked("BOOKS")
+            stage = "quota repository access"
+            store = quota_store()
+            stage = "quota reservation / provider collection"
             snap = Client(
                 key,
-                quota_store(),
-                terms_ack=os.environ.get("SGO_PRIVATE_CACHE_TERMS_ACK") == "1",
-                object_cap=int(os.environ.get("SGO_OBJECT_CAP", "2000")),
+                store,
+                terms_ack=True,
+                object_cap=cap,
             ).fetch(
                 (kickoff - timedelta(seconds=30)).isoformat(),
                 (kickoff + timedelta(seconds=30)).isoformat(),
@@ -54,10 +84,17 @@ def render(slate, release):
                 limit=16,
             )
             st.session_state["market_snapshot"] = snap
-        except (Unavailable, ValueError, OSError, KeyError, TypeError):
-            st.warning(
-                "Collection failed or safeguards blocked it. No automatic retry or production change."
+        except (Unavailable, ValueError, OSError, KeyError, TypeError) as error:
+            code, message = safe_diagnostic(error)
+            # Never log exception objects, tracebacks, response bodies, headers or URLs.
+            logging.getLogger(__name__).warning(
+                "Research collection blocked: code=%s stage=%s", code, stage
             )
+            st.warning(
+                f"Collection blocked [{code}] at {stage}: {message} No production change."
+            )
+    # Network/CAS work can take seconds: validate captures against time AFTER collection.
+    now = datetime.now(UTC)
     snap = st.session_state.get("market_snapshot")
     if not snap:
         return

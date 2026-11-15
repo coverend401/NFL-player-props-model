@@ -16,6 +16,7 @@ from datetime import timedelta
 import requests
 
 from .contracts import Unavailable, utc
+from .diagnostics import CollectionBlocked
 from .store import Store
 
 STATE_FILE = "quota.json"
@@ -56,7 +57,9 @@ class GitHubAPI:
                 if r.status_code == 409:
                     return None
                 if r.status_code not in [200, 201]:
-                    raise Unavailable("Private quota GitHub request failed")
+                    operation = "READ" if method == "GET" else "WRITE"
+                    code = f"GITHUB_{operation}_{r.status_code}"
+                    raise CollectionBlocked(code if r.status_code in [401, 403, 404] else "GITHUB_HTTP")
                 return r.json()
             except (requests.RequestException, ValueError):
                 raise Unavailable(
