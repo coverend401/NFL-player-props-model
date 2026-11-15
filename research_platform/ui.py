@@ -209,7 +209,9 @@ def top_picks(slate, release):
         "Load / refresh genuine bookmaker prices",
         expanded=not bool(st.session_state.get("market_snapshot")),
     ):
-        render_collection(slate, release, compact=True)
+        # Keep the working r5 two-argument interface: Cloud can retain an older
+        # imported collection module across a warm source update.
+        render_collection(slate, release)
     rows, issues = current_decisions(slate, release)
     watch = sum(r["classification"] == "WATCH" for r in rows)
     st.markdown(
@@ -501,7 +503,7 @@ def render(slate, release):
         """<header class="desk-hero"><div class="desk-eyebrow">NFL / RESEARCH DESK</div><div class="desk-title">Betting Intelligence</div><div class="desk-sub">Independent forecasts · Genuine market prices</div></header>""",
         unsafe_allow_html=True,
     )
-    st.caption("Research intelligence r6 · experimental · US market benchmarks")
+    st.caption("Research intelligence r6.1 · experimental · US market benchmarks")
     section = st.selectbox(
         "Workspace",
         [

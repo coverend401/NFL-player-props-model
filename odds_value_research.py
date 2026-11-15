@@ -10,7 +10,7 @@ from research_access import require_access
 from research_platform.ui import CSS, render
 
 st.set_page_config(
-    page_title="NFL Betting Intelligence · r6", page_icon="🏈", layout="centered"
+    page_title="NFL Betting Intelligence · r6.1", page_icon="🏈", layout="centered"
 )
 st.markdown(CSS, unsafe_allow_html=True)
 require_access()
