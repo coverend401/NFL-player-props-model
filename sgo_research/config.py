@@ -23,7 +23,10 @@ def quota_store():
             str(Path(tempfile.gettempdir()) / "nfl-research-odds-cache.sqlite"),
         )
         token, _ = quota_credential()
-        return GitHubQuotaStore(repository.strip(), path, api=GitHubAPI(token))
+        api = GitHubAPI(token)
+        # Detect managed credential substitution before trusting a successful read.
+        api.verify_authentication()
+        return GitHubQuotaStore(repository.strip(), path, api=api)
     path = os.environ.get("SGO_RESEARCH_STORE")
     if not path or os.environ.get("SGO_PERSISTENT_VOLUME_APPROVED") != "1":
         raise Unavailable(

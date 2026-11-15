@@ -54,6 +54,27 @@ class GitHubAPI:
             token if token is not None else os.environ.get("SGO_GITHUB_QUOTA_TOKEN")
         )
 
+    def verify_authentication(self):
+        """GET-only negative control followed by real auth; never return user data."""
+        control = GitHubAPI("deliberately-invalid-synthetic-quota-auth-control")
+        try:
+            control("GET", "user")
+        except CollectionBlocked as error:
+            if error.code != "GITHUB_READ_401":
+                raise CollectionBlocked("AUTH_CONTROL_INCONCLUSIVE") from None
+        else:
+            raise CollectionBlocked("AUTH_SUBSTITUTION")
+        try:
+            profile = self("GET", "user")
+        except CollectionBlocked as error:
+            if error.code == "GITHUB_READ_401":
+                raise CollectionBlocked("TOKEN_REJECTED") from None
+            if error.code == "GITHUB_READ_403":
+                raise CollectionBlocked("AUTH_PERMISSION") from None
+            raise
+        if not isinstance(profile, dict) or type(profile.get("id")) is not int:
+            raise CollectionBlocked("AUTH_RESPONSE")
+
     def __call__(self, method, path, payload=None):
         if self.token:
             try:

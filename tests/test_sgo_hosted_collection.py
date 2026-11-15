@@ -28,12 +28,18 @@ class HostedCollectionTests(unittest.TestCase):
             patch.dict(os.environ, {}, clear=True),
             patch("research_access.st.secrets", secrets),
             patch("sgo_research.config.GitHubQuotaStore") as store,
+            patch(
+                "sgo_research.github_quota.GitHubAPI.verify_authentication"
+            ) as verify,
         ):
             self.assertEqual(research_key(), "synthetic-key")
             quota_store()
             self.assertEqual(store.call_args.args[0], "example/private-counter")
-            self.assertEqual(store.call_args.kwargs["api"].token, "github_pat_synthetic_token_only")
+            self.assertEqual(
+                store.call_args.kwargs["api"].token, "github_pat_synthetic_token_only"
+            )
             self.assertNotIn("SGO_GITHUB_QUOTA_TOKEN", os.environ)
+            verify.assert_called_once()
 
     def test_missing_hosted_token_never_falls_back_to_local_gh(self):
         with (
@@ -130,7 +136,11 @@ class HostedCollectionTests(unittest.TestCase):
             app = AppTest.from_string(
                 "from tests.test_sgo_research import slate, REL\nfrom sgo_research.market_ui import render\nrender(slate(), REL)"
             ).run()
-            app.button[0].click().run()
+            next(
+                b
+                for b in app.button
+                if b.label == "Retrieve selected fixture's market lines"
+            ).click().run()
             network.assert_not_called()
             self.assertFalse(app.exception, app.exception)
             return app

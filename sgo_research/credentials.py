@@ -1,7 +1,6 @@
 """Research quota credential resolution. No credential-derived text is returned."""
 
 import os
-import re
 
 import streamlit as st
 
@@ -24,20 +23,27 @@ def quota_credential():
     if value is None or (isinstance(value, str) and not value.strip()):
         raise CollectionBlocked("CONFIG_TOKEN")
     if not isinstance(value, str):
-        raise CollectionBlocked("TOKEN_MALFORMED")
+        raise CollectionBlocked("TOKEN_TYPE")
     token = value.strip()  # Only surrounding whitespace; never remove quotes/prefixes.
-    if not re.fullmatch(r"(?:github_pat_|ghp_)[A-Za-z0-9_]+", token):
-        raise CollectionBlocked("TOKEN_MALFORMED")
+    if any(c in token for c in ('"', "'")):
+        raise CollectionBlocked("TOKEN_QUOTES")
+    if token.casefold().startswith("bearer "):
+        raise CollectionBlocked("TOKEN_SCHEME")
+    if any(c.isspace() for c in token):
+        raise CollectionBlocked("TOKEN_WHITESPACE")
+    if any(not 33 <= ord(c) <= 126 for c in token):
+        raise CollectionBlocked("TOKEN_HEADER")
+    # GitHub, not a guessed prefix/length/alphabet regex, decides validity.
     return token, source
 
 
 def credential_status():
     try:
         _, source = quota_credential()
-        return f"Quota credential: present; recognised format; source: {source}. Acceptance is unverified until GitHub responds."
+        return f"Quota credential: present; header-safe string; source: {source}. Acceptance is unverified until GitHub responds."
     except CollectionBlocked as error:
         return (
             "Quota credential: missing."
             if error.code == "CONFIG_TOKEN"
-            else "Quota credential: malformed. Check for literal quotes, a Bearer prefix, whitespace inside the value or the wrong secret type."
+            else f"Quota credential local check: {error.code}. No credential content is shown."
         )

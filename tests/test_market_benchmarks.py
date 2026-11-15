@@ -94,7 +94,11 @@ class MarketTests(unittest.TestCase):
             app = AppTest.from_string(
                 "from tests.test_sgo_research import slate, REL\nfrom sgo_research.market_ui import render\nrender(slate(), REL)"
             ).run()
-            app.button[0].click().run()
+            next(
+                b
+                for b in app.button
+                if b.label == "Retrieve selected fixture's market lines"
+            ).click().run()
             self.assertFalse(app.exception, app.exception)
             self.assertTrue(
                 any("multi-book median" in str(x.value) for x in app.get("markdown"))

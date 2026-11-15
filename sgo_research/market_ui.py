@@ -57,6 +57,18 @@ def render(slate, release):
         st.caption(
             "Configuration status does not prove token permissions. Quota access is checked on collection; no automatic diagnostic API calls."
         )
+        if st.button("Check GitHub authentication (read-only; no odds)"):
+            try:
+                quota_store()
+                st.success(
+                    "Invalid-credential control rejected; supplied credential accepted; private quota state readable. Write permission is not proved by this read-only test. No odds or quota-counter writes."
+                )
+            except (Unavailable, ValueError, OSError, KeyError, TypeError) as error:
+                code, message = safe_diagnostic(error)
+                logging.getLogger(__name__).warning(
+                    "Research authentication check blocked: code=%s", code
+                )
+                st.warning(f"Authentication check [{code}]: {message}")
     if st.button("Retrieve selected fixture's market lines"):
         stage = "configuration"
         try:

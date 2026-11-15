@@ -10,9 +10,19 @@ class CollectionBlocked(Unavailable):
 
 
 MESSAGES = {
+    "TOKEN_TYPE": "The quota secret is not a TOML string. Use a root-level string value, not a table, number or boolean.",
+    "TOKEN_QUOTES": "The parsed quota value contains literal quote characters. TOML delimiter quotes are normal; extra quotes inside the value are not removed automatically.",
+    "TOKEN_SCHEME": "The quota value includes a Bearer prefix. Store only the token; the application supplies the Authorization scheme.",
+    "TOKEN_WHITESPACE": "The quota value contains embedded whitespace or a line break. No credential characters are shown or guessed away.",
+    "TOKEN_HEADER": "The quota value contains a non-ASCII or control character unsafe for the Authorization header. No credential characters are shown.",
+    "TOKEN_REJECTED": "The invalid-credential control was correctly rejected, but GitHub rejected the supplied header-safe token (HTTP 401). Authentication is invalid on this host; repository permissions and quota were not tested.",
+    "AUTH_PERMISSION": "GitHub denied the authenticated-user probe (HTTP 403). Permissions, approval or rate limits may apply; collection stopped without changing quota.",
+    "AUTH_SUBSTITUTION": "GitHub accepted a deliberately invalid credential. Managed authentication or another intermediary is substituting credentials; PAT validity cannot be established here. Collection is blocked.",
+    "AUTH_CONTROL_INCONCLUSIVE": "GitHub did not return the expected 401 for the invalid-credential control. Authentication verification is inconclusive; collection stopped without quota changes.",
+    "AUTH_RESPONSE": "The authenticated-user response was unexpected. Identity verification failed closed without revealing account data.",
     "CONFIG_REPOSITORY": "SGO_QUOTA_REPOSITORY must be a root-level string naming the existing separate private quota repository.",
     "CONFIG_STORE": "No approved durable quota store is configured. Add SGO_QUOTA_REPOSITORY and its narrowly scoped token to this research app. Do not approve ephemeral disk as persistent.",
-    "TOKEN_MALFORMED": 'The quota token is not a recognised GitHub PAT string. In Streamlit Secrets use TOML syntax NAME = "value" with no literal inner quotes, Bearer prefix, embedded spaces or line breaks. Nothing was sent to GitHub; no token content is shown.',
+    "TOKEN_MALFORMED": "Legacy token validation failed. Update to r5 for specific type/header diagnostics; no request was made.",
     "CONFIG_TOKEN": "SGO_GITHUB_QUOTA_TOKEN is missing. Add it as a root-level research-app secret; no provider request was made.",
     "CONFIG_CAP": "SGO_OBJECT_CAP must be an integer from 1 to 2000. Correct the research secret; do not raise the free ceiling.",
     "GITHUB_READ_401": "GitHub rejected quota authentication (HTTP 401). Check that the quota token is current and correctly entered in this research app.",
