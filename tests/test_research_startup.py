@@ -19,7 +19,7 @@ class ResearchStartupTests(unittest.TestCase):
     def test_real_entrypoint_with_cloud_secrets_and_warm_r5_signature(self):
         from streamlit.testing.v1 import AppTest
 
-        import research_platform.ui as dashboard
+        import research_platform.r7 as dashboard
         from sgo_research.market_ui import render as current_collection
 
         calls = []
@@ -40,7 +40,7 @@ class ResearchStartupTests(unittest.TestCase):
         with (
             patch.dict(os.environ, {}, clear=True),
             patch("research_access.st.secrets", secrets),
-            patch.object(dashboard, "render_collection", warm_r5_collection),
+            patch.object(dashboard, "render_fixture", warm_r5_collection),
             patch("sgo_research.market_ui.datetime") as collection_clock,
             patch("requests.get") as get,
             patch("requests.request") as request,
@@ -65,7 +65,7 @@ class ResearchStartupTests(unittest.TestCase):
             )
             self.assertTrue(
                 any(
-                    e.label == "Load / refresh genuine bookmaker prices"
+                    e.label == "Refresh prices — slate-wide collection"
                     for e in app.expander
                 )
             )
