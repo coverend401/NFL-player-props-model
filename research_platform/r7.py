@@ -394,8 +394,8 @@ def render(slate, release):
     elif section == "Game Intelligence":
         render_games(release)
     elif section == "Market Intelligence":
-        render_fixture(slate, release)
         load_data(slate, release)
+        render_fixture(slate, release)
     elif section == "Model Performance":
         performance_view()
     else:

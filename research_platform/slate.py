@@ -117,9 +117,42 @@ def merge_snapshots(existing, incoming, now):
                 selected[key] = snapshot
         except (KeyError, TypeError, ValueError):
             continue
-    return sorted(selected.values(), key=lambda s: utc(s["retrieved_at"]))[-6:], sorted(
-        set(expired)
-    )
+    kept = sorted(selected.values(), key=lambda s: utc(s["retrieved_at"]))[-6:]
+    current = []
+    for snapshot in kept:
+        events = []
+        for event in snapshot.get("events", []):
+            superseded = set()
+            for newer in kept:
+                if utc(newer["retrieved_at"]) <= utc(snapshot["retrieved_at"]):
+                    continue
+                scope = newer.get("request_scope", {})
+                try:
+                    if scope.get("leagueID") == "NFL" and utc(
+                        scope["startsAfter"]
+                    ) <= utc(event["status"]["startsAt"]) <= utc(scope["startsBefore"]):
+                        superseded.update(scope.get("bookmakerID", "").split(","))
+                except (KeyError, ValueError, TypeError):
+                    continue
+            if superseded:
+                # Pure in-memory subset. Never rewrite captured source data or times.
+                event = {
+                    **event,
+                    "odds": {
+                        key: {
+                            **odd,
+                            "byBookmaker": {
+                                book: q
+                                for book, q in odd.get("byBookmaker", {}).items()
+                                if book not in superseded
+                            },
+                        }
+                        for key, odd in event.get("odds", {}).items()
+                    },
+                }
+            events.append(event)
+        current.append({**snapshot, "events": events})
+    return current, sorted(set(expired))
 
 
 def collection_plan(slate, release, now, books=US_BOOKS):

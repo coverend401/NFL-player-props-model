@@ -16,6 +16,7 @@ from research_platform.slate import (
     collection_plan,
     coverage,
     execute_plan,
+    merge_snapshots,
     model_candidates,
     parlay_research,
     scope_for,
@@ -437,3 +438,36 @@ class R7BoundFailureTests(unittest.TestCase):
         self.assertEqual(client.fetch.call_count, 1)
         self.assertEqual(result["statuses"][0]["code"], "CACHE_STORAGE")
         self.assertNotIn("synthetic private path", result["statuses"][0]["message"])
+
+
+class R7WithdrawalTests(unittest.TestCase):
+    def test_newer_unavailable_response_cannot_resurrect_old_book_quote(self):
+        old = source(("fanduel",))
+        old["request_scope"] = scope_for(KICK.isoformat(), ["fanduel"])
+        newer = copy.deepcopy(old)
+        newer["request_scope"] = scope_for(KICK.isoformat(), ["fanduel", "draftkings"])
+        newer["retrieved_at"] = (NOW + timedelta(seconds=10)).isoformat()
+        for o in newer["events"][0]["odds"].values():
+            o["byBookmaker"]["fanduel"]["available"] = False
+        merged, _ = merge_snapshots([old], [newer], NOW + timedelta(seconds=11))
+        self.assertEqual(
+            evaluate(merged, slate(), REL, NOW + timedelta(seconds=11))[0], []
+        )
+        self.assertTrue(
+            all(
+                o["byBookmaker"]["fanduel"]["available"]
+                for o in old["events"][0]["odds"].values()
+            )
+        )
+        self.assertEqual(merged[0]["retrieved_at"], old["retrieved_at"])
+
+    def test_refresh_of_different_book_does_not_discard_other_fresh_book(self):
+        a = source(("fanduel",))
+        a["request_scope"] = scope_for(KICK.isoformat(), ["fanduel"])
+        b = source(("draftkings",))
+        b["request_scope"] = scope_for(KICK.isoformat(), ["draftkings"])
+        b["retrieved_at"] = (NOW + timedelta(seconds=10)).isoformat()
+        merged, _ = merge_snapshots([a], [b], NOW + timedelta(seconds=11))
+        rows, _ = evaluate(merged, slate(), REL, NOW + timedelta(seconds=11))
+        self.assertTrue(rows)
+        self.assertTrue(all(r["book_count"] == 2 for r in rows))
