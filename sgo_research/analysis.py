@@ -86,6 +86,16 @@ def normalise(snapshot):
                         "provider_updated_at": b.get("lastUpdatedAt"),
                         "retrieved_at": snapshot.get("retrieved_at"),
                         "main_line": b.get("isMainLine"),
+                        "primary_scope_verified": (
+                            b.get("isMainLine") is True
+                            or (
+                                b.get("isMainLine") is None
+                                and snapshot.get("request_scope", {}).get(
+                                    "includeAltLines"
+                                )
+                                == "false"
+                            )
+                        ),
                         "kickoff_at": e["status"]["startsAt"],
                         "provider_teams": e.get("teams", {}),
                         "raw_sha256": snapshot.get("raw_sha256"),
@@ -201,10 +211,19 @@ def comparisons(
             candidates = candidates[candidates.player_id.eq(mapped)]
             confidence = "verified_id_mapping"
         else:
-            candidates = candidates[
+            exact = candidates[
                 candidates.player.map(name_key).eq(name_key(q["player_name"]))
             ]
-            confidence = "exact_unique_name_team_fixture"
+            if exact.empty:
+                candidates = candidates[
+                    candidates.player.map(lambda n: name_key(n).replace(" ", "")).eq(
+                        name_key(q["player_name"]).replace(" ", "")
+                    )
+                ]
+                confidence = "unique_full_name_spacing_team_fixture"
+            else:
+                candidates = exact
+                confidence = "exact_unique_name_team_fixture"
         if candidates.player_id.nunique() != 1:
             row["comparison_status"] = "player_identity_ambiguous_or_unmatched"
             rows.append(row)
