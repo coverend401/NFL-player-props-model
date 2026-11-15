@@ -1,5 +1,7 @@
 # Sunday 15 November 2026 research preview
 
+**Current research release: r8.** See [the r8 coverage incident, collection bounds, cache rules and recovery requirements](R8-COVERAGE.md). The existing hosted app and PR #8 branch are retained; older deployment and UK-only notes below describe earlier checkpoints. The legacy quota halt is preserved pending separately approved review; r8 does not reset counters or automatically resume collection.
+
 Separate entry point: `odds_value_research.py`, on PR #8's development branch. **Not production, not hosted by this change.** No Stage 1A forecasts, probabilities, models, authentication, settings, Supabase data or bankroll functions are modified. No fitting or sealed-period outcome access. Paid services and scheduled collection remain prohibited.
 
 ## Current approved US-benchmark scope

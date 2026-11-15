@@ -7,11 +7,11 @@ import streamlit as st
 
 from release_utils import resolve_release
 from research_access import require_access
-from research_platform.r7 import render
+from research_platform.r8 import render
 from research_platform.ui import CSS
 
 st.set_page_config(
-    page_title="NFL Betting Intelligence · r7", page_icon="🏈", layout="centered"
+    page_title="NFL Betting Intelligence · r8", page_icon="🏈", layout="centered"
 )
 st.markdown(CSS, unsafe_allow_html=True)
 require_access()

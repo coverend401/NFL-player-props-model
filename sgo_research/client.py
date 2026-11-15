@@ -40,6 +40,12 @@ def redact_events(events, now):
         if event.get("results"):
             raise Unavailable("Unexpected result payload; discarded without analysis")
         item = {k: event.get(k) for k in ["eventID", "leagueID", "sportID"]}
+        aliases = event.get("aliases") or []
+        if not isinstance(aliases, list) or any(
+            not isinstance(a, str) or len(a) > 256 for a in aliases
+        ):
+            raise Unavailable("Unexpected event aliases schema")
+        item["aliases"] = list(aliases)
         item["info"] = {"seasonWeek": event.get("info", {}).get("seasonWeek")}
         item["players"] = {
             pid: {

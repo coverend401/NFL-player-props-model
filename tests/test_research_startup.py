@@ -48,8 +48,15 @@ class ResearchStartupTests(unittest.TestCase):
         ):
             # Fixed eligible time keeps the startup regression valid after this slate ends.
             collection_clock.now.return_value = datetime(2026, 11, 15, 8, tzinfo=UTC)
-            app = AppTest.from_file(
-                str(ROOT / "odds_value_research.py"), default_timeout=60
+            app = AppTest.from_string(
+                (ROOT / "odds_value_research.py")
+                .read_text()
+                .replace("research_platform.r8", "research_platform.r7")
+                .replace(
+                    "root = Path(__file__).resolve().parent",
+                    f"root = Path({str(ROOT)!r})",
+                ),
+                default_timeout=60,
             ).run()
             self.assertFalse(app.exception, app.exception)
             app.text_input(key="research_password").input(
@@ -105,7 +112,7 @@ class ResearchStartupTests(unittest.TestCase):
                     "SPORTSGAMEODDS_API_KEY": "synthetic_key_never_sent",
                 },
             ),
-            patch("sgo_research.market_ui.datetime") as collection_clock,
+            patch("research_platform.r8.datetime") as collection_clock,
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
@@ -119,9 +126,23 @@ class ResearchStartupTests(unittest.TestCase):
             self.assertFalse(app.exception, app.exception)
             self.assertTrue(
                 any(
-                    b.label == "Retrieve selected fixture's market lines"
+                    b.label == "Discover & collect missing eligible fixtures"
                     for b in app.button
                 )
             )
+            for section in [
+                "Top 2 by Game",
+                "Parlay Research",
+                "Player Intelligence",
+                "Game Intelligence",
+                "Market Intelligence",
+                "Model Performance",
+                "Data & Safety",
+                "Top Picks",
+            ]:
+                next(w for w in app.selectbox if w.label == "Workspace").select(
+                    section
+                ).run(timeout=60)
+                self.assertFalse(app.exception, app.exception)
             get.assert_not_called()
             request.assert_not_called()
