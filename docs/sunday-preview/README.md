@@ -2,6 +2,10 @@
 
 Separate entry point: `odds_value_research.py`, on PR #8's development branch. **Not production, not hosted by this change.** No Stage 1A forecasts, probabilities, models, authentication, settings, Supabase data or bankroll functions are modified. No fitting or sealed-period outcome access. Paid services and scheduled collection remain prohibited.
 
+## Current live-test decision
+
+Private quota persistence and real conditional-write conflict detection passed. The free account consumed 14 of 2,500 objects; 16 are conservatively reserved locally. Across all 12 Sunday fixtures, William Hill and Unibet supplied no usable canonical player-prop prices at capture. A FanDuel control supplied all seven markets, but does not meet UK bookmaker suitability. **Do not deploy as a working UK Odds & Value service.** See VALIDATION.md for the authenticated follow-up. Earlier setup-blocker descriptions below are historical and are superseded by that follow-up. The separate game-script preview is prepared; no hosted URL exists.
+
 ## Deadline and access decisions
 
 The approved early fixture kicks off at **14:30 UK**. Existing T−60 safeguards mean its eligible decision window closes at **13:30 UK**, earlier than the requested 14:00 preview target. The main 18:00 UK slate closes at **17:00 UK**. Late use is labelled frozen/descriptive only; the cutoff is not relaxed.
