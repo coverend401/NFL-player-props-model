@@ -228,3 +228,229 @@ class ActualCycleTests(unittest.TestCase):
             self.assertTrue(any("Weekly Learning" in e.value for e in app.markdown))
             get.assert_not_called()
             request.assert_not_called()
+
+
+class PromotionContractTests(unittest.TestCase):
+    def fixture(self, store):
+        from stage1b.data import MARKETS
+
+        baseline = {k: {"sha256": "a" * 64} for k in MARKETS}
+        challenger = {k: {"sha256": "b" * 64} for k in MARKETS}
+        h = store.reserve_holdout(
+            "synthetic-future",
+            "plan",
+            fresh=True,
+            registered_before="2099-01-01T00:00:00+00:00",
+            baseline_models=baseline,
+            challenger_models=challenger,
+        )
+        rows = [
+            {
+                "market": k,
+                "weeks": 8,
+                "baseline": {"n": 100, "mae": 10},
+                "relative_mae_gain": 0.03,
+                "holm_rejects_no_improvement": True,
+                "probability_scores": {
+                    "baseline": {"brier": 0.2, "log_loss": 0.6},
+                    "candidate": {"brier": 0.19, "log_loss": 0.59},
+                },
+            }
+            for k in MARKETS
+        ]
+        candidate = {
+            "accepted": True,
+            "statistical_gate": True,
+            "holdout": h,
+            "plan_sha256": "plan",
+            "first_holdout_kickoff": "2099-01-01T01:00:00+00:00",
+            "baseline_models": baseline,
+            "challenger_models": challenger,
+            "markets": rows,
+            "candidate_release_sha256": "digest",
+        }
+        return candidate, baseline, challenger
+
+    def test_acceptance_requires_certification_and_cannot_reuse_holdout(self):
+        from weekly_learning.promotion import promote
+
+        policy = json.loads(POLICY.read_text())
+        with tempfile.TemporaryDirectory() as temp:
+            store = Store(temp)
+            with store.transaction():
+                candidate, baseline, challenger = self.fixture(store)
+                manifest = {"release_id": "synthetic-certified", "models": challenger}
+                release = (
+                    Path(temp) / "research_inference_releases" / "synthetic-certified"
+                )
+                release.mkdir(parents=True)
+                (release / "manifest.json").write_text(json.dumps(manifest))
+                with (
+                    patch("weekly_learning.promotion.ROOT", Path(temp)),
+                    patch(
+                        "weekly_learning.promotion.validate_inference",
+                        return_value={"exact_replay": True},
+                    ) as verify,
+                    patch("weekly_learning.promotion.sha", return_value="digest"),
+                ):
+                    result = promote(
+                        store,
+                        candidate,
+                        release,
+                        baseline,
+                        policy,
+                    )
+                    self.assertEqual(result["rollback_models"], baseline)
+                    verify.assert_called_once()
+                self.assertTrue((Path(temp) / "champion.json").exists())
+                with self.assertRaises(ValueError):
+                    promote(
+                        store,
+                        candidate,
+                        release,
+                        baseline,
+                        policy,
+                    )
+
+    def test_missing_market_rejected_before_release_access(self):
+        from weekly_learning.promotion import promote
+
+        with tempfile.TemporaryDirectory() as temp:
+            store = Store(temp)
+            with store.transaction():
+                candidate, baseline, _ = self.fixture(store)
+                candidate["markets"] = candidate["markets"][:-1]
+                with patch("weekly_learning.promotion.validate_inference") as verify:
+                    with self.assertRaises(ValueError):
+                        promote(
+                            store,
+                            candidate,
+                            ROOT
+                            / "research_inference_releases"
+                            / "synthetic-certified",
+                            baseline,
+                            json.loads(POLICY.read_text()),
+                        )
+                    verify.assert_not_called()
+            self.assertFalse((Path(temp) / "champion.json").exists())
+
+
+class SelectionFailureTests(unittest.TestCase):
+    def run_cycle(self, temp, *, fail_readiness=False):
+        from weekly_learning.cli import operational
+
+        root = Path(temp)
+        store = Store(root / "state")
+        cap = root / "capture"
+        cap.mkdir()
+        (cap / "capture.json").write_text(json.dumps({"models": {}}))
+        (cap / "release_manifest.json").write_text(
+            json.dumps({"model_parent": {"path": "parent"}})
+        )
+        f, p, s, t = ResultsTests().fixture()
+        f["market"] = "Rushing Attempts"
+        f["week"] = 9
+        f["projection_status"] = "complete"
+        f.to_parquet(cap / "forecasts.parquet", index=False)
+        source = root / "sources"
+        source.mkdir()
+        (source / "sources.json").write_text("{}")
+        pointer = root / "research_active_inference.json"
+        pointer.write_text(json.dumps({"release_id": "previous"}))
+        release = root / "research_inference_releases" / "weekly-test"
+        release.mkdir(parents=True)
+        (release / "manifest.json").write_text(
+            json.dumps(
+                {
+                    "release_id": "weekly-test",
+                    "certification": {
+                        "status": "passed",
+                        "checks": {"exact_replay": True},
+                    },
+                }
+            )
+        )
+        original_publish = store.publish
+
+        def publication(kind, *args, **kwargs):
+            if fail_readiness and kind == "readiness":
+                raise ValueError("Synthetic readiness storage failure")
+            return original_publish(kind, *args, **kwargs)
+
+        with (
+            patch("weekly_learning.cli.ROOT", root),
+            patch("weekly_learning.cli.capture", return_value=cap),
+            patch("weekly_learning.cli.freeze_prepared"),
+            patch("weekly_learning.cli.load_results", return_value=(p, s, t)),
+            patch(
+                "weekly_learning.cli.evaluate_candidate",
+                return_value={"accepted": False},
+            ),
+            patch("weekly_learning.forecast.prepare_next", return_value=release),
+            patch.object(store, "publish", side_effect=publication),
+        ):
+            if fail_readiness:
+                with self.assertRaises(ValueError):
+                    operational(store, 9, 10, "test", source)
+            else:
+                operational(store, 9, 10, "test", source)
+        return json.loads(pointer.read_text())
+
+    def test_readiness_write_failure_preserves_previous_selection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            self.assertEqual(
+                self.run_cycle(temp, fail_readiness=True), {"release_id": "previous"}
+            )
+
+    def test_only_successful_certification_advances_research_selection(self):
+        with tempfile.TemporaryDirectory() as temp:
+            self.assertEqual(self.run_cycle(temp)["release_id"], "weekly-test")
+
+
+class SourceIntegrityTests(unittest.TestCase):
+    def test_changed_source_is_rejected_before_materialisation(self):
+        from weekly_learning.sources import verify_snapshot
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            raw = root / "players.parquet"
+            raw.write_bytes(b"synthetic-source")
+            record = {
+                "players": {
+                    "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.parquet",
+                    "retrieved_at": "2026-01-01T00:00:00+00:00",
+                    "sha256": sha(raw),
+                }
+            }
+            (root / "sources.json").write_text(json.dumps(record))
+            self.assertEqual(verify_snapshot(root), record)
+            with self.assertRaisesRegex(ValueError, "stale"):
+                verify_snapshot(root, max_age_hours=48)
+            raw.write_bytes(b"changed")
+            with self.assertRaisesRegex(ValueError, "integrity"):
+                verify_snapshot(root)
+
+    def test_unapproved_source_or_future_timestamp_is_rejected(self):
+        from weekly_learning.sources import verify_snapshot
+
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            raw = root / "players.parquet"
+            raw.write_bytes(b"synthetic-source")
+            record = {
+                "players": {
+                    "url": "https://invalid.example/players",
+                    "retrieved_at": "2026-01-01T00:00:00+00:00",
+                    "sha256": sha(raw),
+                }
+            }
+            (root / "sources.json").write_text(json.dumps(record))
+            with self.assertRaises(ValueError):
+                verify_snapshot(root)
+            record["players"]["url"] = (
+                "https://github.com/nflverse/nflverse-data/releases/download/players/players.parquet"
+            )
+            record["players"]["retrieved_at"] = "2099-01-01T00:00:00+00:00"
+            (root / "sources.json").write_text(json.dumps(record))
+            with self.assertRaises(ValueError):
+                verify_snapshot(root)

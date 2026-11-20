@@ -1,6 +1,7 @@
 """Read-only experimental scenarios; no changes to certified forecasts/pricing."""
 
 import json
+from datetime import UTC, datetime, timedelta
 
 import pandas as pd
 import streamlit as st
@@ -46,7 +47,6 @@ def render(release):
         st.caption(
             f"2026 holdout: {recent['n']} games; win Brier {recent['win_brier']:.4f}, log loss {recent['win_log_loss']:.4f}; home-margin bias {recent['bias']:+.2f} points. Probability bands are uneven; these figures are not calibrated betting prices."
         )
-        from datetime import UTC, datetime, timedelta
 
         from sgo_research.contracts import utc
 

@@ -82,7 +82,9 @@ class CertifiedEvidenceTests(unittest.TestCase):
         from research_platform.football_evidence import attach_context
 
         root = Path(__file__).resolve().parents[1]
-        pointer = json.loads((root / "research_active_inference.json").read_text())
+        pointer = json.loads(
+            (root / "tests/fixtures/week11_research_pointer.json").read_text()
+        )
         directory = root / pointer["path"]
         release = json.loads((directory / "manifest.json").read_text())
         picks = pd.read_parquet(directory / "top_picks.parquet")
@@ -111,8 +113,11 @@ class RealEntrypointTests(unittest.TestCase):
 
         from streamlit.testing.v1 import AppTest
 
+        from tests.archived_week11 import archived_week11
+
         root = Path(__file__).resolve().parents[1]
         with (
+            archived_week11(),
             tempfile.TemporaryDirectory() as d,
             patch.dict(
                 os.environ,

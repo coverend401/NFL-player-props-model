@@ -102,7 +102,10 @@ class ScriptArtifactTests(unittest.TestCase):
     def test_real_entrypoint_game_intelligence_keeps_baseline(self):
         from streamlit.testing.v1 import AppTest
 
+        from tests.archived_week11 import archived_week11
+
         with (
+            archived_week11(),
             tempfile.TemporaryDirectory() as tmp,
             patch.dict(
                 os.environ,

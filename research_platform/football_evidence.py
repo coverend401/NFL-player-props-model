@@ -5,6 +5,7 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
+from release_utils import sha256
 from scripts.build_features import AUX_STAT_COLS, STAT_COLS
 from scripts.build_slate import latest_team_defense
 from scripts.forecast_features import completed_history, upcoming_player_state
@@ -25,11 +26,10 @@ MARKETS = {
 @st.cache_data(show_spinner=False)
 def recorded_context(release_id, prediction, cutoff):
     root = Path(__file__).resolve().parents[1]
-    # Only the already validated default inference bundle; never open research outcomes.
+    # Select the caller's already validated immutable bundle, not a mutable default.
     import json
 
-    pointer = json.loads((root / "research_active_inference.json").read_text())
-    directory = (root / pointer["path"]).resolve()
+    directory = (root / "research_inference_releases" / release_id).resolve()
     directory.relative_to(root / "research_inference_releases")
     manifest = json.loads((directory / "manifest.json").read_text())
     if (
@@ -38,6 +38,9 @@ def recorded_context(release_id, prediction, cutoff):
         manifest["feature_data_cutoff"],
     ) != (release_id, prediction, cutoff):
         return {}, {}, {}
+    for name in ["features.parquet", "schedule.parquet"]:
+        if sha256(directory / name) != manifest["files"][name]["sha256"]:
+            raise ValueError("Recorded football evidence integrity mismatch")
     history = completed_history(
         pd.read_parquet(directory / "features.parquet"),
         pd.read_parquet(directory / "schedule.parquet"),

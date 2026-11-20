@@ -131,7 +131,14 @@ class Store:
             f.write(encoded(event))
 
     def reserve_holdout(
-        self, block, protocol_sha, *, fresh=False, registered_before=None
+        self,
+        block,
+        protocol_sha,
+        *,
+        fresh=False,
+        registered_before=None,
+        baseline_models=None,
+        challenger_models=None,
     ):
         folder = self.root / "holdouts"
         folder.mkdir(exist_ok=True)
@@ -150,7 +157,13 @@ class Store:
             raise ValueError(
                 "Fresh holdout must be registered before its first decision"
             )
+        if fresh and (not baseline_models or not challenger_models):
+            raise ValueError(
+                "Fresh holdout must freeze baseline and challenger model identities"
+            )
         record = {
+            "baseline_models": baseline_models,
+            "challenger_models": challenger_models,
             "registered_at": datetime.now(UTC).isoformat(),
             "block": block,
             "protocol_sha256": protocol_sha,

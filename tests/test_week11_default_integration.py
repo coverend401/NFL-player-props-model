@@ -1,4 +1,4 @@
-"""Current-slate integration only; synthetic quotes never call any provider."""
+"""Frozen Week 11 integration; the current default may advance. synthetic quotes never call any provider."""
 
 import json
 import sys
@@ -18,7 +18,9 @@ ROOT = Path(__file__).resolve().parents[1]
 )
 class Week11DefaultTests(unittest.TestCase):
     def test_counts_scenarios_and_synthetic_pricing_exclusion(self):
-        pointer = json.loads((ROOT / "research_active_inference.json").read_text())
+        pointer = json.loads(
+            (ROOT / "tests/fixtures/week11_research_pointer.json").read_text()
+        )
         directory = ROOT / pointer["path"]
         m = json.loads((directory / "manifest.json").read_text())
         slate = pd.read_parquet(directory / "slate.parquet")
@@ -61,7 +63,9 @@ class Week11DefaultTests(unittest.TestCase):
 
         from research_platform.ui import operations_view
 
-        pointer = json.loads((ROOT / "research_active_inference.json").read_text())
+        pointer = json.loads(
+            (ROOT / "tests/fixtures/week11_research_pointer.json").read_text()
+        )
         m = json.loads((ROOT / pointer["path"] / "manifest.json").read_text())
         with patch("research_platform.ui.st") as ui:
             operations_view(m)

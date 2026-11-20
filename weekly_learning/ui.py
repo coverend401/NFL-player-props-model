@@ -71,12 +71,56 @@ def render():
     )
     for reason in candidate.get("reasons", []):
         st.caption(reason)
-    st.write("Next slate: " + report.get("next_slate", {}).get("status", "unknown"))
+    readiness = report.get("next_slate", {})
+    if readiness.get("status") == "certified_candidate_ready_for_selection":
+        try:
+            active = json.loads((ROOT / "research_active_inference.json").read_text())
+            if active.get("manifest_sha256") == readiness.get("manifest_sha256"):
+                readiness = {
+                    **readiness,
+                    "status": "certified_research_forecast_selected",
+                }
+        except (OSError, ValueError):
+            pass
+    source = readiness.get("source_path", readiness.get("path"))
+    if source:
+        try:
+            manifest = json.loads((ROOT / source / "manifest.json").read_text())
+            if not any(
+                pd.Timestamp.now(tz="UTC") < pd.Timestamp(t) - pd.Timedelta(minutes=60)
+                for t in manifest["game_kickoffs"].values()
+            ):
+                readiness = {
+                    **readiness,
+                    "status": "expired_readiness_from_previous_cycle",
+                }
+                st.warning(
+                    "The prior readiness report has expired. No current slate certification is claimed."
+                )
+        except (OSError, ValueError, KeyError):
+            readiness = {"status": "readiness_source_unavailable"}
+    st.write("Next slate: " + readiness.get("status", "unknown"))
     if report.get("week12_readiness"):
         st.warning(
             "Week 12: " + report["week12_readiness"].get("reason", "not yet ready")
         )
     with st.expander("Recurring errors and evidence limits"):
+        try:
+            observations = pd.read_parquet(latest.parent / "reconciled.parquet")
+            labels = observations.hypotheses.map(json.loads).explode().dropna()
+            counts = (
+                labels.value_counts()
+                .rename_axis("Observed diagnostic / hypothesis")
+                .reset_index(name="Player-market records")
+            )
+            st.dataframe(counts.head(6), hide_index=True, width="stretch")
+            st.caption(
+                "Counts overlap across props and players; they are not independent causal cases."
+            )
+        except (OSError, ValueError, KeyError):
+            st.caption(
+                "Detailed diagnostic observations are unavailable for this cycle."
+            )
         st.dataframe(
             pd.DataFrame([r for r in metrics if r["group"] in ["team", "position"]]),
             hide_index=True,

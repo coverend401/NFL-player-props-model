@@ -1,6 +1,5 @@
 """Refresh only current-season inputs and reuse the existing frozen-model builder."""
 
-import json
 import shutil
 from pathlib import Path
 from types import FunctionType
@@ -13,8 +12,8 @@ from scripts.build_features import build_player_features
 from scripts.forecast_features import schedule_times
 from scripts.prepare_research_inference import prepare
 
-from .sources import permitted
-from .store import ROOT, encoded
+from .sources import permitted, verify_snapshot
+from .store import ROOT, encoded, sha
 
 
 def prepare_next(sources, work, target_week, policy, release_id, model_parent=None):
@@ -23,7 +22,7 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     sources = Path(sources)
     work = Path(work)
     work.mkdir(parents=True, exist_ok=False)
-    meta = json.loads((sources / "sources.json").read_text())
+    meta = verify_snapshot(sources, max_age_hours=48)
     required = {
         "player_stats",
         "team_stats",
@@ -116,10 +115,22 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
         how="left",
         validate="many_to_one",
     )
-    if (snaps.gsis_id.isna() & snaps.offense_pct.gt(0)).any():
-        raise ValueError(
-            "Unresolved offensive participant identity; source reconciliation required"
-        )
+    unmapped = (
+        snaps[snaps.gsis_id.isna() & snaps.offense_pct.gt(0)]
+        .groupby("position")
+        .size()
+        .to_dict()
+    )
+    # Preserve the existing Stage 1A source-processing contract: unknown IDs
+    # remain unmapped; never invent identities, team assignments or zero stats.
+    # The exact losses are retained in certified source provenance.
+    coverage = {
+        **meta["snaps"],
+        "source_id": "participation_mapping",
+        "unmapped_positive_offensive_snap_rows": unmapped,
+        "handling": "Existing core drops unlinked snap IDs; box observations remain observed/missing as supplied",
+        "preparation_code_sha256": sha(Path(__file__)),
+    }
     snaps = snaps.dropna(subset=["gsis_id"]).rename(
         columns={
             "gsis_id": "player_id",
@@ -211,6 +222,22 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     )
     features = pd.concat([old[old.season.lt(season)], fresh], ignore_index=True)
     # Missing latest completed fixture observations may not silently become old features.
+    due = schedule[
+        schedule.season.eq(season)
+        & schedule.week.lt(target_week)
+        & (schedule.kickoff_at + pd.Timedelta(hours=8)).lt(cutoff)
+    ]
+    if due.completed_at.isna().any():
+        raise ValueError(
+            "Past fixture lacks confirmed completion in source; no stale forecast publication"
+        )
+    team_rows = read("team_stats")
+    required_pairs = {
+        (g.game_id, t) for g in due.itertuples() for t in [g.home_team, g.away_team]
+    }
+    actual_pairs = set(zip(team_rows.game_id, team_rows.team))
+    if not required_pairs <= actual_pairs:
+        raise ValueError("Completed team-game totals missing from refreshed source")
     completed = schedule[
         schedule.season.eq(season)
         & schedule.completed_at.lt(cutoff)
@@ -221,7 +248,7 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     depth = pd.read_parquet(sources / "depth.parquet")
     depth["observed"] = pd.to_datetime(depth.dt, utc=True)
     depth = depth[depth.observed.le(now)]
-    depth = depth[depth.observed.eq(depth.groupby("team").observed.transform("max"))]
+    depth = depth[depth.observed.eq(depth.groupby("team")["observed"].transform("max"))]
     qb = depth[depth.pos_abb.eq("QB") & depth.pos_rank.eq(1)][
         ["team", "gsis_id"]
     ].drop_duplicates()
@@ -245,7 +272,10 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     # Existing builder expects provenance documents one directory above its inputs.
     (work.parent / "source-gate.json").write_text(encoded(meta["player_stats"]))
     (work.parent / "required-source-report.json").write_text(
-        encoded([{"name": k, **v} for k, v in meta.items() if k != "player_stats"])
+        encoded(
+            [{"name": k, **v} for k, v in meta.items() if k != "player_stats"]
+            + [{**coverage, "name": "participation_mapping"}]
+        )
     )
     output = ROOT / "research_inference_releases" / release_id
     if model_parent is None:

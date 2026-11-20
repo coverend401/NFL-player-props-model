@@ -5,12 +5,30 @@ import json
 import os
 from datetime import UTC, datetime
 from pathlib import Path
+from types import FunctionType
 
 import pandas as pd
 
 from .engine import POLICY, capture, dry_run, evaluate_candidate, reconcile, summaries
 from .sources import fetch, load_results, permitted
 from .store import ROOT, Store, encoded, safe_id, sha
+
+
+def freeze_prepared(store, directory, manifest):
+    # Freeze the next slate before selection and before any Thursday cutoff.
+    # Reuse the existing capture checks without changing global app selection.
+    namespace = {
+        **capture.__globals__,
+        "resolve_research_release": lambda repo: (directory, manifest),
+    }
+    isolated = FunctionType(
+        capture.__code__,
+        namespace,
+        capture.__name__,
+        capture.__defaults__,
+        capture.__closure__,
+    )
+    return isolated(store)
 
 
 def operational(store, results_week, target_week, cycle_id, source_dir=None):
@@ -94,6 +112,16 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
     result = reconcile(frame, players, schedule, teams, pd.Timestamp.now(tz="UTC"))
     with store.transaction():
         decision = evaluate_candidate(store, policy)
+        if decision.get("accepted"):
+            from .promotion import promote
+
+            promote(
+                store,
+                decision,
+                ROOT / decision["candidate_release_path"],
+                document["models"],
+                policy,
+            )
         report = {
             "cycle_id": cycle_id,
             "completed_at": datetime.now(UTC).isoformat(),
@@ -101,7 +129,7 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             "status_counts": result.status.value_counts().to_dict(),
             "metrics": summaries(result),
             "candidate": decision,
-            "champion_retained": True,
+            "champion_retained": not decision.get("accepted", False),
             "capture": document,
             "sources_sha256": sha(source / "sources.json"),
             "next_slate": {"status": "pending_certification"},
@@ -149,6 +177,7 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             or not manifest["certification"]["checks"]["exact_replay"]
         ):
             raise ValueError("Next forecast has no exact-replay certification")
+        freeze_prepared(store, release, manifest)
         selection = {
             "path": str(release.relative_to(ROOT)),
             "release_id": manifest["release_id"],
@@ -164,16 +193,12 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
                     "new_pointer.json": selection,
                 },
             )
-            temp = ROOT / ".research-learning-pointer.next.json"
-            with temp.open("x") as f:
-                f.write(encoded(selection))
-            os.replace(temp, pointer)
             store.publish(
                 "readiness",
                 cycle_id,
                 documents={
                     "readiness.json": {
-                        "status": "certified_research_forecast_selected",
+                        "status": "certified_candidate_ready_for_selection",
                         "target_week": target_week,
                         **selection,
                     }
@@ -181,8 +206,13 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             )
             store.audit(
                 "next_forecast_certified",
-                {"cycle": cycle_id, **selection, "selected": True},
+                {"cycle": cycle_id, **selection, "selected": False},
             )
+            # Selection is the final atomic action: earlier failures leave the old pointer.
+            temp = ROOT / ".research-learning-pointer.next.json"
+            with temp.open("x") as f:
+                f.write(encoded(selection))
+            os.replace(temp, pointer)
     except (ValueError, OSError, KeyError) as error:
         with store.transaction():
             store.publish(
@@ -210,7 +240,7 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["capture", "cycle"])
+    parser.add_argument("command", choices=["capture", "cycle", "replay"])
     parser.add_argument(
         "--mode", choices=["dry-run", "operational", "auto"], default="dry-run"
     )
@@ -222,6 +252,11 @@ def main():
     args = parser.parse_args()
     safe_id(args.id)
     store = Store(args.state)
+    if args.command == "replay":
+        from .replay import verify
+
+        print(encoded(verify(store, args.id)))
+        return
     if args.command == "capture":
         out = capture(store)
     elif args.mode == "dry-run":

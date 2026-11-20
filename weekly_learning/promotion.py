@@ -8,6 +8,7 @@ from pathlib import Path
 import pandas as pd
 
 from research_platform.inference_release import validate_inference
+from stage1b.data import MARKETS
 
 from .store import ROOT, encoded, sha
 
@@ -35,6 +36,12 @@ def promote(store, candidate, release_path, current_models, policy):
         raise ValueError("Candidate not registered before holdout")
     if candidate.get("baseline_models") != current_models:
         raise ValueError("Evaluation baseline is not the current champion")
+    if registered.get("baseline_models") != current_models or registered.get(
+        "challenger_models"
+    ) != candidate.get("challenger_models"):
+        raise ValueError("Evaluation models differ from frozen holdout registration")
+    if {r["market"] for r in candidate["markets"]} != set(MARKETS):
+        raise ValueError("Promotion requires all nine market evaluations")
     for row in candidate["markets"]:
         if (
             row["weeks"] < policy["minimum_holdout_weeks"]
@@ -62,6 +69,8 @@ def promote(store, candidate, release_path, current_models, policy):
     path.relative_to(ROOT / "research_inference_releases")
     checks = validate_inference(path, ROOT, replay=True)
     manifest = json.loads((path / "manifest.json").read_text())
+    if candidate.get("challenger_models") != manifest["models"]:
+        raise ValueError("Certified challenger differs from evaluated models")
     if candidate.get("candidate_release_sha256") != sha(path / "manifest.json"):
         raise ValueError("Challenger certification identity mismatch")
     record = {

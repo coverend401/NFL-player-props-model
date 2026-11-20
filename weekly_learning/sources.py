@@ -1,5 +1,6 @@
 """Bounded free nflverse snapshots. Quarantine precedes sealed-outcome filtering."""
 
+import json
 from datetime import UTC, datetime
 from pathlib import Path
 
@@ -80,11 +81,49 @@ def fetch(root, season, through_week, policy, *, forecasting=False):
     return root
 
 
+def verify_snapshot(root, *, max_age_hours=None):
+    root = Path(root)
+    records = json.loads((root / "sources.json").read_text())
+    allowed = {
+        "player_stats",
+        "team_stats",
+        "schedule",
+        "snaps",
+        "players",
+        "opportunity",
+        "ngs",
+        "depth",
+        "roster",
+    }
+    if not records or not set(records) <= allowed:
+        raise ValueError("Unexpected source identity")
+    for name, record in records.items():
+        path = root / (name + ".parquet")
+        if not record["url"].startswith(
+            (
+                "https://github.com/nflverse/nflverse-data/releases/download/",
+                "https://github.com/ffverse/ffopportunity/releases/download/",
+            )
+        ):
+            raise ValueError("Unapproved source provenance")
+        retrieved = pd.Timestamp(record["retrieved_at"])
+        if retrieved.tzinfo is None or retrieved > pd.Timestamp.now(tz="UTC"):
+            raise ValueError("Invalid source retrieval timestamp")
+        if max_age_hours is not None and pd.Timestamp.now(
+            tz="UTC"
+        ) - retrieved > pd.Timedelta(hours=max_age_hours):
+            raise ValueError("Forecast source snapshot is stale")
+        if path.stat().st_size > 32 * 1024 * 1024 or sha(path) != record["sha256"]:
+            raise ValueError("Raw source integrity mismatch")
+    return records
+
+
 def load_results(root, season, week, policy):
     from scripts.forecast_features import schedule_times
 
     root = Path(root)
     f = filters(season, week, policy)
+    verify_snapshot(root)
     box = pd.read_parquet(root / "player_stats.parquet", filters=f).rename(
         columns={"passing_interceptions": "interceptions"}
     )
