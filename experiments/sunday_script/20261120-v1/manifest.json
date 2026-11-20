@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "final_period_sealed": true,
+  "code_sha256": "4e38cbbcb1456fdd98d4402d46b5f88d0d3c07e4c6c02097c7f3475f9664348b",
+  "inputs": {
+    "research_inference_releases/research-week11-frozen-20261120-r2/manifest.json": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+    "research_inference_releases/research-week11-frozen-20261120-r2/features.parquet": "0652609822b595be85d457ad9ea49a2fd35626bbcc6066b3f288497291f7d74b",
+    "research_inference_releases/research-week11-frozen-20261120-r2/schedule.parquet": "0cc088e6187fe63f5496a0f4e1999ec0649570a450a4b0ee44575848ec944672",
+    "experiments/stage1b/baseline-20261113-v5/forecasts.parquet": "b2a677ab155265b6257427b7192f513ff0b42f85a859439d37cd09541a69a76c",
+    "stage1b/data.py": "99c552e22ac71e740d6af135254240497684d4272d60ba63c4dc40abbd9b0b32",
+    "scripts/forecast_features.py": "f2bc8e91a867fab8166a82027a8c694d16050d0f37b655cb0d09ec19d466a707",
+    "experiments/stage1b/baseline-20261113-v5/models/completions-2026.joblib": "95b4b56faf3dd1d8afc60c62f7abb340930d7504ece93e00f7924094b1cd5076",
+    "experiments/stage1b/baseline-20261113-v5/models/passing_attempts-2026.joblib": "f8235c250eddd5130aff7b4951d22a93a4c95574576cbec9cd3de977d50838a1",
+    "experiments/stage1b/baseline-20261113-v5/models/passing_yards-2026.joblib": "b1da8ff30e2fa186171210d339136ec479223b1ebc0194493e75cd34d0b2d1a6",
+    "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_attempts-2026.joblib": "ecb68ccbcd4abbd6fa013d38d0da711c00dd242117dca875eb84d3a7557c12f8",
+    "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_yards-2026.joblib": "05a3096eb9967a3d03f30a98f8061ec21dbb836008679a58345d56c1bafd62df",
+    "experiments/stage1b/baseline-20261113-v5/models/receiving_yards-2026.joblib": "a35721284b8c73228b56caa795505dca53d8de52b61efbc30b55b98fa15560a6",
+    "experiments/stage1b/baseline-20261113-v5/models/receptions-2026.joblib": "02cf06aefbb5a724a6a2a6f900b754734173e7659961f5b9c44b48e1248d898e",
+    "experiments/stage1b/baseline-20261113-v5/models/rushing_attempts-2026.joblib": "006553ee21d1e3bc79092bb7166d0527779af8e45a72ec7c2a4e0991de156704",
+    "experiments/stage1b/baseline-20261113-v5/models/rushing_yards-2026.joblib": "2ebbd8ab4a3aca31fa614e82279e1e58dbc11fae54a0e4d73bfbab93915b0396"
+  },
+  "files": {
+    "protocol.json": "db20446e744f229edb4b7f0a3fc0eaca4c4216b333a27476d36a7660a74cc6c1",
+    "player_replay.parquet": "6041b8ac6b67cbc3464552147ed06c6ae10b2e642d1107d279ff1cf447948e22",
+    "sunday_experimental.parquet": "b93e240c4b384765563ca5d381234a3469f7c5bf8def3cb8684ae43a11b25b1a",
+    "sunday_games.csv": "330e9e79bfcd62262d0b526b428fe17b46f8e03cef830772575f33e63cd79f3a",
+    "win_reliability.csv": "8169ac3e47f4df850701c6153635518ee592197cdca28dee04a80a9b97932fff",
+    "report.json": "688d36c133c0158554d7f73b61f91b4fe1905fd52daac9dfb0b2068d35fd9003",
+    "weekly_metrics.json": "74b841a0e3ef2a6d35a6255394b440a01cff789dcf2afad02df45672fa5e36e8"
+  }
+}

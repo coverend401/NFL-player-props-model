@@ -335,7 +335,7 @@ def parlays8(slate, release):
 
 def render(slate, release):
     st.markdown(CSS, unsafe_allow_html=True)
-    st.caption("NFL Research · r8.2 · independent Stage 1A forecasts")
+    st.caption("NFL Research · r8.3 · independent Stage 1A forecasts")
     notice = stale_sunday_notice(slate, release, datetime.now(UTC))
     if notice:
         st.warning(notice)
@@ -362,6 +362,9 @@ def render(slate, release):
         data8(slate, release)
         player_view(slate, release)
     elif section == "Game Intelligence":
+        from .sunday_script_ui import render as render_script
+
+        render_script(release)
         game_view(release)
     elif section == "Market Intelligence":
         data8(slate, release)
