@@ -1,0 +1,82 @@
+{
+  "verified_at": "2026-11-20T16:26:23.298454+00:00",
+  "source_url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.parquet",
+  "outcome_columns_read": false,
+  "remaining_week11_fixtures": 12,
+  "all_ids_teams_kickoffs_match": true,
+  "SportsGameOdds_calls": 0,
+  "fixtures": [
+    {
+      "game_id": "2026_11_MIA_BUF",
+      "home_team": "BUF",
+      "away_team": "MIA",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_BAL_CAR",
+      "home_team": "CAR",
+      "away_team": "BAL",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_NO_CHI",
+      "home_team": "CHI",
+      "away_team": "NO",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_TEN_DAL",
+      "home_team": "DAL",
+      "away_team": "TEN",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_TB_DET",
+      "home_team": "DET",
+      "away_team": "TB",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_ARI_KC",
+      "home_team": "KC",
+      "away_team": "ARI",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_JAX_NYG",
+      "home_team": "NYG",
+      "away_team": "JAX",
+      "kickoff_at": "2026-11-22 18:00:00+00:00"
+    },
+    {
+      "game_id": "2026_11_NYJ_LAC",
+      "home_team": "LAC",
+      "away_team": "NYJ",
+      "kickoff_at": "2026-11-22 21:05:00+00:00"
+    },
+    {
+      "game_id": "2026_11_LV_DEN",
+      "home_team": "DEN",
+      "away_team": "LV",
+      "kickoff_at": "2026-11-22 21:25:00+00:00"
+    },
+    {
+      "game_id": "2026_11_PIT_PHI",
+      "home_team": "PHI",
+      "away_team": "PIT",
+      "kickoff_at": "2026-11-22 21:25:00+00:00"
+    },
+    {
+      "game_id": "2026_11_MIN_SF",
+      "home_team": "SF",
+      "away_team": "MIN",
+      "kickoff_at": "2026-11-23 01:20:00+00:00"
+    },
+    {
+      "game_id": "2026_11_CIN_WAS",
+      "home_team": "WAS",
+      "away_team": "CIN",
+      "kickoff_at": "2026-11-24 01:15:00+00:00"
+    }
+  ]
+}

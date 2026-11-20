@@ -5,6 +5,7 @@ import sys
 import unittest
 from unittest.mock import patch
 
+from release_utils import resolve_release as resolve_training_release
 from research_platform.cards81 import explanation, model_card
 from research_platform.slate import model_candidates
 from tests.test_sgo_research import GID, NOW, REL, slate
@@ -188,6 +189,10 @@ class SlateDateTests(unittest.TestCase):
                 },
             ),
             patch("research_platform.r8.datetime") as clock,
+            patch(
+                "research_platform.inference_release.resolve_research_release",
+                side_effect=resolve_training_release,
+            ),
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
@@ -224,6 +229,10 @@ class SlateDateTests(unittest.TestCase):
             ),
             patch("research_platform.r8.datetime") as clock,
             patch("research_platform.r8.cached_snapshots", return_value=[]),
+            patch(
+                "research_platform.inference_release.resolve_research_release",
+                side_effect=resolve_training_release,
+            ),
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):

@@ -9,6 +9,8 @@ from unittest.mock import patch
 
 import pandas as pd
 
+from release_utils import resolve_release as resolve_training_release
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -42,6 +44,10 @@ class ResearchStartupTests(unittest.TestCase):
             patch("research_access.st.secrets", secrets),
             patch.object(dashboard, "render_fixture", warm_r5_collection),
             patch("sgo_research.market_ui.datetime") as collection_clock,
+            patch(
+                "research_platform.inference_release.resolve_research_release",
+                side_effect=resolve_training_release,
+            ),
             patch("requests.get") as get,
             patch("requests.request") as request,
             patch("sgo_research.market_ui.quota_store") as quota,
@@ -113,6 +119,10 @@ class ResearchStartupTests(unittest.TestCase):
                 },
             ),
             patch("research_platform.r8.datetime") as collection_clock,
+            patch(
+                "research_platform.inference_release.resolve_research_release",
+                side_effect=resolve_training_release,
+            ),
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):

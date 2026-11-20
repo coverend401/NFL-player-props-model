@@ -1,5 +1,7 @@
 # Certified Week 11 frozen-model inference — local candidate
 
+**Integration update:** the owner has approved this same certified snapshot as the research default. See [final integration and quota-review results](WEEK11-FINAL-INTEGRATION.md). Default-selection statements below describe the earlier certification checkpoint. Snapshot/model hashes are unchanged.
+
 Release: **`research-week11-frozen-20261120-r2`**. Type: **`research_frozen_model_inference_v1`**. This passes the new explicit research inference contract, **not** the original coordinated-training release contract. No deployment or default-pointer activation.
 
 ## Contract and production isolation

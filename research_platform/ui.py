@@ -516,15 +516,23 @@ def operations_view(release):
     st.write(
         "No polling, background collection or automatic provider requests on page load. Each manual collection reserves its bounded event limit before retrieval; failed/empty responses are not refunded. Local cache has a 10-minute reuse window with 24-hour pruning on access; private UI snapshots expire after 15 minutes and are limited to six request windows. No provider archive, CSV export, settlement, closing-price collector or long-term odds storage."
     )
+    earliest_cutoff = min(
+        utc(k) for k in release["game_kickoffs"].values()
+    ) - pd.Timedelta(minutes=60)
     st.write(
-        "Prices stop qualifying after 15 minutes or T−60. Munich 13:30 UK; 18:00 slate 17:00 UK. All timing checks use timezone-aware UTC (UK is UTC on this date). A disconnected sleeping browser must refresh/reopen before acting; displayed captures never gain a new timestamp on rerun."
+        f"Prices stop qualifying after 15 minutes or each fixture's T−60 cutoff. Earliest selected-slate cutoff: {earliest_cutoff:%a %d %b %H:%M} UK. All timing checks use timezone-aware UTC (UK is UTC for this November slate). Refresh a sleeping browser before acting; displayed captures never gain a new timestamp on rerun."
     )
     st.write(
-        "No forecast adjustment, experimental probability activation, model retraining, sealed result access, paid account, counter reset or production modification. Working recovery checkpoint: research-r5-working-20261115 at 938485d."
+        "No forecast adjustment, experimental probability activation, model retraining, sealed result access, paid account, counter reset or production modification. Pre-Week-11 research rollback: research-pre-week11-20261120 at 14fcd32."
     )
-    st.caption(
-        f"Baseline integrity verified on entry: {release['release_id']}. Nine model artifacts, forecasts and original probability method remain independent of the market."
-    )
+    if release.get("release_type") == "research_frozen_model_inference_v1":
+        st.caption(
+            f"Research inference integrity verified: {release['release_id']}. Frozen model parent: {release['model_parent']['release_id']}. This is inference certification, not a new training release."
+        )
+    else:
+        st.caption(
+            f"Baseline integrity verified on entry: {release['release_id']}. Nine model artifacts, forecasts and original probability method remain independent of the market."
+        )
 
 
 def render(slate, release):

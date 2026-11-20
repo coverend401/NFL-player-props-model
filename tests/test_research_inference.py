@@ -11,6 +11,7 @@ from unittest.mock import patch
 
 import pandas as pd
 
+from release_utils import resolve_release as resolve_training_release
 from release_utils import sha256, validate_manifest
 from research_platform.inference_builder import derive_eligibility, eligibility_map
 from research_platform.inference_release import (
@@ -281,10 +282,12 @@ class CertifiedInferenceTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             validate_inference(p, ROOT)
 
-    def test_default_training_release_unchanged_and_explicit_candidate_loads(self):
-        with patch.dict(os.environ, {"NFL_RESEARCH_INFERENCE_POINTER": ""}):
-            _, old = resolve_research_release(ROOT)
+    def test_research_default_is_week11_and_production_default_stays_week10(self):
+        _, old = resolve_training_release(ROOT)
         self.assertEqual(old["release_id"], "stage1a-20261113-py314-arrow24-r2")
+        with patch.dict(os.environ, {"NFL_RESEARCH_INFERENCE_POINTER": ""}):
+            _, selected = resolve_research_release(ROOT)
+        self.assertEqual(selected["release_id"], "research-week11-frozen-20261120-r2")
         directory, m = resolve_research_release(ROOT, pointer=POINTER)
         self.assertEqual(directory, CANDIDATE)
         self.assertEqual(m["release_type"], "research_frozen_model_inference_v1")
@@ -297,7 +300,7 @@ class CertifiedInferenceTests(unittest.TestCase):
             patch.dict(
                 os.environ,
                 {
-                    "NFL_RESEARCH_INFERENCE_POINTER": POINTER,
+                    "NFL_RESEARCH_INFERENCE_POINTER": "",
                     "RESEARCH_PREVIEW_PASSWORD": "synthetic_inference_test",
                     "SPORTSGAMEODDS_API_KEY": "",
                     "SGO_RESEARCH_STORE": str(Path(tmp) / "cache.sqlite"),
