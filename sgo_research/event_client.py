@@ -212,7 +212,7 @@ class EventClient(Client):
             self.store.save_cache(key, result, received)
         return result
 
-    def discover(self, after, before, books, cursor=None):
+    def discover(self, after, before, books, cursor=None, *, limit=16):
         if not books or not set(books) <= set(FREE_BOOKS):
             raise Unavailable("Bookmaker not on documented Amateur whitelist")
         a, b = utc(after), utc(before)
@@ -221,6 +221,8 @@ class EventClient(Client):
             days=8
         ) or b - a > timedelta(days=8):
             raise Unavailable("Invalid bounded discovery window")
+        if type(limit) is not int or not 1 <= limit <= 16:
+            raise Unavailable("Invalid discovery object bound")
         params = {
             "leagueID": "NFL",
             "startsAfter": a.isoformat(),
@@ -234,7 +236,7 @@ class EventClient(Client):
             "includeOpposingOdds": "true",
             "includeAltLines": "false",
             "includeOpenCloseOdds": "false",
-            "limit": 16,
+            "limit": limit,
         }
         if cursor:
             if not isinstance(cursor, str) or len(cursor) > 4096:
