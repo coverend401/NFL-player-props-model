@@ -5,8 +5,10 @@ from pathlib import Path
 import pandas as pd
 import streamlit as st
 
-from release_utils import resolve_release
 from research_access import require_access
+from research_platform.inference_release import (
+    resolve_research_release as resolve_release,
+)
 from research_platform.r8 import render
 from research_platform.ui import CSS
 
