@@ -1,0 +1,376 @@
+{
+  "accepted": false,
+  "candidate": "market_bias_half_step",
+  "decision": "RETAIN_CHAMPION",
+  "fit_seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "fresh_holdout_required": true,
+  "holdout": {
+    "block": "2026-weeks-1-10-previously-inspected",
+    "fresh": false,
+    "protocol_sha256": "f99c7153b219d34534f65d9ebdb9e506c73c926f52e16f15bd7daeaf64d7a79c",
+    "registered_at": "2026-11-20T22:48:57.410078+00:00",
+    "registered_before": null,
+    "replay_only": false
+  },
+  "inputs": {
+    "experiments/stage1b/baseline-20261113-v5/forecasts.parquet": "b2a677ab155265b6257427b7192f513ff0b42f85a859439d37cd09541a69a76c",
+    "experiments/stage1b/baseline-20261113-v5/models/completions-2026.joblib": "95b4b56faf3dd1d8afc60c62f7abb340930d7504ece93e00f7924094b1cd5076",
+    "experiments/stage1b/baseline-20261113-v5/models/passing_attempts-2026.joblib": "f8235c250eddd5130aff7b4951d22a93a4c95574576cbec9cd3de977d50838a1",
+    "experiments/stage1b/baseline-20261113-v5/models/passing_yards-2026.joblib": "b1da8ff30e2fa186171210d339136ec479223b1ebc0194493e75cd34d0b2d1a6",
+    "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_attempts-2026.joblib": "ecb68ccbcd4abbd6fa013d38d0da711c00dd242117dca875eb84d3a7557c12f8",
+    "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_yards-2026.joblib": "05a3096eb9967a3d03f30a98f8061ec21dbb836008679a58345d56c1bafd62df",
+    "experiments/stage1b/baseline-20261113-v5/models/receiving_yards-2026.joblib": "a35721284b8c73228b56caa795505dca53d8de52b61efbc30b55b98fa15560a6",
+    "experiments/stage1b/baseline-20261113-v5/models/receptions-2026.joblib": "02cf06aefbb5a724a6a2a6f900b754734173e7659961f5b9c44b48e1248d898e",
+    "experiments/stage1b/baseline-20261113-v5/models/rushing_attempts-2026.joblib": "006553ee21d1e3bc79092bb7166d0527779af8e45a72ec7c2a4e0991de156704",
+    "experiments/stage1b/baseline-20261113-v5/models/rushing_yards-2026.joblib": "2ebbd8ab4a3aca31fa614e82279e1e58dbc11fae54a0e4d73bfbab93915b0396",
+    "experiments/sunday_script/20261120-v1/player_replay.parquet": "6041b8ac6b67cbc3464552147ed06c6ae10b2e642d1107d279ff1cf447948e22"
+  },
+  "markets": [
+    {
+      "baseline": {
+        "bias": 0.5410650503295913,
+        "mae": 5.599355922787866,
+        "n": 311,
+        "rmse": 7.158338230593905,
+        "zero_outcomes": 14
+      },
+      "candidate": {
+        "bias": 0.12110125114292282,
+        "mae": 5.598360837784646,
+        "n": 311,
+        "rmse": 7.138887892937002,
+        "zero_outcomes": 14
+      },
+      "correction": -0.41996379918666954,
+      "holm_rejects_no_improvement": false,
+      "market": "completions",
+      "one_sided_bootstrap_p": 0.484375,
+      "paired_week_bootstrap95": [
+        -0.0410660912613331,
+        0.04192043751826078
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.25006405815858573,
+          "log_loss": 0.6932753810805385
+        },
+        "candidate": {
+          "brier": 0.24980876919164188,
+          "log_loss": 0.692764522046557
+        }
+      },
+      "relative_mae_gain": 0.0001777141901572188,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": -0.19577488440587357,
+        "mae": 8.254139923560565,
+        "n": 311,
+        "rmse": 10.786294529752094,
+        "zero_outcomes": 9
+      },
+      "candidate": {
+        "bias": -0.5741576348413322,
+        "mae": 8.269082773652352,
+        "n": 311,
+        "rmse": 10.799790686251397,
+        "zero_outcomes": 9
+      },
+      "correction": -0.37838275043545866,
+      "holm_rejects_no_improvement": false,
+      "market": "passing_attempts",
+      "one_sided_bootstrap_p": 0.703125,
+      "paired_week_bootstrap95": [
+        -0.027662490117672498,
+        0.06206254139634189
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.25035331316856135,
+          "log_loss": 0.6938538028327346
+        },
+        "candidate": {
+          "brier": 0.25099014797270547,
+          "log_loss": 0.6951302761324355
+        }
+      },
+      "relative_mae_gain": -0.001810346108761074,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": 1.2638889378516156,
+        "mae": 67.86145970187218,
+        "n": 311,
+        "rmse": 84.2488423681768,
+        "zero_outcomes": 16
+      },
+      "candidate": {
+        "bias": 3.5925483988557394,
+        "mae": 67.8218688605923,
+        "n": 311,
+        "rmse": 84.31593223779714,
+        "zero_outcomes": 16
+      },
+      "correction": 2.328659461004133,
+      "holm_rejects_no_improvement": false,
+      "market": "passing_yards",
+      "one_sided_bootstrap_p": 0.373046875,
+      "paired_week_bootstrap95": [
+        -0.24859951369779537,
+        0.1545557652620504
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.24993141736918664,
+          "log_loss": 0.6930100143902734
+        },
+        "candidate": {
+          "brier": 0.24980637010220313,
+          "log_loss": 0.6927598358004988
+        }
+      },
+      "relative_mae_gain": 0.0005834068623605804,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": 0.234614871207209,
+        "mae": 1.7728077031647116,
+        "n": 311,
+        "rmse": 2.2555610475252426,
+        "zero_outcomes": 30
+      },
+      "candidate": {
+        "bias": 0.2210544859248682,
+        "mae": 1.7701193485778073,
+        "n": 311,
+        "rmse": 2.2541908941057103,
+        "zero_outcomes": 30
+      },
+      "correction": -0.01356038528234088,
+      "holm_rejects_no_improvement": true,
+      "market": "qb_rushing_attempts",
+      "one_sided_bootstrap_p": 0.009765625,
+      "paired_week_bootstrap95": [
+        -0.004101694010711471,
+        -0.0010222667888395147
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.2457889862079371,
+          "log_loss": 0.6846822242409075
+        },
+        "candidate": {
+          "brier": 0.24532807632271084,
+          "log_loss": 0.6837449859431748
+        }
+      },
+      "relative_mae_gain": 0.0015164389133154321,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": 1.4332759207436079,
+        "mae": 11.270620834098114,
+        "n": 311,
+        "rmse": 15.013627185577814,
+        "zero_outcomes": 41
+      },
+      "candidate": {
+        "bias": 1.25952258050434,
+        "mae": 11.229836287996935,
+        "n": 311,
+        "rmse": 14.99803715601939,
+        "zero_outcomes": 41
+      },
+      "correction": -0.17375334023926794,
+      "holm_rejects_no_improvement": true,
+      "market": "qb_rushing_yards",
+      "one_sided_bootstrap_p": 0.0048828125,
+      "paired_week_bootstrap95": [
+        -0.060508978463917826,
+        -0.02115889601082489
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.24955703874629637,
+          "log_loss": 0.6922611364118256
+        },
+        "candidate": {
+          "brier": 0.2485855223347858,
+          "log_loss": 0.6903177073315921
+        }
+      },
+      "relative_mae_gain": 0.003618660116556205,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": -1.4759746889712348,
+        "mae": 19.257936809828863,
+        "n": 2018,
+        "rmse": 27.156244704764777,
+        "zero_outcomes": 402
+      },
+      "candidate": {
+        "bias": -1.5157120731762892,
+        "mae": 19.250554558756715,
+        "n": 2018,
+        "rmse": 27.158433464972784,
+        "zero_outcomes": 402
+      },
+      "correction": -0.03973738420505534,
+      "holm_rejects_no_improvement": true,
+      "market": "receiving_yards",
+      "one_sided_bootstrap_p": 0.0009765625,
+      "paired_week_bootstrap95": [
+        -0.008613020996620152,
+        -0.006049177985886518
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.2500735836080438,
+          "log_loss": 0.6932943302682427
+        },
+        "candidate": {
+          "brier": 0.2499593792452191,
+          "log_loss": 0.6930659021447584
+        }
+      },
+      "relative_mae_gain": 0.0003833355122642157,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": -0.02516046911789765,
+        "mae": 1.4369905916951744,
+        "n": 2018,
+        "rmse": 1.907290719312,
+        "zero_outcomes": 390
+      },
+      "candidate": {
+        "bias": -0.09715896406522037,
+        "mae": 1.428508799486331,
+        "n": 2018,
+        "rmse": 1.9095980526152887,
+        "zero_outcomes": 390
+      },
+      "correction": -0.07199859533306135,
+      "holm_rejects_no_improvement": true,
+      "market": "receptions",
+      "one_sided_bootstrap_p": 0.0009765625,
+      "paired_week_bootstrap95": [
+        -0.010889223997399946,
+        -0.00593959712057354
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.24697825282744387,
+          "log_loss": 0.6870802915918104
+        },
+        "candidate": {
+          "brier": 0.24518510325071088,
+          "log_loss": 0.6834417234466185
+        }
+      },
+      "relative_mae_gain": 0.005902468852518883,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": -0.44633804711829445,
+        "mae": 3.8887893673797547,
+        "n": 639,
+        "rmse": 5.086801590654093,
+        "zero_outcomes": 41
+      },
+      "candidate": {
+        "bias": -0.4401777753342899,
+        "mae": 3.8891267844571256,
+        "n": 639,
+        "rmse": 5.086264763485468,
+        "zero_outcomes": 41
+      },
+      "correction": 0.006160271784004267,
+      "holm_rejects_no_improvement": false,
+      "market": "rushing_attempts",
+      "one_sided_bootstrap_p": 0.947265625,
+      "paired_week_bootstrap95": [
+        -9.733414154012146e-06,
+        0.0007292940162474992
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.2481219819284198,
+          "log_loss": 0.6893869566631512
+        },
+        "candidate": {
+          "brier": 0.2481471933351579,
+          "log_loss": 0.6894374461253824
+        }
+      },
+      "relative_mae_gain": -8.676661178963485e-05,
+      "weeks": 10
+    },
+    {
+      "baseline": {
+        "bias": -0.879909541261386,
+        "mae": 21.497718857091865,
+        "n": 639,
+        "rmse": 29.1330634690931,
+        "zero_outcomes": 48
+      },
+      "candidate": {
+        "bias": -1.2602374521660766,
+        "mae": 21.431022259612355,
+        "n": 639,
+        "rmse": 29.147029775420442,
+        "zero_outcomes": 48
+      },
+      "correction": -0.3803279109046901,
+      "holm_rejects_no_improvement": true,
+      "market": "rushing_yards",
+      "one_sided_bootstrap_p": 0.0009765625,
+      "paired_week_bootstrap95": [
+        -0.08468408338025754,
+        -0.048819500539613064
+      ],
+      "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+      "probability_scores": {
+        "baseline": {
+          "brier": 0.24994315592878447,
+          "log_loss": 0.6930334944284277
+        },
+        "candidate": {
+          "brier": 0.24908593956940558,
+          "log_loss": 0.6913188905249523
+        }
+      },
+      "relative_mae_gain": 0.003102496498483487,
+      "weeks": 10
+    }
+  ],
+  "plan_sha256": "f99c7153b219d34534f65d9ebdb9e506c73c926f52e16f15bd7daeaf64d7a79c",
+  "probability_gate": false,
+  "reasons": [
+    "Previously inspected holdout is not fresh independent evidence",
+    "Historical baseline is an archived chronological proxy, not the live frozen champion weights",
+    "No certified compatible challenger release or exact-replay promotion certificate"
+  ],
+  "sign_test_assumptions": "Paired week-cluster sign randomisation; requires exchangeable signs across weeks. Temporal dependence and reused development data preclude confirmatory interpretation.",
+  "statistical_gate": false
+}

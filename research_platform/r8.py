@@ -349,6 +349,7 @@ def render(slate, release):
             "Game Intelligence",
             "Market Intelligence",
             "Model Performance",
+            "Weekly Learning",
             "Data & Safety",
         ],
     )
@@ -381,5 +382,9 @@ def render(slate, release):
         details(states, audit, release, plan)
     elif section == "Model Performance":
         performance_view()
+    elif section == "Weekly Learning":
+        from weekly_learning.ui import render as learning_view
+
+        learning_view()
     else:
         operations_view(release)

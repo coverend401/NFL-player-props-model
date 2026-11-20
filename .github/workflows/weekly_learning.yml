@@ -1,0 +1,97 @@
+name: Research weekly learning cycle
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Dry run or automatic capture/results cycle (seal checks still apply)'
+        type: choice
+        options: [dry-run, auto]
+        default: dry-run
+  schedule:
+    - cron: '0 12 * * 2'
+    - cron: '0 10 * * 5'
+    - cron: '0 7 * * 0'
+  pull_request:
+    paths:
+      - 'weekly_learning/**'
+      - '.github/workflows/weekly_learning.yml'
+# Only standard Linux runners. No paid service, provider keys or production secrets.
+permissions:
+  contents: read
+concurrency:
+  group: research-weekly-learning
+  cancel-in-progress: false
+jobs:
+  cycle:
+    if: github.event.repository.private == false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      RESEARCH_BRANCH: sportsgameodds-free-feasibility
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sportsgameodds-free-feasibility
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+          cache: pip
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip check
+      - name: Run bounded cycle (no retraining)
+        env:
+          REQUESTED_MODE: ${{ inputs.mode }}
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$RESEARCH_BRANCH"
+          if [ "${GITHUB_EVENT_NAME}" = pull_request ]; then
+            python -m weekly_learning.cli cycle --mode dry-run --id 2026-w09-dryrun-v1
+          else
+            mode="${REQUESTED_MODE:-auto}"
+            python -m weekly_learning.cli cycle --mode "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          fi
+      - name: Preserve reports as short-lived convenience artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-learning-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            weekly_learning_state
+            research_inference_releases/weekly-*
+          if-no-files-found: ignore
+          retention-days: 7
+      - name: Persist immutable research state (never main or production)
+        if: always() && github.event_name != 'pull_request'
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$RESEARCH_BRANCH"
+          test "$RESEARCH_BRANCH" != main
+          python - <<'PY'
+          import subprocess
+          from pathlib import Path
+          paths=['weekly_learning_state','research_active_inference.json']
+          paths += [str(p) for p in Path('research_inference_releases').glob('weekly-*')]
+          subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if git diff --cached --quiet; then exit 0; fi
+          python - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert paths and all(p.startswith('weekly_learning_state/') or p.startswith('research_inference_releases/weekly-') or p=='research_active_inference.json' for p in paths)
+          assert not any(p.endswith('.lock') or '/.stage-' in p for p in paths)
+          PY
+          git config user.name 'NFL research learning automation'
+          git config user.email 'research-learning@users.noreply.github.com'
+          git commit -m 'Archive weekly research learning cycle'
+          # A concurrent branch update rejects this normal push. Never force/rebase/retry.
+          git push origin "HEAD:refs/heads/$RESEARCH_BRANCH"
+# GitHub schedules/dispatch registration require this workflow on the default branch.
+# Adding it to main needs separate merge approval; this PR does not activate a schedule.
+# Only validated research inference selection may change; production pointers, credentials,
+# Supabase, bankroll, quota repository and original trained models are never written.

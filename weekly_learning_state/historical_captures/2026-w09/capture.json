@@ -1,0 +1,9 @@
+{
+  "archived_source_sha256": "6041b8ac6b67cbc3464552147ed06c6ae10b2e642d1107d279ff1cf447948e22",
+  "created_at": "2026-11-20T22:48:57.031279+00:00",
+  "observed_game_state_source": {
+    "sha256": "9f8b1f936f8ff82a6ad541a1e7aad9344da50ad2834a0788c662ef3760c577e4",
+    "tier": "retrospective locally cached public PBP; original retrieval time not established"
+  },
+  "tier": "retrospective_replay_NOT_genuine_predecision"
+}

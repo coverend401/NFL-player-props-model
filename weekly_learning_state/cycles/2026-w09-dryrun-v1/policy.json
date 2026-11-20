@@ -1,0 +1,22 @@
+{
+  "bootstrap_replicates": 1000,
+  "candidate": "market_bias_half_step",
+  "candidate_definition": "projection + 0.5 * mean(y - chronological_baseline_projection) fitted on 2022-24 only; counts clipped at zero; no coefficient tuning",
+  "familywise_alpha": 0.05,
+  "final_season": 2026,
+  "final_week": 11,
+  "fit_seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "holdout": "2026-weeks-1-10-previously-inspected",
+  "maximum_market_mae_regression": 0.02,
+  "minimum_holdout_weeks": 8,
+  "minimum_mae_gain": 0.02,
+  "minimum_market_rows": 100,
+  "operational_settlement_approved": false,
+  "promotion": "Requires fresh prospectively reserved holdout, matching champion baseline, Holm-adjusted paired evidence, all-market safeguards, certified compatible candidate release, exact replay and rollback. Otherwise retain champion.",
+  "seed": 291126,
+  "version": "weekly-learning-v1"
+}
