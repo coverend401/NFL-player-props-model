@@ -24,14 +24,44 @@ CSS = """<style>
 [data-testid="stMainBlockContainer"]{max-width:1050px;padding-top:1.1rem;padding-bottom:3rem}
 h1,h2,h3,p,label,[data-testid="stMarkdownContainer"]{color:inherit}
 [data-testid="stVerticalBlockBorderWrapper"]{background:#111b2d;border-color:#26344c!important;border-radius:18px}
-[data-baseweb="select"]>div,input{background-color:#17243b!important;color:#f0f4fa!important}
+/* Scoped controls plus portalled menus; no generated Streamlit class names. */
+[data-testid="stSelectbox"] [role="combobox"]{background-color:#17243b!important;color:#f0f4fa!important;border-color:#526985!important}
+[data-testid="stSelectbox"] [role="combobox"] *{color:#f0f4fa!important;-webkit-text-fill-color:#f0f4fa!important}
+[data-testid="stSelectbox"] [role="combobox"]:focus-visible{outline:2px solid #90bdf5!important;border-color:#90bdf5!important}
+[data-testid="stSelectbox"] [role="combobox"] svg{fill:#f0f4fa!important}
+[data-testid="stSelectbox"] [role="group"], [data-testid="stSelectbox"] button{background-color:#17243b!important;color:#f0f4fa!important}
+[data-testid="stSelectbox"] svg{fill:#f0f4fa!important}
+[data-baseweb="select"]>div{background-color:#17243b!important;color:#f0f4fa!important}
+[data-baseweb="select"] [role="combobox"], [data-baseweb="select"] span,
+[data-baseweb="select"] input, [data-baseweb="tag"]{color:#f0f4fa!important;-webkit-text-fill-color:#f0f4fa!important}
+[data-baseweb="select"] input::placeholder{color:#c2cfe2!important;opacity:1}
+[data-baseweb="select"] svg{fill:#f0f4fa!important}
+[data-baseweb="popover"] [role="listbox"], [role="listbox"]{background-color:#17243b!important;color:#f0f4fa!important}
+[role="listbox"] [role="option"], [role="listbox"] [role="option"] *{color:#f0f4fa!important;-webkit-text-fill-color:#f0f4fa!important}
+[role="listbox"] [role="option"]{background-color:#17243b!important}
+[role="listbox"] [role="option"][aria-selected="true"]{background-color:#294b70!important}
+[role="listbox"] [role="option"]:hover, [role="listbox"] [role="option"]:focus,
+[role="listbox"] [role="option"][data-highlighted="true"]{background-color:#2c4568!important}
+[data-baseweb="select"]:focus-within{outline:2px solid #90bdf5;outline-offset:2px;border-radius:8px}
+[data-testid="stSelectbox"] [data-baseweb="select"] div,
+[data-testid="stMultiSelect"] [data-baseweb="select"] div{color:#f0f4fa!important}
+[data-baseweb="select"] [data-baseweb="tag"]{background-color:#294b70!important}
+/* Streamlit also uses React Aria for multiselect; avoid generated class names. */
+[data-testid="stMultiSelect"] .react-aria-ComboBox [role="group"]{background-color:#17243b!important;color:#f0f4fa!important}
+[data-testid="stMultiSelect"] input{background-color:#17243b!important;color:#f0f4fa!important;-webkit-text-fill-color:#f0f4fa!important}
+[data-testid="stMultiSelect"] input::placeholder{color:#c2cfe2!important;-webkit-text-fill-color:#c2cfe2!important;opacity:1}
+[data-testid="stMultiSelect"] [data-tag], [data-testid="stMultiSelect"] [data-tag] *{background-color:#294b70!important;color:#f0f4fa!important;-webkit-text-fill-color:#f0f4fa!important}
+[data-testid="stMultiSelect"] button{color:#f0f4fa!important}
+[data-testid="stMultiSelect"] .react-aria-ComboBox:focus-within{outline:2px solid #90bdf5;outline-offset:2px;border-radius:8px}
+[role="listbox"] [role="option"][data-focused]{background-color:#2c4568!important}
 [data-testid="stWidgetLabel"] p{color:#aab8ce;font-size:.9rem}
 [data-testid="stAlert"]>div{background:#17243b;color:#d7e2f2}
 [data-testid="stAlert"] p{color:#d7e2f2}
-[data-baseweb="select"] div,[role="listbox"]{background-color:#17243b;color:#f0f4fa}
+
 button{min-height:44px!important;border-radius:12px!important}
-[data-testid="stExpander"]{border-color:#26344c;border-radius:14px}
-[data-testid="stExpander"] summary{color:#cbd5e1}
+[data-testid="stExpander"]{border-color:#26344c;border-radius:14px;background:#111b2d;color:#cbd5e1}
+[data-testid="stExpander"] summary{background:#111b2d!important;color:#cbd5e1!important}
+[data-testid="stExpander"] summary p{color:#cbd5e1!important}
 [data-testid="stCaptionContainer"]{color:#a5b4cc}
 .desk-hero{padding:17px 20px;background:linear-gradient(120deg,#152946,#101928);border:1px solid #29405f;border-radius:22px;margin-bottom:18px}
 .desk-eyebrow{font-size:11px;color:#87a8cf;letter-spacing:2px;font-weight:750}

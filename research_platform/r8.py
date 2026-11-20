@@ -15,6 +15,7 @@ from sgo_research.contracts import Unavailable, utc
 from sgo_research.event_client import EventClient
 from sgo_research.ui import research_key
 
+from .cards81 import market_card, model_card
 from .coverage8 import (
     collect8,
     explain_error,
@@ -26,8 +27,8 @@ from .coverage8 import (
     write_audit,
 )
 from .engine import evaluate
-from .r7 import market_card, model_card
 from .slate import cached_snapshots, model_candidates, parlay_research
+from .slate_notice import stale_sunday_notice
 from .ui import (
     CSS,
     game_label,
@@ -119,9 +120,6 @@ def summary(states):
 
 def model8(row, release, state):
     model_card(row, release, state)
-    st.caption(
-        f"MODEL-ONLY — NO VERIFIED BOOKMAKER VALUE. Legacy residual scale {row.get('resid_std', float('nan')):.2f}; not a calibrated interval. Role/availability and numerical game-script effects remain uncertain."
-    )
 
 
 def collection8(slate, release, only=None):
@@ -335,7 +333,10 @@ def parlays8(slate, release):
 
 def render(slate, release):
     st.markdown(CSS, unsafe_allow_html=True)
-    st.caption("NFL Research · r8 · independent Stage 1A forecasts")
+    st.caption("NFL Research · r8.1 · independent Stage 1A forecasts")
+    notice = stale_sunday_notice(slate, release, datetime.now(UTC))
+    if notice:
+        st.warning(notice)
     section = st.selectbox(
         "Workspace",
         [
