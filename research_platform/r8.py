@@ -27,6 +27,7 @@ from .coverage8 import (
     write_audit,
 )
 from .engine import evaluate
+from .football_evidence import attach_context
 from .slate import cached_snapshots, model_candidates, parlay_research
 from .slate_notice import stale_sunday_notice
 from .ui import (
@@ -63,7 +64,8 @@ def data8(slate, release):
         for r in rows
         if now < utc(release["game_kickoffs"][r["game_id"]]) - timedelta(minutes=60)
     ]
-    models = model_candidates(slate, release, now)
+    rows = attach_context(rows, release)
+    models = attach_context(model_candidates(slate, release, now), release)
     history = private_records(cache_path(), "r8_audit", now)
     audit = next(
         (a["audit"] for a in history if a.get("release_id") == release["release_id"]),
@@ -333,7 +335,7 @@ def parlays8(slate, release):
 
 def render(slate, release):
     st.markdown(CSS, unsafe_allow_html=True)
-    st.caption("NFL Research · r8.1 · independent Stage 1A forecasts")
+    st.caption("NFL Research · r8.2 · independent Stage 1A forecasts")
     notice = stale_sunday_notice(slate, release, datetime.now(UTC))
     if notice:
         st.warning(notice)

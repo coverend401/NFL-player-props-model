@@ -35,15 +35,17 @@ class EventClient(Client):
             }
             if self.transport["size_exceeded"] or self.transport["credential_echo"]:
                 code = (
-                    "RESPONSE_SIZE_LIMIT"
-                    if self.transport["size_exceeded"]
-                    else "CREDENTIAL_ECHO"
+                    "CREDENTIAL_ECHO"
+                    if self.transport["credential_echo"]
+                    else "RESPONSE_SIZE_LIMIT"
                 )
                 LOG.warning(
-                    "R8 transport blocked code=%s response_bytes=%d limit_bytes=%d",
+                    "R8 transport blocked code=%s response_bytes=%d limit_bytes=%d credential_echo=%s size_exceeded=%s",
                     code,
                     len(response.content),
                     8 * 1024 * 1024,
+                    self.transport["credential_echo"],
+                    self.transport["size_exceeded"],
                 )
             return response
 

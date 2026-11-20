@@ -6,6 +6,7 @@ atomic; conflicts retry only the GitHub transaction, never the odds request.
 """
 
 import base64
+import copy
 import json
 import os
 import re
@@ -183,6 +184,47 @@ class GitHubQuotaStore:
             raise Unavailable(
                 "Private quota state invalid/missing; no automatic reset"
             ) from None
+
+    def recover_halt_once(
+        self, expected_state, expected_sha, *, credential_rotation_confirmed=False
+    ):
+        """Owner-authorised halt-only CAS. No retry, rebase, refund or provider call."""
+        if credential_rotation_confirmed is not True:
+            raise Unavailable(
+                "Owner-confirmed provider key rotation required before recovery"
+            )
+        state, sha = self._read()
+        if (
+            sha != expected_sha
+            or state != expected_state
+            or state.get("halt") != "manual_review_required"
+            or state.get("conditional_updates_verified") is not True
+            or state.get("reserved_objects") != 81
+            or len(state.get("reservations", [])) != 11
+        ):
+            raise Unavailable(
+                "Recovery expected ledger state/version differs; halt unchanged"
+            )
+        desired = copy.deepcopy(state)
+        desired["halt"] = None
+        payload = {
+            "message": "Owner-authorised halt-only recovery; reservations unchanged",
+            "sha": sha,
+            "content": base64.b64encode(
+                json.dumps(desired, sort_keys=True, allow_nan=False).encode()
+            ).decode(),
+        }
+        if (
+            self.api("PUT", f"repos/{self.repository}/contents/{STATE_FILE}", payload)
+            is None
+        ):
+            raise Unavailable("Recovery CAS conflict; no retry or provider request")
+        verified, _ = self._read()
+        if verified != desired:
+            raise Unavailable(
+                "Recovery readback differs; manual review required; no provider request"
+            )
+        return verified
 
     def _update(self, mutate):
         for _ in range(3):

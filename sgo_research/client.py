@@ -148,9 +148,18 @@ class Client:
             raise Unavailable(
                 f"Provider HTTP {r.status_code}; no retry or paid fallback"
             )
-        if len(r.content) > 8 * 1024 * 1024 or self.key.strip().encode() in r.content:
+        oversized = len(r.content) > 8 * 1024 * 1024
+        echoed = self.key.strip().encode() in r.content
+        if oversized or echoed:
+            # Metadata only: never retain the rejected body or credential fragments.
+            self.transport = {
+                "response_bytes": len(r.content),
+                "size_exceeded": oversized,
+                "credential_echo": echoed,
+            }
             self.store.halt("unsafe_response")
-            raise Unavailable("Unsafe response size/content discarded")
+            code = "CREDENTIAL_ECHO" if echoed else "RESPONSE_SIZE_LIMIT"
+            raise Unavailable(f"Unsafe response size/content discarded [{code}]")
         try:
             body = json.loads(r.content)
         except (ValueError, UnicodeError):

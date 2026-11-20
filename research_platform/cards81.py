@@ -100,7 +100,60 @@ def explanation(row, state):
             if against
             else f"The forecast is {projection}, {comparison} {row['bookmaker']}'s {row['line']:g} line; {caution}."
         )
-    return f"{player} {matchup} {prop}"
+    context = row.get("football_context", {})
+    if context:
+        from .football_evidence import MARKETS
+
+        stat, usage, area = MARKETS.get(market, (None, None, None))
+        history = context.get("player", {})
+        recent = number(history.get(f"{stat}_last3_avg"))
+        longer = number(history.get(f"{stat}_last5_avg"))
+        workload = number(history.get(f"{usage}_last3_avg"))
+        labels = {
+            "attempts": "pass attempts",
+            "carries": "carries",
+            "targets": "targets",
+        }
+        if recent is not None and workload is not None:
+            comparison = (
+                f", compared with {longer:.1f} over his last five"
+                if longer is not None
+                else ""
+            )
+            player = f"{row['player']} averaged {recent:.1f} {market.lower()} over his last three recorded appearances{comparison}, with {workload:.1f} {labels[usage]} per game."
+        allowed = number(
+            context.get("defense", {}).get(f"opp_{stat}_allowed_season_avg")
+        )
+        if allowed is not None:
+            allowed_label = {
+                "attempts": "pass attempts",
+                "carries": "carries",
+                "completions": "completions",
+                "passing_yards": "passing yards",
+                "rushing_yards": "rushing yards",
+                "receiving_yards": "receiving yards",
+                "receptions": "receptions",
+            }[stat]
+            matchup = f"{context.get('opponent') or row.get('opponent', opponent)} allowed {allowed:.1f} {allowed_label} per team game across the recorded history, not specifically to this position."
+        elif recent is not None:
+            matchup = ""
+        team = context.get("team", {})
+        attempts, carries = number(team.get("attempts")), number(team.get("carries"))
+        if attempts is not None and carries is not None:
+            script = (
+                "Chasing the score could favour passing work; a lead could reduce it"
+                if area in ["passing", "receiving"]
+                else "A lead could favour carries; chasing the score could reduce them"
+            )
+            if row.get("position") == "QB" and area == "rushing":
+                script = "More passing work can create scramble chances, but designed runs and scrambles are different sources of carries"
+            matchup += f" His team recorded {attempts:.1f} pass attempts and {carries:.1f} carries per game over its last {team['games']:g} completed games; {script[0].lower() + script[1:]} (a possibility, not a predicted game script)."
+        volume = (assessment or {}).get("offensive_volume", {})
+        plays = number(volume.get("plays_per_game"))
+        backs = number(volume.get("dropbacks_per_game"))
+        if plays is not None and backs is not None:
+            matchup += f" His offence recorded {plays:g} plays and {backs:g} dropbacks per game; falling behind could shift work toward passing, but that game script is not established."
+    return " ".join(x for x in [player, matchup, prop] if x)
 
 
 def technical(row, release, state):
@@ -109,6 +162,10 @@ def technical(row, release, state):
         f"Detailed model analysis · {row['player']} / {row.get('market')} / {row.get('side') or 'model only'}"
     ):
         st.markdown("**Recorded evidence**")
+        if row.get("football_context"):
+            st.caption(
+                f"Player and team totals from certified forecast inputs; completed-game cutoff {row['football_context']['cutoff']}. Last-three/five averages use recorded participating appearances, not calendar weeks. Opponent totals are unadjusted historical team averages, not positional strength ratings."
+            )
         for text in evidence["facts"]:
             st.write(text)
         st.write(opponent_note(state, row["player_id"], row["game_id"]))
