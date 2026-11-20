@@ -36,3 +36,7 @@ No new dependency, service, subscription, account, paid resource or scheduled co
 ## Reviewed follow-up — Week 11 forecast refresh
 
 20 November: current source availability passed, and the nine frozen models executed without retraining. Generation stopped at the live current-team gate: 2 draft rows conflicted with the depth snapshot and 42 lacked confirmed team membership. No valid slate, Top Picks, research pointer or dashboard integration was published. No full tests, deployment, bookmaker calls or quota changes. See [the bounded refresh failure report](NOV22-FORECAST-REFRESH-BLOCKER.md). Await review before any identity reconciliation or rerun.
+
+## Targeted player reconciliation — stopped at publication-contract boundary
+
+20 November: inspected the 44 flags (15 players), reusing saved inputs and one current roster download. Remigio's two stale KC rows resolve to HOU; HOU's Week 11 fixture had already kicked off. Of the other 42 rows, 30 have current-week practice-squad evidence and 12 remain unresolved. Review decisions recommend 32 exclusions; no flagged rows were restored. The 692 unaffected draft rows span 12 fixtures but cannot be published as an ad hoc subset under exact replay/same-build provenance checks. Eight focused tests passed. No new policy, loader, Top Picks, deployment or quota operation. See [reconciliation evidence and stop condition](NOV22-ELIGIBILITY-RECONCILIATION.md).

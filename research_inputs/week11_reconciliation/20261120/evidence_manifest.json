@@ -1,0 +1,14 @@
+{
+  "scope": "44 flagged rows only; decisions are not an approved/published forecast subset",
+  "base_release_id": "stage1a-20261113-py314-arrow24-r2",
+  "files": {
+    "depth_date_ranges.csv": "062167600d98816631d10ea8cc2d2c8eef67cd72d92b5d701e8989d1e652cdec",
+    "fixture_evidence.csv": "66802f65f1e074b57327af7c88c7121f846abd440c61da49f7b051d9b797dbb2",
+    "flagged_rows.csv": "4069dd09f1d0510223c78eaad04ce3d358ac37cfce725174523efe6e516bc23f",
+    "reconciliation_decisions.csv": "b139e26b37f2acfeedc7ed7f3e374f7f13c9f3239467b42491120fc8e064f2ea",
+    "reconciliation_summary.json": "c091d8dd5c718894a82a292157ac25a41a2c0f85bc05e7e0eddfa958f7ad858f",
+    "roster_evidence.csv": "32af2ad56ff0ea75910c2ede219f6332698b2ad1c35dcf3cf43f1dee0c8408e5",
+    "roster_source.json": "9402a6111e3c240fafecae35f0273f9be6e15665557f66f5e0494482feb750bf",
+    "team_history_cause.csv": "6e98f6f47c9252505d538e5e48c2f52a13002f5510e28d504979cce3c88a80b5"
+  }
+}
