@@ -1,0 +1,51 @@
+{
+  "created_at": "2026-11-21T22:47:28.301696+00:00",
+  "engine_sha256": "1f2c99d160af321d732680b3ba3f3e022223c9b81851b164b3ad841d469888d4",
+  "experiment_manifest_sha256": "839a4d0977ff31c20f7bce3e7722267be7da8a47bbe8efb2e9b621a8ccf32d69",
+  "files": {
+    "fixtures.csv": "ee54b65de88c3b2ff4d2d0467b2f7c14dcbc90de4d65b4e516b95cf340404624",
+    "forecasts.parquet": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
+    "positive_line_evidence.csv": "fb4903119c2c7a050c8fc8aadadf840812ff0415a8e38c9753efb33175b863e8",
+    "sensitivity.csv": "f9667b4fafebd4c5ce559f719ecbd958fc99b11e10762f5ba9fbbee71ffca682",
+    "top2.csv": "928b6a1be87c4f49fa23056f57c810c3c2c0a3de5dae190261534c1b7e6f18aa",
+    "top_picks.csv": "823891d324fc8a2a3e023a7263d9e9d9c14a51c173e2d7d6d0e8ba7eb5f5294e"
+  },
+  "parent_manifest_sha256": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+  "parent_release": "research-week11-frozen-20261120-r2",
+  "policy": {
+    "certified_promotion": false,
+    "historical_timing": "Retrospective; champion closing-total availability specifically atT-60 is unverified",
+    "minimum_history": 3,
+    "minimum_validated_research_line": 0.5,
+    "no_ev_ranking_without_quote": true,
+    "no_failed_game_script_adjustment": true,
+    "ordering": [
+      "point_and_probability_support",
+      "2025 calibration gap",
+      "recent role stability",
+      "relative outcome interval width",
+      "history size",
+      "player identity"
+    ],
+    "ordering_weights": {
+      "calibration": 0.2,
+      "history_capped20": 0.2,
+      "relative_interval": 0.2,
+      "role_stability": 0.2,
+      "snap_share": 0.2
+    },
+    "point_admission": "2025 preregistered point gate and positive2026 inspected diagnostic MAE gain",
+    "point_target": "typical outcome (median-like), not a validated distribution mean",
+    "probability_admission": "2025 probability gate, positive2026 Brier/log-loss improvement and positive week-block log-loss lower bound",
+    "ranking_index_is_not_a_probability_or_confidence_score": true,
+    "research_only": true,
+    "target_date": "2026-11-22",
+    "week_from_verified_schedule": 11
+  },
+  "probability_uncertainty_sha256": "2e4ef2b28823912f52e734b54cbc4aaf4c1fa7d56ef49f60cffa8d426c44bde9",
+  "production_changed": false,
+  "release_type": "enhanced_research_selection_v1",
+  "schema": 1,
+  "seal_lifted": false,
+  "source_models_sha256": "3d8edb789233bd2245e8e31b38b4f5b1053ee607ce9dc57e182cf98746f0de98"
+}

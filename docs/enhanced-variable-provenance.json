@@ -1,0 +1,14 @@
+{
+  "experiment_manifest_sha256": "839a4d0977ff31c20f7bce3e7722267be7da8a47bbe8efb2e9b621a8ccf32d69",
+  "files": {
+    "enhanced-individual-variable-diagnostics.csv": "ed0667df04065c74c2d384e89145e43eb20690288834c626c0e3cf2b619892d3",
+    "enhanced-interaction-diagnostics.csv": "0b7b83d6accb97f9a1f8618103da91e1dc25ce63424ddfd6300e0f7f36b4c406",
+    "enhanced-variable-stability.csv": "2d41bc59f226197c57fb6ea6dce0ee39d5c773e72fdf7971ebb640733487199d",
+    "enhanced-weekly-errors.csv": "46198640d29c55875046c449be9763b4b0830747cc6e1cf375d3ae5405cb5d1d",
+    "enhanced-workload-cohorts.csv": "dbe2e8b6c8349ff9d669eb57451da0bebe35ea716ac618f7b50e9f6d011ffdf4"
+  },
+  "final_period_accessed": false,
+  "no_fitting": true,
+  "no_method_selection": true,
+  "script_sha256": "36772493d55030f8414572821721bb7a296bdeb1b262b59daaf48c0867a9edd4"
+}

@@ -27,7 +27,9 @@ def archived_week11():
         ),
         patch("research_platform.r8.datetime") as clock,
         patch("research_platform.sunday_script_ui.datetime") as script_clock,
+        patch("research_platform.enhanced_ui.datetime") as enhanced_clock,
     ):
         clock.now.return_value = datetime(2026, 11, 20, 23, tzinfo=UTC)
         script_clock.now.return_value = datetime(2026, 11, 20, 23, tzinfo=UTC)
+        enhanced_clock.now.return_value = datetime(2026, 11, 22, 8, tzinfo=UTC)
         yield

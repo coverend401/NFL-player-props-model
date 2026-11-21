@@ -222,7 +222,7 @@ def details(states, audit, release, plan):
         )
 
 
-def top8(slate, release):
+def certified_top8(slate, release):
     from .slate import unique_watch
 
     rows, models, _, audit, plan, states = data8(slate, release)
@@ -265,7 +265,7 @@ def top8(slate, release):
     details(states, audit, release, plan)
 
 
-def games8(slate, release):
+def certified_games8(slate, release):
     rows, models, _, audit, plan, states = data8(slate, release)
     picks = two8(rows, models, release)
     state = state_for(release)
@@ -286,6 +286,32 @@ def games8(slate, release):
                 market_card(r, release, state)
     collection8(slate, release)
     details(states, audit, release, plan)
+
+
+def top8(slate, release):
+    from .enhanced_ui import render as enhanced
+
+    if enhanced(release, "top"):
+        if st.checkbox(
+            "Show unchanged certified rankings and legacy bookmaker tools",
+            key="enhanced_certified_top",
+        ):
+            certified_top8(slate, release)
+    else:
+        certified_top8(slate, release)
+
+
+def games8(slate, release):
+    from .enhanced_ui import render as enhanced
+
+    if enhanced(release, "games"):
+        if st.checkbox(
+            "Show unchanged certified rankings and legacy bookmaker tools",
+            key="enhanced_certified_games",
+        ):
+            certified_games8(slate, release)
+    else:
+        certified_games8(slate, release)
 
 
 def parlays8(slate, release):
@@ -309,6 +335,9 @@ def parlays8(slate, release):
                 )
             ] = row
     st.markdown("### Parlay Research")
+    st.caption(
+        "This legacy parlay list uses unchanged certified forecasts; enhanced primary-screen selections are not validated joint-probability models."
+    )
     st.info(
         "No validated joint probability or genuinely quoted combined price. No parlay EV or bet placement."
     )
@@ -338,7 +367,9 @@ def render(slate, release):
 
     slate, release = for_app(slate, release)
     st.markdown(CSS, unsafe_allow_html=True)
-    st.caption("NFL Research · r8.3 · independent Stage 1A forecasts")
+    st.caption(
+        "NFL Research · Enhanced Sunday selections · certified Stage 1A preserved"
+    )
     if release.get("weekly_selection_warning"):
         st.warning(release["weekly_selection_warning"])
     notice = stale_sunday_notice(slate, release, datetime.now(UTC))
@@ -365,8 +396,11 @@ def render(slate, release):
     elif section == "Parlay Research":
         parlays8(slate, release)
     elif section == "Player Intelligence":
-        data8(slate, release)
-        player_view(slate, release)
+        from .enhanced_ui import render as enhanced_player
+
+        if not enhanced_player(release, "player"):
+            data8(slate, release)
+            player_view(slate, release)
     elif section == "Game Intelligence":
         from season_intelligence.ui import render as render_season_intelligence
 

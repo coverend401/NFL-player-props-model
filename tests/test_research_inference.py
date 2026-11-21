@@ -318,7 +318,7 @@ class CertifiedInferenceTests(unittest.TestCase):
             self.assertFalse(
                 any("Stale forecast slate" in w.value for w in app.warning)
             )
-            self.assertTrue(any("Eligible: 11" in c.value for c in app.caption))
+            self.assertTrue(any("Eligible: 10" in c.value for c in app.caption))
             self.assertTrue(
                 any("NO VERIFIED BOOKMAKER VALUE" in t.value for t in app.markdown)
             )
@@ -327,6 +327,6 @@ class CertifiedInferenceTests(unittest.TestCase):
             ).run(timeout=90)
             self.assertFalse(app.exception, app.exception)
             cards = [e for e in app.markdown if '<article class="desk-card' in e.value]
-            self.assertEqual(len(cards), 22)
+            self.assertEqual(len(cards), 20)
             get.assert_not_called()
             request.assert_not_called()
