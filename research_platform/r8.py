@@ -334,8 +334,13 @@ def parlays8(slate, release):
 
 
 def render(slate, release):
+    from weekly_learning.selection import for_app
+
+    slate, release = for_app(slate, release)
     st.markdown(CSS, unsafe_allow_html=True)
     st.caption("NFL Research · r8.3 · independent Stage 1A forecasts")
+    if release.get("weekly_selection_warning"):
+        st.warning(release["weekly_selection_warning"])
     notice = stale_sunday_notice(slate, release, datetime.now(UTC))
     if notice:
         st.warning(notice)
@@ -363,6 +368,9 @@ def render(slate, release):
         data8(slate, release)
         player_view(slate, release)
     elif section == "Game Intelligence":
+        from weekly_learning.operations import render_game_research
+
+        render_game_research(release)
         from .sunday_script_ui import render as render_script
 
         render_script(release)

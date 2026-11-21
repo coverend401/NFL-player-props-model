@@ -16,6 +16,14 @@ from .sources import permitted, verify_snapshot
 from .store import ROOT, encoded, sha
 
 
+def require_current_depth(depth, teams, since):
+    latest = depth.groupby("team")["observed"].max().reindex(sorted(teams))
+    if latest.isna().any() or (latest < pd.Timestamp(since).normalize()).any():
+        raise ValueError(
+            "Target-week depth evidence missing/stale; no prior-week starter reuse"
+        )
+
+
 def prepare_next(sources, work, target_week, policy, release_id, model_parent=None):
     season = 2026
     permitted(season, target_week - 1, policy)
@@ -23,6 +31,14 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     work = Path(work)
     work.mkdir(parents=True, exist_ok=False)
     meta = verify_snapshot(sources, max_age_hours=48)
+    admission = None
+    if target_week - 1 >= policy["final_week"]:
+        from .admission import validate_receipt
+
+        admission = sources / "operational_admission.json"
+        receipt = validate_receipt(ROOT, admission, policy)
+        if receipt["target_week"] != target_week:
+            raise ValueError("Forecast target differs from operational admission")
     required = {
         "player_stats",
         "team_stats",
@@ -249,6 +265,14 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     depth["observed"] = pd.to_datetime(depth.dt, utc=True)
     depth = depth[depth.observed.le(now)]
     depth = depth[depth.observed.eq(depth.groupby("team")["observed"].transform("max"))]
+    if admission is not None:
+        upcoming = schedule[
+            schedule.season.eq(season)
+            & schedule.week.eq(target_week)
+            & schedule.kickoff_at.gt(now + pd.Timedelta(minutes=60))
+        ]
+        teams = set(upcoming.home_team) | set(upcoming.away_team)
+        require_current_depth(depth, teams, receipt["settlement_cutoff"])
     qb = depth[depth.pos_abb.eq("QB") & depth.pos_rank.eq(1)][
         ["team", "gsis_id"]
     ].drop_duplicates()
@@ -278,7 +302,31 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
         )
     )
     output = ROOT / "research_inference_releases" / release_id
-    if model_parent is None:
+    if admission is not None:
+        from .build_release import build_prepared
+
+        if model_parent is not None:
+            source_parent = (ROOT / model_parent).resolve()
+            source_parent.relative_to(ROOT)
+            parent_manifest = validate_manifest(source_parent, ROOT)
+            namespace = {
+                **build_prepared.__globals__,
+                "resolve_release": lambda repo: (
+                    source_parent / "data",
+                    parent_manifest,
+                ),
+            }
+            builder = FunctionType(
+                build_prepared.__code__,
+                namespace,
+                build_prepared.__name__,
+                build_prepared.__defaults__,
+                build_prepared.__closure__,
+            )
+            builder(work, output, admission)
+        else:
+            build_prepared(work, output, admission)
+    elif model_parent is None:
         prepare(work, output)
     else:
         parent_path = (ROOT / model_parent).resolve()

@@ -21,7 +21,16 @@ def render():
         ordered = sorted(
             reports, key=lambda p: json.loads(p.read_text())["completed_at"]
         )
-        latest = ordered[-1]
+        attempt = ordered[-1]
+        Store(root).validate(attempt.parent)
+        attempt_report = json.loads(attempt.read_text())
+        completed = [
+            p
+            for p in ordered
+            if json.loads(p.read_text()).get("status")
+            in [None, "completed", "completed_with_missing"]
+        ]
+        latest = completed[-1] if completed else attempt
         Store(root).validate(latest.parent)
         report = json.loads(latest.read_text())
     except (OSError, ValueError, KeyError):
@@ -29,6 +38,29 @@ def render():
             "Learning report failed integrity checks; certified forecasts unchanged."
         )
         return
+    from .operations import preflight
+
+    status = {}
+    try:
+        status = preflight(Store(root), record_capture=False)
+        if not status.get("time_gate_open"):
+            st.info(status.get("reason", status["status"]))
+        else:
+            st.caption(
+                "Settlement time gate open; independent finality/source checks still required."
+            )
+    except (OSError, ValueError, KeyError, TypeError, AssertionError):
+        st.caption(
+            "Operational preflight unavailable; last certified learning report retained."
+        )
+    if attempt_report.get("status") in [
+        "waiting_for_settlement",
+        "blocked_results_integrity",
+    ]:
+        st.warning(
+            "Latest prospective attempt: "
+            + attempt_report.get("reason", attempt_report["status"])
+        )
     readiness = root / "readiness" / report["cycle_id"]
     if readiness.exists():
         try:
@@ -72,9 +104,19 @@ def render():
     for reason in candidate.get("reasons", []):
         st.caption(reason)
     readiness = report.get("next_slate", {})
-    if readiness.get("status") == "certified_candidate_ready_for_selection":
+    if readiness.get("status") in {
+        "certified_candidate_ready_for_selection",
+        "operational_candidate_certified_not_selected",
+    }:
         try:
-            active = json.loads((ROOT / "research_active_inference.json").read_text())
+            selected = ROOT / "weekly_learning_state/selected_research.json"
+            active = json.loads(
+                (
+                    selected
+                    if selected.exists()
+                    else ROOT / "research_active_inference.json"
+                ).read_text()
+            )
             if active.get("manifest_sha256") == readiness.get("manifest_sha256"):
                 readiness = {
                     **readiness,
@@ -100,7 +142,7 @@ def render():
         except (OSError, ValueError, KeyError):
             readiness = {"status": "readiness_source_unavailable"}
     st.write("Next slate: " + readiness.get("status", "unknown"))
-    if report.get("week12_readiness"):
+    if report.get("week12_readiness") and not status.get("capture_valid"):
         st.warning(
             "Week 12: " + report["week12_readiness"].get("reason", "not yet ready")
         )

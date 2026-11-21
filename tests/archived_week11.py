@@ -15,6 +15,12 @@ def archived_week11():
         )
 
     with (
+        patch.dict(
+            "os.environ",
+            {
+                "NFL_RESEARCH_INFERENCE_POINTER": "tests/fixtures/week11_research_pointer.json"
+            },
+        ),
         patch(
             "research_platform.inference_release.resolve_research_release",
             side_effect=resolve,

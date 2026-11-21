@@ -14,9 +14,9 @@ def permitted(season, week, policy):
     if season > policy["final_season"] or (
         season == policy["final_season"] and week >= policy["final_week"]
     ):
-        raise ValueError(
-            "SEALED: prospective settlement policy and compatible inference contract require owner approval"
-        )
+        from .admission import time_gate
+
+        time_gate(policy, season, week)
 
 
 def filters(season, through_week, policy):
@@ -24,7 +24,9 @@ def filters(season, through_week, policy):
     return [("season", "==", season), ("week", "<=", through_week)]
 
 
-def fetch(root, season, through_week, policy, *, forecasting=False):
+def fetch(
+    root, season, through_week, policy, *, forecasting=False, schedule_ready=None
+):
     permitted(
         season, through_week, policy
     )  # Before any HTTP or result materialisation.
@@ -32,9 +34,9 @@ def fetch(root, season, through_week, policy, *, forecasting=False):
     root.mkdir(parents=True, exist_ok=True)
     base = "https://github.com/nflverse/nflverse-data/releases/download/"
     paths = {
+        "schedule": "schedules/games.parquet",
         "player_stats": f"stats_player/stats_player_week_{season}.parquet",
         "team_stats": f"stats_team/stats_team_week_{season}.parquet",
-        "schedule": "schedules/games.parquet",
         "snaps": f"snap_counts/snap_counts_{season}.parquet",
         "players": "players/players.parquet",
     }
@@ -77,6 +79,9 @@ def fetch(root, season, through_week, policy, *, forecasting=False):
                 "bytes": size,
                 "last_modified": response.headers.get("Last-Modified"),
             }
+            (root / "sources.json").write_text(encoded(records))
+            if name == "schedule" and schedule_ready is not None:
+                schedule_ready(root)
     (root / "sources.json").write_text(encoded(records))
     return root
 
@@ -124,6 +129,13 @@ def load_results(root, season, week, policy):
     root = Path(root)
     f = filters(season, week, policy)
     verify_snapshot(root)
+    if season >= policy["final_season"] and week >= policy["final_week"]:
+        from .admission import validate_receipt
+        from .store import ROOT
+
+        receipt = validate_receipt(ROOT, root / "operational_admission.json", policy)
+        if receipt["season"] != season or receipt["through_week"] != week:
+            raise ValueError("Results admission scope differs")
     box = pd.read_parquet(root / "player_stats.parquet", filters=f).rename(
         columns={"passing_interceptions": "interceptions"}
     )

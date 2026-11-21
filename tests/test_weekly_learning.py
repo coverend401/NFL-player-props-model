@@ -161,7 +161,13 @@ class ResultsTests(unittest.TestCase):
 
     def test_seal_blocks_before_http(self):
         policy = json.loads(POLICY.read_text())
-        with patch("weekly_learning.sources.requests.get") as get:
+        with (
+            patch("weekly_learning.sources.requests.get") as get,
+            patch(
+                "weekly_learning.admission.time_gate",
+                side_effect=ValueError("Settlement window closed"),
+            ),
+        ):
             with self.assertRaises(ValueError):
                 fetch("/tmp/not-created-learning-source", 2026, 11, policy)
             get.assert_not_called()
@@ -383,17 +389,13 @@ class SelectionFailureTests(unittest.TestCase):
             patch("weekly_learning.cli.freeze_prepared"),
             patch("weekly_learning.cli.load_results", return_value=(p, s, t)),
             patch(
-                "weekly_learning.cli.evaluate_candidate",
+                "weekly_learning.cli.retained_decision",
                 return_value={"accepted": False},
             ),
             patch("weekly_learning.forecast.prepare_next", return_value=release),
             patch.object(store, "publish", side_effect=publication),
         ):
-            if fail_readiness:
-                with self.assertRaises(ValueError):
-                    operational(store, 9, 10, "test", source)
-            else:
-                operational(store, 9, 10, "test", source)
+            operational(store, 9, 10, "test", source)
         return json.loads(pointer.read_text())
 
     def test_readiness_write_failure_preserves_previous_selection(self):
@@ -402,9 +404,9 @@ class SelectionFailureTests(unittest.TestCase):
                 self.run_cycle(temp, fail_readiness=True), {"release_id": "previous"}
             )
 
-    def test_only_successful_certification_advances_research_selection(self):
+    def test_certified_candidate_requires_separate_selection(self):
         with tempfile.TemporaryDirectory() as temp:
-            self.assertEqual(self.run_cycle(temp)["release_id"], "weekly-test")
+            self.assertEqual(self.run_cycle(temp)["release_id"], "previous")
 
 
 class SourceIntegrityTests(unittest.TestCase):

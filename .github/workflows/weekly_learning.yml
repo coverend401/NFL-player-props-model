@@ -5,12 +5,20 @@ on:
       mode:
         description: 'Dry run or automatic capture/results cycle (seal checks still apply)'
         type: choice
-        options: [dry-run, auto]
-        default: dry-run
-  schedule:
-    - cron: '0 12 * * 2'
-    - cron: '0 10 * * 5'
-    - cron: '0 7 * * 0'
+        options: [preflight, capture, prepare, dry-run, auto, select]
+        default: preflight
+      candidate:
+        description: 'Certified research candidate path; used only for explicit select'
+        type: string
+        default: ''
+  workflow_call:
+    inputs:
+      mode:
+        type: string
+        default: preflight
+      candidate:
+        type: string
+        default: ''
   pull_request:
     paths:
       - 'weekly_learning/**'
@@ -47,14 +55,20 @@ jobs:
         id: learning_cycle
         env:
           REQUESTED_MODE: ${{ inputs.mode }}
+          REQUESTED_CANDIDATE: ${{ inputs.candidate }}
         run: |
           set -euo pipefail
           test "$(git branch --show-current)" = "$RESEARCH_BRANCH"
           if [ "${GITHUB_EVENT_NAME}" = pull_request ]; then
             python -m weekly_learning.cli cycle --mode dry-run --id 2026-w09-dryrun-v1
           else
-            mode="${REQUESTED_MODE:-auto}"
-            python -m weekly_learning.cli cycle --mode "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+            mode="${REQUESTED_MODE:-preflight}"
+            case "$mode" in
+              preflight|capture|prepare) python -m weekly_learning.cli "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
+              select) test -n "$REQUESTED_CANDIDATE"; python -m weekly_learning.cli select --candidate "$REQUESTED_CANDIDATE" ;;
+              dry-run|auto) python -m weekly_learning.cli cycle --mode "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
+              *) exit 1 ;;
+            esac
           fi
       - name: Summarise without paid artifact/cache storage
         if: always()
@@ -71,19 +85,30 @@ jobs:
           python - <<'PY'
           import os, subprocess
           from pathlib import Path
-          paths=['weekly_learning_state']
+          root=Path('weekly_learning_state')
+          # Quarantined unadmitted downloads/builds must never be published.
+          paths=[str(p) for p in root.iterdir() if p.name not in {'sources','builds'} and not p.name.endswith('.lock') and not p.name.startswith('.')]
+          import json
+          from weekly_learning.admission import validate_receipt
+          policy=json.loads(Path('weekly_learning/policy.json').read_text())
+          for source in (root/'sources').glob('*'):
+              receipt=source/'operational_admission.json'
+              if receipt.exists():
+                  try:
+                      validate_receipt(Path.cwd(),receipt,policy)
+                  except (OSError,ValueError,KeyError,TypeError):
+                      continue  # Failed/quarantined packs never enter git.
+                  paths.append(str(source))
           if os.environ['CYCLE_OUTCOME']=='success':
-              paths += ['research_active_inference.json']
               paths += [str(p) for p in Path('research_inference_releases').glob('weekly-*')]
-          else:
-              subprocess.run(['git','restore','--','research_active_inference.json'],check=True)
-          subprocess.run(['git','add','--',*paths],check=True)
+          if paths:
+              subprocess.run(['git','add','--',*paths],check=True)
           PY
           if git diff --cached --quiet; then exit 0; fi
           python - <<'PY'
           import subprocess
           paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
-          assert paths and all(p.startswith('weekly_learning_state/') or p.startswith('research_inference_releases/weekly-') or p=='research_active_inference.json' for p in paths)
+          assert paths and all(p.startswith('weekly_learning_state/') or p.startswith('research_inference_releases/weekly-') for p in paths)
           assert not any(p.endswith('.lock') or '/.stage-' in p for p in paths)
           PY
           git config user.name 'NFL research learning automation'
@@ -91,7 +116,5 @@ jobs:
           git commit -m 'Archive weekly research learning cycle'
           # A concurrent branch update rejects this normal push. Never force/rebase/retry.
           git push origin "HEAD:refs/heads/$RESEARCH_BRANCH"
-# GitHub schedules/dispatch registration require this workflow on the default branch.
-# Adding it to main needs separate merge approval; this PR does not activate a schedule.
-# Only validated research inference selection may change; production pointers, credentials,
-# Supabase, bankroll, quota repository and original trained models are never written.
+# No schedule is active here. Default-branch registration templates live in ops/.
+# Approval is required before registering manual dispatch or recurring schedules.

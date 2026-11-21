@@ -74,7 +74,10 @@ def recorded_context(release_id, prediction, cutoff):
 
 
 def attach_context(rows, release):
-    if release.get("release_type") != "research_frozen_model_inference_v1":
+    if release.get("release_type") not in {
+        "research_frozen_model_inference_v1",
+        "prospective_frozen_model_inference_v2",
+    }:
         return rows
     players, defenses, teams = recorded_context(
         release["release_id"], release["prediction_at"], release["feature_data_cutoff"]

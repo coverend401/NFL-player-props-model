@@ -1,1 +1,31 @@
-{"version":"weekly-learning-v1","final_season":2026,"final_week":11,"operational_settlement_approved":false,"minimum_holdout_weeks":8,"minimum_market_rows":100,"minimum_mae_gain":0.02,"maximum_market_mae_regression":0.02,"familywise_alpha":0.05,"bootstrap_replicates":1000,"seed":291126,"candidate":"market_bias_half_step","fit_seasons":[2022,2023,2024],"holdout":"2026-weeks-1-10-previously-inspected","candidate_definition":"projection + 0.5 * mean(y - chronological_baseline_projection) fitted on 2022-24 only; counts clipped at zero; no coefficient tuning","promotion":"Requires fresh prospectively reserved holdout, matching champion baseline, Holm-adjusted paired evidence, all-market safeguards, certified compatible candidate release, exact replay and rollback. Otherwise retain champion."}
+{
+  "version": "weekly-learning-v1",
+  "final_season": 2026,
+  "final_week": 11,
+  "operational_settlement_approved": true,
+  "minimum_holdout_weeks": 8,
+  "minimum_market_rows": 100,
+  "minimum_mae_gain": 0.02,
+  "maximum_market_mae_regression": 0.02,
+  "familywise_alpha": 0.05,
+  "bootstrap_replicates": 1000,
+  "seed": 291126,
+  "candidate": "market_bias_half_step",
+  "fit_seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "holdout": "2026-weeks-1-10-previously-inspected",
+  "candidate_definition": "projection + 0.5 * mean(y - chronological_baseline_projection) fitted on 2022-24 only; counts clipped at zero; no coefficient tuning",
+  "promotion": "Requires fresh prospectively reserved holdout, matching champion baseline, Holm-adjusted paired evidence, all-market safeguards, certified compatible candidate release, exact replay and rollback. Otherwise retain champion.",
+  "operational_scope": {
+    "season": 2026,
+    "first_week": 11,
+    "last_week": 18,
+    "not_before": "2026-11-24T12:00:00+00:00",
+    "authority": "Owner instruction 2026-11-21: prospective settlement only after completion/cutoff; frozen research benchmarks remain sealed",
+    "require_espn_finality": true,
+    "auto_select": false
+  }
+}

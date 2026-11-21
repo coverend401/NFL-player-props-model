@@ -2,14 +2,15 @@
 
 import argparse
 import json
-import os
 from datetime import UTC, datetime
 from pathlib import Path
 from types import FunctionType
 
 import pandas as pd
 
-from .engine import POLICY, capture, dry_run, evaluate_candidate, reconcile, summaries
+from .engine import POLICY, dry_run, reconcile, summaries
+from .engine import capture as capture_legacy
+from .selection import capture_current as capture
 from .sources import fetch, load_results, permitted
 from .store import ROOT, Store, encoded, safe_id, sha
 
@@ -17,21 +18,54 @@ from .store import ROOT, Store, encoded, safe_id, sha
 def freeze_prepared(store, directory, manifest):
     # Freeze the next slate before selection and before any Thursday cutoff.
     # Reuse the existing capture checks without changing global app selection.
+    from .contract import TYPE
+
+    if manifest.get("release_type") == TYPE:
+        return capture(store, prepared=(directory, manifest))
     namespace = {
-        **capture.__globals__,
+        **capture_legacy.__globals__,
         "resolve_research_release": lambda repo: (directory, manifest),
     }
     isolated = FunctionType(
-        capture.__code__,
+        capture_legacy.__code__,
         namespace,
-        capture.__name__,
-        capture.__defaults__,
-        capture.__closure__,
+        capture_legacy.__name__,
+        capture_legacy.__defaults__,
+        capture_legacy.__closure__,
     )
     return isolated(store)
 
 
-def operational(store, results_week, target_week, cycle_id, source_dir=None):
+def retained_decision(store):
+    prior = store.root / "cycles" / "2026-w09-dryrun-v1"
+    store.validate(prior)
+    decision = json.loads((prior / "report.json").read_text())["candidate"]
+    return {
+        **decision,
+        "accepted": False,
+        "decision": "RETAIN_CHAMPION",
+        "replay_only": True,
+        "holdout": {**decision["holdout"], "replay_only": True},
+        "current_cycle_promotion": "No fresh registered challenger/certification; retrospective decision is not retested",
+    }
+
+
+def script_diagnostics(result):
+    if "final_margin_state_brier" not in result:
+        return {"game_script_brier": None, "game_script_team_games": 0}
+    values = result.dropna(subset=["final_margin_state_brier"]).drop_duplicates(
+        ["game_id", "team"]
+    )
+    return {
+        "game_script_brier": float(values.final_margin_state_brier.mean())
+        if len(values)
+        else None,
+        "game_script_team_games": len(values),
+        "game_script_scope": "Experimental final margin categories, not in-game occupancy",
+    }
+
+
+def _operational(store, results_week, target_week, cycle_id, source_dir=None):
     safe_id(cycle_id)
     existing = store.root / "cycles" / cycle_id
     if existing.exists():
@@ -42,7 +76,13 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
     captured = capture(store)
     document = json.loads((captured / "capture.json").read_text())
     try:
-        permitted(2026, results_week, policy)
+        from .admission import time_gate
+
+        time_gate(
+            policy, 2026, results_week, capture=document
+        ) if results_week >= policy["final_week"] else permitted(
+            2026, results_week, policy
+        )
     except ValueError as error:
         with store.transaction():
             return store.publish(
@@ -53,7 +93,7 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
                         "cycle_id": cycle_id,
                         "completed_at": datetime.now(UTC).isoformat(),
                         "mode": "operational",
-                        "status": "blocked_before_results_access",
+                        "status": "waiting_for_settlement",
                         "reason": str(error),
                         "champion_retained": True,
                         "next_slate": {"status": "blocked", "target_week": target_week},
@@ -66,6 +106,15 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
         raise ValueError(
             "No genuine predecision forecast capture for requested results week; use dry-run explicitly for historical data"
         )
+    finality = {}
+
+    def confirm(path):
+        from .admission import prove_schedule
+
+        finality.update(
+            prove_schedule(ROOT, path, str(captured.relative_to(ROOT)), policy)
+        )
+
     source = (
         Path(source_dir)
         if source_dir
@@ -75,8 +124,23 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             results_week,
             policy,
             forecasting=True,
+            schedule_ready=confirm if results_week >= policy["final_week"] else None,
         )
     )
+    if results_week >= policy["final_week"]:
+        from .admission import approve_snapshot, validate_receipt
+
+        admission = source / "operational_admission.json"
+        if admission.exists():
+            validate_receipt(ROOT, admission, policy)
+        else:
+            approve_snapshot(
+                ROOT,
+                source,
+                str(captured.relative_to(ROOT)),
+                policy,
+                proof=finality or None,
+            )
     players, schedule, teams = load_results(source, 2026, results_week, policy)
     from scripts.build_slate import MARKETS
 
@@ -86,18 +150,25 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
     ].copy()
     context = captured / "experimental_context.parquet"
     if context.exists():
+        import pyarrow.parquet as pq
+
+        available = set(pq.read_schema(context).names)
         extra = pd.read_parquet(
             context,
             columns=[
-                "game_id",
-                "player_id",
-                "market",
-                "expected_attempts",
-                "expected_carries",
-                "p_trailing",
-                "p_close",
-                "p_leading",
-                "expected_margin",
+                name
+                for name in [
+                    "game_id",
+                    "player_id",
+                    "market",
+                    "expected_attempts",
+                    "expected_carries",
+                    "p_trailing",
+                    "p_close",
+                    "p_leading",
+                    "expected_margin",
+                ]
+                if name in available
             ],
         )
         frame = frame.merge(
@@ -111,27 +182,32 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
         raise ValueError("Unsupported canonical market")
     result = reconcile(frame, players, schedule, teams, pd.Timestamp.now(tz="UTC"))
     with store.transaction():
-        decision = evaluate_candidate(store, policy)
-        if decision.get("accepted"):
-            from .promotion import promote
-
-            promote(
-                store,
-                decision,
-                ROOT / decision["candidate_release_path"],
-                document["models"],
-                policy,
-            )
+        decision = retained_decision(store)
         report = {
             "cycle_id": cycle_id,
             "completed_at": datetime.now(UTC).isoformat(),
             "mode": "operational",
+            "status": "completed"
+            if result.status.eq("scored").all()
+            else "completed_with_missing",
             "status_counts": result.status.value_counts().to_dict(),
             "metrics": summaries(result),
             "candidate": decision,
             "champion_retained": not decision.get("accepted", False),
             "capture": document,
             "sources_sha256": sha(source / "sources.json"),
+            "admission_sha256": sha(source / "operational_admission.json")
+            if (source / "operational_admission.json").exists()
+            else None,
+            "code_sha256": {
+                "weekly_learning/" + p.name: sha(p)
+                for p in Path(__file__).parent.glob("*.py")
+            },
+            **script_diagnostics(result),
+            "data_gaps": [
+                "Missing/zero-snap observations are not zero outcomes or confirmed voids",
+                "Team/script comparisons are experimental context, not causal attribution",
+            ],
             "next_slate": {"status": "pending_certification"},
         }
         folder = store.publish(
@@ -140,17 +216,8 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             frames={"reconciled.parquet": result},
             documents={"report.json": report},
         )
-    # Never promote after incomplete reconciliation.
-    if not result.status.eq("scored").all():
-        with store.transaction():
-            store.audit(
-                "next_forecast_blocked",
-                {
-                    "cycle": cycle_id,
-                    "reason": "Incomplete outcomes; last certified release preserved",
-                },
-            )
-        return folder
+    # Normal missing individual targets remain explicit and cannot support promotion.
+    # A fresh champion forecast still requires independent source/eligibility certification.
     from .forecast import prepare_next
 
     # Seal / eligibility / provenance / original replay validator still apply.
@@ -183,22 +250,13 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
             "release_id": manifest["release_id"],
             "manifest_sha256": sha(release / "manifest.json"),
         }
-        pointer = ROOT / "research_active_inference.json"
         with store.transaction():
-            store.publish(
-                "selections",
-                cycle_id,
-                documents={
-                    "previous_pointer.json": json.loads(pointer.read_text()),
-                    "new_pointer.json": selection,
-                },
-            )
             store.publish(
                 "readiness",
                 cycle_id,
                 documents={
                     "readiness.json": {
-                        "status": "certified_candidate_ready_for_selection",
+                        "status": "operational_candidate_certified_not_selected",
                         "target_week": target_week,
                         **selection,
                     }
@@ -208,12 +266,7 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
                 "next_forecast_certified",
                 {"cycle": cycle_id, **selection, "selected": False},
             )
-            # Selection is the final atomic action: earlier failures leave the old pointer.
-            temp = ROOT / ".research-learning-pointer.next.json"
-            with temp.open("x") as f:
-                f.write(encoded(selection))
-            os.replace(temp, pointer)
-    except (ValueError, OSError, KeyError) as error:
+    except (ValueError, OSError, KeyError, AssertionError) as error:
         with store.transaction():
             store.publish(
                 "readiness",
@@ -238,9 +291,47 @@ def operational(store, results_week, target_week, cycle_id, source_dir=None):
     return folder
 
 
+def operational(store, results_week, target_week, cycle_id, source_dir=None):
+    try:
+        return _operational(store, results_week, target_week, cycle_id, source_dir)
+    except (OSError, ValueError, KeyError, TypeError, AssertionError) as error:
+        existing = store.root / "cycles" / cycle_id
+        if existing.exists():
+            with store.transaction():
+                store.audit(
+                    "operational_stage_failed",
+                    {
+                        "cycle": cycle_id,
+                        "error_type": type(error).__name__,
+                        "reason": str(error),
+                    },
+                )
+            return existing
+        with store.transaction():
+            return store.publish(
+                "cycles",
+                cycle_id,
+                documents={
+                    "report.json": {
+                        "cycle_id": cycle_id,
+                        "completed_at": datetime.now(UTC).isoformat(),
+                        "mode": "operational",
+                        "status": "blocked_results_integrity",
+                        "reason": str(error),
+                        "error_type": type(error).__name__,
+                        "champion_retained": True,
+                        "next_slate": {"status": "blocked", "target_week": target_week},
+                    }
+                },
+            )
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("command", choices=["capture", "cycle", "replay"])
+    parser.add_argument(
+        "command",
+        choices=["capture", "cycle", "replay", "preflight", "prepare", "select"],
+    )
     parser.add_argument(
         "--mode", choices=["dry-run", "operational", "auto"], default="dry-run"
     )
@@ -249,9 +340,31 @@ def main():
     parser.add_argument("--target-week", type=int, default=12)
     parser.add_argument("--id", default="2026-w09-dryrun-v1")
     parser.add_argument("--sources", type=Path)
+    parser.add_argument("--candidate", type=Path)
+    parser.add_argument("--refresh-fixtures", action="store_true")
     args = parser.parse_args()
     safe_id(args.id)
     store = Store(args.state)
+    if args.command == "preflight":
+        from .operations import preflight
+
+        print(encoded(preflight(store, refresh_fixtures=args.refresh_fixtures)))
+        return
+    if args.command == "prepare":
+        from .operations import prepare_latest
+
+        result = prepare_latest(store, args.id)
+        print(encoded(result))
+        if result.get("status") == "blocked":
+            raise SystemExit(2)
+        return
+    if args.command == "select":
+        if args.candidate is None:
+            raise ValueError("--candidate is required for explicit research selection")
+        from .selection import select
+
+        print(encoded(select(store, args.candidate)))
+        return
     if args.command == "replay":
         from .replay import verify
 
@@ -264,32 +377,37 @@ def main():
         out = dry_run(store, args.week, args.id)
     elif args.mode == "auto":
         captured = capture(store)
-        doc = json.loads((captured / "capture.json").read_text())
-        last = max(pd.Timestamp(t) for t in doc["game_kickoffs"].values())
-        if pd.Timestamp.now(tz="UTC") < last + pd.Timedelta(hours=8):
-            print(
-                encoded(
-                    {
-                        "status": "forecasts_captured_waiting_for_completed_games",
-                        "capture": str(captured),
-                    }
-                )
-            )
-            return
+        json.loads((captured / "capture.json").read_text())
         frame = pd.read_parquet(captured / "forecasts.parquet", columns=["week"])
         week = int(frame.week.max())
         out = operational(store, week, week + 1, args.id, args.sources)
     else:
         out = operational(store, args.week, args.target_week, args.id, args.sources)
+    report_path = out / "report.json"
+    status = (
+        json.loads(report_path.read_text()).get("status")
+        if report_path.exists()
+        else None
+    )
+    readiness = store.root / "readiness" / args.id / "readiness.json"
+    blocked = str(status).startswith("blocked") or (
+        readiness.exists()
+        and json.loads(readiness.read_text()).get("status") == "blocked"
+    )
     print(
         encoded(
             {
+                "status": status,
+                "blocked": blocked,
                 "artifact": str(out),
                 "production_changed": False,
                 "model_retrained": False,
             }
         )
     )
+
+    if blocked:
+        raise SystemExit(2)
 
 
 if __name__ == "__main__":
