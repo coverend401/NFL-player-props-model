@@ -52,7 +52,13 @@ class OperationalTests(unittest.TestCase):
             read.assert_not_called()
 
     def test_preflight_no_results_or_network(self):
+        # Exercise the sealed preflight, not the Python-3.14-only model loader.
+        # Keep real capture-integrity checks; runtime compatibility has its own tests.
         with (
+            patch(
+                "weekly_learning.selection.resolve_current",
+                return_value=(None, {"release_id": "research-week11-frozen-20261120-r2"}),
+            ) as resolve,
             patch("requests.get") as get,
             patch(
                 "weekly_learning.operations.time_gate", side_effect=ValueError("closed")
@@ -61,7 +67,9 @@ class OperationalTests(unittest.TestCase):
             result = preflight(
                 Store(ROOT / "weekly_learning_state"), record_capture=False
             )
+        resolve.assert_called_once_with()
         self.assertTrue(result["capture_valid"])
+        self.assertEqual(result["status"], "waiting_for_settlement")
         self.assertFalse(result["source_results_accessed"])
         self.assertFalse(result["candidate_generated"])
         get.assert_not_called()
