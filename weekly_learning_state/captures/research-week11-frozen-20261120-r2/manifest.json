@@ -1,0 +1,12 @@
+{
+  "files": {
+    "capture.json": "248118f4070de15a81f30f3601bd33253bffc2ad9393f79d04727f4623690800",
+    "experimental_context.parquet": "b93e240c4b384765563ca5d381234a3469f7c5bf8def3cb8684ae43a11b25b1a",
+    "forecasts.parquet": "03fa5df3550258229daa2dcf6d23d623d47d4a04667394ba2adeb5a19eb68152",
+    "release_manifest.json": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+    "top_picks.parquet": "7a206c5a5c86c5e647cb556486203ace647e7fe2168278e0725ec7e9f3d3bb09"
+  },
+  "id": "research-week11-frozen-20261120-r2",
+  "kind": "captures",
+  "schema": 1
+}

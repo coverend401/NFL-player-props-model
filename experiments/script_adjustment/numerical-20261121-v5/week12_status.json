@@ -1,0 +1,12 @@
+{
+  "blocker": "Week11 operational settlement gate is closed until2026-11-24T12:00Z and fresh Week12 roster/depth/inference admission are not yet available; no Week11 eligibility recycled",
+  "fixture_plan": "weekly_learning_state/plans/week12-fixtures-20261121/plan.json",
+  "fixture_plan_sha256": "0a35c7c8a1e6e914cc76bc4622951e51c89f30158c89e8744c6c9f833ee25db6",
+  "fixtures": 16,
+  "forecast_release_selected": false,
+  "history": "Existing permitted2026weeks1-10 only; no Week11 outcomes accessed",
+  "player_candidate_certified": false,
+  "player_forecasts_generated": false,
+  "prediction_at": "2026-11-21T16:41:04.243324+00:00",
+  "preview": "Team predictions only, captured earlier than T-60 and not a certified player slate"
+}

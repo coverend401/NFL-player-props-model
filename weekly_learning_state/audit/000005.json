@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-21T12:14:35.896694+00:00",
+  "details": {
+    "id": "week12-fixtures-20261121",
+    "kind": "plans",
+    "manifest_sha256": "2e6bab6d6794f760184d53293ff29f31eff27706433dd58b99de3c131482c924"
+  },
+  "previous_sha256": "b72ccbb916e7118256f8b39b74becf5de2fc752694a7aebee03216285d429146"
+}

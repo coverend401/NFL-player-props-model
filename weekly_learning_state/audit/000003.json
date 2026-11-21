@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-20T22:48:57.710047+00:00",
+  "details": {
+    "id": "f99c7153b219d34534f6",
+    "kind": "candidates",
+    "manifest_sha256": "2c6365cc527d9560b59571be9688194383e858940d284d05d711e184f1b1fbd1"
+  },
+  "previous_sha256": "f76fb430e095c0145277ff02edfa89d3c6e64319b174cd82bc50de552c5139c5"
+}

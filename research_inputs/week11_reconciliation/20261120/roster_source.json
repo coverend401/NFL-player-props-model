@@ -1,0 +1,10 @@
+{
+  "url": "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2026.parquet",
+  "retrieval_started_at": "2026-11-20T09:59:12.445067+00:00",
+  "http_status": 200,
+  "bytes": 567138,
+  "sha256": "db552de9890a89e524431902e7644432ba3c23a6185f2688bbb5a69b21a1870d",
+  "last_modified": "Fri, 20 Nov 2026 07:04:12 GMT",
+  "retrieved_at": "2026-11-20T09:59:13.147168+00:00",
+  "status": "downloaded"
+}

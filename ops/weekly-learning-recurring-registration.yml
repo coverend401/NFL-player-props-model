@@ -1,0 +1,14 @@
+# REVIEW TEMPLATE ONLY: separate explicit approval required before activation.
+name: Scheduled research weekly learning
+on:
+  schedule:
+    - cron: '0 12 * * 2'
+    - cron: '0 10 * * 5'
+    - cron: '0 7 * * 0'
+permissions:
+  contents: write
+jobs:
+  research:
+    uses: coverend401/NFL-player-props-model/.github/workflows/weekly_learning.yml@sportsgameodds-free-feasibility
+    with:
+      mode: ${{ github.event.schedule == '0 12 * * 2' && 'auto' || 'prepare' }}

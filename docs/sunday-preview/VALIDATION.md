@@ -1,0 +1,37 @@
+# Sunday preview validation checkpoint
+
+14 November 2026. No production change, merge, paid resource, scheduled collection or fitting.
+
+- Python 3.14 full regression suite: **249 tests passed**. After the final paired-price display/data-quality updates, **71 focused tests passed** (odds/probe, private quota, research authentication and matchup evidence).
+- Private quota tests cover private-repository enforcement, rejection of the production repository, missing/corrupt state, no automatic reset even when provider usage falls, conditional SHA conflict detection, conflict fail-closed, persistence across new clients, lifetime and rate caps, sticky halt, no provider data/credentials in state and the actual Amateur schema without a reset timestamp.
+- Game-script tests cover distinct QB-response hypotheses, missing-history handling, contact-label union (no double counting), snapshot/release integrity, predecision timestamps, all 12 fixtures and unsealed history IDs, authentication failure before data, password-rotation session invalidation, and the descriptive cards without any network call.
+- Source eligibility: 2026 REG weeks below 11, completed game IDs only; NGS week-zero season aggregates excluded. PFR and NGS source bytes were captured before upcoming decisions with SHA-256 provenance. Original historical publication times remain unverified. No coverage/participation postseason charts used.
+- Production files, dependency locks, all nine model artifacts, forecasts, pricing, authentication, Supabase/ledger/bankroll, frozen research source/benchmarks and sealed-period protections are unchanged. The preview is a separate password-gated entry point.
+
+Pending integration gates: the current GitHub integration returned 403 for the approved creation of a separate private repository. Owner setup of that free repository and a narrowly scoped secret has been requested. No odds event has been requested. Actual seven-market/William Hill/Unibet coverage, UK region/rules, object consumption, research hosting and authenticated iPhone verification remain unverified. The approved hosting still needs an authenticated deployment connection or an owner create-app step. No new app URL exists at this checkpoint.
+
+Mobile Chromium 390px checks passed for both views: document width and scroll width both 390px, no rendering errors. Game-script content and switching to its tab were verified; physical iPhone Safari remains an owner acceptance check. Synthetic odds are used only for local layout tests, clearly labelled; those screenshots are not actual coverage evidence. Final-head CI and any authenticated follow-up results are recorded on PR #8.
+
+An explicit real conditional-write proof is now mandatory before provider calls. The manual bootstrap tests verify actual protocol ordering, rejection of an unsafe CAS implementation, private-only setup and preservation of existing budgets. Private hosted deployment still needs owner authentication/configuration; approval alone does not supply those credentials or tools.
+
+## Authenticated follow-up: 15 November, approximately 00:00 UTC
+
+The separately approved private repository `coverend401/nfl-props-research-quota` is accessible. Real existing-file SHA conditional updates, stale-SHA rejection and fresh-client persistence passed. The proof flag persists; no budget was reset. Its checkout was added without discarding the preserved initial branch or modifying the model checkout.
+
+The active $0 Amateur account authenticated successfully. Provider-reported consumption after the bounded probes is **14 / 2,500 monthly objects**, leaving **2,486**. The durable counter conservatively reserves **16 lifetime objects**, leaving **1,984** under its separate 2,000-object cap. These are different counters; remaining effective capacity also includes the provider-usage/headroom check. No reset timestamp is supplied, so the lifetime counter does not reset. No sticky halt was present. Local rate limit remains six HTTP calls/minute versus the documented ten.
+
+All **12 Sunday fixtures** were returned across bounded future-only windows. William Hill and Unibet returned **zero usable canonical player-prop quotes across all seven requested markets** at capture. They supplied game-level moneyline/spread records, which were not substituted for player prices. Availability may change, but neither later coverage nor UK product equivalence is established.
+
+A one-event FanDuel control returned **56 real side quotes / 28 Over-Under pairs across all seven canonical markets**, including provider update timestamps and lines. This establishes free-tier player-prop access, not UK suitability. FanDuel is not offered as a UK replacement. Actual response bodies remain outside GitHub in private local files; no provider prices or credentials are committed. These are coverage observations, not betting results.
+
+**Hosting gate remains unmet:** sufficient UK player-prop coverage and bookmaker product/settlement verification have not passed. No research app has been deployed and no URL exists. The separate descriptive game-script view is prepared, but deployment of a game-script-only preview would require the owner to accept that reduced scope. Production main remains `ad6b545e2a0e132d336806aa56a99fbee0e9cd04`; the legacy updater remains disabled. Earlier pending-access statements above describe historical checkpoints and are superseded by this follow-up.
+
+## Approved US-benchmark revision
+
+Following explicit scope approval, a genuine one-event FanDuel/DraftKings/BetMGM request returned **155 side quotes across all seven canonical categories**. At original capture time, the benchmark implementation matched **26 player markets**, with **18 three-book medians and 8 two-book medians**, covering the nine Stage 1A market variants. Unpaired sides were excluded. These are response/matching counts, not betting performance or guaranteed later availability. Total provider consumption is now **15/2,500**, with **17 lifetime objects reserved**. No paid source, model fitting, outcome access or production change.
+
+Main lines use explicit primary flags or scalar bookmaker quotes under the documented `includeAltLines=false` request. Raw absent flags remain absent; explicit alternate flags stay excluded. Exact compact full-name spacing/punctuation equivalence is allowed only with unique player identity, team and fixture; ambiguous matches fail closed. No fuzzy similarity matching. Freshness, forecast availability, release identity, complete forecasts, paired lines and T−60 cutoffs apply to medians. UK/rules eligibility is not asserted by market benchmarks. The old selection/pricing path remains separate and unchanged apart from this deterministic name-matching fix and added provenance field.
+
+The updated synthetic Market Intelligence cards passed a Chromium **390px** check: viewport/scroll width **390/390**, zero Streamlit rendering exceptions. This is a synthetic layout check, not live pricing evidence or physical iPhone acceptance. Browser deployment instructions and remaining owner acceptance checks are in DEPLOY-US-BENCHMARK.md.
+
+Final focused regression pass: **78 tests passed**, including seven new benchmark/preview tests. Ruff and whitespace checks are required before push. The existing full regression run and final-head CI are reported separately rather than inferred from this focused pass.

@@ -1,0 +1,126 @@
+{
+  "eligibility": "Fresh target-week roster/depth evidence required after settlement; no prior-week eligibility reuse",
+  "fixtures": [
+    {
+      "away_team": "GB",
+      "game_id": "2026_12_GB_LA",
+      "home_team": "LA",
+      "kickoff_at": "2026-11-26T01:00:00+00:00",
+      "roof": "dome"
+    },
+    {
+      "away_team": "CHI",
+      "game_id": "2026_12_CHI_DET",
+      "home_team": "DET",
+      "kickoff_at": "2026-11-26T18:00:00+00:00",
+      "roof": "dome"
+    },
+    {
+      "away_team": "PHI",
+      "game_id": "2026_12_PHI_DAL",
+      "home_team": "DAL",
+      "kickoff_at": "2026-11-26T21:30:00+00:00",
+      "roof": ""
+    },
+    {
+      "away_team": "KC",
+      "game_id": "2026_12_KC_BUF",
+      "home_team": "BUF",
+      "kickoff_at": "2026-11-27T01:20:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "DEN",
+      "game_id": "2026_12_DEN_PIT",
+      "home_team": "PIT",
+      "kickoff_at": "2026-11-27T20:00:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "NO",
+      "game_id": "2026_12_NO_CIN",
+      "home_team": "CIN",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "LV",
+      "game_id": "2026_12_LV_CLE",
+      "home_team": "CLE",
+      "kickoff_at": "2026-11-30T01:20:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "BAL",
+      "game_id": "2026_12_BAL_HOU",
+      "home_team": "HOU",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": ""
+    },
+    {
+      "away_team": "NYG",
+      "game_id": "2026_12_NYG_IND",
+      "home_team": "IND",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": ""
+    },
+    {
+      "away_team": "NYJ",
+      "game_id": "2026_12_NYJ_MIA",
+      "home_team": "MIA",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "ATL",
+      "game_id": "2026_12_ATL_MIN",
+      "home_team": "MIN",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": "dome"
+    },
+    {
+      "away_team": "TEN",
+      "game_id": "2026_12_TEN_JAX",
+      "home_team": "JAX",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "WAS",
+      "game_id": "2026_12_WAS_ARI",
+      "home_team": "ARI",
+      "kickoff_at": "2026-11-29T21:25:00+00:00",
+      "roof": ""
+    },
+    {
+      "away_team": "SEA",
+      "game_id": "2026_12_SEA_SF",
+      "home_team": "SF",
+      "kickoff_at": "2026-11-29T21:25:00+00:00",
+      "roof": "outdoors"
+    },
+    {
+      "away_team": "NE",
+      "game_id": "2026_12_NE_LAC",
+      "home_team": "LAC",
+      "kickoff_at": "2026-11-29T21:05:00+00:00",
+      "roof": "dome"
+    },
+    {
+      "away_team": "CAR",
+      "game_id": "2026_12_CAR_TB",
+      "home_team": "TB",
+      "kickoff_at": "2026-12-01T01:15:00+00:00",
+      "roof": "outdoors"
+    }
+  ],
+  "forecasts_generated": false,
+  "outcome_columns_read": false,
+  "season": 2026,
+  "source": {
+    "retrieved_at": "2026-11-21T12:14:35.876112+00:00",
+    "sha256": "698f58823327874e9ee83498f6308064dfc9239ec221b4e14e4d1266f610b1d4",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.parquet"
+  },
+  "week": 12
+}

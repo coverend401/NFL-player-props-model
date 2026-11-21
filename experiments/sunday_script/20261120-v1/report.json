@@ -1,0 +1,1052 @@
+{
+  "protocol": {
+    "version": "sunday-script-v1",
+    "decision_minutes": 60,
+    "availability_lag_hours": 36,
+    "history_games": 8,
+    "ridge_alpha": 100,
+    "strength_candidates": [
+      0,
+      0.25,
+      0.5,
+      1
+    ],
+    "adjustment_fit_seasons": [
+      2022,
+      2023,
+      2024
+    ],
+    "selection_season": 2025,
+    "holdout_season": 2026,
+    "last_holdout_week": 10,
+    "minimum_mae_gain": 0.02,
+    "bootstrap_replicates": 500,
+    "seed": 221126,
+    "scenario_definition": "FINAL margin below -7 / between -7 and 7 inclusive / above 7; NOT in-game lead/trail occupation",
+    "evidence_tier": "retrospective revised statistics with 36-hour availability proxy, not verified historical publication",
+    "activation": "experimental table only; no certified forecast/probability changes; previously inspected development periods are not a fresh independent test"
+  },
+  "source_release": "research-week11-frozen-20261120-r2",
+  "team_volume_missing_rows": 9712,
+  "baseline_description": "Archived Stage 1B chronological point models, not the November-trained live nine models; 2026 predictions regenerated on refreshed cutoff-safe inputs.",
+  "team_scenario_definition": "FINAL margin below -7 / between -7 and 7 inclusive / above 7; NOT in-game lead/trail occupation",
+  "team_metrics": [
+    {
+      "season": 2022,
+      "n": 271,
+      "mae": 9.08431172764325,
+      "rmse": 11.817460982771692,
+      "bias": 0.1789978500118804,
+      "win_brier": 0.22900512295078404,
+      "win_log_loss": 0.6500152895296287,
+      "scenario_brier": 0.620626758335652,
+      "scenario_log_loss": 1.0201047680988111
+    },
+    {
+      "season": 2023,
+      "n": 272,
+      "mae": 10.397480749543005,
+      "rmse": 13.537459605249818,
+      "bias": -0.4192304473433226,
+      "win_brier": 0.230861886406536,
+      "win_log_loss": 0.6535083514887681,
+      "scenario_brier": 0.609456872449385,
+      "scenario_log_loss": 1.0038226636407397
+    },
+    {
+      "season": 2024,
+      "n": 272,
+      "mae": 10.370016425697216,
+      "rmse": 13.490086159554421,
+      "bias": 0.3640638091016385,
+      "win_brier": 0.22798847924740706,
+      "win_log_loss": 0.6482036163641862,
+      "scenario_brier": 0.6063736261639662,
+      "scenario_log_loss": 0.9986697674634516
+    },
+    {
+      "season": 2025,
+      "n": 272,
+      "mae": 10.340692671702023,
+      "rmse": 13.189710294047362,
+      "bias": 0.14969583888743584,
+      "win_brier": 0.22283911341072848,
+      "win_log_loss": 0.6351300949839098,
+      "scenario_brier": 0.6140944827592144,
+      "scenario_log_loss": 1.0061114592689844
+    },
+    {
+      "season": 2026,
+      "n": 150,
+      "mae": 10.10288554526783,
+      "rmse": 12.702215541432198,
+      "bias": 2.8545184300519524,
+      "win_brier": 0.22775099034527918,
+      "win_log_loss": 0.6449011512062301,
+      "scenario_brier": 0.6267793013518181,
+      "scenario_log_loss": 1.0261146858998849
+    }
+  ],
+  "player_metrics": [
+    {
+      "market": "passing_yards",
+      "baseline": {
+        "n": 311,
+        "mae": 67.86145970187218,
+        "rmse": 84.2488423681768,
+        "bias": 1.2638889378516156
+      },
+      "adjusted": {
+        "n": 311,
+        "mae": 67.86145970187218,
+        "rmse": 84.2488423681768,
+        "bias": 1.2638889378516156
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 311,
+          "mae": 67.86145970187218,
+          "rmse": 84.2488423681768,
+          "bias": 1.2638889378516156,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 311,
+          "mae": 67.92029864118687,
+          "rmse": 84.37258453939535,
+          "bias": 1.189905026649867,
+          "paired_mae_delta95": [
+            -0.4873312961472055,
+            0.6800819377300708
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 311,
+          "mae": 68.14542367083993,
+          "rmse": 84.8107632759558,
+          "bias": 1.1159211154481161,
+          "paired_mae_delta95": [
+            -0.8197317857278471,
+            1.491328436514491
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 311,
+          "mae": 69.07543513671149,
+          "rmse": 86.60791852351416,
+          "bias": 0.9679532930446186,
+          "paired_mae_delta95": [
+            -0.9365105159316092,
+            3.513319458281869
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 149
+    },
+    {
+      "market": "passing_attempts",
+      "baseline": {
+        "n": 311,
+        "mae": 8.254139923560565,
+        "rmse": 10.786294529752094,
+        "bias": -0.19577488440587357
+      },
+      "adjusted": {
+        "n": 311,
+        "mae": 8.254139923560565,
+        "rmse": 10.786294529752094,
+        "bias": -0.19577488440587357
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 311,
+          "mae": 8.254139923560565,
+          "rmse": 10.786294529752094,
+          "bias": -0.19577488440587357,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 311,
+          "mae": 8.240892681858561,
+          "rmse": 10.779961186075615,
+          "bias": -0.37941622380696155,
+          "paired_mae_delta95": [
+            -0.04428768235948783,
+            0.01610305748321689
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 311,
+          "mae": 8.234695182269157,
+          "rmse": 10.779668205680114,
+          "bias": -0.5630575632080492,
+          "paired_mae_delta95": [
+            -0.08169903777267343,
+            0.04032533737006715
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 311,
+          "mae": 8.23447618893425,
+          "rmse": 10.797195163958547,
+          "bias": -0.9303402420102251,
+          "paired_mae_delta95": [
+            -0.1460594682244372,
+            0.09352552715503856
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 149
+    },
+    {
+      "market": "completions",
+      "baseline": {
+        "n": 311,
+        "mae": 5.599355922787866,
+        "rmse": 7.158338230593905,
+        "bias": 0.5410650503295913
+      },
+      "adjusted": {
+        "n": 311,
+        "mae": 5.599355922787866,
+        "rmse": 7.158338230593905,
+        "bias": 0.5410650503295913
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 311,
+          "mae": 5.599355922787866,
+          "rmse": 7.158338230593905,
+          "bias": 0.5410650503295913,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 311,
+          "mae": 5.6063586243999515,
+          "rmse": 7.14635000085701,
+          "bias": 0.3329957963599535,
+          "paired_mae_delta95": [
+            -0.019529154889569394,
+            0.03254709550635799
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 311,
+          "mae": 5.619972364548379,
+          "rmse": 7.142399033798542,
+          "bias": 0.12492654239031618,
+          "paired_mae_delta95": [
+            -0.029384897631872173,
+            0.06772301228855848
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 311,
+          "mae": 5.659615331693435,
+          "rmse": 7.158635047325221,
+          "bias": -0.29121196554895873,
+          "paired_mae_delta95": [
+            -0.037609677605083526,
+            0.15230555144986296
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 149
+    },
+    {
+      "market": "rushing_yards",
+      "baseline": {
+        "n": 639,
+        "mae": 21.497718857091865,
+        "rmse": 29.1330634690931,
+        "bias": -0.879909541261386
+      },
+      "adjusted": {
+        "n": 639,
+        "mae": 21.497718857091865,
+        "rmse": 29.1330634690931,
+        "bias": -0.879909541261386
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 639,
+          "mae": 21.497718857091865,
+          "rmse": 29.1330634690931,
+          "bias": -0.879909541261386,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 639,
+          "mae": 21.440537262575187,
+          "rmse": 29.08540354402471,
+          "bias": -1.0595525943417645,
+          "paired_mae_delta95": [
+            -0.11337498853274253,
+            -0.005494356984861488
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 639,
+          "mae": 21.39398930957293,
+          "rmse": 29.049242682503042,
+          "bias": -1.2391956474221424,
+          "paired_mae_delta95": [
+            -0.21345333894528826,
+            -0.002421490259094678
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 639,
+          "mae": 21.3309705496592,
+          "rmse": 29.011576470337456,
+          "bias": -1.5984817535828992,
+          "paired_mae_delta95": [
+            -0.38465990130664474,
+            0.027534471277930902
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 150
+    },
+    {
+      "market": "rushing_attempts",
+      "baseline": {
+        "n": 639,
+        "mae": 3.8887893673797547,
+        "rmse": 5.086801590654093,
+        "bias": -0.44633804711829445
+      },
+      "adjusted": {
+        "n": 639,
+        "mae": 3.8887893673797547,
+        "rmse": 5.086801590654093,
+        "bias": -0.44633804711829445
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 639,
+          "mae": 3.8887893673797547,
+          "rmse": 5.086801590654093,
+          "bias": -0.44633804711829445,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 639,
+          "mae": 3.876970699344069,
+          "rmse": 5.079314584400697,
+          "bias": -0.44343464479555095,
+          "paired_mae_delta95": [
+            -0.020652589306285316,
+            -0.0032547203390678576
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 639,
+          "mae": 3.8682601178789056,
+          "rmse": 5.074587996098355,
+          "bias": -0.44053124247280745,
+          "paired_mae_delta95": [
+            -0.03855937412770388,
+            -0.004027920433092598
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 639,
+          "mae": 3.8570068076507016,
+          "rmse": 5.073442428023719,
+          "bias": -0.4347244378273205,
+          "paired_mae_delta95": [
+            -0.0651991100487257,
+            -0.0008282194732011382
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 150
+    },
+    {
+      "market": "qb_rushing_yards",
+      "baseline": {
+        "n": 311,
+        "mae": 11.270620834098114,
+        "rmse": 15.013627185577814,
+        "bias": 1.4332759207436079
+      },
+      "adjusted": {
+        "n": 311,
+        "mae": 11.270620834098114,
+        "rmse": 15.013627185577814,
+        "bias": 1.4332759207436079
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 311,
+          "mae": 11.270620834098114,
+          "rmse": 15.013627185577814,
+          "bias": 1.4332759207436079,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 311,
+          "mae": 11.233939036155363,
+          "rmse": 14.958449926732117,
+          "bias": 1.3770258675507765,
+          "paired_mae_delta95": [
+            -0.062712840155981,
+            -0.013451222792509656
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 311,
+          "mae": 11.197657520206558,
+          "rmse": 14.906394234867244,
+          "bias": 1.3207758143579447,
+          "paired_mae_delta95": [
+            -0.1250600259743358,
+            -0.026902445585018926
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 311,
+          "mae": 11.127321414960917,
+          "rmse": 14.8117772272556,
+          "bias": 1.2082757079722812,
+          "paired_mae_delta95": [
+            -0.24746247672893748,
+            -0.05296000683218603
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 149
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "baseline": {
+        "n": 311,
+        "mae": 1.7728077031647116,
+        "rmse": 2.2555610475252426,
+        "bias": 0.234614871207209
+      },
+      "adjusted": {
+        "n": 311,
+        "mae": 1.7728077031647116,
+        "rmse": 2.2555610475252426,
+        "bias": 0.234614871207209
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 311,
+          "mae": 1.7728077031647116,
+          "rmse": 2.2555610475252426,
+          "bias": 0.234614871207209,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 311,
+          "mae": 1.7701734149422461,
+          "rmse": 2.251439291105216,
+          "bias": 0.2305759780722141,
+          "paired_mae_delta95": [
+            -0.005123849292120895,
+            -0.00031249566099503874
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 311,
+          "mae": 1.7675391267197809,
+          "rmse": 2.2475331684747424,
+          "bias": 0.22653708493721914,
+          "paired_mae_delta95": [
+            -0.010247698584241792,
+            -0.0006249913219901081
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 311,
+          "mae": 1.7623173180040674,
+          "rmse": 2.240372273852123,
+          "bias": 0.21845929866722927,
+          "paired_mae_delta95": [
+            -0.02047138458676045,
+            -0.0012059777853902125
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 149
+    },
+    {
+      "market": "receiving_yards",
+      "baseline": {
+        "n": 2018,
+        "mae": 19.257936809828863,
+        "rmse": 27.156244704764777,
+        "bias": -1.4759746889712348
+      },
+      "adjusted": {
+        "n": 2018,
+        "mae": 19.257936809828863,
+        "rmse": 27.156244704764777,
+        "bias": -1.4759746889712348
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 2018,
+          "mae": 19.257936809828863,
+          "rmse": 27.156244704764777,
+          "bias": -1.4759746889712348,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 2018,
+          "mae": 19.245286814293713,
+          "rmse": 27.146633131284712,
+          "bias": -1.4966494392905163,
+          "paired_mae_delta95": [
+            -0.020951458812961045,
+            -0.004244020883714318
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 2018,
+          "mae": 19.23408615643472,
+          "rmse": 27.13850202288331,
+          "bias": -1.5173241896097975,
+          "paired_mae_delta95": [
+            -0.04018280094259292,
+            -0.006782286102996557
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 2018,
+          "mae": 19.213710899523313,
+          "rmse": 27.12668628408055,
+          "bias": -1.5586736902483602,
+          "paired_mae_delta95": [
+            -0.07551103717541421,
+            -0.008747888719747852
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 150
+    },
+    {
+      "market": "receptions",
+      "baseline": {
+        "n": 2018,
+        "mae": 1.4369905916951744,
+        "rmse": 1.907290719312,
+        "bias": -0.02516046911789765
+      },
+      "adjusted": {
+        "n": 2018,
+        "mae": 1.4369905916951744,
+        "rmse": 1.907290719312,
+        "bias": -0.02516046911789765
+      },
+      "relative_mae_gain": 0.0,
+      "paired_mae_delta95": [
+        0.0,
+        0.0
+      ],
+      "selection_weight": 0,
+      "candidate_holdout_metrics": [
+        {
+          "weight": 0,
+          "n": 2018,
+          "mae": 1.4369905916951744,
+          "rmse": 1.907290719312,
+          "bias": -0.02516046911789765,
+          "paired_mae_delta95": [
+            0.0,
+            0.0
+          ]
+        },
+        {
+          "weight": 0.25,
+          "n": 2018,
+          "mae": 1.4315264696709966,
+          "rmse": 1.9074572008025046,
+          "bias": -0.06337083484204299,
+          "paired_mae_delta95": [
+            -0.0076322916346925175,
+            -0.0035265600895492176
+          ]
+        },
+        {
+          "weight": 0.5,
+          "n": 2018,
+          "mae": 1.4268871094459843,
+          "rmse": 1.9085690174452004,
+          "bias": -0.10152973149998974,
+          "paired_mae_delta95": [
+            -0.014396050426408062,
+            -0.0064114251643852364
+          ]
+        },
+        {
+          "weight": 1,
+          "n": 2018,
+          "mae": 1.419440017578183,
+          "rmse": 1.913500176206212,
+          "bias": -0.17725539705468252,
+          "paired_mae_delta95": [
+            -0.02601201263052629,
+            -0.01019272518179573
+          ]
+        }
+      ],
+      "passes_market_gate": false,
+      "weeks": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "games": 150
+    }
+  ],
+  "selection": [
+    {
+      "market": "passing_yards",
+      "fit_n": 1708,
+      "select_n": 580,
+      "strength": 0,
+      "selection_baseline_mae": 68.68932090959471,
+      "candidates": [
+        [
+          68.68932090959471,
+          0
+        ],
+        [
+          68.78570019100863,
+          0.25
+        ],
+        [
+          69.04431245470472,
+          0.5
+        ],
+        [
+          70.2613674186821,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "passing_attempts",
+      "fit_n": 1708,
+      "select_n": 580,
+      "strength": 0,
+      "selection_baseline_mae": 8.397581737811528,
+      "candidates": [
+        [
+          8.397581737811528,
+          0
+        ],
+        [
+          8.367116064382383,
+          0.25
+        ],
+        [
+          8.344148970273668,
+          0.5
+        ],
+        [
+          8.317028506518,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "completions",
+      "fit_n": 1708,
+      "select_n": 580,
+      "strength": 0,
+      "selection_baseline_mae": 5.703634266163998,
+      "candidates": [
+        [
+          5.703634266163998,
+          0
+        ],
+        [
+          5.676625054580966,
+          0.25
+        ],
+        [
+          5.657252693667999,
+          0.5
+        ],
+        [
+          5.647587956547713,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "rushing_yards",
+      "fit_n": 3484,
+      "select_n": 1201,
+      "strength": 0,
+      "selection_baseline_mae": 21.432783012917263,
+      "candidates": [
+        [
+          21.432783012917263,
+          0
+        ],
+        [
+          21.37885494316695,
+          0.25
+        ],
+        [
+          21.33181220337481,
+          0.5
+        ],
+        [
+          21.261644850200334,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "rushing_attempts",
+      "fit_n": 3484,
+      "select_n": 1201,
+      "strength": 0,
+      "selection_baseline_mae": 3.5926814215516174,
+      "candidates": [
+        [
+          3.5926814215516174,
+          0
+        ],
+        [
+          3.5800766188969417,
+          0.25
+        ],
+        [
+          3.5697152964502132,
+          0.5
+        ],
+        [
+          3.555213776489236,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "qb_rushing_yards",
+      "fit_n": 1708,
+      "select_n": 580,
+      "strength": 0,
+      "selection_baseline_mae": 11.475909011951925,
+      "candidates": [
+        [
+          11.475909011951925,
+          0
+        ],
+        [
+          11.46186580505508,
+          0.25
+        ],
+        [
+          11.449369270768605,
+          0.5
+        ],
+        [
+          11.435777188080475,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "fit_n": 1708,
+      "select_n": 580,
+      "strength": 0,
+      "selection_baseline_mae": 1.7547489438037407,
+      "candidates": [
+        [
+          1.7547489438037407,
+          0
+        ],
+        [
+          1.752695564095272,
+          0.25
+        ],
+        [
+          1.75065014582793,
+          0.5
+        ],
+        [
+          1.7477380874796962,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "receiving_yards",
+      "fit_n": 10529,
+      "select_n": 3583,
+      "strength": 0,
+      "selection_baseline_mae": 18.234256373441294,
+      "candidates": [
+        [
+          18.234256373441294,
+          0
+        ],
+        [
+          18.217742865499165,
+          0.25
+        ],
+        [
+          18.202994423927596,
+          0.5
+        ],
+        [
+          18.175150869074663,
+          1
+        ]
+      ]
+    },
+    {
+      "market": "receptions",
+      "fit_n": 10529,
+      "select_n": 3583,
+      "strength": 0,
+      "selection_baseline_mae": 1.402645712754818,
+      "candidates": [
+        [
+          1.402645712754818,
+          0
+        ],
+        [
+          1.395547228964336,
+          0.25
+        ],
+        [
+          1.389110370366128,
+          0.5
+        ],
+        [
+          1.3779651903770236,
+          1
+        ]
+      ]
+    }
+  ],
+  "activation": false,
+  "reason": "Previously inspected development data; no validated in-game state model or player predictive distributions. Certified forecasts unchanged.",
+  "team_games_2026": 150,
+  "player_holdout_rows": 6869
+}

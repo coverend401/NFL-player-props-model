@@ -1,0 +1,153 @@
+[
+  {
+    "bytes": 537345,
+    "eligible_row_counts_by_week": {
+      "1": 1118,
+      "10": 982,
+      "2": 1107,
+      "3": 1114,
+      "4": 1110,
+      "5": 1057,
+      "6": 982,
+      "7": 959,
+      "8": 981,
+      "9": 1036
+    },
+    "filter": "season=2026, week<=10; week>=11 outcomes must not be materialised",
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 05:35:11 GMT",
+    "retrieval_started_at": "2026-11-20T08:52:09.218315+00:00",
+    "retrieved_at": "2026-11-20T08:52:10.100034+00:00",
+    "sha256": "b24c2554ec4bb5b6aaa93470bc0a3b06b3a14548854239abf43c4b91913838ab",
+    "status": "week10_metadata_available",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_player/stats_player_week_2026.parquet",
+    "source_id": "player_stats"
+  },
+  {
+    "bytes": 3663940,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 07:02:02 GMT",
+    "name": "depth",
+    "retrieval_started_at": "2026-11-20T08:53:35.004930+00:00",
+    "retrieved_at": "2026-11-20T08:53:35.854059+00:00",
+    "sha256": "4ae5283d8b7b5759a8787678bbdddb9264327af217f5d41b1b73c0418f05545a",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/depth_charts/depth_charts_2026.parquet",
+    "source_id": "depth"
+  },
+  {
+    "bytes": 764662,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 07:17:43 GMT",
+    "name": "ngs",
+    "retrieval_started_at": "2026-11-20T08:53:34.392118+00:00",
+    "retrieved_at": "2026-11-20T08:53:35.004454+00:00",
+    "sha256": "5f0d18d470115ae4570d572dc90009ca3499acd34f115c649cdcf6b6b31ebc6f",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/nextgen_stats/ngs_passing.parquet",
+    "source_id": "ngs"
+  },
+  {
+    "bytes": 647063,
+    "http_status": 200,
+    "last_modified": "Tue, 17 Nov 2026 14:54:44 GMT",
+    "name": "opportunity",
+    "retrieval_started_at": "2026-11-20T08:53:33.692505+00:00",
+    "retrieved_at": "2026-11-20T08:53:34.391769+00:00",
+    "sha256": "736c3c79681f7bb61cca4a58ca73f17f590ac33f7be736903211cfcff3de09aa",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/ffverse/ffopportunity/releases/download/latest-data/ep_weekly_2026.parquet",
+    "source_id": "opportunity"
+  },
+  {
+    "bytes": 3396509,
+    "http_status": 200,
+    "last_modified": "Wed, 18 Nov 2026 17:12:35 GMT",
+    "name": "players",
+    "retrieval_started_at": "2026-11-20T08:53:32.811947+00:00",
+    "retrieved_at": "2026-11-20T08:53:33.691898+00:00",
+    "sha256": "976d0cb60888ddb4adb0cb248480d795edfc5b6463747a8cba73ec30896abc50",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/players/players.parquet",
+    "source_id": "players"
+  },
+  {
+    "bytes": 567138,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 07:04:12 GMT",
+    "name": "roster",
+    "retrieval_started_at": "2026-11-20T09:59:12.445067+00:00",
+    "retrieved_at": "2026-11-20T09:59:13.147168+00:00",
+    "sha256": "db552de9890a89e524431902e7644432ba3c23a6185f2688bbb5a69b21a1870d",
+    "status": "downloaded",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2026.parquet",
+    "source_id": "roster"
+  },
+  {
+    "bytes": 524117,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 07:36:22 GMT",
+    "name": "schedule",
+    "retrieval_started_at": "2026-11-20T08:53:30.687634+00:00",
+    "retrieved_at": "2026-11-20T08:53:31.385023+00:00",
+    "sha256": "e46d335e3ba2904aad31f7d27df1b3b8188ea5526c63b7c21bffe16094c64c7a",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/schedules/games.parquet",
+    "source_id": "schedule"
+  },
+  {
+    "bytes": 143614,
+    "http_status": 200,
+    "last_modified": "Tue, 17 Nov 2026 12:01:31 GMT",
+    "name": "snaps",
+    "retrieval_started_at": "2026-11-20T08:53:32.037057+00:00",
+    "retrieved_at": "2026-11-20T08:53:32.811612+00:00",
+    "sha256": "d67d94d19caca72e6977fafafc0c073e100bb56bf82561a4f62c043e257bcf77",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.parquet",
+    "source_id": "snaps"
+  },
+  {
+    "bytes": 97078,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 05:35:14 GMT",
+    "name": "team_stats",
+    "retrieval_started_at": "2026-11-20T08:53:31.385543+00:00",
+    "retrieved_at": "2026-11-20T08:53:32.036533+00:00",
+    "sha256": "c40605b5166ea9acc4950f83f3ebf46a64b9fe1397fcd3808641759bc93bd508",
+    "status": "downloaded_not_materialised",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/stats_team/stats_team_week_2026.parquet",
+    "source_id": "team_stats"
+  },
+  {
+    "bytes": 143614,
+    "handling": "Existing core drops unlinked snap IDs; box observations remain observed/missing as supplied",
+    "http_status": 200,
+    "last_modified": "Tue, 17 Nov 2026 12:01:31 GMT",
+    "name": "participation_mapping",
+    "preparation_code_sha256": "ea3220b720dceedd9a62e050adb96467258475eb3d3fcb7ebdebbd5ffedbc196",
+    "retrieval_started_at": "2026-11-20T08:53:32.037057+00:00",
+    "retrieved_at": "2026-11-20T08:53:32.811612+00:00",
+    "sha256": "d67d94d19caca72e6977fafafc0c073e100bb56bf82561a4f62c043e257bcf77",
+    "source_id": "participation_mapping",
+    "status": "downloaded_not_materialised",
+    "unmapped_positive_offensive_snap_rows": {
+      "C": 8,
+      "OL": 1,
+      "RB": 1,
+      "WR": 10
+    },
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/snap_counts/snap_counts_2026.parquet"
+  },
+  {
+    "bytes": 567138,
+    "http_status": 200,
+    "last_modified": "Fri, 20 Nov 2026 07:04:12 GMT",
+    "retrieval_started_at": "2026-11-20T09:59:12.445067+00:00",
+    "retrieved_at": "2026-11-20T09:59:13.147168+00:00",
+    "sha256": "db552de9890a89e524431902e7644432ba3c23a6185f2688bbb5a69b21a1870d",
+    "status": "downloaded",
+    "url": "https://github.com/nflverse/nflverse-data/releases/download/rosters/roster_2026.parquet",
+    "source_id": "roster"
+  }
+]
