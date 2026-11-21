@@ -1,6 +1,6 @@
 # Numerical game-script engine — final research results
 
-Final bundle: `experiments/script_adjustment/numerical-20261121-v4`. **Promotion failed; champion retained.**
+Final bundle: `experiments/script_adjustment/numerical-20261121-v5`. **Promotion failed; champion retained.**
 
 The engine changes player forecasts numerically. It is not activated in Top Picks, Top 2, probabilities, EV or production.
 
@@ -76,3 +76,9 @@ The optional current-season play-by-play refresh is one bounded free nflverse do
 In the existing password-protected research app choose **Game Intelligence → Numerical game-script research**. Expand the forecast comparison and select a fixture/player. **Weekly Learning → Numerical challenger: weekly monitoring** shows prospective reports once games have settled. Current Top Picks and Top 2 remain champion-only.
 
 No new account, paid service, API subscription, hosting, database, dependency or billing feature was introduced. No bookmaker requests were made. Public nflverse sources and existing infrastructure were used. Original release/rollback pointers, production, main, Supabase, authentication and bankroll settings are unchanged. Rollback is the prior research code commit `7dd469e`; original certified bundles never need alteration.
+
+## Cross-CPU numerical replay
+
+v5 preserves all fitted model, forecast, input and metric bytes from v4; v4 and the original pregame capture remain immutable. No refit or method reselection occurred. An alternative BLAS CPU kernel reproduces a maximum 3.55e-15-point margin difference. Recomputed experimental floats use absolute tolerance 1e-10 with zero relative tolerance; this is numerical reproducibility, not bitwise cross-CPU equality. Tests reject larger differences, missing/nonmissing changes and identity changes. Hashes, identities, dtypes, timestamp rules, original champion baseline and all original release validators remain strict.
+
+The complete local regression passed 450 tests before this isolated portability correction. Focused tests also exercise the alternative CPU kernel. Final GitHub checks must be inspected before review readiness is claimed; the initial Python3.14 CI traceback is unavailable because the proxy blocks official log redirect domains.

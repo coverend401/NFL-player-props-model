@@ -10,7 +10,7 @@
     "rushing_attempts": 0,
     "rushing_yards": 0
   },
-  "experiment": "experiments/script_adjustment/numerical-20261121-v4",
+  "experiment": "experiments/script_adjustment/numerical-20261121-v5",
   "promotion_passed": false,
   "sample": {
     "adjusted_rows": 41983,

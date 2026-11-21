@@ -1,4 +1,4 @@
-"""Integrity, temporal boundaries and deterministic prediction replay; no fitting/network."""
+"""Integrity, temporal boundaries and numerical prediction replay; no fitting/network."""
 
 import argparse
 import json
@@ -15,6 +15,28 @@ from weekly_learning.store import ROOT, sha
 from .data import PROTOCOL
 from .players import allocate
 
+# CPU/BLAS reduction order is not bitwise portable. This absolute bound applies
+# only to recomputed experimental floats, never hashes, identities, timestamps,
+# champion projections or original release certification. No relative tolerance.
+REPLAY_ATOL = 1e-10
+REPLAY_POLICY = {
+    "absolute_tolerance": REPLAY_ATOL,
+    "relative_tolerance": 0.0,
+    "scope": "experimental_recomputed_floats_only",
+}
+
+
+def assert_numerical_replay(actual, expected):
+    np.testing.assert_allclose(
+        actual, expected, rtol=0, atol=REPLAY_ATOL, equal_nan=True
+    )
+
+
+def assert_frame_replay(actual, expected):
+    pd.testing.assert_frame_equal(
+        actual, expected, check_exact=False, rtol=0, atol=REPLAY_ATOL
+    )
+
 
 def validate(directory, replay=False):
     directory = Path(directory).resolve()
@@ -25,6 +47,8 @@ def validate(directory, replay=False):
         or m["production_changed"] is not False
     ):
         raise ValueError("Invalid experimental policy")
+    if m.get("numerical_replay_policy") != REPLAY_POLICY:
+        raise ValueError("Experimental numerical replay policy mismatch")
     current = runtime_versions(ROOT)
     if (
         m["runtime"]["python_minor"] != current["python_minor"]
@@ -130,7 +154,10 @@ def validate(directory, replay=False):
         "player_rows": len(players),
         "team_games": len(teams),
         "models_verified": 9,
-        "exact_replay": replay,
+        "numerical_replay": replay,
+        "exact_artifact_integrity": True,
+        "champion_baseline_bitwise": True,
+        "numerical_replay_policy": REPLAY_POLICY,
         "promotion_passed": False,
     }
 
@@ -159,10 +186,9 @@ def replay_payload(directory, players=None, teams=None):
             "expected_attempts",
             "expected_carries",
         ] + [f"prob_cell_{j}" for j in range(15)]
-        pd.testing.assert_frame_equal(
+        assert_frame_replay(
             expected[cols].reset_index(drop=True),
             g[cols].reset_index(drop=True),
-            check_exact=True,
         )
     for (market, year), g in players.groupby(["market", "season"]):
         bundle = joblib.load(
@@ -173,7 +199,7 @@ def replay_payload(directory, players=None, teams=None):
             if bundle["model"] is None
             else bundle["model"].predict(g[bundle["features"]])
         )
-        np.testing.assert_array_equal(mu, g.baseline.to_numpy())
+        assert_numerical_replay(mu, g.baseline.to_numpy())
         model = models["corrections"].get((market, int(year)))
         valid = g.adjustment_features_available & g.baseline_features_complete
         delta = np.zeros(len(g))
@@ -190,7 +216,7 @@ def replay_payload(directory, players=None, teams=None):
 
         if MARKETS[market][3]:
             expected = np.maximum(expected, 0)
-        np.testing.assert_array_equal(expected, g.adjusted.to_numpy())
+        assert_numerical_replay(expected, g.adjusted.to_numpy())
     history = pd.read_parquet(directory / "share_inputs.parquet")
     expected_all = []
     for year, g in teams.groupby("season"):
@@ -212,10 +238,9 @@ def replay_payload(directory, players=None, teams=None):
     expected = pd.concat(expected_all, ignore_index=True)
     actual = pd.read_parquet(directory / "allocation_predictions.parquet")
     keys = ["game_id", "player_id", "category"]
-    pd.testing.assert_frame_equal(
+    assert_frame_replay(
         expected.sort_values(keys).reset_index(drop=True),
         actual.sort_values(keys).reset_index(drop=True),
-        check_exact=True,
     )
     # The current frozen champion projections are copied exactly, never adjusted in place.
     preview = pd.read_parquet(directory / "reference_week11_adjustments.parquet")

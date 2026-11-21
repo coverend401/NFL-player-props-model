@@ -22,7 +22,7 @@ from .players import (
     player_histories,
 )
 
-DEFAULT = ROOT / "experiments/script_adjustment/numerical-20261121-v4"
+DEFAULT = ROOT / "experiments/script_adjustment/numerical-20261121-v5"
 INPUT = ROOT / "research_inputs/script_adjustment/pbp-20261121-v2"
 
 
@@ -269,7 +269,10 @@ def run(output=DEFAULT, work=Path("/tmp/script-adjustment-work-v4")):
     from release_utils import MODEL_NAMES, resolve_release, runtime_versions
 
     champion_data, champion_manifest = resolve_release(ROOT)
+    from .validate import REPLAY_POLICY
+
     manifest = {
+        "numerical_replay_policy": REPLAY_POLICY,
         "schema": 1,
         "runtime": runtime_versions(ROOT),
         "champion_release_id": champion_manifest["release_id"],
@@ -312,14 +315,20 @@ def run(output=DEFAULT, work=Path("/tmp/script-adjustment-work-v4")):
 
 
 def assemble_checkpoint(previous, output=DEFAULT):
-    """Reuse frozen fitted weights after integration-only changes, with exact replay.
+    """Reuse frozen fitted weights after integration/replay portability changes.
 
     This is a new experimental build, never an edit of a certified release.
-    Statistical code/input drift requires a genuine rebuilt experiment instead.
+    Statistical model/input drift requires a genuine rebuilt experiment instead.
+    Validator changes require explicit policy metadata and full numerical replay;
+    this never changes the original release validator or fitted payload.
     """
     previous, output = Path(previous), Path(output)
     old = json.loads((previous / "manifest.json").read_text())
-    permitted_changes = {"script_adjustment/runner.py", "script_adjustment/weekly.py"}
+    permitted_changes = {
+        "script_adjustment/runner.py",
+        "script_adjustment/weekly.py",
+        "script_adjustment/validate.py",
+    }
     for name, digest in old["source_sha256"].items():
         if name not in permitted_changes and sha(ROOT / name) != digest:
             raise ValueError("Statistical source changed; rebuild required: " + name)
@@ -328,12 +337,15 @@ def assemble_checkpoint(previous, output=DEFAULT):
     from .validate import replay_payload
 
     replay_payload(previous)
+    from .validate import REPLAY_POLICY
+
+    old["numerical_replay_policy"] = REPLAY_POLICY
     if output.exists():
         raise ValueError("Immutable assembled output already exists")
     shutil.copytree(previous, output)
     old["assembled_from_manifest_sha256"] = sha(previous / "manifest.json")
     old["assembly_note"] = (
-        "Unchanged fitted numerical payload; integration-only prospective safety guards added; exact prediction replay verified before assembly. No refit, retuning or new evaluation period."
+        "Unchanged fitted numerical payload; explicit absolute-only 1e-10 CPU-portable experimental replay policy. Artifact and model bytes remain identical to parent; original champion baseline copied bitwise. No refit, retuning or new evaluation period."
     )
     old["created_at"] = datetime.now(UTC).isoformat()
     old["source_sha256"] = {

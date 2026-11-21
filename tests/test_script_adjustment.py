@@ -16,6 +16,25 @@ from weekly_learning.store import ROOT, Store
 
 
 class ScriptMathTests(unittest.TestCase):
+    def test_cpu_roundoff_only_replay_preserves_strict_failure_bounds(self):
+        from script_adjustment.validate import (
+            assert_frame_replay,
+            assert_numerical_replay,
+        )
+
+        assert_numerical_replay(np.array([10.0 + 4e-15]), np.array([10.0]))
+        with self.assertRaises(AssertionError):
+            assert_numerical_replay(np.array([10.0 + 1e-8]), np.array([10.0]))
+        with self.assertRaises(AssertionError):
+            assert_numerical_replay(np.array([1e9 + 1e-5]), np.array([1e9]))
+        with self.assertRaises(AssertionError):
+            assert_numerical_replay(np.array([np.nan]), np.array([0.0]))
+        with self.assertRaises(AssertionError):
+            assert_frame_replay(
+                pd.DataFrame({"game_id": ["changed"], "x": [1.0]}),
+                pd.DataFrame({"game_id": ["original"], "x": [1.0]}),
+            )
+
     def test_kneels_spikes_scrambles_and_sacks_have_correct_official_support(self):
         rows = []
         for i, (kind, passed, rush, sack, scramble, kneel) in enumerate(
@@ -310,7 +329,7 @@ class FrozenExperimentTests(unittest.TestCase):
         from script_adjustment.runner import DEFAULT
         from script_adjustment.validate import validate
 
-        self.assertTrue(validate(DEFAULT, replay=True)["exact_replay"])
+        self.assertTrue(validate(DEFAULT, replay=True)["numerical_replay"])
 
     def test_real_research_entrypoint_renders_numerical_and_weekly_views_without_http(
         self,
