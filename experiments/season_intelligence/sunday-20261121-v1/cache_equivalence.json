@@ -1,0 +1,10 @@
+{
+  "baseline_bitwise_equal": true,
+  "current_data_code_sha256": "abdc07abe6e5a00008d71b643defd07201e662de82b578fbe2df1ef580c04ac2",
+  "earlier_data_code_sha256": "d0da0c3541060d85e5837e6cd9ab709049981181ca72b2081a30de6181a174ba",
+  "model_code_unchanged": true,
+  "prepared_panel_bitwise_equal": true,
+  "protocol_unchanged": true,
+  "purpose": "Reuse unchanged training matrices and weights after formatting/import ordering only; no new fit or selection",
+  "raw_source_unchanged": true
+}

@@ -368,6 +368,9 @@ def render(slate, release):
         data8(slate, release)
         player_view(slate, release)
     elif section == "Game Intelligence":
+        from season_intelligence.ui import render as render_season_intelligence
+
+        render_season_intelligence(release)
         from script_adjustment.ui import render as render_numerical
 
         render_numerical(release)

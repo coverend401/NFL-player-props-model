@@ -1,0 +1,160 @@
+"""Hash and temporal validation for isolated intelligence, never production admission."""
+
+import json
+from pathlib import Path
+
+import joblib
+import numpy as np
+import pandas as pd
+
+from release_utils import resolve_release, runtime_versions
+from stage1c.contracts import assert_development
+from weekly_learning.store import ROOT, sha
+
+from .data import CERTIFIED, market_data
+from .experiment import DEFAULT, PROTOCOL
+
+
+def validate(directory=DEFAULT, replay=False):
+    d = Path(directory)
+    m = json.loads((d / "manifest.json").read_text())
+    if (
+        m["status"] != "experimental_not_promoted"
+        or m["activation"]
+        or m["final_period_accessed"]
+    ):
+        raise ValueError("Intelligence policy changed")
+    if sha(PROTOCOL) != m["protocol_sha256"]:
+        raise ValueError("Protocol integrity failed")
+    expected_sources = {
+        str(p.relative_to(ROOT)) for p in (ROOT / "season_intelligence").glob("*.py")
+    }
+    if set(m["source_sha256"]) != expected_sources or any(
+        sha(ROOT / p) != h for p, h in m["source_sha256"].items()
+    ):
+        raise ValueError("Intelligence source integrity failed")
+    actual = {
+        str(p.relative_to(d))
+        for p in d.rglob("*")
+        if p.is_file() and p.name != "manifest.json"
+    }
+    if actual != set(m["files"]):
+        raise ValueError("Intelligence artifact set changed")
+    for p, h in m["files"].items():
+        f = (d / p).resolve()
+        f.relative_to(d.resolve())
+        if (d / p).is_symlink() or sha(f) != h:
+            raise ValueError("Intelligence artifact hash failed: " + p)
+    for path, field in [
+        ("latest_source", "latest_sha256"),
+        ("fallback_source", "fallback_sha256"),
+    ]:
+        a = m["source_reconciliation"]
+        if sha(ROOT / a[path]) != a[field]:
+            raise ValueError("Historical input changed")
+    p = pd.read_parquet(d / "historical_predictions.parquet")
+    assert_development(p)
+    if p.duplicated(["game_id", "player_id", "market"]).any():
+        raise ValueError("Duplicate intelligence prediction")
+    if (
+        not pd.to_datetime(p.model_fit_before, utc=True)
+        .lt(pd.to_datetime(p.prediction_at, utc=True))
+        .all()
+    ):
+        raise ValueError("Future model fit")
+    known = p.history_available_at.notna()
+    if (
+        not pd.to_datetime(p.loc[known, "history_available_at"], utc=True)
+        .lt(pd.to_datetime(p.loc[known, "prediction_at"], utc=True))
+        .all()
+    ):
+        raise ValueError("Future history")
+    view = pd.read_parquet(d / "sunday_forecasts.parquet")
+    original = pd.read_parquet(CERTIFIED / "slate.parquet")
+    from scripts.build_slate import MARKETS
+
+    original["market"] = original.market.map({v: k for k, v in MARKETS.items()})
+    merged = view.merge(
+        original[["game_id", "player_id", "market", "projection", "projection_status"]],
+        on=["game_id", "player_id", "market"],
+        validate="one_to_one",
+    )
+    np.testing.assert_array_equal(merged.baseline, merged.projection)
+    if (
+        not merged.projection_status.eq("complete").all()
+        or view.model_promoted.any()
+        or view.prices_verified.any()
+    ):
+        raise ValueError("Unsupported Sunday promotion/scenario/price")
+    if not np.allclose(view.p_over + view.p_under + view.p_push, 1, rtol=0, atol=1e-12):
+        raise ValueError("Incoherent Sunday probabilities")
+    if (
+        not pd.to_datetime(view.prediction_at, utc=True)
+        .lt(pd.to_datetime(view.kickoff_at, utc=True) - pd.Timedelta(minutes=60))
+        .all()
+    ):
+        raise ValueError("Late Sunday forecast")
+    original_meta = json.loads((CERTIFIED / "manifest.json").read_text())
+    data, _ = resolve_release(ROOT)
+    for market, meta in original_meta["models"].items():
+        if sha(data / f"model_{market}.joblib") != meta["sha256"]:
+            raise ValueError("Original model changed")
+    current = runtime_versions(ROOT)
+    if (
+        m["runtime"]["python_minor"] != current["python_minor"]
+        or m["runtime"]["packages"] != current["packages"]
+    ):
+        raise ValueError("Intelligence runtime mismatch")
+    if replay:
+        historical = joblib.load(d / "research_models.joblib")
+        for (market, year, family), model in historical["models"].items():
+            g = p[p.market.eq(market) & p.season.eq(year)]
+            if (
+                not pd.Timestamp(model.fit_before)
+                < pd.to_datetime(g.prediction_at, utc=True).min()
+            ):
+                raise ValueError("Historical model trained on future information")
+            np.testing.assert_allclose(model.predict(g), g[family], rtol=0, atol=1e-10)
+        states = pd.read_parquet(d / "sunday_feature_states.parquet")
+        bundle = joblib.load(d / "sunday_models.joblib")
+        for market, g in view.groupby("market"):
+            x = g[["game_id", "player_id"]].merge(
+                market_data(states, market),
+                on=["game_id", "player_id"],
+                validate="one_to_one",
+            )
+            np.testing.assert_allclose(
+                bundle["points"][market].predict(x),
+                g.enhanced_candidate,
+                rtol=0,
+                atol=1e-10,
+            )
+            from stage1b.data import MARKETS
+
+            probs = [
+                bundle["laws"][market].price(
+                    r.research_point,
+                    r.position,
+                    MARKETS[market][3],
+                    r.hypothetical_line,
+                )
+                for r in g.itertuples()
+            ]
+            np.testing.assert_allclose(
+                [p["over"] for p in probs], g.p_over, rtol=0, atol=1e-10
+            )
+    return {
+        "historical_rows": len(p),
+        "sunday_rows": len(view),
+        "fixtures": int(view.game_id.nunique()),
+        "replay": replay,
+        "promoted": False,
+    }
+
+
+if __name__ == "__main__":
+    import argparse
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--replay", action="store_true")
+    print(validate(replay=parser.parse_args().replay))
