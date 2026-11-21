@@ -182,3 +182,7 @@ def render():
                 "next_slate": report.get("next_slate"),
             }
         )
+
+    from script_adjustment.ui import render_weekly_status
+
+    render_weekly_status(root)

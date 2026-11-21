@@ -1,0 +1,81 @@
+{
+  "attribution": "nflverse/nflfastR public play-by-play; no sportsbook or paid inputs",
+  "evidence_tier": "retrospective_not_publication_verified",
+  "files": {
+    "cells.parquet": "f56c640bcea515cd6e630561de8227696c5830a1e1aed68238d8611a587a7ecb",
+    "games.parquet": "6e73f8845329f905bccd10a2f67237d948e539140b39e775487fe5b7fbd7349b"
+  },
+  "final_period_sealed": true,
+  "protocol_sha256": "e7ca388eb4d956479fd78bc222c119a66985747055404612d768721462a4449f",
+  "schema": 1,
+  "sources": [
+    {
+      "bytes": 20363228,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T16:11:41.662896+00:00",
+      "sha256": "54396ede038f0b2c43f17be2ac550ac06ba21e4317f0da64c99e1e3bd4117681",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2019.parquet"
+    },
+    {
+      "bytes": 20511734,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T16:11:42.718887+00:00",
+      "sha256": "13704b508fcef4a127e363c7f280b04ea7b41efe2002e238d0a0de1ce1b7ef76",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2020.parquet"
+    },
+    {
+      "bytes": 21543859,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T15:53:39.689222+00:00",
+      "sha256": "0d0222bdfc56af39e43f82cff0d02f47e2b5311776daf59a89254dd12e5e9f20",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2021.parquet"
+    },
+    {
+      "bytes": 21678701,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T15:53:40.817211+00:00",
+      "sha256": "167dff9290b11a47822157443af586877b38de1b6a90e41f95ac52e524cf4bb3",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2022.parquet"
+    },
+    {
+      "bytes": 21818016,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T15:53:41.817202+00:00",
+      "sha256": "e8200fde627d460975cfe5d91c355702fcf931b747671d4e5eb972270265ec88",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2023.parquet"
+    },
+    {
+      "bytes": 21665399,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T15:53:43.025190+00:00",
+      "sha256": "6e6996601f9c29dd10c8d6a15eca255b836ba1dd4718f12bfb69137da1e07c1e",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2024.parquet"
+    },
+    {
+      "bytes": 21583710,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-21T15:53:44.065181+00:00",
+      "sha256": "6b7f629136def21702592bf7d70876d746aafe3207c675d9920632e9d7fd6d2d",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2025.parquet"
+    },
+    {
+      "bytes": 10197709,
+      "materialisation": "REG season<2026 or2026week<11; selected columns before outcomes",
+      "publication_history_verified": false,
+      "retrieved_at": "2026-11-14T15:47:15.557602+00:00",
+      "sha256": "9f8b1f936f8ff82a6ad541a1e7aad9344da50ad2834a0788c662ef3760c577e4",
+      "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.parquet"
+    }
+  ],
+  "team_source": {
+    "path": "research_inputs/stage1c/public-20261113-v3/team_games.parquet",
+    "sha256": "6e73f8845329f905bccd10a2f67237d948e539140b39e775487fe5b7fbd7349b"
+  }
+}

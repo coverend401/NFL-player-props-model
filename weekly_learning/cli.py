@@ -21,7 +21,11 @@ def freeze_prepared(store, directory, manifest):
     from .contract import TYPE
 
     if manifest.get("release_type") == TYPE:
-        return capture(store, prepared=(directory, manifest))
+        frozen = capture(store, prepared=(directory, manifest))
+        from script_adjustment.weekly import try_capture
+
+        try_capture(store, directory, manifest)
+        return frozen
     namespace = {
         **capture_legacy.__globals__,
         "resolve_research_release": lambda repo: (directory, manifest),
@@ -33,7 +37,11 @@ def freeze_prepared(store, directory, manifest):
         capture_legacy.__defaults__,
         capture_legacy.__closure__,
     )
-    return isolated(store)
+    frozen = isolated(store)
+    from script_adjustment.weekly import try_capture
+
+    try_capture(store, directory, manifest)
+    return frozen
 
 
 def retained_decision(store):
@@ -216,6 +224,28 @@ def _operational(store, results_week, target_week, cycle_id, source_dir=None):
             frames={"reconciled.parquet": result},
             documents={"report.json": report},
         )
+    # Optional, separately captured challenger diagnostics never alter champion results.
+    if results_week >= policy["final_week"]:
+        from script_adjustment.weekly import evaluate_captured
+
+        try:
+            evaluate_captured(
+                store,
+                cycle_id,
+                document["release_id"],
+                result,
+                source / "operational_admission.json",
+            )
+        except (OSError, ValueError, KeyError, TypeError, AssertionError) as error:
+            with store.transaction():
+                store.audit(
+                    "experimental_script_evaluation_blocked",
+                    {
+                        "cycle": cycle_id,
+                        "reason": str(error),
+                        "champion_retained": True,
+                    },
+                )
     # Normal missing individual targets remain explicit and cannot support promotion.
     # A fresh champion forecast still requires independent source/eligibility certification.
     from .forecast import prepare_next

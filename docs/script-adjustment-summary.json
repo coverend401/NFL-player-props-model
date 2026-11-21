@@ -1,0 +1,50 @@
+{
+  "all_selected_scales": {
+    "completions": 0,
+    "passing_attempts": 0,
+    "passing_yards": 0,
+    "qb_rushing_attempts": 0,
+    "qb_rushing_yards": 0,
+    "receiving_yards": 0,
+    "receptions": 0,
+    "rushing_attempts": 0,
+    "rushing_yards": 0
+  },
+  "experiment": "experiments/script_adjustment/numerical-20261121-v4",
+  "promotion_passed": false,
+  "sample": {
+    "adjusted_rows": 41983,
+    "by_season": {
+      "2022": 12052,
+      "2023": 12293,
+      "2024": 12137,
+      "2025": 12444,
+      "2026": 6257
+    },
+    "games": 1224,
+    "player_market_rows": 55183,
+    "team_games": 2448,
+    "zeros": 7535
+  },
+  "status": "research-only; no active forecast/pricing/model changes",
+  "unknown_definition": "No scored current participation/box evidence for that historical candidate, not confirmed inactive and never a fabricated zero",
+  "unknown_participation_capacity_fraction": 0.553425455893571,
+  "win_uncertainty": [
+    {
+      "estimator": "week-balanced home-win Brier; two-week nonoverlapping block bootstrap",
+      "high95": 0.2391639212752229,
+      "low95": 0.20158287165944044,
+      "mean": 0.219929502256987,
+      "season": 2025,
+      "weeks": 18
+    },
+    {
+      "estimator": "week-balanced home-win Brier; two-week nonoverlapping block bootstrap",
+      "high95": 0.24322433311526365,
+      "low95": 0.2177245707873489,
+      "mean": 0.23194716468749635,
+      "season": 2026,
+      "weeks": 10
+    }
+  ]
+}
