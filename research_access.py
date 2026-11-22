@@ -30,6 +30,9 @@ def require_access():
     if hmac.compare_digest(
         str(st.session_state.get("research_authenticated", "")), proof
     ):
+        from research_platform.startup_diagnostics import render
+
+        render()
         return
     with st.form("research_access"):
         entered = st.text_input(
