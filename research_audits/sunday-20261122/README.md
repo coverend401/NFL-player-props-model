@@ -1,114 +1,102 @@
-# Sunday player–team–fixture audit: FAIL — selections withheld
+# Sunday integrity reconciliation — PASS WITH AVAILABILITY WARNINGS
 
-Audited checkpoint: `8ae23460a0332377d1a65b919e4d7d2143038877`.
-Completed 22 November 2026, before the Sunday slate. This is an integrity
-review, not a modelling experiment or a certification of betting performance.
+Supersedes the blanket FAIL in `ba2ab4f`. That original audit remains recoverable
+at that commit. No forecast, ranking, model, model timestamp, production setting,
+bookmaker price or quota record has changed.
 
-## Population and findings
+## Evidence accepted
 
-- **522/522 forecasts**, 182 distinct players, nine markets, ten represented
-  fixtures audited. The separately labelled TEN–DAL roof scenarios remain
-  excluded; Sunday has eleven scheduled fixtures including that game.
-- **Zero detected internal association errors.** Every forecast's player ID,
-  active-roster team, game, opponent, and kickoff agrees with the refreshed
-  nflverse roster and schedule feeds. All twelve rows of the bundle's fixture
-  index agree with that refreshed schedule, including the Monday fixture.
-- Zero eligibility-record/team mismatches or eligibility timestamps later than
-  prediction. Zero feature-state player/team/opponent mismatches.
-- Every displayed player name matches the refreshed roster's name or documented
-  first/football-name variant for the same GSIS identifier; no name/ID conflicts.
-- Recomputed opponent pass attempts/carries allowed from the opponent's last
-  eight available games and the corresponding opposing offensive team totals.
-  All 522 rows agree with their feature state and displayed explanation inputs.
-  Only permitted history through 2026 Week 10 was used; no Week 11 outcomes
-  were inspected. This verifies numerical routing, not football causality.
-- The original twelve Top Picks and twenty Top 2 entries are subsets of the
-  audited population. Their presence in these files is **not selection approval**.
-- **No verified mapping errors corrected and no forecasts regenerated.**
-  Reassigning teams using an older season's roster would introduce unsupported
-  changes. Certified and experimental forecast files remain byte-for-byte intact.
+The owner independently verified and supplied these official findings in this
+task on 22 November 2026. The assistant did not fetch the blocked official pages.
+The exact attribution, source URLs and dates are recorded in
+`official_evidence.json` and bound to the updated integrity report.
 
-## The two questioned players
+- Kenneth Walker III is a KC running back. Official Chiefs biography and 2026
+  transactions confirm his March signing; both agree with the audited KC rows.
+- Jalen Nailor is a LV receiver. The official Week 11 depth chart dated
+  17 November agrees with the audited LV rows.
+- The owner supplied official NFL schedule verification: Sunday 22 November is
+  Week 11. This resolves the schedule question alongside the existing zero
+  disagreements between the stored and refreshed schedule feed.
 
-| Player | GSIS ID | Original roster evidence | Refreshed roster evidence | Independent transaction confirmation |
-|---|---|---|---|---|
-| Kenneth Walker III | 00-0038134 | KC, ACT, 2026 week 11 | KC, ACT, 2026 week 11 | Not verified |
-| Jalen Nailor | 00-0037291 | LV, ACT, 2026 week 11 | LV, ACT, 2026 week 11 | Not verified |
+All **522 forecasts / 182 players / ten represented Sunday fixtures** passed
+player-ID/name, roster team, fixture, opponent, kickoff, eligibility timing and
+opponent-feature routing checks. Zero mapping errors were found or corrected.
+Other players retain reconciled active-roster-feed support; this is not a claim
+of independent official transaction research on all 182 players.
 
-These are **not display-only substitutions or detected fixture join errors**:
-the assignments originate in the roster feed. Neither refreshed feed agreement
-nor an old team remembered from prior seasons proves a current transaction.
-No independent official evidence was accessible to classify these as valid
-current assignments versus a shared upstream-data error.
+## Availability is a separate decision
 
-## Why the overall result is FAIL
+All players have **injury and game-day inactive status unverified**. No blanket
+injury clearance is granted. `availability.json` records the default warning and
+only documented material player-specific issues. There are currently **zero
+such documented issues**, meaning zero individual availability suppressions;
+that does not prove no injuries exist. Unknown news alone is not a material
+issue and no longer blocks the entire slate. Cards carry an availability warning.
+Documented material issues remove the player's rows before ranking and manual
+comparison, with a visible reason. Malformed evidence still fails closed.
 
-The available downloads are aggregated nflverse feeds. Official NFL schedule,
-team roster/transaction pages and ESPN requests were rejected by the configured
-network proxy. Exact tested hosts were `www.nfl.com`, `www.chiefs.com`,
-`www.raiders.com` and `site.api.espn.com`. The research app host
-`nfl-props-research.streamlit.app` is also blocked in this execution environment.
-No alternative network route or authentication bypass was used.
+**Available:** 522 eligible research forecast rows, twelve Enhanced Top Picks,
+and twenty Top 2 entries across ten games, subject to each fixture's T−60 cutoff.
+**Withheld:** TEN–DAL's fifty unresolved roof-scenario rows; no Top Picks or
+bookmaker pricing from those scenarios. The Monday fixture is outside the Sunday
+selection bundle. Started/past-cutoff fixtures remain excluded automatically.
+These remain model-only research selections, with no verified bookmaker value.
+Manual actual-line/price entry is restored with the existing probability guards.
 
-Consequently authoritative schedule and current roster/transaction verification
-remain incomplete for the entire population. Injury and game-day inactive
-status remain **unverified for all 182 players**; an `ACT` roster entry is not
-confirmation of availability. We do not infer inactivity from missing news or
-claim that game-day inactive lists already exist before publication.
+## Enhanced Top Picks (unchanged ranking)
 
-**Final Sunday Top Picks: withheld. Final Top 2 for every fixture: withheld.**
-There are zero selections admitted for use. This does not assert that every
-forecast is wrong; it means the requested independent evidence gate is unmet.
+| Rank | Player | Fixture | Market | Projection |
+|---|---|---|---|---:|
+| 1 | Justin Jefferson | MIN vs SF | receptions | 5.2 |
+| 2 | George Kittle | SF vs MIN | receiving yards | 61.1 |
+| 3 | Tetairoa McMillan | CAR vs BAL | receptions | 4.2 |
+| 4 | Trey McBride | ARI vs KC | receptions | 6.1 |
+| 5 | Rome Odunze | CHI vs NO | receiving yards | 49.3 |
+| 6 | Amon-Ra St. Brown | DET vs TB | receptions | 6.0 |
+| 7 | Xavier Worthy | KC vs ARI | receptions | 3.5 |
+| 8 | Sam LaPorta | DET vs TB | receptions | 3.3 |
+| 9 | Jahmyr Gibbs | DET vs TB | rushing yards | 78.6 |
+| 10 | Colston Loveland | CHI vs NO | receptions | 3.9 |
+| 11 | Kenneth Walker III | KC vs ARI | carries | 17.6 |
+| 12 | Dallas Goedert | PHI vs PIT | receptions | 3.9 |
 
-## Safeguard and tests
+## Top 2 by Game (unchanged ranking)
 
-The research entrypoint now checks an independent audit before rendering any
-selection, player/game intelligence, parlay or pricing workspace. A missing,
-failed, expired, wrong-release or hash-mismatched audit fails closed. Admission
-also requires explicit schedule, transaction, availability and opponent checks,
-zero internal errors, and bindings for every required forecast and identity
-file. There is no fallback to older recommendation cards. Historical Model
-Performance and Weekly Learning remain accessible with the warning displayed.
+| Game | First candidate | Second candidate |
+|---|---|---|
+| 2026_11_MIN_SF | Justin Jefferson: 5.2 receptions | George Kittle: 61.1 receiving yards |
+| 2026_11_BAL_CAR | Tetairoa McMillan: 4.2 receptions | Zay Flowers: 4.5 receptions |
+| 2026_11_ARI_KC | Trey McBride: 6.1 receptions | Xavier Worthy: 3.5 receptions |
+| 2026_11_NO_CHI | Rome Odunze: 49.3 receiving yards | Colston Loveland: 3.9 receptions |
+| 2026_11_TB_DET | Amon-Ra St. Brown: 6.0 receptions | Sam LaPorta: 3.3 receptions |
+| 2026_11_PIT_PHI | Dallas Goedert: 3.9 receptions | Dontayvion Wicks: 3.0 receptions |
+| 2026_11_MIA_BUF | Ollie Gordon II: 13.6 carries | James Cook: 80.4 rushing yards |
+| 2026_11_JAX_NYG | Isaiah Likely: 4.1 receptions | Malik Nabers: 70.6 receiving yards |
+| 2026_11_NYJ_LAC | Tre Harris: 2.7 receptions | Garrett Wilson: 4.9 receptions |
+| 2026_11_LV_DEN | Brock Bowers: 57.4 receiving yards | Jalen Nailor: 2.0 receptions |
 
-`tests/test_selection_integrity.py` rejects wrong teams/opponents, missing or
-ambiguous rosters, inactive roster statuses, ambiguous fixtures and wrong week
-IDs. It also exercises the **real authenticated Streamlit entrypoint** without
-mocking this gate and checks that every selection/pricing workspace renders no
-cards or price inputs and makes no provider requests. Archived presentation
-tests explicitly mock admission to retain component-rendering coverage; those
-tests do not constitute live integrity approval.
+## Admission safeguards and verification
 
-Local validation: 17 enhanced-selection/integrity checks passed, followed by
-34 focused integration, release-contract, presentation and startup checks.
-The final integrity plus provider-adapter run passed all 49 tests on Python 3.14.
-On Python 3.12, seven integrity tests passed and the real frozen Python 3.14
-entrypoint test was intentionally skipped; no runtime guard was weakened.
-Chromium at 390px authenticated against the
-real local entrypoint and displayed the FAIL gate, zero recommendation cards,
-zero price inputs, zero page exceptions and no horizontal overflow. This is
-**local validation**, not verification of the password-protected hosted service.
+The audit still binds every required forecast, selection, roster, eligibility,
+feature-state and evidence file. Wrong release, changed files, expired audit,
+internal mapping errors or schedule disagreement still block selection views.
+The review expires at 00:20 UTC on 23 November, the final Sunday fixture's T−60
+boundary; individual earlier cutoffs apply before then.
 
-## Evidence and replay
+Focused tests exercise the real authenticated Streamlit entrypoint with the live
+admission gate, restored cards and manual calculator, plus missing-audit rejection,
+unknown-versus-material availability and invalid player/fixture associations.
+Archived component tests remain separate from actual admission tests. Hosted
+verification must not be inferred from local tests or a successful branch push.
 
-- `forecasts.csv`: one audit result per forecast, including unresolved evidence.
-- `refreshed_roster.csv`: relevant player IDs/team/status only, no credentials.
-- `refreshed_schedule.csv`: fixture identity/time fields only, no game outcomes.
-- `integrity.json`: counts, source URLs, raw-source hashes, and file bindings.
+No SportsGameOdds requests, paid services, model refits, outcome settlement,
+production changes or main-branch merge are part of this correction.
 
-The raw download hashes identify the exact files read; the report creation time
-is not claimed to be their publication time. To repeat with separately retrieved
-feed files (no network activity is performed by this audit script):
-
-```sh
-python -m scripts.audit_sunday_integrity --roster /path/roster.parquet --schedule /path/games.csv
-```
-
-The script deliberately cannot grant official verification based on these feeds
-alone. Unblocking requires independent dated official schedule/roster/transaction
-and availability evidence, review against the forecast cutoff, correction and
-replay if an actual error is established, and a fresh complete integrity review.
-Allowing the official hosts above is the immediate environment action needed.
-
-Production, main, the original nine model files, certified releases, credentials,
-bookmaker quota and outcome seal are unchanged. No services or API credits were
-purchased or consumed.
+Local validation for this correction: twenty focused integrity/enhanced-selection
+tests passed on Python 3.14, plus two official-claim/missing-audit checks. On
+Python 3.12, eight tests passed with two intentional frozen-3.14 entrypoint skips.
+The real authenticated 390px browser render showed twelve Top Picks, twenty
+Top 2 cards, correct Walker KC and Nailor LV labels, the availability warning,
+no page exception and no horizontal overflow. No provider collection was initiated.
+Manual price entry was exercised through the real Streamlit entrypoint.

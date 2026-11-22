@@ -29,6 +29,9 @@ def current(release):
         (p.stat().st_mtime_ns, p.stat().st_size, engine.sha(Path(engine.__file__)))
     )
     frame = engine.eligible_rows(frame, datetime.now(UTC))
+    from .selection_integrity import available_rows
+
+    frame = available_rows(frame)
     top, two = engine.select(frame)
     return frame, top, two, fixtures, manifest
 
@@ -58,7 +61,7 @@ def card(row):
         metrics.market.eq(r["market"]) & metrics.season.eq(2026)
     ].set_index("method")
     measured = comparison.loc[method]
-    risk_text = r["principal_risk"]
+    risk_text = r["principal_risk"] + " Injury and game-day inactive status unverified."
     if r["point_admitted"] and abs(measured.bias) >= 0.05 * measured.mae:
         unit = (
             "yards"

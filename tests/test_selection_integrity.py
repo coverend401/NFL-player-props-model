@@ -13,6 +13,7 @@ import pandas as pd
 
 from research_platform.selection_integrity import (
     ROOT,
+    available_rows,
     block_reason,
     check_association,
 )
@@ -102,8 +103,7 @@ class IntegrityTests(unittest.TestCase):
                 "status": "PASS",
                 "release_id": "synthetic",
                 "authoritative_schedule_verified": True,
-                "current_player_transactions_verified": True,
-                "availability_review_complete": True,
+                "roster_reconciliation_complete": True,
                 "opponent_features_verified": True,
                 "internal_error_rows": 0,
                 "fixture_feed_disagreements": [],
@@ -120,7 +120,7 @@ class IntegrityTests(unittest.TestCase):
                 {"status": "FAIL"},
                 {"release_id": "other"},
                 {"authoritative_schedule_verified": False},
-                {"current_player_transactions_verified": False},
+                {"roster_reconciliation_complete": False},
                 {"valid_until": now.isoformat()},
                 {"files": {}},
                 {"internal_error_rows": 1},
@@ -130,7 +130,7 @@ class IntegrityTests(unittest.TestCase):
                 path.write_text(json.dumps({**report, **changes}))
                 self.assertIsNotNone(block_reason(release, path, now), changes)
 
-    def test_real_audit_covers_every_forecast_and_blocks(self):
+    def test_real_audit_covers_every_forecast_and_admits_with_warnings(self):
         report = json.loads(
             (ROOT / "research_audits/sunday-20261122/integrity.json").read_text()
         )
@@ -138,7 +138,43 @@ class IntegrityTests(unittest.TestCase):
         audit = pd.read_csv(ROOT / "research_audits/sunday-20261122/forecasts.csv")
         self.assertEqual(len(audit), 522)
         self.assertFalse(audit.duplicated(["game_id", "player_id", "market"]).any())
-        self.assertIsNotNone(block_reason({"release_id": report["release_id"]}))
+        self.assertIsNone(
+            block_reason(
+                {"release_id": report["release_id"]},
+                now=datetime(2026, 11, 22, 8, tzinfo=UTC),
+            )
+        )
+        self.assertFalse(report["current_player_transactions_verified"])
+        self.assertFalse(report["availability_review_complete"])
+
+    def test_unknown_availability_remains_eligible_but_material_issue_is_excluded(self):
+        frame = pd.DataFrame(
+            {
+                "player_id": ["known_material", "unknown"],
+                "market": ["receptions", "receptions"],
+            }
+        )
+        with patch(
+            "research_platform.selection_integrity.availability_review",
+            return_value={"material_issues": [{"player_id": "known_material"}]},
+        ):
+            self.assertEqual(available_rows(frame).player_id.tolist(), ["unknown"])
+
+    def test_owner_official_claims_agree_with_every_disputed_player_row(self):
+        evidence = json.loads(
+            (
+                ROOT / "research_audits/sunday-20261122/official_evidence.json"
+            ).read_text()
+        )
+        rows = pd.read_csv(ROOT / "research_audits/sunday-20261122/forecasts.csv")
+        players = [x for x in evidence["claims"] if "player_id" in x]
+        self.assertEqual(
+            {x["player_id"] for x in players}, {"00-0038134", "00-0037291"}
+        )
+        for claim in players:
+            affected = rows[rows.player_id.eq(claim["player_id"])]
+            self.assertFalse(affected.empty)
+            self.assertTrue(affected.team.eq(claim["team"]).all())
 
 
 @unittest.skipUnless(
@@ -146,11 +182,71 @@ class IntegrityTests(unittest.TestCase):
     "Real frozen entrypoint requires its original Python 3.14 runtime",
 )
 class StartupTests(unittest.TestCase):
+    def test_owner_evidence_restores_real_entrypoint_and_manual_pricing(self):
+        from streamlit.testing.v1 import AppTest
+
+        at = datetime(2026, 11, 22, 8, tzinfo=UTC)
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            patch.dict(
+                os.environ,
+                {
+                    "RESEARCH_PREVIEW_PASSWORD": "synthetic-restored-test",
+                    "NFL_RESEARCH_INFERENCE_POINTER": "tests/fixtures/week11_research_pointer.json",
+                    "SPORTSGAMEODDS_API_KEY": "",
+                    "SGO_GITHUB_QUOTA_TOKEN": "",
+                    "SGO_RESEARCH_STORE": str(Path(tmp) / "empty.sqlite"),
+                },
+            ),
+            patch("research_platform.selection_integrity.datetime") as gate_clock,
+            patch("research_platform.enhanced_ui.datetime") as ui_clock,
+            patch("research_platform.r8.datetime") as app_clock,
+            patch("requests.get") as get,
+            patch("requests.request") as request,
+        ):
+            gate_clock.fromisoformat.side_effect = datetime.fromisoformat
+            gate_clock.now.return_value = at
+            ui_clock.now.return_value = at
+            app_clock.now.return_value = at
+            app = AppTest.from_file(
+                str(ROOT / "odds_value_research.py"), default_timeout=120
+            ).run()
+            app.text_input(key="research_password").input("synthetic-restored-test")
+            app.button[0].click().run()
+            self.assertFalse(app.exception, app.exception)
+            self.assertFalse(app.error)
+            cards = [x.value for x in app.markdown if "<article" in x.value]
+            self.assertEqual(len(cards), 12)
+            self.assertTrue(any("Kenneth Walker III — KC vs ARI" in c for c in cards))
+            self.assertTrue(all("inactive status unverified" in c for c in cards))
+            self.assertIsNone(app.number_input(key="enhanced_top_odds").value)
+            app.number_input(key="enhanced_top_line").set_value(5.5)
+            app.number_input(key="enhanced_top_odds").set_value(2.0)
+            app.run()
+            self.assertFalse(app.exception, app.exception)
+            self.assertTrue(
+                any("Estimated research EV" in x.value for x in app.markdown)
+            )
+            next(x for x in app.selectbox if x.label == "Workspace").select(
+                "Top 2 by Game"
+            ).run()
+            self.assertFalse(app.exception, app.exception)
+            cards = [x.value for x in app.markdown if "<article" in x.value]
+            self.assertEqual(len(cards), 20)
+            self.assertTrue(any("Jalen Nailor — LV vs DEN" in c for c in cards))
+            self.assertFalse(any("TEN vs DAL" in c or "DAL vs TEN" in c for c in cards))
+            get.assert_not_called()
+            request.assert_not_called()
+
     def test_real_authenticated_entrypoint_blocks_before_cards_or_prices(self):
         from streamlit.testing.v1 import AppTest
 
         with (
             tempfile.TemporaryDirectory() as tmp,
+            patch(
+                "research_platform.selection_integrity.REPORT",
+                Path(tmp) / "missing-audit.json",
+            ),
             patch.dict(
                 os.environ,
                 {

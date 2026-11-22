@@ -1,0 +1,9 @@
+{
+  "schema": "research_availability_review_v1",
+  "reviewed_at": "2026-11-22T08:22:53.987206+00:00",
+  "default_status": "unverified",
+  "default_warning": "Injury and game-day inactive status unverified. Roster membership is not injury clearance.",
+  "material_issues": [],
+  "scope": "No documented material player-specific availability issue was identified in the available audit or owner-supplied evidence. This is not evidence that no injuries exist. Add only sourced material issues; suppress those players individually.",
+  "roster_context": "Current-week ACT status in the existing feed; not a game-day participation guarantee."
+}

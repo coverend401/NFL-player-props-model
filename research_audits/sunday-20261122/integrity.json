@@ -1,5 +1,5 @@
 {
-  "status": "FAIL",
+  "status": "PASS_WITH_AVAILABILITY_WARNINGS",
   "release_id": "research-week11-frozen-20261120-r2",
   "created_at": "2026-11-22T05:14:04.797563+00:00",
   "forecast_count": 522,
@@ -8,7 +8,7 @@
   "sunday_schedule_fixtures": 11,
   "internal_error_rows": 0,
   "fixture_feed_disagreements": [],
-  "authoritative_schedule_verified": false,
+  "authoritative_schedule_verified": true,
   "current_player_transactions_verified": false,
   "availability_review_complete": false,
   "opponent_features_verified": true,
@@ -26,7 +26,7 @@
     "roster": "70af965e592c340f7e37c8ec4e4c252460a3266700c27c64a20531c2d3acce9b",
     "schedule": "90c06edbe6e4ea0bd696ce75807e7b194ca92fb66e00fe51e218990ef961a850"
   },
-  "source_limitations": "Fresh aggregated feeds agree, but are not independent official schedule/transaction or game-day availability verification. Retrieval time is not publication time.",
+  "source_limitations": "Owner-attested official evidence resolves the disputed KC/LV assignments and schedule question. Other players retain reconciled active-roster-feed support, not independent official transaction verification. Injury and inactive status remains unverified; only documented material issues suppress individual players.",
   "files": {
     "research_selection_releases/enhanced-sunday-20261121-v1/forecasts.parquet": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
     "research_selection_releases/enhanced-sunday-20261121-v1/top_picks.csv": "823891d324fc8a2a3e023a7263d9e9d9c14a51c173e2d7d6d0e8ba7eb5f5294e",
@@ -37,8 +37,14 @@
     "research_inference_releases/research-week11-frozen-20261120-r2/roster_evidence.csv": "7e7775ef7b1b7e06d8f9891b680f75af609ba309c7e9ade89fddf6b547e0c36a",
     "research_inference_releases/research-week11-frozen-20261120-r2/schedule.parquet": "0cc088e6187fe63f5496a0f4e1999ec0649570a450a4b0ee44575848ec944672",
     "experiments/season_intelligence/sunday-20261121-v1/sunday_feature_states.parquet": "3b3da7e01e134ef104d090ec592135070911a9398ec92a9f093cf422c0335456",
-    "research_audits/sunday-20261122/forecasts.csv": "a0a72c025f94a63518614737bd2dde498671538cc143e0e588139dcfccc16734",
+    "research_audits/sunday-20261122/forecasts.csv": "497e4fb13f017898ce5c7f075f0406ad176b557ce227927241c79feabe901cc8",
     "research_audits/sunday-20261122/refreshed_roster.csv": "7f500c8f1d7462cf5015f21c5f243f60edd07b3ddcb439d8b02c0b51baa0b286",
-    "research_audits/sunday-20261122/refreshed_schedule.csv": "a3ec8da41b14e0866197be76be6a3cde966678da4807a9d538e736312044629f"
-  }
+    "research_audits/sunday-20261122/refreshed_schedule.csv": "a3ec8da41b14e0866197be76be6a3cde966678da4807a9d538e736312044629f",
+    "research_audits/sunday-20261122/official_evidence.json": "67d9932aac7ee0056885592e411a395e9f14de133c9be6b580249901d112e961",
+    "research_audits/sunday-20261122/availability.json": "6cd0cfa776dc46139c3b8d9f90035c9e31388781ceddb389c4ea25e4402067d6"
+  },
+  "reviewed_at": "2026-11-22T08:22:53.987206+00:00",
+  "roster_reconciliation_complete": true,
+  "valid_until": "2026-11-23T00:20:00+00:00",
+  "previous_audit_commit": "ba2ab4f9f92f6dca9bedc4c84e0df5ad7076fd7a"
 }

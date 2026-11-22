@@ -9,6 +9,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REPORT = ROOT / "research_audits/sunday-20261122/integrity.json"
+EVIDENCE = REPORT.parent / "official_evidence.json"
+AVAILABILITY = REPORT.parent / "availability.json"
 REQUIRED_FILES = (
     {
         "research_selection_releases/enhanced-sunday-20261121-v1/" + name
@@ -45,22 +47,21 @@ def normal_name(value):
     return re.sub(r"[^a-z]", "", value)
 
 
-def block_reason(release, report_path=REPORT, now=None):
+def block_reason(release, report_path=None, now=None):
     """Missing, failed, expired or unbound evidence cannot admit selections."""
     try:
-        report = json.loads(Path(report_path).read_text())
+        report = json.loads(Path(report_path or REPORT).read_text())
         if report["release_id"] != release["release_id"]:
             return "This research release has no matching player–fixture audit."
-        if report["status"] != "PASS":
+        if report["status"] not in {"PASS", "PASS_WITH_AVAILABILITY_WARNINGS"}:
             return "Player–team–fixture verification is incomplete. Selections and pricing are withheld."
         required = (
             "authoritative_schedule_verified",
-            "current_player_transactions_verified",
-            "availability_review_complete",
+            "roster_reconciliation_complete",
             "opponent_features_verified",
         )
         if not all(report.get(key) is True for key in required):
-            return "Required schedule, roster, availability or opponent evidence is missing."
+            return "Required schedule, roster or opponent evidence is missing."
         if report["internal_error_rows"] != 0 or report["fixture_feed_disagreements"]:
             return "Unresolved player or fixture association errors remain."
         if datetime.fromisoformat(report["valid_until"]) <= (now or datetime.now(UTC)):
@@ -68,13 +69,43 @@ def block_reason(release, report_path=REPORT, now=None):
         files = report["files"]
         if not REQUIRED_FILES.issubset(files):
             return "The integrity audit does not bind all forecast and identity files."
+        if not {
+            str(EVIDENCE.relative_to(ROOT)),
+            str(AVAILABILITY.relative_to(ROOT)),
+        }.issubset(files):
+            return "Official evidence or availability assessment is not bound to this audit."
         for relative, expected in files.items():
             path = (ROOT / relative).resolve()
             if not path.is_relative_to(ROOT) or digest(path) != expected:
                 return "Forecast or evidence files changed after the integrity audit."
+        availability_review()
         return None
     except (OSError, ValueError, KeyError, TypeError):
         return "A complete, valid player–fixture audit is unavailable."
+
+
+def availability_review():
+    """Unknown news is a warning; only documented material issues suppress players."""
+    review = json.loads(AVAILABILITY.read_text())
+    if review["default_status"] != "unverified":
+        raise ValueError("No blanket injury clearance is supported")
+    issues = review["material_issues"]
+    if not isinstance(issues, list):
+        raise TypeError("Availability issues must be explicit records")
+    for issue in issues:
+        if not isinstance(issue, dict):
+            raise TypeError("Availability issue must be an evidence record")
+        if not all(
+            issue.get(k) for k in ["player_id", "reason", "source", "observed_at"]
+        ):
+            raise ValueError("Material availability issue lacks evidence")
+    return review
+
+
+def available_rows(frame):
+    issues = availability_review()["material_issues"]
+    blocked_ids = {issue["player_id"] for issue in issues}
+    return frame[~frame.player_id.isin(blocked_ids)].copy()
 
 
 def check_association(row, schedule, roster):

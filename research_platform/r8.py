@@ -367,7 +367,7 @@ def render(slate, release):
 
     slate, release = for_app(slate, release)
     st.markdown(CSS, unsafe_allow_html=True)
-    from .selection_integrity import block_reason
+    from .selection_integrity import availability_review, available_rows, block_reason
 
     blocked = block_reason(release)
     if blocked:
@@ -376,6 +376,15 @@ def render(slate, release):
             "Top Picks, Top 2 by Game, player comparisons and bookmaker pricing are disabled. "
             "Existing forecast files are preserved; no selection is betting-ready. "
             "An active roster entry does not confirm game-day injury or inactive status."
+        )
+    else:
+        for issue in availability_review()["material_issues"]:
+            st.warning(f"Withheld player {issue['player_id']}: {issue['reason']}")
+        slate = available_rows(slate)
+        st.warning(
+            "Roster/fixture review passed. Injury and game-day inactive information is unverified; "
+            "these are research candidates, not injury-cleared selections. Check availability before use. "
+            "Documented material availability issues are excluded individually."
         )
     st.caption(
         "NFL Research · Enhanced Sunday selections · certified Stage 1A preserved"

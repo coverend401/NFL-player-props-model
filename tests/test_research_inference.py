@@ -292,11 +292,15 @@ class CertifiedInferenceTests(unittest.TestCase):
         self.assertEqual(directory, CANDIDATE)
         self.assertEqual(m["release_type"], "research_frozen_model_inference_v1")
 
-    def test_real_authenticated_research_entrypoint_loads_current_candidate(self):
+    def test_real_authenticated_research_entrypoint_blocks_missing_audit(self):
         from streamlit.testing.v1 import AppTest
 
         with (
             tempfile.TemporaryDirectory() as tmp,
+            patch(
+                "research_platform.selection_integrity.REPORT",
+                Path(tmp) / "missing-audit.json",
+            ),
             patch.dict(
                 os.environ,
                 {
