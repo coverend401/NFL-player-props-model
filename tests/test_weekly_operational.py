@@ -284,7 +284,14 @@ class AdmissionReceiptTests(unittest.TestCase):
         from weekly_learning.admission import ESPN, approve_snapshot, validate_receipt
         from weekly_learning.store import sha
 
-        with tempfile.TemporaryDirectory() as tmp:
+        with (
+            tempfile.TemporaryDirectory() as tmp,
+            patch("weekly_learning.sources.pd", wraps=pd) as source_pd,
+        ):
+            # Source freshness must use the same historical clock as this
+            # synthetic receipt. Keep the real age, finality and hash checks.
+            source_pd.Timestamp = Mock(wraps=pd.Timestamp)
+            source_pd.Timestamp.now.return_value = pd.Timestamp("2026-11-20T12:02:00Z")
             repo = Path(tmp)
             (repo / "weekly_learning").mkdir()
             policy = json.loads(POLICY.read_text())
@@ -377,6 +384,12 @@ class AdmissionReceiptTests(unittest.TestCase):
             path.write_text(json.dumps(data))
             with self.assertRaisesRegex(ValueError, "model mismatch"):
                 validate_receipt(repo, path, policy, now="2026-11-20T12:02:00Z")
+            # The isolation fix must not make genuinely expired snapshots valid.
+            from weekly_learning.sources import verify_snapshot
+
+            source_pd.Timestamp.now.return_value = pd.Timestamp("2026-11-22T12:01:01Z")
+            with self.assertRaisesRegex(ValueError, "snapshot is stale"):
+                verify_snapshot(source, max_age_hours=48)
 
 
 class SelectionAndRefreshTests(unittest.TestCase):
