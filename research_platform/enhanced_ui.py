@@ -27,7 +27,7 @@ def loaded(fingerprint, serving_profile=None):
     return engine.load()
 
 
-def current(release):
+def current(release, *, include_historical=False):
     p = engine.DIRECTORY / "manifest.json"
     if not p.exists():
         return None
@@ -38,7 +38,8 @@ def current(release):
         (p.stat().st_mtime_ns, p.stat().st_size, engine.sha(Path(engine.__file__))),
         release.get("serving_runtime_profile"),
     )
-    frame = engine.eligible_rows(frame, datetime.now(UTC))
+    if not include_historical:
+        frame = engine.eligible_rows(frame, datetime.now(UTC))
     from .selection_integrity import available_rows
 
     frame = available_rows(frame)
@@ -202,9 +203,20 @@ def availability_info():
         )
 
 
+def fixture_status(kickoff, now):
+    kickoff, now = pd.Timestamp(kickoff), pd.Timestamp(now)
+    if kickoff <= now:
+        return "HISTORICAL PRE-KICKOFF RESEARCH ONLY — kickoff has passed; not eligible for live betting or manual pricing."
+    if kickoff <= now + pd.Timedelta(minutes=60):
+        return "T−60 CUTOFF CLOSED — frozen pre-kickoff research only; not eligible for live betting or manual pricing."
+    return (
+        "Before T−60 — model-only research; injury/inactive status remains unverified."
+    )
+
+
 def render(release, mode):
     try:
-        data = current(release)
+        data = current(release, include_historical=True)
     except (OSError, ValueError, KeyError, TypeError, AssertionError):
         st.warning(
             "Enhanced selections failed admission or integrity checks; the unchanged certified research view follows."
@@ -213,6 +225,8 @@ def render(release, mode):
     if data is None:
         return False
     frame, top, two, fixtures, manifest = data
+    now = datetime.now(UTC)
+    pricing_frame = engine.eligible_rows(frame, now)
     st.markdown(
         "### "
         + (
@@ -230,7 +244,7 @@ def render(release, mode):
         "The verified schedule labels this date Week 11. Week 12 starts on 26 November; no games or sealed outcomes are relabelled."
     )
     st.caption(
-        f"Eligible: {frame.game_id.nunique()} · Scheduled Sunday: {int(fixtures.gameday.astype(str).eq('2026-11-22').sum())} · Forecasts: {len(frame)} · Enhanced research Top 2: {len(two)}. Certified production rankings are unchanged."
+        f"Covered: {frame.game_id.nunique()} · Before T−60: {pricing_frame.game_id.nunique()} · Scheduled Sunday: {int(fixtures.gameday.astype(str).eq('2026-11-22').sum())} · Forecasts: {len(frame)} · Enhanced research Top 2: {len(two)}. Certified production rankings are unchanged."
     )
     st.info(
         "Research confidence describes historical forecast reliability, not betting value. Forecasts assume offensive participation; no inactivity probability is invented. No bookmaker prices are assumed. Roster evidence is dated 20 November; live injuries/inactives and route/coverage data remain unverified. The Week 11 outcome seal remains closed."
@@ -244,15 +258,13 @@ def render(release, mode):
         return True
     if mode == "top":
         for _, r in top.iterrows():
+            st.caption(fixture_status(r.kickoff_at, now))
             card(r)
     elif mode == "games":
         sunday = fixtures[fixtures.gameday.astype(str).eq("2026-11-22")]
         for f in sunday.sort_values("kickoff_at").itertuples():
-            if pd.Timestamp(f.kickoff_at) <= pd.Timestamp(
-                datetime.now(UTC)
-            ) + pd.Timedelta(minutes=60):
-                continue
             st.markdown(f"#### {f.away_team} at {f.home_team}")
+            st.caption(fixture_status(f.kickoff_at, now))
             picks = two[two.game_id.eq(f.game_id)]
             if picks.empty:
                 st.info(
@@ -289,7 +301,12 @@ def render(release, mode):
             hide_index=True,
             width="stretch",
         )
-    calculator(frame, "enhanced_" + mode)
+    if not pricing_frame.empty:
+        calculator(pricing_frame, "enhanced_" + mode)
+    else:
+        st.info(
+            "Manual bookmaker comparison is unavailable: no forecasts remain before T−60."
+        )
     with st.expander("Research ordering, evidence and exclusions"):
         availability_info()
         st.json(manifest["policy"], expanded=False)

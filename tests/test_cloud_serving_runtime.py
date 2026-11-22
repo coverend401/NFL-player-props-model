@@ -135,7 +135,7 @@ class CloudHostedTests(unittest.TestCase):
             release["serving_runtime"]["packages"]["certifi"], "2026.11.20"
         )
         self.assertEqual(len(pd.read_parquet(directory / "slate.parquet")), 618)
-        at = datetime(2026, 11, 22, 15, tzinfo=UTC)
+        at = datetime(2026, 11, 22, 18, 1, tzinfo=UTC)
         with (
             tempfile.TemporaryDirectory() as tmp,
             patch.dict(
@@ -184,6 +184,11 @@ class CloudHostedTests(unittest.TestCase):
             self.assertEqual(
                 sum("enhanced-research-card" in x.value for x in app.markdown), 20
             )
+            self.assertTrue(
+                any("HISTORICAL PRE-KICKOFF" in x.value for x in app.caption)
+            )
+            self.assertTrue(any("TEN at DAL" in x.value for x in app.markdown))
+            self.assertTrue(any("unresolved roof" in x.value for x in app.info))
             for section in [
                 "Player Intelligence",
                 "Game Intelligence",

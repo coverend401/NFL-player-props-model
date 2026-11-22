@@ -2,7 +2,7 @@
   "schema": 1,
   "profile_id": "week11-certifi-20261120-v1",
   "status": "passed",
-  "validated_at": "2026-11-22T15:03:06.103644+00:00",
+  "validated_at": "2026-11-22T17:10:21.341495+00:00",
   "forecast_release": "research-week11-frozen-20261120-r2",
   "training_runtime": {
     "python_minor": "3.14",
@@ -330,7 +330,7 @@
     "research_platform/cloud_runtime.py": "94837b6686ee789e6b6bc799ff9f7a490a866e52b7fb43bcf92c9579a879fc9b",
     "research_platform/cloud_selection.py": "4da58e4eaac9c65015c51a22cd6de1299656963ca62f282327cbb19bb3fe5583",
     "research_platform/enhanced_engine.py": "1f2c99d160af321d732680b3ba3f3e022223c9b81851b164b3ad841d469888d4",
-    "research_platform/enhanced_ui.py": "575f468365822e2cb885f146dfa828bc41163498247e5d4d338b61fb5e323421",
+    "research_platform/enhanced_ui.py": "f4048a3da93fb141ae2961b76a6e616912bcea4399ea5c5830cb36cb87a7f89b",
     "research_platform/inference_builder.py": "4fa36ec63590b2456e77e3cd7e56ead251f6d8ae1651ad80f18b9f744ca1e33f",
     "research_platform/inference_release.py": "e96d8077daa9af4cc0e1164b4fd2c1d0fcffd66d675aca0692ab4211a00292b6",
     "research_platform/r8.py": "99317bbb8bc8865fd0ce553f14232ffbdabc3e6814ca73ae7218f5b3426bdd81",
