@@ -426,6 +426,11 @@ class MultiFixtureTests(unittest.TestCase):
 
 
 class R8JourneyTests(unittest.TestCase):
+    def test_synthetic_release_is_not_admitted_by_live_integrity_gate(self):
+        from research_platform.selection_integrity import block_reason
+
+        self.assertIsNotNone(block_reason(REL))
+
     def test_pass_card_does_not_claim_positive_value(self):
         from unittest.mock import patch
 
@@ -466,6 +471,12 @@ class R8JourneyTests(unittest.TestCase):
                     },
                 ),
                 patch("research_platform.r8.datetime") as clock,
+                # Synthetic collection UI only. Live admission remains covered
+                # by test_selection_integrity and the rejection test above.
+                patch(
+                    "research_platform.selection_integrity.block_reason",
+                    return_value=None,
+                ),
                 patch("requests.get") as get,
                 patch("requests.request") as request,
             ):
@@ -519,6 +530,10 @@ class R8JourneyTests(unittest.TestCase):
         }
         with (
             patch("research_platform.r8.datetime") as clock,
+            # Exercise mocked collector controls, not a real release admission.
+            patch(
+                "research_platform.selection_integrity.block_reason", return_value=None
+            ),
             patch("research_platform.r8.cached_snapshots", return_value=[]),
             patch("research_platform.r8.private_records", return_value=[]),
             patch("research_platform.r8.research_key", return_value=KEY),
