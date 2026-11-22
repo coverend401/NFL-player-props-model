@@ -28,6 +28,9 @@ def archived_week11():
         patch("research_platform.r8.datetime") as clock,
         patch("research_platform.sunday_script_ui.datetime") as script_clock,
         patch("research_platform.enhanced_ui.datetime") as enhanced_clock,
+        # Archived component tests exercise rendering, not live admission. The
+        # unmocked real-entrypoint fail-closed test is test_selection_integrity.
+        patch("research_platform.selection_integrity.block_reason", return_value=None),
     ):
         clock.now.return_value = datetime(2026, 11, 20, 23, tzinfo=UTC)
         script_clock.now.return_value = datetime(2026, 11, 20, 23, tzinfo=UTC)

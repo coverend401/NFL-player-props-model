@@ -579,7 +579,9 @@ class PreviewTests(unittest.TestCase):
             app.text_input(key="research_password").input("synthetic_preview_only")
             app.button[0].click().run()
             self.assertFalse(app.exception, app.exception)
-            self.assertTrue(any("No research API key" in v.value for v in app.info))
+            self.assertTrue(
+                any("INTEGRITY REVIEW — FAIL" in v.value for v in app.error)
+            )
             get.assert_not_called()
 
 

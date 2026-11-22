@@ -367,6 +367,16 @@ def render(slate, release):
 
     slate, release = for_app(slate, release)
     st.markdown(CSS, unsafe_allow_html=True)
+    from .selection_integrity import block_reason
+
+    blocked = block_reason(release)
+    if blocked:
+        st.error("INTEGRITY REVIEW — FAIL: " + blocked)
+        st.info(
+            "Top Picks, Top 2 by Game, player comparisons and bookmaker pricing are disabled. "
+            "Existing forecast files are preserved; no selection is betting-ready. "
+            "An active roster entry does not confirm game-day injury or inactive status."
+        )
     st.caption(
         "NFL Research · Enhanced Sunday selections · certified Stage 1A preserved"
     )
@@ -389,6 +399,8 @@ def render(slate, release):
             "Data & Safety",
         ],
     )
+    if blocked and section not in {"Model Performance", "Weekly Learning"}:
+        return
     if section == "Top Picks":
         top8(slate, release)
     elif section == "Top 2 by Game":

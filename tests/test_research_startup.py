@@ -111,6 +111,10 @@ class ResearchStartupTests(unittest.TestCase):
         from streamlit.testing.v1 import AppTest
 
         with (
+            # Archived cold-start component test, not current selection admission.
+            patch(
+                "research_platform.selection_integrity.block_reason", return_value=None
+            ),
             patch.dict(
                 os.environ,
                 {
