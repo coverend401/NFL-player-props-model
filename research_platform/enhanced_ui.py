@@ -14,7 +14,16 @@ from . import enhanced_engine as engine
 
 
 @st.cache_data(show_spinner=False)
-def loaded(fingerprint):
+def loaded(fingerprint, serving_profile=None):
+    if serving_profile is not None:
+        from .cloud_runtime import PROFILE_ID, admit
+
+        if serving_profile != PROFILE_ID:
+            raise ValueError("Unknown serving runtime")
+        admit()
+        from .cloud_selection import load
+
+        return load()
     return engine.load()
 
 
@@ -26,7 +35,8 @@ def current(release):
     if release["release_id"] != meta["parent_release"]:
         return None
     frame, _, _, fixtures, manifest = loaded(
-        (p.stat().st_mtime_ns, p.stat().st_size, engine.sha(Path(engine.__file__)))
+        (p.stat().st_mtime_ns, p.stat().st_size, engine.sha(Path(engine.__file__))),
+        release.get("serving_runtime_profile"),
     )
     frame = engine.eligible_rows(frame, datetime.now(UTC))
     from .selection_integrity import available_rows

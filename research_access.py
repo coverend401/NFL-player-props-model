@@ -2,7 +2,9 @@
 
 import hashlib
 import hmac
+import importlib.metadata
 import os
+from pathlib import Path
 
 import streamlit as st
 
@@ -17,7 +19,7 @@ def secret(name):
         return None
 
 
-def require_access():
+def require_access(*, diagnostic_preflight=None):
     password = secret("RESEARCH_PREVIEW_PASSWORD")
     if not password:
         st.warning(
@@ -30,9 +32,30 @@ def require_access():
     if hmac.compare_digest(
         str(st.session_state.get("research_authenticated", "")), proof
     ):
+        # Preserve the certified entrypoint bytes. Only that authenticated script
+        # can select the explicitly recertified serving route; other callers and
+        # the original dependency environment retain their existing behaviour.
+        from streamlit.runtime.scriptrunner import get_script_run_ctx
+
         from research_platform.startup_diagnostics import render
 
-        render()
+        context = get_script_run_ctx()
+        root = Path(__file__).resolve().parent
+        if (
+            diagnostic_preflight is None
+            and context is not None
+            and Path(context.main_script_path).resolve()
+            == root / "odds_value_research.py"
+            and (root / "research_cloud_active.json").is_file()
+            and importlib.metadata.version("certifi") != "2026.10.23"
+        ):
+            from research_platform.cloud_dashboard import render_authenticated
+            from research_platform.cloud_runtime import preflight
+
+            render(preflight_check=preflight)
+            render_authenticated()
+            st.stop()
+        render(preflight_check=diagnostic_preflight)
         return
     with st.form("research_access"):
         entered = st.text_input(

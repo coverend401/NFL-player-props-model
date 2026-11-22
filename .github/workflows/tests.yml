@@ -21,8 +21,6 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - run: python -m pip install -r requirements.txt
       - run: python -m pip check
-      - name: Install CI-only deployment resolver regression tool
-        run: python -m pip install --no-deps uv==0.13.6
       - run: python -m unittest discover -s tests -v
       - name: Validate committed candidate bundles on the production target
         if: matrix.python-version == '3.14'
@@ -63,3 +61,12 @@ jobs:
           for manifest in research_inputs/stage1c2/*/manifest.json; do
             if [ -f "$manifest" ]; then python -m stage1c2_stage1.validate "$(dirname "$manifest")" --replay; fi
           done
+      - name: Verify separately certified research-serving runtime and authenticated app
+        if: matrix.python-version == '3.14'
+        run: |
+          python -m scripts.certify_cloud_runtime --verify-baseline
+          python -m pip install -r research_runtime_profiles/week11-certifi-20261120-v1/requirements.lock
+          python -m pip check
+          python -c 'import importlib.metadata; assert importlib.metadata.version("certifi") == "2026.11.20"'
+          python -m scripts.certify_cloud_runtime --verify
+          python -m unittest tests.test_cloud_serving_runtime -v

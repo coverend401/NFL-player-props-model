@@ -95,6 +95,9 @@ def safe_failure(error):
                 else "unrecognised version",
             }
     known = {
+        "Serving runtime package mismatch:": "SERVING_RUNTIME_MISMATCH",
+        "Serving runtime missing package:": "SERVING_RUNTIME_MISMATCH",
+        "Serving release requires Python": "PYTHON_RUNTIME_MISMATCH",
         "Release requires Python": "PYTHON_RUNTIME_MISMATCH",
         "Requested research inference pointer missing": "RESEARCH_POINTER_MISSING",
         "Inference pointer/manifest mismatch": "RESEARCH_POINTER_HASH_MISMATCH",
@@ -118,7 +121,11 @@ def safe_failure(error):
         return {"code": "RELEASE_JSON_INVALID"}
     # Only echo exact, static guard strings from the two checked-in validators;
     # never echo arbitrary exception text, formatted paths or imported data.
-    for filename in ["release_utils.py", "research_platform/inference_release.py"]:
+    for filename in [
+        "release_utils.py",
+        "research_platform/inference_release.py",
+        "research_platform/cloud_runtime.py",
+    ]:
         try:
             tree = ast.parse((ROOT / filename).read_text())
         except (OSError, SyntaxError):
@@ -174,10 +181,14 @@ def preflight():
     }
 
 
-def package_mismatches():
+def package_mismatches(lock=None):
     """Report every installed-version mismatch, not only the first failed pin."""
     result = []
-    for line in (ROOT / "requirements-production.lock").read_text().splitlines():
+    for line in (
+        (Path(lock) if lock is not None else ROOT / "requirements-production.lock")
+        .read_text()
+        .splitlines()
+    ):
         if "==" not in line or line.startswith("#"):
             continue
         name, expected = line.strip().split("==")
@@ -199,7 +210,7 @@ def package_mismatches():
     return result
 
 
-def render():
+def render(*, preflight_check=None):
     # The existing compact theme starts content beneath Streamlit's fixed mobile
     # toolbar. Keep the first authenticated control reachable after failed load.
     st.markdown(
@@ -209,11 +220,19 @@ def render():
         st.caption(
             "No credentials are shown. This checks the actual hosted checkout and runtime; it makes no provider requests or release changes."
         )
-        st.json(deployment())
+        metadata = deployment()
+        if preflight_check is not None:
+            metadata.update(
+                expected_entrypoint="odds_value_research.py",
+                diagnostics_version="hosted-release-profile-r1",
+                serving_certifi_expected="2026.11.20",
+                original_training_certifi="2026.10.23",
+            )
+        st.json(metadata)
         if st.button(
             "Check approved release loading", key="research_startup_preflight"
         ):
-            result = preflight()
+            result = (preflight_check or preflight)()
             st.json(result)
             if result["status"] == "FAIL":
                 st.error(

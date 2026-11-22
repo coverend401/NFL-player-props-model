@@ -1,5 +1,10 @@
 # Hosted release failure: obtain the actual rejection before correcting it
 
+**Update:** The owner identified certifi drift. The managed environment is now
+covered by [separate serving-runtime recertification](CLOUD-RUNTIME-RECERTIFICATION.md).
+Follow that document for current verification; the original diagnostic history below
+does not mean that production's old dependency lock has been changed.
+
 The owner's authenticated hosted error is real. Green CI and a successful local
 render do not establish hosted availability. The app's existing catch combines
 all release-loader and initial-parquet failures into "Approved release

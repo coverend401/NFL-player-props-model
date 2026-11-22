@@ -1,5 +1,10 @@
 # Preserve the approved certifi pin through hosted installation
 
+**SUPERSEDED:** Hosted owner verification showed Cloud does not honor this
+constraint during its later managed installation. The constraint has been removed.
+Use [the serving-runtime recertification](CLOUD-RUNTIME-RECERTIFICATION.md).
+The following records the failed approach and its limited local evidence only.
+
 ## Confirmed cause and scope
 
 The authenticated hosted diagnostic reported `certifi` **2026.11.20**, while the

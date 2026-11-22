@@ -297,6 +297,10 @@ def top8(slate, release):
             key="enhanced_certified_top",
         ):
             certified_top8(slate, release)
+    elif release.get("serving_runtime_profile"):
+        st.error(
+            "Enhanced serving admission failed. No legacy selection fallback is allowed."
+        )
     else:
         certified_top8(slate, release)
 
@@ -310,6 +314,10 @@ def games8(slate, release):
             key="enhanced_certified_games",
         ):
             certified_games8(slate, release)
+    elif release.get("serving_runtime_profile"):
+        st.error(
+            "Enhanced serving admission failed. No legacy selection fallback is allowed."
+        )
     else:
         certified_games8(slate, release)
 
@@ -365,7 +373,8 @@ def parlays8(slate, release):
 def render(slate, release):
     from weekly_learning.selection import for_app
 
-    slate, release = for_app(slate, release)
+    if not release.get("serving_runtime_profile"):
+        slate, release = for_app(slate, release)
     st.markdown(CSS, unsafe_allow_html=True)
     from .selection_integrity import availability_review, available_rows, block_reason
 
@@ -420,15 +429,28 @@ def render(slate, release):
         from .enhanced_ui import render as enhanced_player
 
         if not enhanced_player(release, "player"):
-            data8(slate, release)
-            player_view(slate, release)
+            if release.get("serving_runtime_profile"):
+                st.error(
+                    "Enhanced player admission failed. No legacy fallback is allowed."
+                )
+            else:
+                data8(slate, release)
+                player_view(slate, release)
     elif section == "Game Intelligence":
-        from season_intelligence.ui import render as render_season_intelligence
+        if release.get("serving_runtime_profile"):
+            from .cloud_intelligence_ui import render as render_season_intelligence
+        else:
+            from season_intelligence.ui import render as render_season_intelligence
 
         render_season_intelligence(release)
         from script_adjustment.ui import render as render_numerical
 
-        render_numerical(release)
+        if release.get("serving_runtime_profile"):
+            st.caption(
+                "The failed numerical game-script challenger remains archived and unpromoted; its original-runtime diagnostics are not activated here."
+            )
+        else:
+            render_numerical(release)
         from weekly_learning.operations import render_game_research
 
         render_game_research(release)
