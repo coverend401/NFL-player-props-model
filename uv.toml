@@ -1,0 +1,4 @@
+# Preserve the approved CA-package pin during later uv installs/upgrades too.
+# requirements.txt alone constrains only the initial installation command.
+# This is a constraint, not an override: incompatible requests must fail closed.
+constraint-dependencies = ["certifi==2026.10.23"]

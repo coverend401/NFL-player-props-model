@@ -34,7 +34,7 @@ that a missing-pointer reproduction establishes the actual hosted cause.
    Do not change production settings or secrets.
 2. Log in using the existing research password. Expand **Authenticated deployment
    diagnostics**, above the generic error. It is available even when release
-   admission fails. It must show `hosted-release-preflight-r1`.
+   admission fails. It must show `hosted-release-preflight-r2`.
 3. Read the **actual commit, branch, repository and Python version**. If the Git
    metadata is unavailable, inspect the app's GitHub configuration in Community
    Cloud and report those fields. Do not infer its branch from GitHub CI.

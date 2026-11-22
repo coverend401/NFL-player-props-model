@@ -42,8 +42,14 @@ def deployment():
         ) or origin.removesuffix(".git") == "git@github.com:" + expected_repo
     except ValueError:
         repository_matches = False
+    try:
+        installer = (
+            importlib.metadata.distribution("certifi").read_text("INSTALLER") or ""
+        ).strip()
+    except importlib.metadata.PackageNotFoundError:
+        installer = "unavailable"
     return {
-        "diagnostics_version": "hosted-release-preflight-r1",
+        "diagnostics_version": "hosted-release-preflight-r2",
         "commit": commit if re.fullmatch(r"[a-f0-9]{40}", commit) else "unavailable",
         "branch": branch
         if re.fullmatch(r"[A-Za-z0-9._/-]{1,120}", branch)
@@ -55,6 +61,10 @@ def deployment():
         "expected_branch": "sportsgameodds-free-feasibility",
         "expected_entrypoint": "odds_value_research.py",
         "expected_release": "research-week11-frozen-20261120-r2",
+        "uv_constraint_present": (ROOT / "uv.toml").is_file(),
+        "certifi_installer": installer
+        if installer in {"uv", "pip", "conda"}
+        else "unavailable",
         "research_pointer_override_configured": bool(
             os.environ.get("NFL_RESEARCH_INFERENCE_POINTER")
         ),
@@ -148,12 +158,45 @@ def preflight():
 
         slate = pd.read_parquet(directory / "slate.parquet")
     except (OSError, ValueError, KeyError, TypeError) as error:
-        return {"status": "FAIL", **safe_failure(error)}
+        failure = {"status": "FAIL", **safe_failure(error)}
+        if failure["code"] in {
+            "RUNTIME_PACKAGE_MISMATCH",
+            "PYTHON_RUNTIME_MISMATCH",
+            "RESEARCH_RUNTIME_MISMATCH",
+            "PARENT_RUNTIME_MISMATCH",
+        }:
+            failure["package_mismatches"] = package_mismatches()
+        return failure
     return {
         "status": "PASS",
         "release": manifest["release_id"],
         "base_forecast_rows": len(slate),
     }
+
+
+def package_mismatches():
+    """Report every installed-version mismatch, not only the first failed pin."""
+    result = []
+    for line in (ROOT / "requirements-production.lock").read_text().splitlines():
+        if "==" not in line or line.startswith("#"):
+            continue
+        name, expected = line.strip().split("==")
+        try:
+            installed = importlib.metadata.version(name)
+        except importlib.metadata.PackageNotFoundError:
+            installed = "not installed"
+        if installed != expected:
+            result.append(
+                {
+                    "package": name,
+                    "expected": expected,
+                    "installed": installed
+                    if installed == "not installed"
+                    or re.fullmatch(r"[0-9][0-9A-Za-z.+-]{0,40}", installed)
+                    else "unrecognised version",
+                }
+            )
+    return result
 
 
 def render():
