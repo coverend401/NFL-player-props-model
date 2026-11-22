@@ -80,6 +80,18 @@ class DiagnosticTests(unittest.TestCase):
             "RESEARCH_SOURCE_HASH_MISMATCH",
         )
 
+    def test_static_validator_guard_can_be_identified_without_echoing_arbitrary_text(
+        self,
+    ):
+        message = "Missing original roster provenance"
+        self.assertEqual(
+            diagnostics.safe_failure(ValueError(message))["guard"], message
+        )
+        self.assertNotIn(
+            "guard",
+            diagnostics.safe_failure(ValueError(message + ": synthetic-secret")),
+        )
+
     def test_preflight_preserves_failure_and_does_not_fallback(self):
         with patch(
             "research_platform.inference_release.resolve_research_release",

@@ -1,5 +1,6 @@
 """Authenticated, opt-in hosted release diagnostics; never bypasses admission."""
 
+import ast
 import importlib.metadata
 import json
 import os
@@ -105,6 +106,28 @@ def safe_failure(error):
             return {"code": code}
     if isinstance(error, json.JSONDecodeError):
         return {"code": "RELEASE_JSON_INVALID"}
+    # Only echo exact, static guard strings from the two checked-in validators;
+    # never echo arbitrary exception text, formatted paths or imported data.
+    for filename in ["release_utils.py", "research_platform/inference_release.py"]:
+        try:
+            tree = ast.parse((ROOT / filename).read_text())
+        except (OSError, SyntaxError):
+            continue
+        for node in ast.walk(tree):
+            call = node.exc if isinstance(node, ast.Raise) else None
+            if (
+                isinstance(call, ast.Call)
+                and isinstance(call.func, ast.Name)
+                and call.func.id == "ValueError"
+                and call.args
+                and isinstance(call.args[0], ast.Constant)
+                and isinstance(call.args[0].value, str)
+                and text == call.args[0].value
+            ):
+                return {
+                    "code": "RELEASE_VALIDATION_REJECTED",
+                    "guard": call.args[0].value,
+                }
     return {
         "code": "RELEASE_VALIDATION_REJECTED",
         "exception_type": type(error).__name__,
@@ -134,6 +157,11 @@ def preflight():
 
 
 def render():
+    # The existing compact theme starts content beneath Streamlit's fixed mobile
+    # toolbar. Keep the first authenticated control reachable after failed load.
+    st.markdown(
+        '<div style="height:3rem" aria-hidden="true"></div>', unsafe_allow_html=True
+    )
     with st.expander("Authenticated deployment diagnostics", expanded=False):
         st.caption(
             "No credentials are shown. This checks the actual hosted checkout and runtime; it makes no provider requests or release changes."
