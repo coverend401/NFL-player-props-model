@@ -60,6 +60,7 @@ def binding_paths():
             "research_platform/selection_integrity.py",
         ]
     )
+    files.update((ROOT / "selection_learning").glob("*.py"))
     files.update(
         DIRECTORY / p for p in ["requirements.lock", "baseline_validation.json"]
     )

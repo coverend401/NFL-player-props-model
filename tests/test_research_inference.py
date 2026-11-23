@@ -297,6 +297,7 @@ class CertifiedInferenceTests(unittest.TestCase):
 
         with (
             tempfile.TemporaryDirectory() as tmp,
+            patch("research_platform.r8.datetime") as presentation_clock,
             patch(
                 "research_platform.selection_integrity.REPORT",
                 Path(tmp) / "missing-audit.json",
@@ -313,6 +314,8 @@ class CertifiedInferenceTests(unittest.TestCase):
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
+            # This historical missing-audit test must not depend on today's slate age.
+            presentation_clock.now.return_value = pd.Timestamp("2026-11-22T15:00Z")
             app = AppTest.from_file(
                 str(ROOT / "odds_value_research.py"), default_timeout=90
             ).run()

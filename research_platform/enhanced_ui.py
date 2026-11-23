@@ -256,6 +256,11 @@ def render(release, mode):
         with st.expander("Data availability", expanded=False):
             availability_info()
         return True
+    if mode in {"top", "games"}:
+        from selection_learning.ui import render as render_quoted
+
+        render_quoted(frame, fixtures, release, mode)
+        st.markdown("#### Frozen forecast-only research — not quoted selections")
     if mode == "top":
         for _, r in top.iterrows():
             st.caption(fixture_status(r.kickoff_at, now))

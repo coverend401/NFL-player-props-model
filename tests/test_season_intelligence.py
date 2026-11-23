@@ -6,7 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
 import numpy as np
 import pandas as pd
@@ -178,6 +178,7 @@ class FrozenIntelligenceTests(unittest.TestCase):
 
         with (
             archived_week11(),
+            patch("season_intelligence.ui.pd", wraps=pd) as archive_pd,
             tempfile.TemporaryDirectory() as tmp,
             patch.dict(
                 os.environ,
@@ -192,6 +193,8 @@ class FrozenIntelligenceTests(unittest.TestCase):
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
+            archive_pd.Timestamp = Mock(wraps=pd.Timestamp)
+            archive_pd.Timestamp.now.return_value = pd.Timestamp("2026-11-22T08:00Z")
             app = AppTest.from_file(
                 str(ROOT / "odds_value_research.py"), default_timeout=120
             ).run()

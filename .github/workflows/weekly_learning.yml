@@ -12,6 +12,11 @@ on:
         type: string
         default: ''
   workflow_call:
+    secrets:
+      NFL_SELECTION_GITHUB_REPOSITORY:
+        required: false
+      NFL_SELECTION_GITHUB_TOKEN:
+        required: false
     inputs:
       mode:
         type: string
@@ -22,6 +27,7 @@ on:
   pull_request:
     paths:
       - 'weekly_learning/**'
+      - 'selection_learning/**'
       - '.github/workflows/weekly_learning.yml'
 # Only standard Linux runners. No paid service, provider keys or production secrets.
 permissions:
@@ -70,6 +76,18 @@ jobs:
               *) exit 1 ;;
             esac
           fi
+      - name: Reconcile privately frozen quoted selections after admitted results
+        if: success() && github.event_name != 'pull_request' && inputs.mode == 'auto'
+        env:
+          NFL_SELECTION_GITHUB_REPOSITORY: ${{ secrets.NFL_SELECTION_GITHUB_REPOSITORY }}
+          NFL_SELECTION_GITHUB_TOKEN: ${{ secrets.NFL_SELECTION_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NFL_SELECTION_GITHUB_REPOSITORY:-}" ] || [ -z "${NFL_SELECTION_GITHUB_TOKEN:-}" ]; then
+            echo 'Quoted selection reconciliation BLOCKED: private durable journal is not configured.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python -m selection_learning.cli --latest
       - name: Summarise without paid artifact/cache storage
         if: always()
         run: |

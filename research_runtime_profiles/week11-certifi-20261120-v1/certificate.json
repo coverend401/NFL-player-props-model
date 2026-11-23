@@ -2,7 +2,7 @@
   "schema": 1,
   "profile_id": "week11-certifi-20261120-v1",
   "status": "passed",
-  "validated_at": "2026-11-22T17:10:21.341495+00:00",
+  "validated_at": "2026-11-23T15:30:26.851752+00:00",
   "forecast_release": "research-week11-frozen-20261120-r2",
   "training_runtime": {
     "python_minor": "3.14",
@@ -327,10 +327,10 @@
     "research_platform/cloud_inference.py": "c3479d743a12077132e7845c57b2680a227b108f94ee4cf1494a42e705479d94",
     "research_platform/cloud_intelligence.py": "4f22d42e09d5ec35873f1335f0ac23c62cd09f9a7b1eea39158479c9c8d264b9",
     "research_platform/cloud_intelligence_ui.py": "fde4da25882d6ab3e070c4da7e1c049cfd8702a24e9bfa40e4a71b433dc0682c",
-    "research_platform/cloud_runtime.py": "94837b6686ee789e6b6bc799ff9f7a490a866e52b7fb43bcf92c9579a879fc9b",
+    "research_platform/cloud_runtime.py": "aa244d8163c9e408b927fb7efd3b19872d94e16a6ac99fe39738d947f528d060",
     "research_platform/cloud_selection.py": "4da58e4eaac9c65015c51a22cd6de1299656963ca62f282327cbb19bb3fe5583",
     "research_platform/enhanced_engine.py": "1f2c99d160af321d732680b3ba3f3e022223c9b81851b164b3ad841d469888d4",
-    "research_platform/enhanced_ui.py": "f4048a3da93fb141ae2961b76a6e616912bcea4399ea5c5830cb36cb87a7f89b",
+    "research_platform/enhanced_ui.py": "360e1d6b266624df6af592e91f6c4efb316c1d9ea39ce22f7a7d03538e87a984",
     "research_platform/inference_builder.py": "4fa36ec63590b2456e77e3cd7e56ead251f6d8ae1651ad80f18b9f744ca1e33f",
     "research_platform/inference_release.py": "e96d8077daa9af4cc0e1164b4fd2c1d0fcffd66d675aca0692ab4211a00292b6",
     "research_platform/r8.py": "99317bbb8bc8865fd0ce553f14232ffbdabc3e6814ca73ae7218f5b3426bdd81",
@@ -363,7 +363,13 @@
     "season_intelligence/probability.py": "77a5993e32bce26de20f686a6f62f3fbce2e5d6c7339439b0e45053590509a08",
     "season_intelligence/sunday.py": "cc87a04abb723e48c48ad6ced26d28d66a3bb12c0811b34848ada373e11fec4d",
     "season_intelligence/ui.py": "2d622b72da6fb901581f898da9bc6a8601a844dbec20982792992453a73f96f4",
-    "season_intelligence/validate.py": "7accb1dc0215531badc1ca08b59b3c60f119ae054f8303b6c49177962887a02c"
+    "season_intelligence/validate.py": "7accb1dc0215531badc1ca08b59b3c60f119ae054f8303b6c49177962887a02c",
+    "selection_learning/__init__.py": "1ff45b5f264aa9154c474df0f1224e1710273542790533bf1b1901227b1f5d27",
+    "selection_learning/cli.py": "5fdd5f3378693d211896b3bbc9e0bfbaface7debf16260393c9d88f791aae6fb",
+    "selection_learning/engine.py": "1df146c5dd45cc10576b2fb819d1b7811c0913aac9fae3354dcea51208ffc533",
+    "selection_learning/settlement.py": "fb98d47fbac106776ca92bc9a2f9184c66a2683498a8f3f81abff60ac8c53f67",
+    "selection_learning/store.py": "fb8afadd530039c7fc143a18ba49f8785a8f0a39c216250c57697f31dd158df0",
+    "selection_learning/ui.py": "394e3b93d0956841f983d7d572f68097220db39f4172144b3a8568535756b7ad"
   },
   "model_parent": {
     "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",

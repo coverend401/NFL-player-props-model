@@ -10,6 +10,16 @@ from .store import ROOT, Store
 
 def render():
     st.markdown("### Weekly Learning")
+    from selection_learning.settlement import performance
+
+    journal = st.session_state.get("line_journal")
+    with st.expander("Frozen quoted-selection performance", expanded=True):
+        if journal is None:
+            st.info(
+                "Load the private selection journal from Top Picks to view measured quoted-selection results. No prices or outcomes are inferred from forecast-only rankings."
+            )
+        else:
+            st.json(performance(journal))
     root = ROOT / "weekly_learning_state"
     reports = sorted((root / "cycles").glob("*/report.json"))
     if not reports:

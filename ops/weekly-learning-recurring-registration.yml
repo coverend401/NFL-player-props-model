@@ -10,5 +10,8 @@ permissions:
 jobs:
   research:
     uses: coverend401/NFL-player-props-model/.github/workflows/weekly_learning.yml@sportsgameodds-free-feasibility
+    secrets:
+      NFL_SELECTION_GITHUB_REPOSITORY: ${{ secrets.NFL_SELECTION_GITHUB_REPOSITORY }}
+      NFL_SELECTION_GITHUB_TOKEN: ${{ secrets.NFL_SELECTION_GITHUB_TOKEN }}
     with:
       mode: ${{ github.event.schedule == '0 12 * * 2' && 'auto' || 'prepare' }}

@@ -151,10 +151,14 @@ class CloudHostedTests(unittest.TestCase):
             patch("research_platform.enhanced_ui.datetime") as ui_clock,
             patch("research_platform.r8.datetime") as app_clock,
             patch("research_platform.selection_integrity.datetime") as audit_clock,
+            patch("selection_learning.ui.datetime") as quote_clock,
+            patch("selection_learning.engine.datetime") as selection_clock,
             patch("requests.get") as get,
             patch("requests.request") as request,
         ):
             ui_clock.now.return_value = at
+            quote_clock.now.return_value = at
+            selection_clock.now.return_value = at
             app_clock.now.return_value = at
             audit_clock.now.return_value = at
             audit_clock.fromisoformat.side_effect = datetime.fromisoformat
@@ -176,6 +180,56 @@ class CloudHostedTests(unittest.TestCase):
             app.run()
             self.assertTrue(
                 any("Estimated research EV" in x.value for x in app.markdown)
+            )
+            # Exercise the new line-specific form in the actual authenticated root.
+            frame = pd.read_parquet(
+                cloud.ROOT
+                / "research_selection_releases/enhanced-sunday-20261121-v1/forecasts.parquet"
+            )
+            supported = frame[
+                frame.probability_supported
+                & frame.probability_mode.ne("original_normal")
+                & pd.to_datetime(frame.kickoff_at, utc=True).gt(
+                    pd.Timestamp(at) + pd.Timedelta(minutes=60)
+                )
+            ]
+            next(x for x in app.selectbox if x.label == "Forecast identity").select(
+                int(supported.index[0])
+            )
+            next(x for x in app.number_input if x.label == "Actual line").set_value(5.5)
+            next(
+                x for x in app.number_input if x.label == "Actual decimal odds"
+            ).set_value(2.0)
+            next(x for x in app.text_input if x.label == "Bookmaker").input(
+                "SYNTHETIC UI TEST"
+            )
+            next(
+                x
+                for x in app.text_input
+                if x.label.startswith("Quote source reference")
+            ).input("Synthetic regression fixture; not actual odds")
+            next(
+                x for x in app.text_input if x.label.startswith("Quote observed at")
+            ).input(at.isoformat())
+            next(
+                x
+                for x in app.checkbox
+                if x.label.startswith("I observed this available quote")
+            ).check()
+            next(
+                x for x in app.button if x.label == "Compare actual quote"
+            ).click().run()
+            self.assertFalse(app.exception, app.exception)
+            self.assertEqual(len(app.session_state["line_draft"]), 1)
+            self.assertIsInstance(
+                app.session_state["line_draft"][0]["hit_probability"], float
+            )
+            self.assertTrue(
+                next(
+                    x
+                    for x in app.button
+                    if x.label == "Freeze quoted research decisions"
+                ).disabled
             )
             next(x for x in app.selectbox if x.label == "Workspace").select(
                 "Top 2 by Game"
