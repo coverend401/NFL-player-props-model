@@ -2,13 +2,20 @@
   "version": "fundamental-threshold-models-v1",
   "scope": "research_only_no_promotion_or_slate_selection",
   "fit_seasons_start": 2022,
-  "test_seasons": [2025, 2026],
+  "test_seasons": [
+    2025,
+    2026
+  ],
   "maximum_2026_test_week": 10,
   "holdout_status": "2025 and 2026w1-10 previously inspected; new-method chronological diagnostics, not an untouched final evaluation",
   "fold_design": "For test year Y: base training seasons 2022..Y-2; probability calibration Y-1 weeks1-9; method/selection validation Y-1 weeks10-18; no post-validation refit",
   "threshold_design": "Per-market training-only champion residual quantiles20/50/80 added to each archived pregame champion forecast, rounded down then +0.5; positive lines>=0.5; duplicate numeric thresholds removed",
   "thresholds_are_bookmaker_lines": false,
-  "quantiles": [0.2,0.5,0.8],
+  "quantiles": [
+    0.2,
+    0.5,
+    0.8
+  ],
   "boost_iterations": 50,
   "boost_leaves": 7,
   "boost_l2": 20,
@@ -17,12 +24,52 @@
   "forest_min_leaf": 30,
   "calibration": "Monotone isotonic, 100 identity pseudogames for already probabilistic scores; no pseudo-probabilities for unbounded model scores; calibration split only",
   "ensemble": "Equal weight only among components independently passing prior validation: logloss gain>=1%, Brier no worse, calibration gap<=5pp and at least100 player-games. Otherwise explicit champion fallback. Components need not have independent errors.",
-  "selection": {"top_per_slate":8,"top_per_game":2,"probability_cutoffs":[0.65,0.70,0.75,0.80,0.85,0.90],"validation_hit_rate_min":0.75,"validation_week_bootstrap_lower_min":0.65,"validation_min_legs":50,"validation_min_weeks":6,"calibration_gap_max":0.05,"cutoff_selection":"Lowest prior-validation cutoff satisfying every gate; otherwise abstain"},
-  "primary_metrics": ["Brier", "log_loss", "exceedance_accuracy", "weekly_fixed_count_hit_rate", "weekly_consistency", "qualified_selection_coverage"],
-  "secondary_metrics": ["quantile_coverage", "quantile_width", "paired_week_uncertainty", "position_cohorts"],
+  "selection": {
+    "top_per_slate": 8,
+    "top_per_game": 2,
+    "probability_cutoffs": [
+      0.65,
+      0.7,
+      0.75,
+      0.8,
+      0.85,
+      0.9
+    ],
+    "validation_hit_rate_min": 0.75,
+    "validation_week_bootstrap_lower_min": 0.65,
+    "validation_min_legs": 50,
+    "validation_min_weeks": 6,
+    "calibration_gap_max": 0.05,
+    "cutoff_selection": "Lowest prior-validation cutoff satisfying every gate; otherwise abstain"
+  },
+  "primary_metrics": [
+    "Brier",
+    "log_loss",
+    "exceedance_accuracy",
+    "weekly_fixed_count_hit_rate",
+    "weekly_consistency",
+    "qualified_selection_coverage"
+  ],
+  "secondary_metrics": [
+    "quantile_coverage",
+    "quantile_width",
+    "paired_week_uncertainty",
+    "position_cohorts"
+  ],
   "promotion": "Disabled. Compare all markets on identical test observations; paired week-block uncertainty and multiplicity correction. Genuine priced prospective evidence required for commercial adoption.",
   "commercial_claims": "No ROI, historical bookmaker hit rate, accumulator success or offered odds from statistical thresholds",
   "seed": 241126,
   "bookmaker_calls": false,
-  "original_model_retraining": false
+  "original_model_retraining": false,
+  "evidence_gates": {
+    "macro_log_loss_gain_min": 0.02,
+    "macro_brier_no_worse": true,
+    "all_market_log_loss_regression_max": 0.02,
+    "familywise_alpha": 0.05,
+    "fixed_count_hit_rate_gain_min": 0.02,
+    "weekly_lower_quartile_no_worse": true,
+    "paired_interval_lower_min": 0,
+    "global_primary_test": "Equal-market weekly log loss; multiplicity across six new method families; per-market comparisons exploratory with correction",
+    "adoption": "No automatic adoption: inspected periods and absent authentic prices cannot certify commercial performance"
+  }
 }
