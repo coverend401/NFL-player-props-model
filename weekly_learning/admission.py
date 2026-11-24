@@ -91,15 +91,22 @@ def scoreboard_finality(games, *, get=None, now=None):
     last = times.max() + pd.Timedelta(days=1)
     if last - first > pd.Timedelta(days=10):
         raise ValueError("Finality discovery window exceeds bound")
-    params = {
-        "dates": first.strftime("%Y%m%d") + "-" + last.strftime("%Y%m%d"),
-        "limit": 100,
-    }
+    scope = games.game_id.astype(str).str.extract(
+        r"^(?P<season>\d{4})_(?P<week>\d{2})_[A-Z]{2,3}_[A-Z]{2,3}$"
+    )
+    if scope.isna().any().any() or len(scope.drop_duplicates()) != 1:
+        raise ValueError("Finality requires one unambiguous NFL season/week")
+    season, week = int(scope.iloc[0].season), int(scope.iloc[0].week)
+    if not 1 <= week <= 18:
+        raise ValueError("Unsupported regular-season finality week")
+    params = {"dates": str(season), "seasontype": 2, "week": week, "limit": 100}
     with get(
         ESPN, params=params, stream=True, timeout=(5, 30), allow_redirects=False
     ) as response:
         if response.status_code != 200:
-            raise ValueError("ESPN finality source unavailable; no retry")
+            raise ValueError(
+                f"ESPN finality source unavailable (HTTP {response.status_code}); no retry"
+            )
         chunks = []
         size = 0
         for block in response.iter_content(65536):
@@ -111,6 +118,12 @@ def scoreboard_finality(games, *, get=None, now=None):
 
     raw = b"".join(chunks)
     body = json.loads(raw)
+    if (
+        body.get("season", {}).get("year") != season
+        or body.get("season", {}).get("type") != 2
+        or body.get("week", {}).get("number") != week
+    ):
+        raise ValueError("ESPN returned a different or unverified season/week")
     events = body.get("events", [])
     if not isinstance(events, list) or len(events) > 100:
         raise ValueError("Unexpected finality envelope")
@@ -150,7 +163,9 @@ def scoreboard_finality(games, *, get=None, now=None):
                     raise ValueError("Fixture not confirmed final by ESPN")
                 matches.append(sides)
         if len(matches) != 1:
-            raise ValueError("Missing or ambiguous finality fixture match")
+            raise ValueError(
+                f"Missing or ambiguous finality fixture match: {game.game_id}; frozen/source kickoff {utc(game.kickoff_at).isoformat()}"
+            )
         matched.append((game, matches[0]))
     verified = [
         {

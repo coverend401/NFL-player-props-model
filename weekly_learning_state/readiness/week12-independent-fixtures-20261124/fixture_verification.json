@@ -1,0 +1,83 @@
+{
+  "fixtures_verified": [
+    {
+      "game_id": "2026_12_ATL_MIN",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_BAL_HOU",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_CAR_TB",
+      "kickoff_at": "2026-12-01T01:15Z"
+    },
+    {
+      "game_id": "2026_12_CHI_DET",
+      "kickoff_at": "2026-11-26T18:00Z"
+    },
+    {
+      "game_id": "2026_12_DEN_PIT",
+      "kickoff_at": "2026-11-27T20:00Z"
+    },
+    {
+      "game_id": "2026_12_GB_LA",
+      "kickoff_at": "2026-11-26T01:00Z"
+    },
+    {
+      "game_id": "2026_12_KC_BUF",
+      "kickoff_at": "2026-11-27T01:20Z"
+    },
+    {
+      "game_id": "2026_12_LV_CLE",
+      "kickoff_at": "2026-11-30T01:20Z"
+    },
+    {
+      "game_id": "2026_12_NE_LAC",
+      "kickoff_at": "2026-11-29T21:05Z"
+    },
+    {
+      "game_id": "2026_12_NO_CIN",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_NYG_IND",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_NYJ_MIA",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_PHI_DAL",
+      "kickoff_at": "2026-11-26T21:30Z"
+    },
+    {
+      "game_id": "2026_12_SEA_SF",
+      "kickoff_at": "2026-11-29T21:25Z"
+    },
+    {
+      "game_id": "2026_12_TEN_JAX",
+      "kickoff_at": "2026-11-29T18:00Z"
+    },
+    {
+      "game_id": "2026_12_WAS_ARI",
+      "kickoff_at": "2026-11-29T21:25Z"
+    }
+  ],
+  "issues": [],
+  "manifest_sha256": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+  "outcome_score_fields_used": false,
+  "query": {
+    "dates": "2026",
+    "limit": 100,
+    "seasontype": 2,
+    "week": 12
+  },
+  "release_id": "weekly-week12-schemafix-20261124",
+  "response_sha256": "ed2eaf490122f2b92b56b7e8aa12f6f113a31dfc6e092d4b1a720ea9e7437d3a",
+  "retrieved_at": "2026-11-24T16:55:27.164942+00:00",
+  "selected": false,
+  "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard",
+  "status": "PASS"
+}

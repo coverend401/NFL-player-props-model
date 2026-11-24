@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-24T16:52:33.209415+00:00",
+  "details": {
+    "id": "week12-release-readiness-20261124",
+    "kind": "readiness",
+    "manifest_sha256": "8268bcde21cf678abfbb949b2a970ae136e10d7ac462eb94297ddedffaad3f47"
+  },
+  "previous_sha256": "dee8fb663a7072c723158e17ca8991c738660dba6a99e966eed7eeacbd635948"
+}

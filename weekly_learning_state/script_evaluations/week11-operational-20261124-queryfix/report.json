@@ -1,0 +1,181 @@
+{
+  "capture": {
+    "activation": false,
+    "baseline_manifest_sha256": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+    "baseline_release_id": "research-week11-frozen-20261120-r2",
+    "benchmark_final_period_used_for_selection": false,
+    "challenger_manifest_sha256": "885a0601c1ab1ab3feb52b8d700fabb68d52abb5bbce7611f5e100044c992b38",
+    "challenger_sha256": "1a8948e7dc3a3f249acdaa436d1caefa4a57fb241a8d8508c48113e3dfdfc693",
+    "frozen_at": "2026-11-21T16:46:12.922887+00:00",
+    "game_kickoffs": {
+      "2026_11_ARI_KC": "2026-11-22T18:00:00+00:00",
+      "2026_11_BAL_CAR": "2026-11-22T18:00:00+00:00",
+      "2026_11_CIN_WAS": "2026-11-24T01:15:00+00:00",
+      "2026_11_JAX_NYG": "2026-11-22T18:00:00+00:00",
+      "2026_11_LV_DEN": "2026-11-22T21:25:00+00:00",
+      "2026_11_MIA_BUF": "2026-11-22T18:00:00+00:00",
+      "2026_11_MIN_SF": "2026-11-23T01:20:00+00:00",
+      "2026_11_NO_CHI": "2026-11-22T18:00:00+00:00",
+      "2026_11_NYJ_LAC": "2026-11-22T21:05:00+00:00",
+      "2026_11_PIT_PHI": "2026-11-22T21:25:00+00:00",
+      "2026_11_TB_DET": "2026-11-22T18:00:00+00:00",
+      "2026_11_TEN_DAL": "2026-11-22T18:00:00+00:00"
+    },
+    "prediction_at": "2026-11-21T16:45:36.915493+00:00",
+    "selected": false,
+    "tier": "genuine_predecision_experimental_capture_no_promotion"
+  },
+  "capture_manifest_sha256": "b1cd35c1ac319cf699e008b0f90a7913172192a418143b8b12316caad26053ec",
+  "champion_retained": true,
+  "cycle_id": "week11-operational-20261124-queryfix",
+  "final_evaluation": "Monitoring only; does not spend or open the reserved untouched final period",
+  "measured": [
+    {
+      "baseline": {
+        "bias": -2.0631578947368423,
+        "mae": 3.8736842105263154,
+        "n": 19,
+        "rmse": 4.59782557302906
+      },
+      "experimental": {
+        "bias": -1.3526532301058343,
+        "mae": 3.5201536808131553,
+        "n": 19,
+        "rmse": 4.285946874322188
+      },
+      "market": "completions",
+      "n": 19
+    },
+    {
+      "baseline": {
+        "bias": -3.4842105263157896,
+        "mae": 7.2105263157894735,
+        "n": 19,
+        "rmse": 8.411458350306882
+      },
+      "experimental": {
+        "bias": -2.1117364653618993,
+        "mae": 6.571900062941814,
+        "n": 19,
+        "rmse": 7.819346797869318
+      },
+      "market": "passing_attempts",
+      "n": 19
+    },
+    {
+      "baseline": {
+        "bias": -14.768421052631581,
+        "mae": 34.768421052631574,
+        "n": 19,
+        "rmse": 42.71930415360743
+      },
+      "experimental": {
+        "bias": -9.084574854579625,
+        "mae": 32.28101858813407,
+        "n": 19,
+        "rmse": 38.66522978976089
+      },
+      "market": "passing_yards",
+      "n": 19
+    },
+    {
+      "baseline": {
+        "bias": -0.11578947368421054,
+        "mae": 2.073684210526316,
+        "n": 19,
+        "rmse": 2.627185806744147
+      },
+      "experimental": {
+        "bias": 0.29095430870771166,
+        "mae": 2.1592353957599517,
+        "n": 19,
+        "rmse": 2.684706353932013
+      },
+      "market": "qb_rushing_attempts",
+      "n": 19
+    },
+    {
+      "baseline": {
+        "bias": 0.3210526315789474,
+        "mae": 12.963157894736842,
+        "n": 19,
+        "rmse": 14.946483480105032
+      },
+      "experimental": {
+        "bias": 1.6570849670797438,
+        "mae": 13.209033567312968,
+        "n": 19,
+        "rmse": 15.082692219402968
+      },
+      "market": "qb_rushing_yards",
+      "n": 19
+    },
+    {
+      "baseline": {
+        "bias": 0.3722972972972976,
+        "mae": 18.096621621621622,
+        "n": 148,
+        "rmse": 24.083431839943184
+      },
+      "experimental": {
+        "bias": 0.8777887344725407,
+        "mae": 18.13746637064354,
+        "n": 148,
+        "rmse": 24.11090562222596
+      },
+      "market": "receiving_yards",
+      "n": 148
+    },
+    {
+      "baseline": {
+        "bias": 0.056375838926174475,
+        "mae": 1.385234899328859,
+        "n": 149,
+        "rmse": 1.782389618371318
+      },
+      "experimental": {
+        "bias": 0.0549981208933573,
+        "mae": 1.3814380502466972,
+        "n": 149,
+        "rmse": 1.7841137446097117
+      },
+      "market": "receptions",
+      "n": 149
+    },
+    {
+      "baseline": {
+        "bias": 0.6217391304347827,
+        "mae": 3.817391304347826,
+        "n": 46,
+        "rmse": 4.947858561825114
+      },
+      "experimental": {
+        "bias": 0.14315902050549487,
+        "mae": 3.6262149905174015,
+        "n": 46,
+        "rmse": 4.693214510720745
+      },
+      "market": "rushing_attempts",
+      "n": 46
+    },
+    {
+      "baseline": {
+        "bias": 0.12173913043478325,
+        "mae": 23.004347826086956,
+        "n": 46,
+        "rmse": 28.4554801018378
+      },
+      "experimental": {
+        "bias": -1.9378514984272373,
+        "mae": 21.832974196265468,
+        "n": 46,
+        "rmse": 27.47349912864404
+      },
+      "market": "rushing_yards",
+      "n": 46
+    }
+  ],
+  "operational_status": "completed_with_missing",
+  "promotion": false,
+  "settlement_report_sha256": "fc3cc9af414b475bb30810da50e0381a25978abc862b7907cdd289a551f07573"
+}

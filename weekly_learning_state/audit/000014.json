@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-24T16:50:57.153465+00:00",
+  "details": {
+    "id": "week11-20261124",
+    "kind": "enhanced_settlements",
+    "manifest_sha256": "c1a424df3ca245f2151bcacc38a2c4b2b8e961847bbafd3a593f9e9b9c3a0180"
+  },
+  "previous_sha256": "94ea05eedef12c0cdb4b09d36194b7ba57b67b5249b7d48c6ce037bfc458546e"
+}

@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-24T16:55:27.171395+00:00",
+  "details": {
+    "id": "week12-independent-fixtures-20261124",
+    "kind": "readiness",
+    "manifest_sha256": "6083b9e87b064fd7f1e6d1aca4e4933268760c8283ea19be77af0c2fb429a3ad"
+  },
+  "previous_sha256": "c5c96f70f027584130652b6eb5074f428d983c5d3a6152eab36f5da7116219d0"
+}

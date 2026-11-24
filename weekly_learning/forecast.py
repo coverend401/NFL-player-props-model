@@ -5,6 +5,7 @@ from pathlib import Path
 from types import FunctionType
 
 import pandas as pd
+import pyarrow as pa
 import pyarrow.parquet as pq
 
 from release_utils import resolve_release, validate_manifest
@@ -14,6 +15,26 @@ from scripts.prepare_research_inference import prepare
 
 from .sources import permitted, verify_snapshot
 from .store import ROOT, encoded, sha
+
+
+def completed_week_filters(schema, season, target_week):
+    """Type-aware Parquet predicates, applied before any protected outcome read."""
+
+    def string_type(value):
+        return pa.types.is_string(value) or pa.types.is_large_string(value)
+
+    year = str(season) if string_type(schema.field("season").type) else season
+    if string_type(schema.field("week").type):
+        # Membership avoids lexical ordering (e.g. "10" < "2").
+        weeks = sorted(
+            {
+                value
+                for week in range(1, target_week)
+                for value in [str(week), f"{week:02d}"]
+            }
+        )
+        return [("season", "==", year), ("week", "in", weeks)]
+    return [("season", "==", year), ("week", ">=", 1), ("week", "<", target_week)]
 
 
 def require_current_depth(depth, teams, since):
@@ -61,15 +82,10 @@ def prepare_next(sources, work, target_week, policy, release_id, model_parent=No
     def read(name, columns=None):
         path = sources / (name + ".parquet")
         schema = pq.read_schema(path)
-        value = str(season) if str(schema.field("season").type) == "string" else season
         return pd.read_parquet(
             path,
             columns=columns,
-            filters=[
-                ("season", "==", value),
-                ("week", ">=", 1),
-                ("week", "<", target_week),
-            ],
+            filters=completed_week_filters(schema, season, target_week),
         )
 
     past = read("schedule")

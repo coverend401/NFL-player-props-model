@@ -1,0 +1,9 @@
+{
+  "files": {
+    "reconciled.parquet": "4d4faa804e929281ef7f14d221ba40b1d2f6b3fb1c7c9c6b6e08cb3f2dad3091",
+    "report.json": "fc3cc9af414b475bb30810da50e0381a25978abc862b7907cdd289a551f07573"
+  },
+  "id": "week11-operational-20261124-queryfix",
+  "kind": "cycles",
+  "schema": 1
+}

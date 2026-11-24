@@ -57,7 +57,10 @@ class OperationalTests(unittest.TestCase):
         with (
             patch(
                 "weekly_learning.selection.resolve_current",
-                return_value=(None, {"release_id": "research-week11-frozen-20261120-r2"}),
+                return_value=(
+                    None,
+                    {"release_id": "research-week11-frozen-20261120-r2"},
+                ),
             ) as resolve,
             patch("requests.get") as get,
             patch(
@@ -78,7 +81,7 @@ class OperationalTests(unittest.TestCase):
         game = pd.DataFrame(
             [
                 {
-                    "game_id": "synthetic",
+                    "game_id": "2026_11_NE_DET",
                     "week": 11,
                     "home_team": "DET",
                     "away_team": "NE",
@@ -87,6 +90,8 @@ class OperationalTests(unittest.TestCase):
             ]
         )
         body = {
+            "season": {"year": 2026, "type": 2},
+            "week": {"number": 11},
             "events": [
                 {
                     "date": "2026-11-22T18:00:00Z",
@@ -115,7 +120,7 @@ class OperationalTests(unittest.TestCase):
                         }
                     ],
                 }
-            ]
+            ],
         }
         response = Mock(status_code=200)
         response.iter_content.return_value = [json.dumps(body).encode()]
@@ -130,11 +135,27 @@ class OperationalTests(unittest.TestCase):
         self.assertEqual(get.call_count, 1)
         self.assertFalse(get.call_args.kwargs["allow_redirects"])
 
+    def test_finality_rejects_other_weeks_and_preserves_kickoff_check(self):
+        games, get = self.evidence()
+        body = json.loads(get.return_value.iter_content.return_value[0])
+        body["week"]["number"] = 12
+        get.return_value.iter_content.return_value = [json.dumps(body).encode()]
+        with self.assertRaisesRegex(ValueError, "different or unverified"):
+            scoreboard_finality(games, get=get, now="2026-11-24T12:00:00Z")
+        games, get = self.evidence()
+        games["kickoff_at"] = "2026-11-22T21:25:00Z"
+        with self.assertRaisesRegex(ValueError, "finality fixture match"):
+            scoreboard_finality(games, get=get, now="2026-11-24T12:00:00Z")
+
     def test_finality_one_call_zero_and_score_mismatch(self):
         games, get = self.evidence()
         proof = scoreboard_finality(games, get=get, now="2026-11-24T12:00:00Z")
         self.assertEqual(proof["games"][0]["away_score"], 0)
         self.assertEqual(get.call_count, 1)
+        self.assertEqual(
+            get.call_args.kwargs["params"],
+            {"dates": "2026", "seasontype": 2, "week": 11, "limit": 100},
+        )
         games["home_score"] = 20
         games["away_score"] = 0
         games["completed_at"] = "2026-11-23T02:00:00Z"

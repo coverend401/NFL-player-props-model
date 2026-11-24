@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-11-24T16:40:39.547875+00:00",
+  "manifest_sha256": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+  "models_retrained": false,
+  "path": "research_inference_releases/weekly-week12-schemafix-20261124",
+  "selected": false,
+  "source_reused": true,
+  "status": "candidate_generated_not_selected",
+  "target_week": 12
+}

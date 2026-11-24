@@ -1,0 +1,11 @@
+{
+  "files": {
+    "joined.parquet": "6b33c72b7f20630ae68de71fffd950f5da7a10cb56db79a9fa548c991ab02561",
+    "report.json": "0295794e2ae45c44e9fd2f0385f0c4d9b2b93bcc9b25b25a4e6fb9270c7097e9",
+    "team_metrics.parquet": "80db5f098e409f4dc938c8f8e3af2194215ab56bb14db3db7cbfc8d923d0827c",
+    "team_reliability.parquet": "57d4fc65ad26d27d04f551fac007ce5bee8b58a74b6618e78b19b2efdd7782ad"
+  },
+  "id": "week11-operational-20261124-queryfix",
+  "kind": "script_evaluations",
+  "schema": 1
+}

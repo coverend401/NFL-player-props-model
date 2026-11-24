@@ -1,0 +1,19 @@
+{
+  "files": {
+    "evidence_gates.parquet": "c2577bf69330c93265ded33860f52f56a9a51463cb2e5ab9de857fe2cf2fd181",
+    "folds.json": "4558e4398824f9abd86cd44a09514b768764891ac41f1deea086dc56866962d9",
+    "macro_tests.parquet": "6edb8e5a6b13c741f74e806864731b0b54194f041478375e2197512a6e18a7cf",
+    "position_metrics.parquet": "4c8f924fab0fe2ae79239a8e4069a97e0c23aa296d585dd8f51fc3b28867f2f7",
+    "probability_metrics.parquet": "08f47357560930c77935dc750011d550c47bf35d8ae17a9f119bbc6c9d7626e8",
+    "protocol.json": "4f318d7119521256c576f3b28869ecd8879ae3637b8a96cb71fc80b6db8c3c4d",
+    "reliability.parquet": "d48393756d7095996db3d3c9018545439ae0923095912d0b184e621867d7a618",
+    "selection_metrics.parquet": "8f03d638debfd23ca639261b5ca9136211ef829b72c9e5e8b23cf937711ad45b",
+    "summary.json": "47acab421ed5232a746caa5eae2d4914913e39db03e389b88825690393dc7d5e",
+    "test_predictions.parquet": "0e2635edb9e36eddb8781738fcead2cd6d21237b91ee4ec07e169569809631df",
+    "validation_predictions.parquet": "a13f0c92c7c2ce4ae3ea80b97c562c88a89a15f3713e22c61618f4696ee01253",
+    "weekly_selection_metrics.parquet": "fd0eebc8690ef762fc4f0bd4d29137fd507fbb13e7f4e4124d697dbfe2c656ad"
+  },
+  "id": "24a9da12132fda867e5d989c",
+  "kind": "studies",
+  "schema": 1
+}

@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-24T16:35:44.730141+00:00",
+  "details": {
+    "id": "week11-operational-20261124-queryfix",
+    "kind": "script_evaluations",
+    "manifest_sha256": "48741b3c623119d53e51c3eb4c16725c3b74d1b2da5ccfe0e82664793aac0993"
+  },
+  "previous_sha256": "6f56dc1186a6e88a24b884b72f859f4bffed1bad3f0ae0470c854f98de2610e6"
+}

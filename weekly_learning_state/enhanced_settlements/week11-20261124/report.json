@@ -1,0 +1,186 @@
+{
+  "ROI": null,
+  "actual_pregame_timing_checked": true,
+  "admission_sha256": "de91d8f89a8a5a22d6f1f6599a7dc48068975aec4d4754949e4455e72796edbe",
+  "enhanced_forecasts": 522,
+  "enhanced_status_counts": {
+    "missing_box_confirmed_participation": 14,
+    "missing_player_observation": 26,
+    "no_offensive_snaps_not_proof_of_inactive_or_void": 42,
+    "scored": 440
+  },
+  "forecast_sha256": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
+  "genuine_bookmaker_hit_rate": null,
+  "kickoff_changes": [
+    {
+      "admitted_actual_kickoff": "2026-11-22T21:25:00+00:00",
+      "frozen_kickoff": "2026-11-22T18:00:00+00:00",
+      "game_id": "2026_11_JAX_NYG"
+    },
+    {
+      "admitted_actual_kickoff": "2026-11-22T18:00:00+00:00",
+      "frozen_kickoff": "2026-11-22T21:25:00+00:00",
+      "game_id": "2026_11_PIT_PHI"
+    }
+  ],
+  "metrics": [
+    {
+      "bias": -1.4371813720488635,
+      "forecasts": 17,
+      "group": "all_enhanced",
+      "mae": 3.5455860647759843,
+      "market": "completions",
+      "scored": 17,
+      "unscored": 0
+    },
+    {
+      "bias": -3.335294117647059,
+      "forecasts": 17,
+      "group": "all_enhanced",
+      "mae": 7.500000000000001,
+      "market": "passing_attempts",
+      "scored": 17,
+      "unscored": 0
+    },
+    {
+      "bias": -13.5,
+      "forecasts": 17,
+      "group": "all_enhanced",
+      "mae": 35.805882352941175,
+      "market": "passing_yards",
+      "scored": 17,
+      "unscored": 0
+    },
+    {
+      "bias": -0.21764705882352942,
+      "forecasts": 17,
+      "group": "all_enhanced",
+      "mae": 2.2294117647058824,
+      "market": "qb_rushing_attempts",
+      "scored": 17,
+      "unscored": 0
+    },
+    {
+      "bias": 0.6352941176470585,
+      "forecasts": 17,
+      "group": "all_enhanced",
+      "mae": 13.08235294117647,
+      "market": "qb_rushing_yards",
+      "scored": 17,
+      "unscored": 0
+    },
+    {
+      "bias": -3.9030855513462583,
+      "forecasts": 164,
+      "group": "all_enhanced",
+      "mae": 16.35694293714971,
+      "market": "receiving_yards",
+      "scored": 135,
+      "unscored": 29
+    },
+    {
+      "bias": -0.14118651312579147,
+      "forecasts": 165,
+      "group": "all_enhanced",
+      "mae": 1.28869321378611,
+      "market": "receptions",
+      "scored": 136,
+      "unscored": 29
+    },
+    {
+      "bias": -0.30853910582776356,
+      "forecasts": 54,
+      "group": "all_enhanced",
+      "mae": 3.625934607154756,
+      "market": "rushing_attempts",
+      "scored": 42,
+      "unscored": 12
+    },
+    {
+      "bias": -7.179680423335834,
+      "forecasts": 54,
+      "group": "all_enhanced",
+      "mae": 21.636421288327067,
+      "market": "rushing_yards",
+      "scored": 42,
+      "unscored": 12
+    },
+    {
+      "bias": 15.681333730235629,
+      "forecasts": 2,
+      "group": "top_picks",
+      "mae": 15.681333730235629,
+      "market": "receiving_yards",
+      "scored": 2,
+      "unscored": 0
+    },
+    {
+      "bias": 0.02228204077481022,
+      "forecasts": 8,
+      "group": "top_picks",
+      "mae": 1.6506319034895047,
+      "market": "receptions",
+      "scored": 8,
+      "unscored": 0
+    },
+    {
+      "bias": null,
+      "forecasts": 1,
+      "group": "top_picks",
+      "mae": null,
+      "market": "rushing_attempts",
+      "scored": 0,
+      "unscored": 1
+    },
+    {
+      "bias": -19.367040323327302,
+      "forecasts": 1,
+      "group": "top_picks",
+      "mae": 19.367040323327302,
+      "market": "rushing_yards",
+      "scored": 1,
+      "unscored": 0
+    },
+    {
+      "bias": 15.670483185188175,
+      "forecasts": 4,
+      "group": "top2",
+      "mae": 15.670483185188175,
+      "market": "receiving_yards",
+      "scored": 3,
+      "unscored": 1
+    },
+    {
+      "bias": 0.2616467534424427,
+      "forecasts": 14,
+      "group": "top2",
+      "mae": 1.8038873471788817,
+      "market": "receptions",
+      "scored": 13,
+      "unscored": 1
+    },
+    {
+      "bias": 2.629410212802899,
+      "forecasts": 1,
+      "group": "top2",
+      "mae": 2.629410212802899,
+      "market": "rushing_attempts",
+      "scored": 1,
+      "unscored": 0
+    },
+    {
+      "bias": -8.621966464702595,
+      "forecasts": 1,
+      "group": "top2",
+      "mae": 8.621966464702595,
+      "market": "rushing_yards",
+      "scored": 1,
+      "unscored": 0
+    }
+  ],
+  "original_frozen_records_modified": false,
+  "scope": "Authorised operational outcome audit only; these Week11 outcomes do not enter the new-method development benchmark",
+  "status": "completed_with_explicit_missing",
+  "top2": 20,
+  "top_picks": 12
+}

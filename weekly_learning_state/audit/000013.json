@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-24T16:40:39.551115+00:00",
+  "details": {
+    "id": "week12-schemafix-20261124",
+    "kind": "readiness",
+    "manifest_sha256": "bff86f197d00e54aa3f64ea96fa0cdf96b6cf90f0d93a92e09691b63935efc1c"
+  },
+  "previous_sha256": "f099cf0a3402cc15f2b08d19b3929773ce5599c7ef34300da26005a9bb083694"
+}

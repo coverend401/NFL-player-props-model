@@ -1,0 +1,254 @@
+{
+  "schema": 1,
+  "release_type": "prospective_frozen_model_inference_v2",
+  "release_id": "weekly-week12-schemafix-20261124",
+  "model_parent": {
+    "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",
+    "release_id": "stage1a-20261113-py314-arrow24-r2",
+    "manifest_sha256": "507f5cf07c7613ea9b4c1d0c4ff4c8397f399a150091bfebfb33d46ab3e3ddd2"
+  },
+  "models": {
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "forecast_build_started_at": "2026-11-24T16:39:43.004086+00:00",
+  "prediction_at": "2026-11-24T16:39:43.895800+00:00",
+  "feature_data_cutoff": "2026-11-24T16:39:34.836594+00:00",
+  "created_at": "2026-11-24T16:40:08.825218+00:00",
+  "runtime": {
+    "python_minor": "3.14",
+    "python_build": "3.14.10",
+    "packages": {
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "MarkupSafe": "3.0.4",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "24.0.0",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "PyJWT": "2.15.1",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    }
+  },
+  "source_sha256": {
+    "research_platform/inference_builder.py": "4fa36ec63590b2456e77e3cd7e56ead251f6d8ae1651ad80f18b9f744ca1e33f",
+    "research_platform/inference_release.py": "e96d8077daa9af4cc0e1164b4fd2c1d0fcffd66d675aca0692ab4211a00292b6",
+    "scripts/prepare_research_inference.py": "96d7cefe5bfbc8497cdb7c014d05fc873d4c93415f97ac8b365fcf8ef22f22c7",
+    "odds_value_research.py": "b10e20e4b10207bfba08fd0be02348f1f8ca60acb655acf9f782b20a4e94a338",
+    "weekly_learning/contract.py": "6ec0e7e7e02b10b5ff425775e1324910f63de38b0a2520729c77fb9165dafbbb",
+    "weekly_learning/admission.py": "925f0314dd24bc9e4ee61f1b7317fa8c325c2b43137b70d2e068500e7571b8df",
+    "weekly_learning/build_release.py": "31d0feee5024e5b87a2f3974d8f4ea217bb7f1ef3d3843e839f838350e6cd181",
+    "weekly_learning/forecast.py": "fa69aaae15d16b9f234b965876f186b125637ca0ebc19ef6ca82534f65b2d9c0",
+    "weekly_learning/sources.py": "ca80023583f8057494b4fc2fdcba2c67d4542244bd07c3b045e14f35f6d32b74",
+    "weekly_learning/policy.json": "6c11959081e22a962588e49d36e16bb760d63d8752af4392a6869bebc0076224",
+    "weekly_learning/game_script.py": "3452851c554af7427caffc04a2521953444e3996a72a50a3b3ab88c64030df5d"
+  },
+  "files": {
+    "admission.json": {
+      "sha256": "de91d8f89a8a5a22d6f1f6599a7dc48068975aec4d4754949e4455e72796edbe",
+      "bytes": 11075
+    },
+    "eligibility.json": {
+      "sha256": "72171f8d571f94b3aeeb9f28fdd28b1f1ff1737ab0457a1cb6019037a9028e43",
+      "bytes": 422795
+    },
+    "features.parquet": {
+      "sha256": "4fa19128e5231657499348733bb1d9c4b2a415064dc45f4057967e3f51e6ab06",
+      "bytes": 21236412
+    },
+    "game_script.json": {
+      "sha256": "c6bdea030e3e7698ec75ad754d8bec8f199ea7d04a35f2576c7835c30cd28ec8",
+      "bytes": 37150
+    },
+    "qb_starters.json": {
+      "sha256": "74e0ab4b5998edbc3b413a50d588412f9290c1a4162f34aa54f18134709aac93",
+      "bytes": 862
+    },
+    "roster_evidence.csv": {
+      "sha256": "34437f7d97f1cbbf9d65830efb48a6fb91bd03d5ddcdff00e0f4277159e5c687",
+      "bytes": 15487
+    },
+    "schedule.parquet": {
+      "sha256": "44638f8f91ba540b65b4f84a043a1cd60681334c6da630ab1febedf0cc94c8ee",
+      "bytes": 588737
+    },
+    "slate.parquet": {
+      "sha256": "1a320577747403bbd871ef2fb485ad93d1013526dcec1db2beb3029740d8ff3f",
+      "bytes": 38446
+    },
+    "sources.json": {
+      "sha256": "e1be498f4aa44c313a8e485bcc132d5cbb9b312335b9a8a089b68df95a93c51b",
+      "bytes": 7000
+    },
+    "top_picks.parquet": {
+      "sha256": "105c777cf56f1ec6af487472cd61b9a671d73cb1bcff073a8275593d4547e07b",
+      "bytes": 18651
+    },
+    "top_two.parquet": {
+      "sha256": "bf36adc666f08e6ba58f42d1ce92dd8f71da64c5fa2219b7c74b28d37bdfe5a3",
+      "bytes": 22141
+    }
+  },
+  "fixture_slate": {
+    "season": 2026,
+    "week": 12,
+    "game_ids": [
+      "2026_12_ATL_MIN",
+      "2026_12_BAL_HOU",
+      "2026_12_CAR_TB",
+      "2026_12_CHI_DET",
+      "2026_12_DEN_PIT",
+      "2026_12_GB_LA",
+      "2026_12_KC_BUF",
+      "2026_12_LV_CLE",
+      "2026_12_NE_LAC",
+      "2026_12_NO_CIN",
+      "2026_12_NYG_IND",
+      "2026_12_NYJ_MIA",
+      "2026_12_PHI_DAL",
+      "2026_12_SEA_SF",
+      "2026_12_TEN_JAX",
+      "2026_12_WAS_ARI"
+    ]
+  },
+  "game_kickoffs": {
+    "2026_12_ATL_MIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_BAL_HOU": "2026-11-29T18:00:00+00:00",
+    "2026_12_CAR_TB": "2026-12-01T01:15:00+00:00",
+    "2026_12_CHI_DET": "2026-11-26T18:00:00+00:00",
+    "2026_12_DEN_PIT": "2026-11-27T20:00:00+00:00",
+    "2026_12_GB_LA": "2026-11-26T01:00:00+00:00",
+    "2026_12_KC_BUF": "2026-11-27T01:20:00+00:00",
+    "2026_12_LV_CLE": "2026-11-30T01:20:00+00:00",
+    "2026_12_NE_LAC": "2026-11-29T21:05:00+00:00",
+    "2026_12_NO_CIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYG_IND": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYJ_MIA": "2026-11-29T18:00:00+00:00",
+    "2026_12_PHI_DAL": "2026-11-26T21:30:00+00:00",
+    "2026_12_SEA_SF": "2026-11-29T21:25:00+00:00",
+    "2026_12_TEN_JAX": "2026-11-29T18:00:00+00:00",
+    "2026_12_WAS_ARI": "2026-11-29T21:25:00+00:00"
+  },
+  "certification": {
+    "status": "passed",
+    "contract": "prospective_frozen_model_inference_v2",
+    "checks": {
+      "forecast_rows": 846,
+      "complete_rows": 651,
+      "fixtures": 16,
+      "top_picks": 24,
+      "top_two_rows": 24,
+      "models_verified": 9,
+      "exact_replay": true,
+      "eligibility_counts": {
+        "eligible": 461,
+        "unresolved": 65,
+        "ineligible": 52
+      }
+    },
+    "certified_at": "2026-11-24T16:40:29.730117+00:00"
+  }
+}

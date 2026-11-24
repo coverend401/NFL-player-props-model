@@ -1,0 +1,38 @@
+{
+  "ROI": null,
+  "accumulator_success": null,
+  "genuine_bookmaker_lines": 0,
+  "identity": "2ab87c491e448755a920f790",
+  "inputs": {
+    "common_missing_lag_or_reference_exclusions": 0,
+    "opportunity_source_sha256": "0652609822b595be85d457ad9ea49a2fd35626bbcc6066b3f288497291f7d74b",
+    "performance_research/study.py": "db34eafc99ff32787a8acb3a581b03cc36c4153b8fcef993c3cf16e7eb131581",
+    "performance_research/threshold_benchmark.py": "647687b311dc90f020e60a638f51f516cb83aff143082e620b7400f00ba31de0",
+    "performance_research/threshold_models.py": "f9775997b92ece20a0a8715311d43857bac1b4bac27fa213da8085dcd10edad9",
+    "performance_research/threshold_protocol.json": "05cdca64acc7a5a13e1aa66606e1a57756b6903590d98b082917a752325cc990",
+    "source_sha256": "b94774f6e359b5124848121bf75cf5de157d75ca0f7322945e5abd403b23f36e"
+  },
+  "limitations": [
+    "Confirmed participation/stat-observation cohort; not complete pregame offered market universe",
+    "Champion references retain inherited unverified market publication vintages; new models exclude those values as inputs",
+    "Weekly states reconstructed from lag availability, not genuine archived quotes",
+    "No ticket probability, offered odds or betting-profit claims"
+  ],
+  "original_rows": 55782,
+  "promotion": "RETAIN_CHAMPION",
+  "runtime": {
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "pyarrow": "24.0.0",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "python": "3.14.10"
+  },
+  "scope": "2025 and 2026w1-10 previously inspected chronological diagnostics; not independent final validation",
+  "statistical_thresholds_only": true,
+  "test_player_markets": 19300,
+  "threshold_observations": 55635,
+  "version": "fundamental-threshold-models-v1"
+}
