@@ -9,7 +9,7 @@
   "maximum_2026_test_week": 10,
   "holdout_status": "2025 and 2026w1-10 previously inspected; new-method chronological diagnostics, not an untouched final evaluation",
   "fold_design": "For test year Y: base training seasons 2022..Y-2; probability calibration Y-1 weeks1-9; method/selection validation Y-1 weeks10-18; no post-validation refit",
-  "threshold_design": "Per-market training-only champion residual quantiles20/50/80 added to each archived pregame champion forecast, rounded down then +0.5; positive lines>=0.5; duplicate numeric thresholds removed",
+  "threshold_design": "Per-market training-only residual quantiles20/50/80 around lag_anchor (50% last5 +50% career, available-lag fallback only), rounded down then +0.5; positive lines>=0.5; duplicate numeric thresholds removed",
   "thresholds_are_bookmaker_lines": false,
   "quantiles": [
     0.2,
@@ -71,5 +71,8 @@
     "paired_interval_lower_min": 0,
     "global_primary_test": "Equal-market weekly log loss; multiplicity across six new method families; per-market comparisons exploratory with correction",
     "adoption": "No automatic adoption: inspected periods and absent authentic prices cannot certify commercial performance"
-  }
+  },
+  "new_predictor_features": "Lagged player/team statistics only; no champion point or sigma, bookmaker/closing-market inputs, observed test opportunities or same-game outcomes",
+  "reference_limitations": "Archived champion/current-research forecasts retained as labelled comparisons; inherited market-input publication vintages remain unverified",
+  "weekly_decision_state": "Only rows whose player-history availability precedes the earliest pregame decision within the NFL week; reconstructed conditional-participation cohort, not genuine offered markets"
 }
