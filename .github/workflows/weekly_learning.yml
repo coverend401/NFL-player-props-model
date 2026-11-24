@@ -28,6 +28,7 @@ on:
     paths:
       - 'weekly_learning/**'
       - 'selection_learning/**'
+      - 'performance_research/**'
       - '.github/workflows/weekly_learning.yml'
 # Only standard Linux runners. No paid service, provider keys or production secrets.
 permissions:
@@ -76,6 +77,8 @@ jobs:
               *) exit 1 ;;
             esac
           fi
+      - name: Compare forecasting and calibration challengers (cached, no promotion)
+        run: python -m performance_research.study
       - name: Reconcile privately frozen quoted selections after admitted results
         if: success() && github.event_name != 'pull_request' && inputs.mode == 'auto'
         env:

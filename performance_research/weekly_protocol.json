@@ -1,0 +1,14 @@
+{
+  "version": "prospective-season-recent-v1",
+  "decision_horizon_minutes": 60,
+  "weights": [0.25, 0.5, 0.75],
+  "formula": "weight * frozen recent_form + (1-weight) * frozen career_avg",
+  "field_semantics": "Current model configurations: recent_form is last-three production; legacy career_avg is season-average production. Both are already rounded in the original slate.",
+  "counts": "Clip negative candidate counts at zero; never replace missing outcomes with zero",
+  "missing_inputs": "Retain original champion projection on that same row",
+  "capture": "Only after certified forecast admission and before every included T-60 deadline; preserve source/model/code hashes",
+  "evaluation": "Only admitted operational result receipts; identical scored player-market populations; all nine markets reported; missing results remain explicit",
+  "probability_method": "No new candidate probability or EV inferred from point forecasts",
+  "promotion": "Disabled. Requires separately registered fresh validation, probability and genuine quote-selection evidence; existing champion remains unchanged.",
+  "activation": false
+}

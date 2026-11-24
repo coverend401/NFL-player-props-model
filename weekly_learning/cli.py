@@ -25,6 +25,9 @@ def freeze_prepared(store, directory, manifest):
         from script_adjustment.weekly import try_capture
 
         try_capture(store, directory, manifest)
+        from performance_research.weekly import try_capture as capture_performance
+
+        capture_performance(store, directory, manifest)
         return frozen
     namespace = {
         **capture_legacy.__globals__,
@@ -41,6 +44,9 @@ def freeze_prepared(store, directory, manifest):
     from script_adjustment.weekly import try_capture
 
     try_capture(store, directory, manifest)
+    from performance_research.weekly import try_capture as capture_performance
+
+    capture_performance(store, directory, manifest)
     return frozen
 
 
@@ -245,6 +251,23 @@ def _operational(store, results_week, target_week, cycle_id, source_dir=None):
                         "reason": str(error),
                         "champion_retained": True,
                     },
+                )
+    if results_week >= policy["final_week"]:
+        from performance_research.weekly import evaluate as evaluate_performance
+
+        try:
+            evaluate_performance(
+                store,
+                cycle_id,
+                document["release_id"],
+                result,
+                source / "operational_admission.json",
+            )
+        except (OSError, ValueError, KeyError, TypeError, AssertionError):
+            with store.transaction():
+                store.audit(
+                    "performance_challenger_evaluation_blocked",
+                    {"cycle": cycle_id, "champion_retained": True},
                 )
     # Normal missing individual targets remain explicit and cannot support promotion.
     # A fresh champion forecast still requires independent source/eligibility certification.
