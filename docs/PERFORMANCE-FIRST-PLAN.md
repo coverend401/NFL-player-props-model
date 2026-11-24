@@ -69,3 +69,5 @@ the existing promotion/rollback gates. Neither Top Picks nor Top 2 objectives
 may be replaced by the passing-yards MAE gate alone. Separate selection/ticket
 promotion contracts will require authentic quote-level evidence; the existing
 forecast promotion rules will not be weakened to accommodate them.
+
+Input-contract clarification before the first successful run: receiving target career averages are not retained in the archive. Opportunity weighting therefore compares the available last-three and last-five means; efficiency still shrinks toward the archived career efficiency. Missing candidate inputs fall back to the champion on the same rows and are counted explicitly, never set to zero.
