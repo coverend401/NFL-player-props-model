@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-20T22:48:57.037586+00:00",
+  "details": {
+    "id": "2026-w09",
+    "kind": "historical_captures",
+    "manifest_sha256": "b60d17522d783443ecfea16c2a9f7eab5d02469d70ac85f84586b5b751d0b526"
+  },
+  "previous_sha256": "86bdbeafa6700d1f668a015efbbc1efbc442a05b36f5568da8a06f49a5391251"
+}

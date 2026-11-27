@@ -61,3 +61,30 @@ jobs:
           for manifest in research_inputs/stage1c2/*/manifest.json; do
             if [ -f "$manifest" ]; then python -m stage1c2_stage1.validate "$(dirname "$manifest")" --replay; fi
           done
+      - name: Verify separately certified research-serving runtime and authenticated app
+        if: matrix.python-version == '3.14'
+        run: |
+          python -m scripts.certify_cloud_runtime --verify-baseline
+          python -m scripts.certify_weekly_serving --baseline --verify
+          python -m scripts.certify_weekly_serving --baseline --verify --profile week12-remaining-certifi-20261120-v1
+          python - <<'PYBASELINE'
+          from pathlib import Path
+          from scripts.certify_weekly_serving import run
+          for profile in Path('research_runtime_profiles').glob('routine-*'):
+              release=profile.name.removeprefix('routine-')
+              run(baseline=True,verify=True,profile=profile.resolve(),directory=(Path('research_inference_releases')/release).resolve())
+          PYBASELINE
+          python -m pip install -r research_runtime_profiles/week11-certifi-20261120-v1/requirements.lock
+          python -m pip check
+          python -c 'import importlib.metadata; assert importlib.metadata.version("certifi") == "2026.11.20"'
+          python -m scripts.certify_cloud_runtime --verify
+          python -m scripts.certify_weekly_serving --verify
+          python -m scripts.certify_weekly_serving --verify --profile week12-remaining-certifi-20261120-v1
+          python -m unittest tests.test_cloud_serving_runtime tests.test_week12_serving tests.test_routine_safeguards -v
+          python - <<'PYCLOUD'
+          from pathlib import Path
+          from scripts.certify_weekly_serving import run
+          for profile in Path('research_runtime_profiles').glob('routine-*'):
+              release=profile.name.removeprefix('routine-')
+              run(verify=True,profile=profile.resolve(),directory=(Path('research_inference_releases')/release).resolve())
+          PYCLOUD

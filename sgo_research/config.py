@@ -1,0 +1,35 @@
+"""Explicit free research configuration; production settings are never read."""
+
+import os
+import tempfile
+from pathlib import Path
+
+from research_access import secret
+
+from .contracts import Unavailable
+from .credentials import quota_credential
+from .diagnostics import CollectionBlocked
+from .github_quota import GitHubAPI, GitHubQuotaStore
+from .store import Store
+
+
+def quota_store():
+    repository = secret("SGO_QUOTA_REPOSITORY")
+    if repository:
+        if not isinstance(repository, str):
+            raise CollectionBlocked("CONFIG_REPOSITORY")
+        path = os.environ.get(
+            "SGO_RESEARCH_STORE",
+            str(Path(tempfile.gettempdir()) / "nfl-research-odds-cache.sqlite"),
+        )
+        token, _ = quota_credential()
+        api = GitHubAPI(token)
+        # Detect managed credential substitution before trusting a successful read.
+        api.verify_authentication()
+        return GitHubQuotaStore(repository.strip(), path, api=api)
+    path = os.environ.get("SGO_RESEARCH_STORE")
+    if not path or os.environ.get("SGO_PERSISTENT_VOLUME_APPROVED") != "1":
+        raise Unavailable(
+            "No private durable quota store configured. A verified private GitHub lifetime counter or approved persistent private volume is required."
+        )
+    return Store(path, persistent=True)

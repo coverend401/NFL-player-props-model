@@ -1,0 +1,90 @@
+{
+  "code_sha256": "db34eafc99ff32787a8acb3a581b03cc36c4153b8fcef993c3cf16e7eb131581",
+  "current_research_policy": {
+    "completions": {
+      "point": "context_tree",
+      "probability": null
+    },
+    "passing_attempts": {
+      "point": "baseline",
+      "probability": "champion_normal"
+    },
+    "passing_yards": {
+      "point": "baseline",
+      "probability": "champion_normal"
+    },
+    "qb_rushing_attempts": {
+      "point": "baseline",
+      "probability": "champion_normal"
+    },
+    "qb_rushing_yards": {
+      "point": "baseline",
+      "probability": "research_empirical"
+    },
+    "receiving_yards": {
+      "point": "context_tree",
+      "probability": "research_empirical"
+    },
+    "receptions": {
+      "point": "context_tree",
+      "probability": "research_empirical"
+    },
+    "rushing_attempts": {
+      "point": "context_tree",
+      "probability": "research_empirical"
+    },
+    "rushing_yards": {
+      "point": "context_tree",
+      "probability": "research_empirical"
+    }
+  },
+  "genuine_quote_backtest": "NOT_AVAILABLE_IN_THIS_STUDY",
+  "historical_rows": 55782,
+  "identity": "0d41c795f1eb3b4ec9d50cc6",
+  "inputs": {
+    "current_research_forecasts": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
+    "historical_predictions.parquet": "b94774f6e359b5124848121bf75cf5de157d75ca0f7322945e5abd403b23f36e",
+    "manifest.json": "839a4d0977ff31c20f7bce3e7722267be7da8a47bbe8efb2e9b621a8ccf32d69",
+    "probability_predictions.parquet": "4db3dd5eae2c744d52dd929aa6c9312efe1f493f770fc490f259f385e4167b98",
+    "selection_learning/engine.py": "1df146c5dd45cc10576b2fb819d1b7811c0913aac9fae3354dcea51208ffc533",
+    "stage1b/data.py": "99c552e22ac71e740d6af135254240497684d4272d60ba63c4dc40abbd9b0b32",
+    "weekly_learning/store.py": "85e848f5b0ae5742b54b63004626561eb6728e620d2a087bf985748004453c64"
+  },
+  "point_choices": {
+    "completions": "context_tree",
+    "passing_attempts": "context_tree",
+    "passing_yards": "context_tree",
+    "qb_rushing_attempts": "baseline",
+    "qb_rushing_yards": "context_tree",
+    "receiving_yards": "context_tree",
+    "receptions": "context_tree",
+    "rushing_attempts": "context_tree",
+    "rushing_yards": "context_tree"
+  },
+  "probability_choices": {
+    "completions": "research_empirical",
+    "passing_attempts": "champion_normal",
+    "passing_yards": "champion_normal",
+    "qb_rushing_attempts": "champion_normal",
+    "qb_rushing_yards": "baseline_empirical_shrunk_isotonic",
+    "receiving_yards": "research_empirical",
+    "receptions": "research_empirical",
+    "rushing_attempts": "research_empirical",
+    "rushing_yards": "research_empirical"
+  },
+  "promotion": "RETAIN_CHAMPION",
+  "protocol_sha256": "dd6b707f8c9f44338f40c8f4c8783f034b692fb08508882b09a42a90dc42cd06",
+  "reason": "Previously inspected periods; authentic quoted selection/ticket performance unavailable; no independent promotion evidence",
+  "runtime": {
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "pyarrow": "24.0.0",
+      "scikit-learn": "1.9.1"
+    },
+    "python": "3.14.10"
+  },
+  "ticket_backtest": "NOT_AVAILABLE_IN_THIS_STUDY",
+  "timing_caveat": "Reconstructed chronology checked; inherited closing-market publication timing and retrospective roster coverage remain unverified",
+  "version": "selection-performance-v1"
+}

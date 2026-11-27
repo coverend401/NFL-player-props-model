@@ -1,0 +1,42 @@
+{
+  "schema": "owner_attested_official_evidence_v1",
+  "recorded_at": "2026-11-22T08:22:53.987206+00:00",
+  "verification_method": "Owner independently verified the linked official sources and supplied the findings in this task. Assistant has not fetched these blocked pages.",
+  "claims": [
+    {
+      "player_id": "00-0038134",
+      "player": "Kenneth Walker III",
+      "team": "KC",
+      "position": "RB",
+      "fact": "Official Chiefs biography and 2026 transactions confirm March 2026 signing.",
+      "source_urls": [
+        "https://www.chiefs.com/team/players-roster/kenneth-walker-iii/",
+        "https://www.chiefs.com/team/transactions/2026"
+      ],
+      "evidence_period": "March 2026; owner confirmed current Chiefs assignment on 22 November 2026"
+    },
+    {
+      "player_id": "00-0037291",
+      "player": "Jalen Nailor",
+      "team": "LV",
+      "position": "WR",
+      "fact": "Official Week 11 depth chart confirms Raiders assignment.",
+      "source_urls": [
+        "https://www.raiders.com/team/depth-chart"
+      ],
+      "publication_date": "2026-11-17"
+    },
+    {
+      "fact": "Sunday 22 November 2026 is NFL Week 11; owner supplied official schedule verification to resolve the schedule question.",
+      "source_urls": [
+        "https://www.nfl.com/schedules/2026/by-week/week-11"
+      ],
+      "scope": "Schedule acceptance uses owner verification plus zero fixture/date/team disagreements in the existing refreshed-feed audit; not an assistant-downloaded official schedule."
+    }
+  ],
+  "limitations": [
+    "Official confirmations cover the two disputed player assignments, not independent transaction histories for all 182 players.",
+    "Remaining identities reconcile with dated and refreshed active-roster feed evidence.",
+    "No injury or game-day inactive clearance is established by these sources."
+  ]
+}

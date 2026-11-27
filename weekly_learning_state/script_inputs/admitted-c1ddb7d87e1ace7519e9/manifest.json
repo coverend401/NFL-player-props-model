@@ -1,0 +1,10 @@
+{
+  "files": {
+    "cells.parquet": "f6ec3226025c3bb9f5472e01a9c6041569bb1c7186c6b16740671d48508ef2a3",
+    "games.parquet": "d3d8d1e10acad57865fde992bd93622936107aa3083d786e00a9c62822fc85e2",
+    "source.json": "c64e75b2e79b84033690f8a203e066d342918eb32625607cbe2810dd0ebfc672"
+  },
+  "id": "admitted-c1ddb7d87e1ace7519e9",
+  "kind": "script_inputs",
+  "schema": 1
+}

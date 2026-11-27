@@ -1,0 +1,21 @@
+{
+  "authority_sha256": "7e2ae11caa48b367bd19eab8c27359c4bef1dd46acf5d0e7db07723f8998860c",
+  "directory": "research_inference_releases/weekly-routine-initial-20261127",
+  "manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+  "prepared_at": "2026-11-27T15:46:37.368882+00:00",
+  "profile": "research_runtime_profiles/routine-weekly-routine-initial-20261127",
+  "release_id": "weekly-routine-initial-20261127",
+  "run_id": "routine-initial-20261127",
+  "settlement": {
+    "availability": {
+      "status": "unavailable; no player declared healthy"
+    },
+    "completed_cycles": [],
+    "private_settlement": [],
+    "waiting_for_authorised_cutoff": [
+      "weekly-week12-remaining-20261127",
+      "weekly-week12-schemafix-20261124"
+    ]
+  },
+  "status": "prepared_not_published"
+}

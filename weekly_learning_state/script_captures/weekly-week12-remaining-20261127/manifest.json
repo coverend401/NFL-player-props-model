@@ -1,0 +1,11 @@
+{
+  "files": {
+    "capture.json": "c07a39bd81c5b134d2c7f30694accdd7574592577fda935f1bf3acf098130aca",
+    "coherence.parquet": "f75e044f0ef82b4a617c40175cb65f5ef6a00a7626254a7920613a465ec7023b",
+    "predictions.parquet": "68d848b893e2411b336ae5d904492e2e59e39ac00c7234cd0cf1f9490a7c8165",
+    "teams.parquet": "6970aea611209033bdcb5fb3a79a8eacaf74160cbf5280be9cf9b224dead7cec"
+  },
+  "id": "weekly-week12-remaining-20261127",
+  "kind": "script_captures",
+  "schema": 1
+}

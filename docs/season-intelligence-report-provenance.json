@@ -1,0 +1,8 @@
+{
+  "experiment_manifest_sha256": "839a4d0977ff31c20f7bce3e7722267be7da8a47bbe8efb2e9b621a8ccf32d69",
+  "push_diagnostics_sha256": "e3b849280212ac3074977ffb07037323666bc10a6e196c1b8c047fa1c270e40e",
+  "report_script_sha256": "542edc844948e0fc2da03011e207de6dda3150228d74febce5b5410a99a42eab",
+  "research_model_sha256": "15d6ee5fd61a908b2539c3122d0495790f4375ec261c95afd9a17f90cb1fc0da",
+  "scope": "Read-only supplemental diagnostics; no refit, selection or sealed outcomes",
+  "uncertainty_sha256": "2e4ef2b28823912f52e734b54cbc4aaf4c1fa7d56ef49f60cffa8d426c44bde9"
+}

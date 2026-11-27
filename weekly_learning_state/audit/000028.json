@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T15:45:11.341809+00:00",
+  "details": {
+    "id": "admitted-c1ddb7d87e1ace7519e9",
+    "kind": "script_inputs",
+    "manifest_sha256": "9c48a512a6f99a35c5419dcfa6cfe8ad0ce390bfc8092c7d00bb38f1778931db"
+  },
+  "previous_sha256": "945e1b7f186e163da894625fa8d02b7f7eae7fb5ec378ce6a441430e35983a95"
+}

@@ -1,0 +1,51 @@
+{
+  "at": "2026-11-27T16:44:13.419687+00:00",
+  "code_commit": "3f9e96a7480bf1a572ac814a72b361c6b536ac27",
+  "code_ci": {
+    "learning_cycle": "success",
+    "regression_3_12": "success",
+    "regression_3_14": "success",
+    "run": 46033037659
+  },
+  "local_cloud_app": {
+    "tests": 42,
+    "passed": true,
+    "entrypoint": "odds_value_research.py",
+    "authenticated": true,
+    "all_workspaces": true
+  },
+  "runtime": {
+    "python": "3.14",
+    "pyarrow": "24.0.0",
+    "certifi": "2026.11.20"
+  },
+  "forecast": {
+    "release": "weekly-routine-initial-20261127",
+    "rows": 604,
+    "complete": 457,
+    "roof_scenarios": 147,
+    "remaining_fixtures": 12,
+    "complete_fixtures": 9,
+    "roof_only_fixtures": 3,
+    "certified_model_only_picks": 18,
+    "models_verified": 9,
+    "exact_replay": true
+  },
+  "genuine_quotes": 0,
+  "provider_calls": 0,
+  "private_storage_live_verified": false,
+  "hosted_authenticated_verified": false,
+  "schedules_activated": false,
+  "main_or_production_modified": false,
+  "selected_research_release": "weekly-routine-initial-20261127",
+  "storage_mode": "forecast_only",
+  "mobile_navigation": {
+    "widths": [
+      375,
+      390,
+      430
+    ],
+    "contrast_passed": true,
+    "complete_journey": "pending"
+  }
+}

@@ -1,0 +1,901 @@
+{
+  "activation": false,
+  "all_scale_tests": [
+    {
+      "holm_p": 0.7782217782217782,
+      "improving_development_seasons": [],
+      "mae_gain": 0.0004074243126600541,
+      "market": "completions",
+      "n": 579,
+      "p_value": 0.04095904095904096,
+      "paired_high": 0.00012843750442491893,
+      "paired_low": -0.005393633655669303,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [],
+      "mae_gain": 0.0007831560293137807,
+      "market": "completions",
+      "n": 579,
+      "p_value": 0.055944055944055944,
+      "paired_high": 0.0006817272616223421,
+      "paired_low": -0.010185117860732397,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [],
+      "mae_gain": 0.0011066737992617703,
+      "market": "completions",
+      "n": 579,
+      "p_value": 0.08291708291708291,
+      "paired_high": 0.002878612270108006,
+      "paired_low": -0.01609282659436041,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 0.0879120879120879,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0006397150448249622,
+      "market": "passing_attempts",
+      "n": 580,
+      "p_value": 0.003996003996003996,
+      "paired_high": -1.287318045853376e-05,
+      "paired_low": -0.009723361046292775,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 0.04995004995004995,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0012719371402463153,
+      "market": "passing_attempts",
+      "n": 580,
+      "p_value": 0.001998001998001998,
+      "paired_high": -7.206315378445947e-05,
+      "paired_low": -0.01978707179718922,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.06893106893106893,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0023536211843379062,
+      "market": "passing_attempts",
+      "n": 580,
+      "p_value": 0.002997002997002997,
+      "paired_high": 0.0008094702285608254,
+      "paired_low": -0.03689352182126827,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0007522643909189108,
+      "market": "passing_yards",
+      "n": 579,
+      "p_value": 0.12887112887112886,
+      "paired_high": 0.03963150910313915,
+      "paired_low": -0.15477352689561633,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0013491969803292037,
+      "market": "passing_yards",
+      "n": 579,
+      "p_value": 0.1888111888111888,
+      "paired_high": 0.0982669288973286,
+      "paired_low": -0.2949098434385561,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0017661930223450417,
+      "market": "passing_yards",
+      "n": 579,
+      "p_value": 0.26673326673326675,
+      "paired_high": 0.25046770675055063,
+      "paired_low": -0.5490825716161916,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0004165121931214433,
+      "market": "qb_rushing_attempts",
+      "n": 580,
+      "p_value": 0.3806193806193806,
+      "paired_high": 0.0021813075165272025,
+      "paired_low": -0.003404031128287795,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0004679596950468712,
+      "market": "qb_rushing_attempts",
+      "n": 580,
+      "p_value": 0.43756243756243757,
+      "paired_high": 0.004292595595039922,
+      "paired_low": -0.006951129717584012,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": -0.000758925033238933,
+      "market": "qb_rushing_attempts",
+      "n": 580,
+      "p_value": 0.6643356643356644,
+      "paired_high": 0.011360232113114625,
+      "paired_low": -0.008103116278136218,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0008261146983147283,
+      "market": "qb_rushing_yards",
+      "n": 580,
+      "p_value": 0.13086913086913088,
+      "paired_high": 0.00525941978281527,
+      "paired_low": -0.023113454475337993,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0015756837283523728,
+      "market": "qb_rushing_yards",
+      "n": 580,
+      "p_value": 0.12187812187812187,
+      "paired_high": 0.011047641988755321,
+      "paired_low": -0.04349692431053962,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0026355960372274057,
+      "market": "qb_rushing_yards",
+      "n": 580,
+      "p_value": 0.17282717282717283,
+      "paired_high": 0.023696607244055503,
+      "paired_low": -0.08293261704616123,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": -7.608212905596545e-05,
+      "market": "receiving_yards",
+      "n": 3570,
+      "p_value": 0.6873126873126874,
+      "paired_high": 0.007479707674962344,
+      "paired_low": -0.0034405565895801087,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": -0.00016276488429411984,
+      "market": "receiving_yards",
+      "n": 3570,
+      "p_value": 0.7022977022977023,
+      "paired_high": 0.014789191843735333,
+      "paired_low": -0.007357530062178736,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": -0.00037072972956186945,
+      "market": "receiving_yards",
+      "n": 3570,
+      "p_value": 0.7272727272727273,
+      "paired_high": 0.027541531158080782,
+      "paired_low": -0.013387183604184996,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2024
+      ],
+      "mae_gain": -5.26212796674308e-05,
+      "market": "receptions",
+      "n": 3574,
+      "p_value": 0.7112887112887113,
+      "paired_high": 0.0003273405570200379,
+      "paired_low": -0.000191098236743834,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2024
+      ],
+      "mae_gain": -0.00014723036775166065,
+      "market": "receptions",
+      "n": 3574,
+      "p_value": 0.7722277722277723,
+      "paired_high": 0.0007396684712671714,
+      "paired_low": -0.00028908087218934624,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2024
+      ],
+      "mae_gain": -0.00044084848590819625,
+      "market": "receptions",
+      "n": 3574,
+      "p_value": 0.8701298701298701,
+      "paired_high": 0.0017575837090033413,
+      "paired_low": -0.00048061353613862656,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 0.026973026973026972,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0029335808684322062,
+      "market": "rushing_attempts",
+      "n": 1201,
+      "p_value": 0.000999000999000999,
+      "paired_high": -0.006168973276872893,
+      "paired_low": -0.015643018129956873,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "holm_p": 0.026973026973026972,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.005113897232369435,
+      "market": "rushing_attempts",
+      "n": 1201,
+      "p_value": 0.000999000999000999,
+      "paired_high": -0.009032107105343698,
+      "paired_low": -0.029215517886047794,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.1048951048951049,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.007745213451050392,
+      "market": "rushing_attempts",
+      "n": 1201,
+      "p_value": 0.004995004995004995,
+      "paired_high": -0.008875694103118515,
+      "paired_low": -0.05054869206739884,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 0.04995004995004995,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.001798030583838317,
+      "market": "rushing_yards",
+      "n": 1201,
+      "p_value": 0.001998001998001998,
+      "paired_high": -0.013932501653321936,
+      "paired_low": -0.06518176859390704,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "weeks": 18
+    },
+    {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.15984015984015984,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0028857191628933743,
+      "market": "rushing_yards",
+      "n": 1201,
+      "p_value": 0.007992007992007992,
+      "paired_high": -0.012054463267114754,
+      "paired_low": -0.11306906137565431,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    {
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0028225042375088494,
+      "market": "rushing_yards",
+      "n": 1201,
+      "p_value": 0.1008991008991009,
+      "paired_high": 0.028353060999003938,
+      "paired_low": -0.15450185602734412,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "weeks": 18
+    }
+  ],
+  "allocation": {
+    "historical_rosters_verified": false,
+    "max_capacity_excess": 7.105427357601002e-15,
+    "mean_unassigned_fraction": 0.0007552473516687747
+  },
+  "champion_retained": true,
+  "historical_scope": "Current corrected retrospective data,36h availability proxy, no historical publication/roster archive; missing context stays baseline on identical populations",
+  "next_validation": "Freeze prospective overlays before T-60 and collect admitted results without selecting/refitting on the sealed benchmark period",
+  "opportunity_metrics": [
+    {
+      "allocated": {
+        "bias": -14.557059579559358,
+        "mae": 15.889256758209285,
+        "n": 580,
+        "rmse": 18.534620073741653
+      },
+      "baseline": {
+        "bias": -0.07643678160919537,
+        "mae": 8.194827586206896,
+        "n": 580,
+        "rmse": 10.729422075969012
+      },
+      "category": "attempts",
+      "n": 580,
+      "season": 2022
+    },
+    {
+      "allocated": {
+        "bias": -1.1087896821558862,
+        "mae": 1.5661481553188457,
+        "n": 5129,
+        "rmse": 3.4566309155708184
+      },
+      "baseline": {
+        "bias": 0.03346981217911223,
+        "mae": 1.3499057646064858,
+        "n": 5129,
+        "rmse": 2.7916811559876926
+      },
+      "category": "carries",
+      "n": 5129,
+      "season": 2022
+    },
+    {
+      "allocated": {
+        "bias": -1.4768987885901785,
+        "mae": 1.8903112164866258,
+        "n": 5129,
+        "rmse": 2.9006512961443893
+      },
+      "baseline": {
+        "bias": 0.038798986157145644,
+        "mae": 1.6401507766296226,
+        "n": 5129,
+        "rmse": 2.353246688935648
+      },
+      "category": "targets",
+      "n": 5129,
+      "season": 2022
+    },
+    {
+      "allocated": {
+        "bias": -14.78919189234093,
+        "mae": 16.323469000077434,
+        "n": 592,
+        "rmse": 19.032023385514528
+      },
+      "baseline": {
+        "bias": 0.03941441441441448,
+        "mae": 8.429054054054054,
+        "n": 592,
+        "rmse": 11.062883321602348
+      },
+      "category": "attempts",
+      "n": 592,
+      "season": 2023
+    },
+    {
+      "allocated": {
+        "bias": -1.3112799584211488,
+        "mae": 1.6151100666699982,
+        "n": 5164,
+        "rmse": 3.6782196832586047
+      },
+      "baseline": {
+        "bias": -0.008197779499096319,
+        "mae": 1.3030596436870643,
+        "n": 5164,
+        "rmse": 2.75866433901707
+      },
+      "category": "carries",
+      "n": 5164,
+      "season": 2023
+    },
+    {
+      "allocated": {
+        "bias": -1.5442991154959973,
+        "mae": 1.9025428483557036,
+        "n": 5164,
+        "rmse": 2.9108899554326175
+      },
+      "baseline": {
+        "bias": 0.01116705396333591,
+        "mae": 1.570552543248128,
+        "n": 5164,
+        "rmse": 2.2618946669314575
+      },
+      "category": "targets",
+      "n": 5164,
+      "season": 2023
+    },
+    {
+      "allocated": {
+        "bias": -15.902443578444169,
+        "mae": 17.513505325341903,
+        "n": 605,
+        "rmse": 20.222240358889252
+      },
+      "baseline": {
+        "bias": -0.10137741046831948,
+        "mae": 8.667768595041322,
+        "n": 605,
+        "rmse": 11.238347704926325
+      },
+      "category": "attempts",
+      "n": 605,
+      "season": 2024
+    },
+    {
+      "allocated": {
+        "bias": -1.3879880538734661,
+        "mae": 1.6724729793832793,
+        "n": 5190,
+        "rmse": 3.800992899921525
+      },
+      "baseline": {
+        "bias": 0.006679511881824024,
+        "mae": 1.284136159280668,
+        "n": 5190,
+        "rmse": 2.7055688425396345
+      },
+      "category": "carries",
+      "n": 5190,
+      "season": 2024
+    },
+    {
+      "allocated": {
+        "bias": -1.6579202475347528,
+        "mae": 1.968875845983526,
+        "n": 5190,
+        "rmse": 3.0538644046128756
+      },
+      "baseline": {
+        "bias": -0.01117533718689787,
+        "mae": 1.6064226075786767,
+        "n": 5190,
+        "rmse": 2.334489116447222
+      },
+      "category": "targets",
+      "n": 5190,
+      "season": 2024
+    },
+    {
+      "allocated": {
+        "bias": -15.629612992958927,
+        "mae": 17.106336209682592,
+        "n": 597,
+        "rmse": 19.7695761407147
+      },
+      "baseline": {
+        "bias": 0.49748743718592975,
+        "mae": 8.785594639865996,
+        "n": 597,
+        "rmse": 11.536257669622087
+      },
+      "category": "attempts",
+      "n": 597,
+      "season": 2025
+    },
+    {
+      "allocated": {
+        "bias": -1.475502631883129,
+        "mae": 1.695703293181662,
+        "n": 5251,
+        "rmse": 3.831350190925253
+      },
+      "baseline": {
+        "bias": 0.01879007173236843,
+        "mae": 1.2405256141687298,
+        "n": 5251,
+        "rmse": 2.6588471654899557
+      },
+      "category": "carries",
+      "n": 5251,
+      "season": 2025
+    },
+    {
+      "allocated": {
+        "bias": -1.6044836975611225,
+        "mae": 1.8887412560602241,
+        "n": 5251,
+        "rmse": 2.9231936478250002
+      },
+      "baseline": {
+        "bias": 0.03859582301783788,
+        "mae": 1.5357074842887068,
+        "n": 5251,
+        "rmse": 2.2351735417545693
+      },
+      "category": "targets",
+      "n": 5251,
+      "season": 2025
+    },
+    {
+      "allocated": {
+        "bias": -18.172777801312034,
+        "mae": 19.05311981029023,
+        "n": 292,
+        "rmse": 21.68295140714618
+      },
+      "baseline": {
+        "bias": -0.5730593607305935,
+        "mae": 8.707762557077627,
+        "n": 292,
+        "rmse": 11.19367346866002
+      },
+      "category": "attempts",
+      "n": 292,
+      "season": 2026
+    },
+    {
+      "allocated": {
+        "bias": -1.5771221256801633,
+        "mae": 1.7786949589298455,
+        "n": 2544,
+        "rmse": 4.059173247482033
+      },
+      "baseline": {
+        "bias": -0.04468029350104823,
+        "mae": 1.2511792452830188,
+        "n": 2544,
+        "rmse": 2.683833306286535
+      },
+      "category": "carries",
+      "n": 2544,
+      "season": 2026
+    },
+    {
+      "allocated": {
+        "bias": -1.8212821617589976,
+        "mae": 2.064685461916614,
+        "n": 2544,
+        "rmse": 3.1773133904536643
+      },
+      "baseline": {
+        "bias": -0.030267295597484298,
+        "mae": 1.6036425576519917,
+        "n": 2544,
+        "rmse": 2.3281520040620562
+      },
+      "category": "targets",
+      "n": 2544,
+      "season": 2026
+    }
+  ],
+  "probability_scope": "Win and clock/score occupancy are genuine probabilistic predictions; player half-line/interval measures are assumption-sensitive constant-scale normal diagnostics only, not bookmaker backtests or certified adjusted pricing",
+  "promotion_passed": false,
+  "promotion_reasons": [
+    "No genuinely untouched final period has been evaluated; 2025 and2026w1-10 have been inspected previously",
+    "Current-year frozen live weights cannot honestly be backtested against their own training games; historical replicas are explicitly distinguished",
+    "Original probability/pricing method is unchanged; adjusted player distributions not certified",
+    "Selected scale for failed markets is zero; raw unit-scale adjustments remain experimental for full reporting"
+  ],
+  "protocol_version": "numerical-game-script-v1",
+  "retrospective_markets_passing_selection": [],
+  "sample": {
+    "adjusted_rows": 41983,
+    "by_season": {
+      "2022": 12052,
+      "2023": 12293,
+      "2024": 12137,
+      "2025": 12444,
+      "2026": 6257
+    },
+    "games": 1224,
+    "player_market_rows": 55183,
+    "team_games": 2448,
+    "zeros": 7535
+  },
+  "schema": 1,
+  "selection": {
+    "completions": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [],
+      "mae_gain": 0.0011066737992617703,
+      "market": "completions",
+      "n": 579,
+      "p_value": 0.08291708291708291,
+      "paired_high": 0.002878612270108006,
+      "paired_low": -0.01609282659436041,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "passing_attempts": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.06893106893106893,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0023536211843379062,
+      "market": "passing_attempts",
+      "n": 580,
+      "p_value": 0.002997002997002997,
+      "paired_high": 0.0008094702285608254,
+      "paired_low": -0.03689352182126827,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "passing_yards": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0017661930223450417,
+      "market": "passing_yards",
+      "n": 579,
+      "p_value": 0.26673326673326675,
+      "paired_high": 0.25046770675055063,
+      "paired_low": -0.5490825716161916,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "qb_rushing_attempts": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": 0.0004679596950468712,
+      "market": "qb_rushing_attempts",
+      "n": 580,
+      "p_value": 0.43756243756243757,
+      "paired_high": 0.004292595595039922,
+      "paired_low": -0.006951129717584012,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "qb_rushing_yards": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0026355960372274057,
+      "market": "qb_rushing_yards",
+      "n": 580,
+      "p_value": 0.17282717282717283,
+      "paired_high": 0.023696607244055503,
+      "paired_low": -0.08293261704616123,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "receiving_yards": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2023
+      ],
+      "mae_gain": -7.608212905596545e-05,
+      "market": "receiving_yards",
+      "n": 3570,
+      "p_value": 0.6873126873126874,
+      "paired_high": 0.007479707674962344,
+      "paired_low": -0.0034405565895801087,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "receptions": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 1,
+      "improving_development_seasons": [
+        2024
+      ],
+      "mae_gain": -5.26212796674308e-05,
+      "market": "receptions",
+      "n": 3574,
+      "p_value": 0.7112887112887113,
+      "paired_high": 0.0003273405570200379,
+      "paired_low": -0.000191098236743834,
+      "scale": 0.25,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "rushing_attempts": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.1048951048951049,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.007745213451050392,
+      "market": "rushing_attempts",
+      "n": 1201,
+      "p_value": 0.004995004995004995,
+      "paired_high": -0.008875694103118515,
+      "paired_low": -0.05054869206739884,
+      "scale": 1.0,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    },
+    "rushing_yards": {
+      "eligible_scale": 0,
+      "error_guard_passed": true,
+      "holm_p": 0.15984015984015984,
+      "improving_development_seasons": [
+        2023,
+        2024
+      ],
+      "mae_gain": 0.0028857191628933743,
+      "market": "rushing_yards",
+      "n": 1201,
+      "p_value": 0.007992007992007992,
+      "paired_high": -0.012054463267114754,
+      "paired_low": -0.11306906137565431,
+      "scale": 0.5,
+      "selection_gate_passed": false,
+      "unit_scale_probability_guard_passed": true,
+      "weeks": 18
+    }
+  },
+  "team_opportunity_reconciliation": {
+    "attempt_mismatch": 2,
+    "carry_mismatch": 4,
+    "handling": "No corrections or fabricated opportunities; discrepancies remain explicit",
+    "team_games": 2448
+  },
+  "week12_status": "Early team-only preview allowed; player candidate awaits authorised settlement, fresh roster/depth and v2 certification; no stale eligibility reuse"
+}

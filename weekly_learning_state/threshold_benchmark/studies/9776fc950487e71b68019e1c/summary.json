@@ -1,0 +1,43 @@
+{
+  "ROI": null,
+  "accumulator_success": null,
+  "genuine_bookmaker_lines": 0,
+  "identity": "9776fc950487e71b68019e1c",
+  "inputs": {
+    "common_missing_lag_or_reference_exclusions": 0,
+    "existing_research_policy_sha256": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
+    "opportunity_source_sha256": "0652609822b595be85d457ad9ea49a2fd35626bbcc6066b3f288497291f7d74b",
+    "performance_research/study.py": "db34eafc99ff32787a8acb3a581b03cc36c4153b8fcef993c3cf16e7eb131581",
+    "performance_research/threshold_benchmark.py": "97b06d44be184dab132010f91bc650da1497a6655a652cd4de0d66da493f2cf4",
+    "performance_research/threshold_models.py": "f9775997b92ece20a0a8715311d43857bac1b4bac27fa213da8085dcd10edad9",
+    "performance_research/threshold_protocol.json": "05cdca64acc7a5a13e1aa66606e1a57756b6903590d98b082917a752325cc990",
+    "season_intelligence/probability.py": "77a5993e32bce26de20f686a6f62f3fbce2e5d6c7339439b0e45053590509a08",
+    "selection_learning/engine.py": "1df146c5dd45cc10576b2fb819d1b7811c0913aac9fae3354dcea51208ffc533",
+    "source_sha256": "b94774f6e359b5124848121bf75cf5de157d75ca0f7322945e5abd403b23f36e",
+    "stage1b/data.py": "99c552e22ac71e740d6af135254240497684d4272d60ba63c4dc40abbd9b0b32",
+    "weekly_learning/store.py": "85e848f5b0ae5742b54b63004626561eb6728e620d2a087bf985748004453c64"
+  },
+  "limitations": [
+    "Confirmed participation/stat-observation cohort; not complete pregame offered market universe",
+    "Champion references retain inherited unverified market publication vintages; new models exclude those values as inputs",
+    "Weekly states reconstructed from lag availability, not genuine archived quotes",
+    "No ticket probability, offered odds or betting-profit claims"
+  ],
+  "original_rows": 55782,
+  "promotion": "RETAIN_CHAMPION",
+  "runtime": {
+    "packages": {
+      "numpy": "2.5.4",
+      "pandas": "3.1.1",
+      "pyarrow": "24.0.0",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1"
+    },
+    "python": "3.14.10"
+  },
+  "scope": "2025 and 2026w1-10 previously inspected chronological diagnostics; not independent final validation",
+  "statistical_thresholds_only": true,
+  "test_player_markets": 19300,
+  "threshold_observations": 55635,
+  "version": "fundamental-threshold-models-v1"
+}

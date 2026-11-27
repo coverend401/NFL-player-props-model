@@ -1,0 +1,91 @@
+{
+  "fixtures_verified": [
+    {
+      "game_id": "2026_12_DEN_PIT",
+      "kickoff_at": "2026-11-27T20:00:00+00:00",
+      "provider_event_id": "401873083"
+    },
+    {
+      "game_id": "2026_12_GB_LA",
+      "kickoff_at": "2026-11-26T01:00:00+00:00",
+      "provider_event_id": "401873079"
+    },
+    {
+      "game_id": "2026_12_CHI_DET",
+      "kickoff_at": "2026-11-26T18:00:00+00:00",
+      "provider_event_id": "401873081"
+    },
+    {
+      "game_id": "2026_12_PHI_DAL",
+      "kickoff_at": "2026-11-26T21:30:00+00:00",
+      "provider_event_id": "401873080"
+    },
+    {
+      "game_id": "2026_12_KC_BUF",
+      "kickoff_at": "2026-11-27T01:20:00+00:00",
+      "provider_event_id": "401873082"
+    },
+    {
+      "game_id": "2026_12_NO_CIN",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873087"
+    },
+    {
+      "game_id": "2026_12_NYG_IND",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873088"
+    },
+    {
+      "game_id": "2026_12_NYJ_MIA",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873089"
+    },
+    {
+      "game_id": "2026_12_ATL_MIN",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873084"
+    },
+    {
+      "game_id": "2026_12_TEN_JAX",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873090"
+    },
+    {
+      "game_id": "2026_12_BAL_HOU",
+      "kickoff_at": "2026-11-29T18:00:00+00:00",
+      "provider_event_id": "401873085"
+    },
+    {
+      "game_id": "2026_12_NE_LAC",
+      "kickoff_at": "2026-11-29T21:05:00+00:00",
+      "provider_event_id": "401873093"
+    },
+    {
+      "game_id": "2026_12_WAS_ARI",
+      "kickoff_at": "2026-11-29T21:25:00+00:00",
+      "provider_event_id": "401873092"
+    },
+    {
+      "game_id": "2026_12_SEA_SF",
+      "kickoff_at": "2026-11-29T21:25:00+00:00",
+      "provider_event_id": "401873091"
+    },
+    {
+      "game_id": "2026_12_LV_CLE",
+      "kickoff_at": "2026-11-30T01:20:00+00:00",
+      "provider_event_id": "401873086"
+    },
+    {
+      "game_id": "2026_12_CAR_TB",
+      "kickoff_at": "2026-12-01T01:15:00+00:00",
+      "provider_event_id": "401873094"
+    }
+  ],
+  "outcomes_decoded": false,
+  "response_sha256": "cb05875a18eddbe132aa1c21a38410b2cea461c58d492d5f45273ecbc33e7ed3",
+  "retrieved_at": "2026-11-27T15:45:52.816501+00:00",
+  "season": 2026,
+  "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard",
+  "status": "PASS",
+  "week": 12
+}

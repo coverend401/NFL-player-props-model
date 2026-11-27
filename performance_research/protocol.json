@@ -1,0 +1,35 @@
+{
+  "version": "selection-performance-v1",
+  "scope": "research_only_no_promotion",
+  "source": "experiments/season_intelligence/sunday-20261121-v1",
+  "development_seasons": [
+    2022,
+    2023,
+    2024
+  ],
+  "selection_season": 2025,
+  "diagnostic_season": 2026,
+  "maximum_diagnostic_week": 10,
+  "diagnostic_status": "Previously inspected; not an untouched independent holdout",
+  "recent_weights": [
+    0.25,
+    0.5,
+    0.75
+  ],
+  "efficiency_recent_weight": 0.25,
+  "point_minimum_selection_mae_gain": 0.02,
+  "probability_minimum_selection_log_loss_gain": 0.02,
+  "calibration": "monotone isotonic with 100 identity pseudo-player-games",
+  "calibration_minimum_player_games": 100,
+  "calibration_minimum_prior_weeks": 6,
+  "bootstrap_draws": 1000,
+  "week_block_size": 2,
+  "seed": 241126,
+  "promotion": "Never on these inspected periods; requires fresh preregistered prospective data and existing integrity/all-market gates",
+  "top_picks_objective": "Weekly hit-rate consistency at matched actual odds/counts, subject to calibrated probabilities and price quality; EV and realised/paper ROI separate",
+  "top2_objective": "Complete-ticket success at matched actual ticket odds, leg count and weekly paper budget; no forced two legs or unvalidated independence",
+  "genuine_quote_backtest": "Blocked unless original predecision source/timestamps, settlement rules and actual prices are verifiable; combined ticket ROI additionally requires actual ticket price",
+  "weekly_learning": "Content-addressed rerunnable challenger study; unchanged evidence reuses prior results, never counted as a new holdout",
+  "activation": false,
+  "workload_volume_reference": "last3 versus last5; career target opportunity is not archived for receiving markets"
+}

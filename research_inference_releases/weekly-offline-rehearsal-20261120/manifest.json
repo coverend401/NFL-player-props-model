@@ -1,0 +1,226 @@
+{
+  "schema": 1,
+  "release_type": "research_frozen_model_inference_v1",
+  "release_id": "weekly-offline-rehearsal-20261120",
+  "model_parent": {
+    "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",
+    "release_id": "stage1a-20261113-py314-arrow24-r2",
+    "manifest_sha256": "507f5cf07c7613ea9b4c1d0c4ff4c8397f399a150091bfebfb33d46ab3e3ddd2"
+  },
+  "models": {
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "forecast_build_started_at": "2026-11-20T23:25:45.072720+00:00",
+  "prediction_at": "2026-11-20T23:25:47.297766+00:00",
+  "feature_data_cutoff": "2026-11-20T23:25:39.425362+00:00",
+  "created_at": "2026-11-20T23:25:59.529881+00:00",
+  "runtime": {
+    "python_minor": "3.14",
+    "python_build": "3.14.10",
+    "packages": {
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "Jinja2": "3.1.6",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "MarkupSafe": "3.0.4",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "24.0.0",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "PyJWT": "2.15.1",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    }
+  },
+  "source_sha256": {
+    "research_platform/inference_builder.py": "4fa36ec63590b2456e77e3cd7e56ead251f6d8ae1651ad80f18b9f744ca1e33f",
+    "research_platform/inference_release.py": "e96d8077daa9af4cc0e1164b4fd2c1d0fcffd66d675aca0692ab4211a00292b6",
+    "scripts/prepare_research_inference.py": "96d7cefe5bfbc8497cdb7c014d05fc873d4c93415f97ac8b365fcf8ef22f22c7",
+    "odds_value_research.py": "b10e20e4b10207bfba08fd0be02348f1f8ca60acb655acf9f782b20a4e94a338"
+  },
+  "files": {
+    "eligibility.json": {
+      "sha256": "32a2dd01768a63e8cbabf74d65904cf60aaf14c4537047951cc7c0a161e28390",
+      "bytes": 410986
+    },
+    "features.parquet": {
+      "sha256": "0652609822b595be85d457ad9ea49a2fd35626bbcc6066b3f288497291f7d74b",
+      "bytes": 21109271
+    },
+    "qb_starters.json": {
+      "sha256": "133689a24f8257ec02ac6973ae62d47d2dbacc1a48b3a2df2bf55c13158c9544",
+      "bytes": 862
+    },
+    "roster_evidence.csv": {
+      "sha256": "7e7775ef7b1b7e06d8f9891b680f75af609ba309c7e9ade89fddf6b547e0c36a",
+      "bytes": 15325
+    },
+    "schedule.parquet": {
+      "sha256": "26b965e5d26fb3625ef19ee297869d711b96ac689554328f57f9160cfc812388",
+      "bytes": 587724
+    },
+    "slate.parquet": {
+      "sha256": "856f0edb218c1ac1ba4700fa871f92d3f40e0db288887663779b7e09f64c8877",
+      "bytes": 33062
+    },
+    "sources.json": {
+      "sha256": "01d381986370325b7e935f0c738970050cd09a57fdcc760acb74b0bd28b68893",
+      "bytes": 6206
+    },
+    "top_picks.parquet": {
+      "sha256": "30a046ecec5e3386a861d8d7cf4d929d5b8ba27638d0c95ea319f4cc0069c766",
+      "bytes": 18658
+    }
+  },
+  "fixture_slate": {
+    "season": 2026,
+    "week": 11,
+    "game_ids": [
+      "2026_11_ARI_KC",
+      "2026_11_BAL_CAR",
+      "2026_11_CIN_WAS",
+      "2026_11_JAX_NYG",
+      "2026_11_LV_DEN",
+      "2026_11_MIA_BUF",
+      "2026_11_MIN_SF",
+      "2026_11_NO_CHI",
+      "2026_11_NYJ_LAC",
+      "2026_11_PIT_PHI",
+      "2026_11_TB_DET",
+      "2026_11_TEN_DAL"
+    ]
+  },
+  "game_kickoffs": {
+    "2026_11_ARI_KC": "2026-11-22T18:00:00+00:00",
+    "2026_11_BAL_CAR": "2026-11-22T18:00:00+00:00",
+    "2026_11_CIN_WAS": "2026-11-24T01:15:00+00:00",
+    "2026_11_JAX_NYG": "2026-11-22T18:00:00+00:00",
+    "2026_11_LV_DEN": "2026-11-22T21:25:00+00:00",
+    "2026_11_MIA_BUF": "2026-11-22T18:00:00+00:00",
+    "2026_11_MIN_SF": "2026-11-23T01:20:00+00:00",
+    "2026_11_NO_CHI": "2026-11-22T18:00:00+00:00",
+    "2026_11_NYJ_LAC": "2026-11-22T21:05:00+00:00",
+    "2026_11_PIT_PHI": "2026-11-22T21:25:00+00:00",
+    "2026_11_TB_DET": "2026-11-22T18:00:00+00:00",
+    "2026_11_TEN_DAL": "2026-11-22T18:00:00+00:00"
+  },
+  "certification": {
+    "status": "passed",
+    "contract": "research_frozen_model_inference_v1",
+    "checks": {
+      "forecast_rows": 618,
+      "complete_rows": 568,
+      "fixtures": 12,
+      "top_picks": 22,
+      "models_verified": 9,
+      "exact_replay": true,
+      "eligibility_counts": {
+        "eligible": 336,
+        "unresolved": 166,
+        "ineligible": 70
+      }
+    },
+    "certified_at": "2026-11-20T23:26:12.555252+00:00"
+  }
+}

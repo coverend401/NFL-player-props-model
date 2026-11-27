@@ -1,0 +1,156 @@
+name: Research weekly learning cycle
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Dry run or automatic capture/results cycle (seal checks still apply)'
+        type: choice
+        options: [preflight, capture, prepare, dry-run, auto]
+        default: preflight
+      candidate:
+        description: 'Reserved compatibility input; activation uses the coordinated serving helper'
+        type: string
+        default: ''
+  workflow_call:
+    secrets:
+      NFL_SELECTION_GITHUB_REPOSITORY:
+        required: false
+      NFL_SELECTION_GITHUB_TOKEN:
+        required: false
+    inputs:
+      mode:
+        type: string
+        default: preflight
+      candidate:
+        type: string
+        default: ''
+  pull_request:
+    paths:
+      - 'weekly_learning/**'
+      - 'selection_learning/**'
+      - 'weekly_learning_state/**'
+      - 'research_inference_releases/weekly-*/**'
+      - 'research_runtime_profiles/**'
+      - 'research_weekly_serving_active.json'
+      - 'ops/**'
+      - 'performance_research/**'
+      - '.github/workflows/weekly_learning.yml'
+# Only standard Linux runners. No paid service, provider keys or production secrets.
+permissions:
+  contents: read
+concurrency:
+  group: research-weekly-learning
+  cancel-in-progress: false
+jobs:
+  cycle:
+    if: github.event.repository.private == false && (github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    permissions:
+      contents: write
+    env:
+      OPENBLAS_NUM_THREADS: '1'
+      OMP_NUM_THREADS: '1'
+      RESEARCH_BRANCH: sportsgameodds-free-feasibility
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: sportsgameodds-free-feasibility
+          fetch-depth: 1
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.14'
+      - run: python -m pip install -r requirements.txt
+      - run: python -m pip check
+      - name: Run bounded cycle (no retraining)
+        id: learning_cycle
+        env:
+          REQUESTED_MODE: ${{ inputs.mode }}
+          REQUESTED_CANDIDATE: ${{ inputs.candidate }}
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$RESEARCH_BRANCH"
+          if [ "${GITHUB_EVENT_NAME}" = pull_request ]; then
+            python -m weekly_learning.cli cycle --mode dry-run --id 2026-w09-dryrun-v1
+          else
+            mode="${REQUESTED_MODE:-preflight}"
+            case "$mode" in
+              preflight|capture|prepare) python -m weekly_learning.cli "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
+              select) echo "Activation blocked: use scripts.select_weekly_serving with owner approval, exact certificate and verified private storage." >&2; exit 1 ;;
+              dry-run|auto) python -m weekly_learning.cli cycle --mode "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
+              *) exit 1 ;;
+            esac
+          fi
+      - name: Verify frozen research evidence (new experiments paused)
+        run: |
+          python - <<'PYVERIFY'
+          from pathlib import Path
+          from weekly_learning.store import Store
+          for name in ["performance_research", "threshold_benchmark"]:
+              root = Path("weekly_learning_state") / name
+              store = Store(root)
+              for manifest in (root / "studies").glob("*/manifest.json"):
+                  store.validate(manifest.parent)
+          print("Frozen evidence hashes verified; no new experiment fitted or promoted")
+          PYVERIFY
+      - name: Reconcile privately frozen quoted selections after admitted results
+        if: success() && github.event_name != 'pull_request' && inputs.mode == 'auto'
+        env:
+          NFL_SELECTION_GITHUB_REPOSITORY: ${{ secrets.NFL_SELECTION_GITHUB_REPOSITORY }}
+          NFL_SELECTION_GITHUB_TOKEN: ${{ secrets.NFL_SELECTION_GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${NFL_SELECTION_GITHUB_REPOSITORY:-}" ] || [ -z "${NFL_SELECTION_GITHUB_TOKEN:-}" ]; then
+            echo 'Quoted selection reconciliation BLOCKED: private durable journal is not configured.' >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+          python -m selection_learning.cli --latest
+      - name: Summarise without paid artifact/cache storage
+        if: always()
+        run: |
+          echo 'Weekly learning reports are preserved on the research branch; no additional Actions artifact storage is used.' >> "$GITHUB_STEP_SUMMARY"
+      - name: Persist immutable research state (never main or production)
+        if: always() && github.event_name != 'pull_request'
+        env:
+          CYCLE_OUTCOME: ${{ steps.learning_cycle.outcome }}
+        run: |
+          set -euo pipefail
+          test "$(git branch --show-current)" = "$RESEARCH_BRANCH"
+          test "$RESEARCH_BRANCH" != main
+          python - <<'PY'
+          import os, subprocess
+          from pathlib import Path
+          root=Path('weekly_learning_state')
+          # Quarantined unadmitted downloads/builds must never be published.
+          paths=[str(p) for p in root.iterdir() if p.name not in {'sources','builds'} and not p.name.endswith('.lock') and not p.name.startswith('.')]
+          import json
+          from weekly_learning.admission import validate_receipt
+          policy=json.loads(Path('weekly_learning/policy.json').read_text())
+          for source in (root/'sources').glob('*'):
+              receipt=source/'operational_admission.json'
+              if receipt.exists():
+                  try:
+                      validate_receipt(Path.cwd(),receipt,policy)
+                  except (OSError,ValueError,KeyError,TypeError):
+                      continue  # Failed/quarantined packs never enter git.
+                  paths.append(str(source))
+          if os.environ['CYCLE_OUTCOME']=='success':
+              paths += [str(p) for p in Path('research_inference_releases').glob('weekly-*')]
+          if paths:
+              subprocess.run(['git','add','--',*paths],check=True)
+          PY
+          if git diff --cached --quiet; then exit 0; fi
+          python - <<'PY'
+          import subprocess
+          paths=subprocess.check_output(['git','diff','--cached','--name-only'],text=True).splitlines()
+          assert paths and all(p.startswith('weekly_learning_state/') or p.startswith('research_inference_releases/weekly-') for p in paths)
+          assert not any(p.endswith('.lock') or '/.stage-' in p for p in paths)
+          PY
+          git config user.name 'NFL research learning automation'
+          git config user.email 'research-learning@users.noreply.github.com'
+          git commit -m 'Archive weekly research learning cycle'
+          # A concurrent branch update rejects this normal push. Never force/rebase/retry.
+          git push origin "HEAD:refs/heads/$RESEARCH_BRANCH"
+# No schedule is active here. Default-branch registration templates live in ops/.
+# Approval is required before registering manual dispatch or recurring schedules.

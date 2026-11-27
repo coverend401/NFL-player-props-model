@@ -1,0 +1,9 @@
+{
+  "files": {
+    "reconciled.parquet": "b2c1c67e5844a0ef016261b4c21a9cddcedb7d6756da2ba9ab6d007fd66c63ab",
+    "report.json": "8d7448a7fa9519c26c066e330623e8f783d53688e1b0f1fe3eb411b231d47ca5"
+  },
+  "id": "week11-20261124",
+  "kind": "enhanced_settlements",
+  "schema": 1
+}

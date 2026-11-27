@@ -1,0 +1,11 @@
+{
+  "action": "routine_forecast_published",
+  "at": "2026-11-27T16:44:40.916365+00:00",
+  "details": {
+    "authority": "9a4d0b2bc161adfb5e955d5d68789047f08b59e5addf9c777c872d1c16ff1119",
+    "code_revision": "3f9e96a7480bf1a572ac814a72b361c6b536ac27",
+    "model_promoted": false,
+    "release_id": "weekly-routine-initial-20261127"
+  },
+  "previous_sha256": "2d332dcf345587e7f22b8a438b533a0c76fee17bbdacf1df10df46e7563d34d1"
+}

@@ -1,0 +1,69 @@
+{
+  "capture_tier": "genuine_predecision_capture",
+  "complete_rows": 457,
+  "frozen_at": "2026-11-27T09:54:19.236020+00:00",
+  "game_kickoffs": {
+    "2026_12_ATL_MIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_BAL_HOU": "2026-11-29T18:00:00+00:00",
+    "2026_12_CAR_TB": "2026-12-01T01:15:00+00:00",
+    "2026_12_DEN_PIT": "2026-11-27T20:00:00+00:00",
+    "2026_12_LV_CLE": "2026-11-30T01:20:00+00:00",
+    "2026_12_NE_LAC": "2026-11-29T21:05:00+00:00",
+    "2026_12_NO_CIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYG_IND": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYJ_MIA": "2026-11-29T18:00:00+00:00",
+    "2026_12_SEA_SF": "2026-11-29T21:25:00+00:00",
+    "2026_12_TEN_JAX": "2026-11-29T18:00:00+00:00",
+    "2026_12_WAS_ARI": "2026-11-29T21:25:00+00:00"
+  },
+  "models": {
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "release_id": "weekly-week12-remaining-20261127",
+  "source_manifest_sha256": "b6d2c3546ed4c38d29c61d4c320cdd7a875272d4a6155a2b57dbf9cd49deb675",
+  "source_path": "research_inference_releases/weekly-week12-remaining-20261127"
+}

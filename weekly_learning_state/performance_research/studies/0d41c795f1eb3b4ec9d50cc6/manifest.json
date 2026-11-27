@@ -1,0 +1,13 @@
+{
+  "files": {
+    "cohorts.parquet": "ba53310ce68ed63b7b541b5100949bf14cccffe022e732bf7c024319279e9726",
+    "point_metrics.parquet": "c03f5ccaddffd0b79e94cfeab9e91ac8d115fd2f3dbb0267e567cdacc48a6230",
+    "probability_metrics.parquet": "65a7ba6976c7a67a128afb4e1cdae59981830b1675d8de476c19ac21e9bec536",
+    "protocol.json": "ddf75bd6d2cf541cd1651db5acaf61414dbb371289d369011191fcdbe34ba9ec",
+    "reliability.parquet": "015891ecf48681120545e7ebab030f408d2bdfba275736ef0af10c8922998b79",
+    "summary.json": "8bd458ba462c765be1cc2e192d270d41fe086286dc9addf812787b586de37daa"
+  },
+  "id": "0d41c795f1eb3b4ec9d50cc6",
+  "kind": "studies",
+  "schema": 1
+}

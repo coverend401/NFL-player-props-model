@@ -1,0 +1,13 @@
+{
+  "action": "holdout_reserved",
+  "at": "2026-11-20T22:48:57.410323+00:00",
+  "details": {
+    "block": "2026-weeks-1-10-previously-inspected",
+    "fresh": false,
+    "protocol_sha256": "f99c7153b219d34534f65d9ebdb9e506c73c926f52e16f15bd7daeaf64d7a79c",
+    "registered_at": "2026-11-20T22:48:57.410078+00:00",
+    "registered_before": null,
+    "replay_only": false
+  },
+  "previous_sha256": "e15ca415f3fe65ff06f0adc1f9f7151fb4768a1bccefe1525aebcd04878e4358"
+}

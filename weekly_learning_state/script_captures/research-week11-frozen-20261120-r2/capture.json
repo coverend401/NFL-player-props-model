@@ -1,0 +1,26 @@
+{
+  "activation": false,
+  "baseline_manifest_sha256": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+  "baseline_release_id": "research-week11-frozen-20261120-r2",
+  "benchmark_final_period_used_for_selection": false,
+  "challenger_manifest_sha256": "885a0601c1ab1ab3feb52b8d700fabb68d52abb5bbce7611f5e100044c992b38",
+  "challenger_sha256": "1a8948e7dc3a3f249acdaa436d1caefa4a57fb241a8d8508c48113e3dfdfc693",
+  "frozen_at": "2026-11-21T16:46:12.922887+00:00",
+  "game_kickoffs": {
+    "2026_11_ARI_KC": "2026-11-22T18:00:00+00:00",
+    "2026_11_BAL_CAR": "2026-11-22T18:00:00+00:00",
+    "2026_11_CIN_WAS": "2026-11-24T01:15:00+00:00",
+    "2026_11_JAX_NYG": "2026-11-22T18:00:00+00:00",
+    "2026_11_LV_DEN": "2026-11-22T21:25:00+00:00",
+    "2026_11_MIA_BUF": "2026-11-22T18:00:00+00:00",
+    "2026_11_MIN_SF": "2026-11-23T01:20:00+00:00",
+    "2026_11_NO_CHI": "2026-11-22T18:00:00+00:00",
+    "2026_11_NYJ_LAC": "2026-11-22T21:05:00+00:00",
+    "2026_11_PIT_PHI": "2026-11-22T21:25:00+00:00",
+    "2026_11_TB_DET": "2026-11-22T18:00:00+00:00",
+    "2026_11_TEN_DAL": "2026-11-22T18:00:00+00:00"
+  },
+  "prediction_at": "2026-11-21T16:45:36.915493+00:00",
+  "selected": false,
+  "tier": "genuine_predecision_experimental_capture_no_promotion"
+}

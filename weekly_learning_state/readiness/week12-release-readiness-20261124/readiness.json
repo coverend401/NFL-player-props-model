@@ -1,0 +1,41 @@
+{
+  "all_fixtures": 16,
+  "capture_path": "weekly_learning_state/captures/weekly-week12-schemafix-20261124",
+  "checked_at": "2026-11-24T16:52:33.207520+00:00",
+  "checks": {
+    "complete_rows": 651,
+    "eligibility_counts": {
+      "eligible": 461,
+      "ineligible": 52,
+      "unresolved": 65
+    },
+    "exact_replay": true,
+    "fixtures": 16,
+    "forecast_rows": 846,
+    "models_verified": 9,
+    "top_picks": 24,
+    "top_two_rows": 24
+  },
+  "complete_fixtures": 12,
+  "complete_forecasts": 651,
+  "first_kickoff": "2026-11-26T01:00:00+00:00",
+  "forecasts": 846,
+  "last_kickoff": "2026-12-01T01:15:00+00:00",
+  "manifest_sha256": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+  "models_retrained": false,
+  "release_id": "weekly-week12-schemafix-20261124",
+  "scenario_fixtures": [
+    "2026_12_BAL_HOU",
+    "2026_12_NYG_IND",
+    "2026_12_PHI_DAL",
+    "2026_12_WAS_ARI"
+  ],
+  "selected": false,
+  "serving_runtime": "Candidate certified in original Python3.14/certifi2026.10.23 environment; current Cloud profile binds Week11/certifi2026.11.20. Separate serving admission/integration required before activation.",
+  "source_reused": true,
+  "status": "certified_candidate_not_selected",
+  "status_counts": {
+    "complete": 651,
+    "roof_scenarios_only": 195
+  }
+}

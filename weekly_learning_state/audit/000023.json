@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T09:55:02.390384+00:00",
+  "details": {
+    "id": "weekly-week12-remaining-20261127",
+    "kind": "script_captures",
+    "manifest_sha256": "0ba1fbb8991aef83fe3aaf2346fd0ab998ef049a98b00b7c93725d51a725c51d"
+  },
+  "previous_sha256": "42094cdfac94f03e2edb43339844bbbfcf4f18855d2ea95ae7dab282fda7d0fa"
+}

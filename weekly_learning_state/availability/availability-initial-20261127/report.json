@@ -1,0 +1,4792 @@
+{
+  "default_status": "unverified",
+  "records": [
+    {
+      "player_id": "00-0041093",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:31Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037004",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041561",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:11Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039577",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041027",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T19:50Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0026300",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T19:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037596",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033890",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:46Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035144",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:41Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038571",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036331",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041070",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039041",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036646",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033891",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041368",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038567",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037277",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T16:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039442",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033066",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038663",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037157",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037263",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037744",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040645",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T20:06Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040578",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:54Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041066",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:46Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037741",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0031576",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037815",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036990",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:25Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041044",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038628",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:37Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039048",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:36Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040156",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:36Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035208",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036906",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038562",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T03:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032392",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T18:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037238",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T18:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040687",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T17:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040077",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T17:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041469",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T17:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041194",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T17:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0027973",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T17:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039917",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T23:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036970",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T23:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038542",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T22:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034801",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T16:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039070",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T16:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040722",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036302",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:14Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036550",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:03Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039064",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032764",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:50Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040866",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040076",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036369",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033548",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:37Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033281",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036130",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:09Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037756",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038504",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038038",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034874",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040887",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040870",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039792",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036816",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040879",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T16:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040068",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034753",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:25Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034975",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033119",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039233",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T20:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039901",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T15:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035689",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T15:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037261",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034827",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038933",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034857",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T04:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037248",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T04:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040724",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038557",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037288",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:54Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041086",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041548",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036378",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0035667",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038548",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041443",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036914",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036976",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T22:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036888",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T22:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035632",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037254",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038679",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035537",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040363",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T16:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036162",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035687",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:23Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040187",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:20Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037005",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:18Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039344",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:16Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0031610",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:43Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036934",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:36Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036825",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:36Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041119",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037007",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040124",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038791",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:55Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035352",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036968",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:01Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037244",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039342",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037614",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040644",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040279",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036944",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T21:53Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039491",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T18:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040458",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036884",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041071",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036265",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039150",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035039",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032464",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031203",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041558",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039919",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040735",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040236",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036275",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039918",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:41Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040126",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:45Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037271",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T17:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039071",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T17:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0028986",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0034780",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:36Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041171",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:36Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038595",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:36Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0037096",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:36Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038111",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036020",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T20:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039021",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T20:15Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039459",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T22:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035357",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041538",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:14Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035643",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041051",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036231",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035702",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:07Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041116",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041069",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035631",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036854",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040785",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033526",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040015",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039631",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041118",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034829",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038597",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036410",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036900",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036442",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037193",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041098",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039313",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037743",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034446",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:04Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0040140",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T23:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038619",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T22:36Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0034754",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T19:53Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0026158",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T15:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038710",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041037",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:31Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040663",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035680",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:05Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038574",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:58Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038715",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:52Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040466",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:48Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035526",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041049",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:38Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033876",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:38Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036974",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T02:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040579",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T02:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039920",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036630",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038428",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T03:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041073",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040704",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041075",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036287",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041092",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038794",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040162",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T04:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036407",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T01:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041547",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T01:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033537",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T00:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035718",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T03:11Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039530",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037692",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037247",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036358",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036997",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033077",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035705",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038041",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:13Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040007",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:13Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0033093",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:13Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040875",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:19Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0040872",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:17Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0035227",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:40Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039062",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:36Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038625",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037410",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040865",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040011",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037310",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038547",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037275",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T21:40Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037282",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039410",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037801",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040153",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:24Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039703",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040240",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:03Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037085",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:28Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035663",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:27Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036158",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:13Z",
+      "status": "Suspension"
+    },
+    {
+      "player_id": "00-0036221",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039809",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:37Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0031898",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037384",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039868",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036422",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038976",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032569",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038783",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041297",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037294",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041133",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041498",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040134",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:46Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034348",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033881",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039732",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036613",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041496",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039364",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:46Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039172",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039065",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037240",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033106",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036963",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039139",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:54Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040728",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037289",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036335",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:51Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0033294",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:46Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039862",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:33Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038742",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:33Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041445",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:33Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041447",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:23Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039141",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035637",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038896",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040669",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036754",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034384",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:26Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039396",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036716",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036124",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T19:14Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038940",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T17:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040899",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038090",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037091",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040009",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T15:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038685",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039811",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T15:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040142",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036264",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040667",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:11Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038996",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040010",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:45Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038124",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:09Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0029592",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039819",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:26Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037076",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034431",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:10Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039272",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:56Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040884",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:56Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036284",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:56Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0035700",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:53Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036932",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036658",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T18:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041470",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039144",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T14:06Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039813",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T02:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034383",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:10Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039849",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038608",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:06Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038127",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037633",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032759",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:01Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0031565",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:55Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040583",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:16Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034399",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036556",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039422",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039030",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034355",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038599",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039108",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034981",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032726",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038705",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T16:25Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038618",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T16:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041472",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T05:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038977",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T05:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039163",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T04:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036554",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T04:41Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035685",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T04:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041532",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T04:23Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037292",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041111",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:48Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037753",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:04Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037190",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034573",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:44Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037664",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T18:36Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0036223",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T15:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033463",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036679",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T22:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037757",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035674",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040163",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038394",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040179",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041125",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T20:02Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0033439",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040206",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041518",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039031",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041043",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041039",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T03:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036271",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:54Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035021",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041132",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039576",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T01:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040342",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040719",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038606",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:29Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035112",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:46Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039353",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034960",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:19Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036655",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:19Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040227",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:19Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034473",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:19Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034657",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036985",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034413",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040238",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041100",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040718",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036590",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041084",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:54Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041503",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041106",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041055",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041045",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039409",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:03Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038935",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038611",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:11Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039893",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038997",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039894",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039067",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036660",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:22Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033873",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040646",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:17Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0030506",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041013",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T05:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040906",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:05Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041545",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036637",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040987",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040093",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038134",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039433",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0037306",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040547",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040748",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:54Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036557",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:51Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0038489",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T21:28Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035262",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036621",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037192",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040890",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040959",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040169",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:36Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039338",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:23Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033381",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:34Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040199",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036922",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:07Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037093",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036293",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037074",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037615",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034365",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035269",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040650",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040894",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040883",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037461",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037291",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:25Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038563",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040878",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039066",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041562",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040122",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040729",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041534",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:22Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040581",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T20:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034275",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T20:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033885",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:33Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036355",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:00Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037320",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T19:00Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035100",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041544",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039111",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041550",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:24Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033546",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:19Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039366",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:12Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038553",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:07Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038454",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:44Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040189",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T15:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038414",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036992",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035202",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038046",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:54Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037224",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041107",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038544",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039391",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040727",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039915",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040666",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035688",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T20:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040065",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T19:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0029822",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T17:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041399",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T17:25Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036849",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T17:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038359",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037557",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T16:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036244",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T15:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036093",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T15:09Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040590",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0026498",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T05:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037840",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T04:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039738",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T04:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033110",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:47Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039074",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:24Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039834",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039784",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039138",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041568",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:04Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0041421",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0034114",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039061",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036237",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039058",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:01Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036349",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T21:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033868",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T21:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040737",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T19:35Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039383",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038728",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:21Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039156",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:16Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040066",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041159",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036248",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:29Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036677",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041524",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T16:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040182",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0032065",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036409",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041522",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039874",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041096",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041525",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041529",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037666",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034161",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034779",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T20:47Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0038128",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T17:19Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039839",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039863",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041077",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039880",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037252",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0029606",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:58Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040506",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:56Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035228",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T19:47Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040154",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T19:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038994",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T19:36Z",
+      "status": "Doubtful"
+    },
+    {
+      "player_id": "00-0036222",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:33Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038778",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:15Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036616",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:15Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038578",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036348",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033336",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040509",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T16:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035276",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:14Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040215",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039404",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037525",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033293",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035229",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036259",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0029604",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036322",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040494",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039710",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T22:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035272",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T22:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031360",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T22:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037816",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:41Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035676",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:52Z",
+      "status": "Doubtful"
+    },
+    {
+      "player_id": "00-0036875",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T18:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039828",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:41Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037205",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037413",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034778",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036187",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:12Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038476",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036979",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:00Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039851",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T20:26Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036813",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T03:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033132",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T03:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040131",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040568",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:04Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040563",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T02:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041395",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T04:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041123",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041103",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040200",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T19:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038621",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T19:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033090",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T19:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033555",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T18:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040556",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T18:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035678",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T17:32Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035242",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036040",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:05Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037250",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036927",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:33Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038601",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:04Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035668",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:04Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040643",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040155",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041041",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T17:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039339",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035316",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:11Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041067",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041326",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035644",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039229",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T19:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033906",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039424",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041029",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036973",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040743",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037239",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037013",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T16:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039373",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T16:43Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039357",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T16:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039388",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040677",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:09Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037838",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:09Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039821",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:22Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041509",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:13Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0031270",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:14Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039000",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033907",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036996",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:42Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037259",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035250",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036309",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:30Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039847",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041042",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041101",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040225",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036502",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040694",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037138",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038986",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:44Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041145",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039923",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040715",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039337",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034782",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:12Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039451",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041511",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:43Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033051",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:10Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039347",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039886",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:18Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0036902",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:07Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037255",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:07Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037805",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T16:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034959",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T16:26Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0029607",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038123",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041026",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036500",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032385",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:16Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037755",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039372",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039447",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034794",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:41Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040736",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039798",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041032",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039890",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039794",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0030565",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040024",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036912",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0033787",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034351",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:30Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040867",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039746",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039398",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039265",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:46Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034993",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:13Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034844",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:49Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039841",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:08Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040891",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:20Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0037086",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:14Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040017",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:14Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036192",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:14Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0040013",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038116",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:25Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0032580",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:23Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0039888",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:21Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038400",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:58Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038978",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039826",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:35Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040586",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041483",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:56Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040071",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:49Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038577",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035286",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:54Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041396",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T01:50Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0034277",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036333",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:46Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0036862",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:43Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0040618",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036252",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T19:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034771",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T21:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033055",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036323",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039741",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039739",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041489",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035640",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T21:08Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035239",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041565",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041490",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031136",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038558",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036894",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036139",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:11Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037228",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041397",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T17:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040172",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:29Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0031408",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:08Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037834",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:01Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035829",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:11Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0036256",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T03:03Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0036563",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:42Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034982",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:37Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041061",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:33Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040152",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:33Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034391",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:31Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036341",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037602",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:01Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0036871",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T22:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041035",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T20:43Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0038643",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T16:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036887",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T16:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038554",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034815",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:53Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039365",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040177",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:09Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0029892",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:40Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034173",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:33Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041090",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040589",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:50Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0030279",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039020",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:20Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037821",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T02:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035704",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:32Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034350",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:23Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0038764",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:23Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040058",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038543",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:14Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036994",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:38Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034342",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:47Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0037812",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:44Z",
+      "status": "Out"
+    },
+    {
+      "player_id": "00-0031411",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040673",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:26Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0034869",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T23:41Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031933",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:39Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039299",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T23:11Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039169",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-19T03:07Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031492",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T04:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033908",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T02:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040648",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-17T02:47Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040904",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T19:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039793",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T05:29Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037545",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T05:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041512",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T01:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039165",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-16T01:48Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032387",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-15T22:20Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040143",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:59Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036411",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:53Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0041502",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-27T00:43Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0039855",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T22:27Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0035942",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:46Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0037311",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T17:24Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041094",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T17:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039050",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T17:15Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039846",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040237",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T02:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040384",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:56Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0040747",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:52Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035358",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041253",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039310",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041082",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041079",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038951",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:36Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038129",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T04:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033921",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041048",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:22Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036919",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040129",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:37Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034855",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T00:01Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039361",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:02Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034805",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T23:05Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040503",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T21:08Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037758",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:44Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0037155",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T01:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036876",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T17:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039648",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T17:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040141",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T03:00Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039858",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:59Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038043",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:55Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040296",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T02:11Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038115",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:23Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040522",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T03:17Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036924",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T01:19Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040170",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:39Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040892",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040512",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038711",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0038407",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T15:52Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035192",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T05:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040584",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T03:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040705",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T02:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034837",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-23T01:41Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040676",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041438",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T23:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0035261",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T22:32Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0031588",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:42Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037742",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T20:35Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036375",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T02:29Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0035279",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-26T00:12Z",
+      "status": "Questionable"
+    },
+    {
+      "player_id": "00-0036628",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:34Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039912",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:31Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0036415",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:27Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041182",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T01:12Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033699",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037256",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-25T00:13Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041183",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040314",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041117",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041178",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T12:38Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037809",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:14Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0041040",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:10Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0040242",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T05:06Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039910",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T04:45Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0033082",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-24T00:18Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039149",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-22T00:28Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0032380",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-21T00:56Z",
+      "status": "Injured Reserve"
+    },
+    {
+      "player_id": "00-0039686",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-20T00:51Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0039355",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-18T16:20Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0034465",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-14T02:57Z",
+      "status": "Active"
+    },
+    {
+      "player_id": "00-0037616",
+      "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+      "source_date": "2026-11-14T02:55Z",
+      "status": "Active"
+    }
+  ],
+  "response_sha256": "6c9aa54b352e72be2cf64af5246174d52f30c42bc44e48584e6a0ffdced60e1f",
+  "retrieved_at": "2026-11-27T15:48:33.047063+00:00",
+  "schema": 1,
+  "source": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/injuries",
+  "unmatched": 3
+}

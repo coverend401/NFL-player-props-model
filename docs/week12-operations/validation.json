@@ -1,0 +1,111 @@
+{
+  "status": "validated_candidates_not_activated",
+  "prepared_release": "weekly-week12-remaining-20261127",
+  "original_archive_release": "weekly-week12-schemafix-20261124",
+  "active_release_changed": false,
+  "local_full_regression": {
+    "python312": {
+      "tests": 548,
+      "skips": 55,
+      "passed": true
+    },
+    "python314_original_lock": {
+      "tests": 548,
+      "skips": 7,
+      "passed": true
+    }
+  },
+  "final_focused_tests": {
+    "python312": {
+      "tests": 26,
+      "skips": 6,
+      "passed": true
+    },
+    "python314_cloud_lock": {
+      "tests": 34,
+      "passed": true
+    }
+  },
+  "mobile": {
+    "localPreview": true,
+    "hostedVerified": false,
+    "selected": false,
+    "topModelOnly": 12,
+    "topTwoModelOnly": 24,
+    "currentCompleteFixtures": 9,
+    "archivedCompleteFixtures": 3,
+    "roofOnlyFixtures": 4,
+    "contrast": [
+      {
+        "width": 375,
+        "minimumContrast": 8.8154074202685,
+        "overflow": false
+      },
+      {
+        "width": 390,
+        "minimumContrast": 8.8154074202685,
+        "overflow": false
+      },
+      {
+        "width": 430,
+        "minimumContrast": 8.8154074202685,
+        "overflow": false
+      }
+    ]
+  },
+  "private_persistence": {
+    "status": "blocked_owner_repository_and_token_missing",
+    "live_verified": false,
+    "genuine_selection_records_created": 0,
+    "managed_repository_creation": "denied_by_GitHub_integration"
+  },
+  "hosted": {
+    "verified": false,
+    "reason": "research hostname missing from enforced allowlist; authenticated owner verification required"
+  },
+  "genuine_bookmaker_quotes_verified": 0,
+  "production_changed": false,
+  "main_expected": "ad6b545e2a0e132d336806aa56a99fbee0e9cd04",
+  "bookmaker_API_calls": 0,
+  "new_paid_resources": 0,
+  "certificates": {
+    "week12-certifi-20261120-v1": {
+      "sha256": "d992f38ff53aa0b2a338933f357cdda64548554578272f2abab6f0a0f4237475",
+      "status": "passed",
+      "release_id": "weekly-week12-schemafix-20261124",
+      "checks": {
+        "complete_rows": 651,
+        "eligibility_counts": {
+          "eligible": 461,
+          "ineligible": 52,
+          "unresolved": 65
+        },
+        "exact_replay": true,
+        "fixtures": 16,
+        "forecast_rows": 846,
+        "models_verified": 9,
+        "top_picks": 24,
+        "top_two_rows": 24
+      }
+    },
+    "week12-remaining-certifi-20261120-v1": {
+      "sha256": "669a40c68f3c419454218ea4dfd5d142ff1859684b806fd3fe3d1db944390f69",
+      "status": "passed",
+      "release_id": "weekly-week12-remaining-20261127",
+      "checks": {
+        "complete_rows": 457,
+        "eligibility_counts": {
+          "eligible": 336,
+          "ineligible": 169,
+          "unresolved": 73
+        },
+        "exact_replay": true,
+        "fixtures": 12,
+        "forecast_rows": 604,
+        "models_verified": 9,
+        "top_picks": 18,
+        "top_two_rows": 18
+      }
+    }
+  }
+}

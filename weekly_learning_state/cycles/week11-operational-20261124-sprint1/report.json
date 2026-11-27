@@ -1,0 +1,13 @@
+{
+  "champion_retained": true,
+  "completed_at": "2026-11-24T16:19:25.519989+00:00",
+  "cycle_id": "week11-operational-20261124-sprint1",
+  "error_type": "ProxyError",
+  "mode": "operational",
+  "next_slate": {
+    "status": "blocked",
+    "target_week": 12
+  },
+  "reason": "HTTPSConnectionPool(host='site.api.espn.com', port=443): Max retries exceeded with url: /apis/site/v2/sports/football/nfl/scoreboard?dates=20261119-20261125&limit=100 (Caused by ProxyError('Unable to connect to proxy', OSError('Tunnel connection failed: 403 Forbidden')))",
+  "status": "blocked_results_integrity"
+}

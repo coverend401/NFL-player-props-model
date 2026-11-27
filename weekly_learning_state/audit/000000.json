@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-20T22:48:50.229314+00:00",
+  "details": {
+    "id": "research-week11-frozen-20261120-r2",
+    "kind": "captures",
+    "manifest_sha256": "f0b6327ce96f3d7b513ee0fd248c194724656d28ab4b7bd012482bf8f834e4b1"
+  },
+  "previous_sha256": null
+}

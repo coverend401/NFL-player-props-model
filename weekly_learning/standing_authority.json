@@ -1,0 +1,82 @@
+{
+  "allow_forecast_only_publication": true,
+  "first_week": 12,
+  "last_week": 18,
+  "minimum_refresh_hours": 3,
+  "model_parent": {
+    "manifest_sha256": "507f5cf07c7613ea9b4c1d0c4ff4c8397f399a150091bfebfb33d46ab3e3ddd2",
+    "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",
+    "release_id": "stage1a-20261113-py314-arrow24-r2"
+  },
+  "modelling_code_sha256": {
+    "research_platform/enhanced_engine.py": "1f2c99d160af321d732680b3ba3f3e022223c9b81851b164b3ad841d469888d4",
+    "research_platform/inference_builder.py": "4fa36ec63590b2456e77e3cd7e56ead251f6d8ae1651ad80f18b9f744ca1e33f",
+    "research_platform/inference_release.py": "e96d8077daa9af4cc0e1164b4fd2c1d0fcffd66d675aca0692ab4211a00292b6",
+    "research_platform/weekly_frame.py": "5f927d89acf32c7b9d82359a01f5d1bdf28fc2a4a9c58c64069e035d471802bf",
+    "scripts/build_slate.py": "fe88bc2713b00eddcdf1866c2bfaf0dbedc9650108b7996983ce4f990b38db08",
+    "scripts/forecast_features.py": "f2bc8e91a867fab8166a82027a8c694d16050d0f37b655cb0d09ec19d466a707",
+    "scripts/train_all_markets.py": "eb286ddc3bda0de4551b3d6ae121454c6312d8e409a347012f6e1812e34b0584",
+    "season_intelligence/data.py": "abdc07abe6e5a00008d71b643defd07201e662de82b578fbe2df1ef580c04ac2",
+    "season_intelligence/models.py": "fa5e414fe3e810a7da700dbabdc339760b53cc737e0091ace01d689b2251302a",
+    "season_intelligence/probability.py": "77a5993e32bce26de20f686a6f62f3fbce2e5d6c7339439b0e45053590509a08",
+    "selection_learning/engine.py": "bd5c6e6adb2d2c709d7845fc0f987e82882ccaf46e72184aae3577533acd3a39",
+    "weekly_learning/contract.py": "6ec0e7e7e02b10b5ff425775e1324910f63de38b0a2520729c77fb9165dafbbb",
+    "weekly_learning/policy.json": "6c11959081e22a962588e49d36e16bb760d63d8752af4392a6869bebc0076224"
+  },
+  "models": {
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "owner_authority": "2026-11-27: standing authorisation for routine validated forecast publication; champion changes and main/production require separate approval",
+  "research_models": {
+    "path": "experiments/season_intelligence/sunday-20261121-v1/sunday_models.joblib",
+    "sha256": "3d8edb789233bd2245e8e31b38b4f5b1053ee607ce9dc57e182cf98746f0de98"
+  },
+  "research_only": true,
+  "schema": 1,
+  "season": 2026,
+  "status": "authorised"
+}

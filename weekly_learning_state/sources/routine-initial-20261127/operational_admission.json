@@ -1,0 +1,356 @@
+{
+  "allowed_games": [
+    {
+      "away_score": 3,
+      "away_team": "IND",
+      "completed_at": "2026-11-20T09:15:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_IND_HOU",
+      "home_score": 26,
+      "home_team": "HOU",
+      "kickoff_at": "2026-11-20T01:15:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 9,
+      "away_team": "MIA",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_MIA_BUF",
+      "home_score": 26,
+      "home_team": "BUF",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 33,
+      "away_team": "BAL",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_BAL_CAR",
+      "home_score": 35,
+      "home_team": "CAR",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 13,
+      "away_team": "NO",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_NO_CHI",
+      "home_score": 21,
+      "home_team": "CHI",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 30,
+      "away_team": "TEN",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_TEN_DAL",
+      "home_score": 51,
+      "home_team": "DAL",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 21,
+      "away_team": "TB",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_TB_DET",
+      "home_score": 31,
+      "home_team": "DET",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 7,
+      "away_team": "ARI",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_ARI_KC",
+      "home_score": 34,
+      "home_team": "KC",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 16,
+      "away_team": "PIT",
+      "completed_at": "2026-11-23T02:00:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_PIT_PHI",
+      "home_score": 19,
+      "home_team": "PHI",
+      "kickoff_at": "2026-11-22T18:00:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 27,
+      "away_team": "NYJ",
+      "completed_at": "2026-11-23T05:05:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_NYJ_LAC",
+      "home_score": 24,
+      "home_team": "LAC",
+      "kickoff_at": "2026-11-22T21:05:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 24,
+      "away_team": "LV",
+      "completed_at": "2026-11-23T05:25:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_LV_DEN",
+      "home_score": 38,
+      "home_team": "DEN",
+      "kickoff_at": "2026-11-22T21:25:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 18,
+      "away_team": "JAX",
+      "completed_at": "2026-11-23T05:25:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_JAX_NYG",
+      "home_score": 23,
+      "home_team": "NYG",
+      "kickoff_at": "2026-11-22T21:25:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 10,
+      "away_team": "MIN",
+      "completed_at": "2026-11-23T09:20:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_MIN_SF",
+      "home_score": 35,
+      "home_team": "SF",
+      "kickoff_at": "2026-11-23T01:20:00+00:00",
+      "week": 11
+    },
+    {
+      "away_score": 20,
+      "away_team": "CIN",
+      "completed_at": "2026-11-24T09:15:00+00:00",
+      "confirmed_final": true,
+      "game_id": "2026_11_CIN_WAS",
+      "home_score": 22,
+      "home_team": "WAS",
+      "kickoff_at": "2026-11-24T01:15:00+00:00",
+      "week": 11
+    }
+  ],
+  "capture_manifest_sha256": "f0b6327ce96f3d7b513ee0fd248c194724656d28ab4b7bd012482bf8f834e4b1",
+  "capture_path": "weekly_learning_state/captures/research-week11-frozen-20261120-r2",
+  "created_at": "2026-11-27T15:43:56.648355+00:00",
+  "models": {
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "policy_sha256": "6c11959081e22a962588e49d36e16bb760d63d8752af4392a6869bebc0076224",
+  "previous_admissions": [],
+  "proof": {
+    "games": [
+      {
+        "away_score": 3,
+        "away_team": "IND",
+        "completed_at": "2026-11-20T09:15:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_IND_HOU",
+        "home_score": 26,
+        "home_team": "HOU",
+        "kickoff_at": "2026-11-20T01:15:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 9,
+        "away_team": "MIA",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_MIA_BUF",
+        "home_score": 26,
+        "home_team": "BUF",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 33,
+        "away_team": "BAL",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_BAL_CAR",
+        "home_score": 35,
+        "home_team": "CAR",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 13,
+        "away_team": "NO",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_NO_CHI",
+        "home_score": 21,
+        "home_team": "CHI",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 30,
+        "away_team": "TEN",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_TEN_DAL",
+        "home_score": 51,
+        "home_team": "DAL",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 21,
+        "away_team": "TB",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_TB_DET",
+        "home_score": 31,
+        "home_team": "DET",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 7,
+        "away_team": "ARI",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_ARI_KC",
+        "home_score": 34,
+        "home_team": "KC",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 16,
+        "away_team": "PIT",
+        "completed_at": "2026-11-23T02:00:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_PIT_PHI",
+        "home_score": 19,
+        "home_team": "PHI",
+        "kickoff_at": "2026-11-22T18:00:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 27,
+        "away_team": "NYJ",
+        "completed_at": "2026-11-23T05:05:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_NYJ_LAC",
+        "home_score": 24,
+        "home_team": "LAC",
+        "kickoff_at": "2026-11-22T21:05:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 24,
+        "away_team": "LV",
+        "completed_at": "2026-11-23T05:25:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_LV_DEN",
+        "home_score": 38,
+        "home_team": "DEN",
+        "kickoff_at": "2026-11-22T21:25:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 18,
+        "away_team": "JAX",
+        "completed_at": "2026-11-23T05:25:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_JAX_NYG",
+        "home_score": 23,
+        "home_team": "NYG",
+        "kickoff_at": "2026-11-22T21:25:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 10,
+        "away_team": "MIN",
+        "completed_at": "2026-11-23T09:20:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_MIN_SF",
+        "home_score": 35,
+        "home_team": "SF",
+        "kickoff_at": "2026-11-23T01:20:00+00:00",
+        "week": 11
+      },
+      {
+        "away_score": 20,
+        "away_team": "CIN",
+        "completed_at": "2026-11-24T09:15:00+00:00",
+        "confirmed_final": true,
+        "game_id": "2026_11_CIN_WAS",
+        "home_score": 22,
+        "home_team": "WAS",
+        "kickoff_at": "2026-11-24T01:15:00+00:00",
+        "week": 11
+      }
+    ],
+    "response_sha256": "7f9045083bd8d746cf95e052ae7bf358729e35550b7ab20269352dd785f553de",
+    "retrieved_at": "2026-11-27T15:43:53.027005+00:00",
+    "url": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=2026&seasontype=2&week=11&limit=100"
+  },
+  "schema": "prospective_settlement_v1",
+  "season": 2026,
+  "settlement_cutoff": "2026-11-24T12:00:00+00:00",
+  "source_path": "weekly_learning_state/sources/routine-initial-20261127",
+  "sources_sha256": "5074d90c3ac50f24932310dbf01faabf107fef6d13d6fbf4e41d3fe361a15631",
+  "target_week": 12,
+  "through_week": 11
+}

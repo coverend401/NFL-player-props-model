@@ -1,0 +1,13 @@
+{
+  "champion_retained": true,
+  "completed_at": "2026-11-24T16:24:46.043212+00:00",
+  "cycle_id": "week11-operational-20261124-sprint2",
+  "error_type": "ValueError",
+  "mode": "operational",
+  "next_slate": {
+    "status": "blocked",
+    "target_week": 12
+  },
+  "reason": "ESPN finality source unavailable; no retry",
+  "status": "blocked_results_integrity"
+}

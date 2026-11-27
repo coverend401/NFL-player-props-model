@@ -1,0 +1,30 @@
+{
+  "activation": false,
+  "baseline_manifest_sha256": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+  "baseline_release_id": "weekly-week12-schemafix-20261124",
+  "benchmark_final_period_used_for_selection": false,
+  "challenger_manifest_sha256": "adc7394fc3bc05e391e286837a83d1a92a8ad2ea7b0f7d7e37406e0bb2355e9c",
+  "challenger_sha256": "1a8948e7dc3a3f249acdaa436d1caefa4a57fb241a8d8508c48113e3dfdfc693",
+  "frozen_at": "2026-11-24T16:52:33.133757+00:00",
+  "game_kickoffs": {
+    "2026_12_ATL_MIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_BAL_HOU": "2026-11-29T18:00:00+00:00",
+    "2026_12_CAR_TB": "2026-12-01T01:15:00+00:00",
+    "2026_12_CHI_DET": "2026-11-26T18:00:00+00:00",
+    "2026_12_DEN_PIT": "2026-11-27T20:00:00+00:00",
+    "2026_12_GB_LA": "2026-11-26T01:00:00+00:00",
+    "2026_12_KC_BUF": "2026-11-27T01:20:00+00:00",
+    "2026_12_LV_CLE": "2026-11-30T01:20:00+00:00",
+    "2026_12_NE_LAC": "2026-11-29T21:05:00+00:00",
+    "2026_12_NO_CIN": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYG_IND": "2026-11-29T18:00:00+00:00",
+    "2026_12_NYJ_MIA": "2026-11-29T18:00:00+00:00",
+    "2026_12_PHI_DAL": "2026-11-26T21:30:00+00:00",
+    "2026_12_SEA_SF": "2026-11-29T21:25:00+00:00",
+    "2026_12_TEN_JAX": "2026-11-29T18:00:00+00:00",
+    "2026_12_WAS_ARI": "2026-11-29T21:25:00+00:00"
+  },
+  "prediction_at": "2026-11-24T16:51:26.710505+00:00",
+  "selected": false,
+  "tier": "genuine_predecision_experimental_capture_no_promotion"
+}

@@ -1,0 +1,7 @@
+{
+  "admission_sha256": "c1ddb7d87e1ace7519e99c45086f15c501920a106d44ef1f45a17600a343258f",
+  "retrieved_at": "2026-11-27T15:45:11.060963+00:00",
+  "sha256": "2b2ef85b44566f378426cd2675c21162c8af3df7a4105817b11e6787cfa10f0f",
+  "through_week": 11,
+  "url": "https://github.com/nflverse/nflverse-data/releases/download/pbp/play_by_play_2026.parquet"
+}

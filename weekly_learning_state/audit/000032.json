@@ -1,0 +1,12 @@
+{
+  "action": "refresh_candidate_readiness",
+  "at": "2026-11-27T15:45:51.464002+00:00",
+  "details": {
+    "manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+    "path": "research_inference_releases/weekly-routine-initial-20261127",
+    "release_id": "weekly-routine-initial-20261127",
+    "status": "operational_candidate_certified_not_selected",
+    "target_week": 12
+  },
+  "previous_sha256": "641d4a1473ca25920f21ebe4267a3b37e4e5dd44f8431e5391bd3ebb8c863ad4"
+}

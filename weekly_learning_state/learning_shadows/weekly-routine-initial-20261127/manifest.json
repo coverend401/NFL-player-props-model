@@ -1,0 +1,9 @@
+{
+  "files": {
+    "predictions.parquet": "c9ef1ebf2aac9c85b43eb4f25bc31d67fa3f0e43c4c75c25259bdec90ae56abc",
+    "protocol.json": "147f8cf8d042f4c2ad40a34ada810b055a6b47ca509602f92b42ff71d8647bae"
+  },
+  "id": "weekly-routine-initial-20261127",
+  "kind": "learning_shadows",
+  "schema": 1
+}

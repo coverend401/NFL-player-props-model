@@ -1,0 +1,873 @@
+{
+  "candidate": {
+    "accepted": false,
+    "candidate": "market_bias_half_step",
+    "decision": "RETAIN_CHAMPION",
+    "fit_seasons": [
+      2022,
+      2023,
+      2024
+    ],
+    "fresh_holdout_required": true,
+    "holdout": {
+      "block": "2026-weeks-1-10-previously-inspected",
+      "fresh": false,
+      "protocol_sha256": "f99c7153b219d34534f65d9ebdb9e506c73c926f52e16f15bd7daeaf64d7a79c",
+      "registered_at": "2026-11-20T22:48:57.410078+00:00",
+      "registered_before": null,
+      "replay_only": false
+    },
+    "inputs": {
+      "experiments/stage1b/baseline-20261113-v5/forecasts.parquet": "b2a677ab155265b6257427b7192f513ff0b42f85a859439d37cd09541a69a76c",
+      "experiments/stage1b/baseline-20261113-v5/models/completions-2026.joblib": "95b4b56faf3dd1d8afc60c62f7abb340930d7504ece93e00f7924094b1cd5076",
+      "experiments/stage1b/baseline-20261113-v5/models/passing_attempts-2026.joblib": "f8235c250eddd5130aff7b4951d22a93a4c95574576cbec9cd3de977d50838a1",
+      "experiments/stage1b/baseline-20261113-v5/models/passing_yards-2026.joblib": "b1da8ff30e2fa186171210d339136ec479223b1ebc0194493e75cd34d0b2d1a6",
+      "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_attempts-2026.joblib": "ecb68ccbcd4abbd6fa013d38d0da711c00dd242117dca875eb84d3a7557c12f8",
+      "experiments/stage1b/baseline-20261113-v5/models/qb_rushing_yards-2026.joblib": "05a3096eb9967a3d03f30a98f8061ec21dbb836008679a58345d56c1bafd62df",
+      "experiments/stage1b/baseline-20261113-v5/models/receiving_yards-2026.joblib": "a35721284b8c73228b56caa795505dca53d8de52b61efbc30b55b98fa15560a6",
+      "experiments/stage1b/baseline-20261113-v5/models/receptions-2026.joblib": "02cf06aefbb5a724a6a2a6f900b754734173e7659961f5b9c44b48e1248d898e",
+      "experiments/stage1b/baseline-20261113-v5/models/rushing_attempts-2026.joblib": "006553ee21d1e3bc79092bb7166d0527779af8e45a72ec7c2a4e0991de156704",
+      "experiments/stage1b/baseline-20261113-v5/models/rushing_yards-2026.joblib": "2ebbd8ab4a3aca31fa614e82279e1e58dbc11fae54a0e4d73bfbab93915b0396",
+      "experiments/sunday_script/20261120-v1/player_replay.parquet": "6041b8ac6b67cbc3464552147ed06c6ae10b2e642d1107d279ff1cf447948e22"
+    },
+    "markets": [
+      {
+        "baseline": {
+          "bias": 0.5410650503295913,
+          "mae": 5.599355922787866,
+          "n": 311,
+          "rmse": 7.158338230593905,
+          "zero_outcomes": 14
+        },
+        "candidate": {
+          "bias": 0.12110125114292282,
+          "mae": 5.598360837784646,
+          "n": 311,
+          "rmse": 7.138887892937002,
+          "zero_outcomes": 14
+        },
+        "correction": -0.41996379918666954,
+        "holm_rejects_no_improvement": false,
+        "market": "completions",
+        "one_sided_bootstrap_p": 0.484375,
+        "paired_week_bootstrap95": [
+          -0.0410660912613331,
+          0.04192043751826078
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.25006405815858573,
+            "log_loss": 0.6932753810805385
+          },
+          "candidate": {
+            "brier": 0.24980876919164188,
+            "log_loss": 0.692764522046557
+          }
+        },
+        "relative_mae_gain": 0.0001777141901572188,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": -0.19577488440587357,
+          "mae": 8.254139923560565,
+          "n": 311,
+          "rmse": 10.786294529752094,
+          "zero_outcomes": 9
+        },
+        "candidate": {
+          "bias": -0.5741576348413322,
+          "mae": 8.269082773652352,
+          "n": 311,
+          "rmse": 10.799790686251397,
+          "zero_outcomes": 9
+        },
+        "correction": -0.37838275043545866,
+        "holm_rejects_no_improvement": false,
+        "market": "passing_attempts",
+        "one_sided_bootstrap_p": 0.703125,
+        "paired_week_bootstrap95": [
+          -0.027662490117672498,
+          0.06206254139634189
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.25035331316856135,
+            "log_loss": 0.6938538028327346
+          },
+          "candidate": {
+            "brier": 0.25099014797270547,
+            "log_loss": 0.6951302761324355
+          }
+        },
+        "relative_mae_gain": -0.001810346108761074,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": 1.2638889378516156,
+          "mae": 67.86145970187218,
+          "n": 311,
+          "rmse": 84.2488423681768,
+          "zero_outcomes": 16
+        },
+        "candidate": {
+          "bias": 3.5925483988557394,
+          "mae": 67.8218688605923,
+          "n": 311,
+          "rmse": 84.31593223779714,
+          "zero_outcomes": 16
+        },
+        "correction": 2.328659461004133,
+        "holm_rejects_no_improvement": false,
+        "market": "passing_yards",
+        "one_sided_bootstrap_p": 0.373046875,
+        "paired_week_bootstrap95": [
+          -0.24859951369779537,
+          0.1545557652620504
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.24993141736918664,
+            "log_loss": 0.6930100143902734
+          },
+          "candidate": {
+            "brier": 0.24980637010220313,
+            "log_loss": 0.6927598358004988
+          }
+        },
+        "relative_mae_gain": 0.0005834068623605804,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": 0.234614871207209,
+          "mae": 1.7728077031647116,
+          "n": 311,
+          "rmse": 2.2555610475252426,
+          "zero_outcomes": 30
+        },
+        "candidate": {
+          "bias": 0.2210544859248682,
+          "mae": 1.7701193485778073,
+          "n": 311,
+          "rmse": 2.2541908941057103,
+          "zero_outcomes": 30
+        },
+        "correction": -0.01356038528234088,
+        "holm_rejects_no_improvement": true,
+        "market": "qb_rushing_attempts",
+        "one_sided_bootstrap_p": 0.009765625,
+        "paired_week_bootstrap95": [
+          -0.004101694010711471,
+          -0.0010222667888395147
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.2457889862079371,
+            "log_loss": 0.6846822242409075
+          },
+          "candidate": {
+            "brier": 0.24532807632271084,
+            "log_loss": 0.6837449859431748
+          }
+        },
+        "relative_mae_gain": 0.0015164389133154321,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": 1.4332759207436079,
+          "mae": 11.270620834098114,
+          "n": 311,
+          "rmse": 15.013627185577814,
+          "zero_outcomes": 41
+        },
+        "candidate": {
+          "bias": 1.25952258050434,
+          "mae": 11.229836287996935,
+          "n": 311,
+          "rmse": 14.99803715601939,
+          "zero_outcomes": 41
+        },
+        "correction": -0.17375334023926794,
+        "holm_rejects_no_improvement": true,
+        "market": "qb_rushing_yards",
+        "one_sided_bootstrap_p": 0.0048828125,
+        "paired_week_bootstrap95": [
+          -0.060508978463917826,
+          -0.02115889601082489
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.24955703874629637,
+            "log_loss": 0.6922611364118256
+          },
+          "candidate": {
+            "brier": 0.2485855223347858,
+            "log_loss": 0.6903177073315921
+          }
+        },
+        "relative_mae_gain": 0.003618660116556205,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": -1.4759746889712348,
+          "mae": 19.257936809828863,
+          "n": 2018,
+          "rmse": 27.156244704764777,
+          "zero_outcomes": 402
+        },
+        "candidate": {
+          "bias": -1.5157120731762892,
+          "mae": 19.250554558756715,
+          "n": 2018,
+          "rmse": 27.158433464972784,
+          "zero_outcomes": 402
+        },
+        "correction": -0.03973738420505534,
+        "holm_rejects_no_improvement": true,
+        "market": "receiving_yards",
+        "one_sided_bootstrap_p": 0.0009765625,
+        "paired_week_bootstrap95": [
+          -0.008613020996620152,
+          -0.006049177985886518
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.2500735836080438,
+            "log_loss": 0.6932943302682427
+          },
+          "candidate": {
+            "brier": 0.2499593792452191,
+            "log_loss": 0.6930659021447584
+          }
+        },
+        "relative_mae_gain": 0.0003833355122642157,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": -0.02516046911789765,
+          "mae": 1.4369905916951744,
+          "n": 2018,
+          "rmse": 1.907290719312,
+          "zero_outcomes": 390
+        },
+        "candidate": {
+          "bias": -0.09715896406522037,
+          "mae": 1.428508799486331,
+          "n": 2018,
+          "rmse": 1.9095980526152887,
+          "zero_outcomes": 390
+        },
+        "correction": -0.07199859533306135,
+        "holm_rejects_no_improvement": true,
+        "market": "receptions",
+        "one_sided_bootstrap_p": 0.0009765625,
+        "paired_week_bootstrap95": [
+          -0.010889223997399946,
+          -0.00593959712057354
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.24697825282744387,
+            "log_loss": 0.6870802915918104
+          },
+          "candidate": {
+            "brier": 0.24518510325071088,
+            "log_loss": 0.6834417234466185
+          }
+        },
+        "relative_mae_gain": 0.005902468852518883,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": -0.44633804711829445,
+          "mae": 3.8887893673797547,
+          "n": 639,
+          "rmse": 5.086801590654093,
+          "zero_outcomes": 41
+        },
+        "candidate": {
+          "bias": -0.4401777753342899,
+          "mae": 3.8891267844571256,
+          "n": 639,
+          "rmse": 5.086264763485468,
+          "zero_outcomes": 41
+        },
+        "correction": 0.006160271784004267,
+        "holm_rejects_no_improvement": false,
+        "market": "rushing_attempts",
+        "one_sided_bootstrap_p": 0.947265625,
+        "paired_week_bootstrap95": [
+          -9.733414154012146e-06,
+          0.0007292940162474992
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.2481219819284198,
+            "log_loss": 0.6893869566631512
+          },
+          "candidate": {
+            "brier": 0.2481471933351579,
+            "log_loss": 0.6894374461253824
+          }
+        },
+        "relative_mae_gain": -8.676661178963485e-05,
+        "weeks": 10
+      },
+      {
+        "baseline": {
+          "bias": -0.879909541261386,
+          "mae": 21.497718857091865,
+          "n": 639,
+          "rmse": 29.1330634690931,
+          "zero_outcomes": 48
+        },
+        "candidate": {
+          "bias": -1.2602374521660766,
+          "mae": 21.431022259612355,
+          "n": 639,
+          "rmse": 29.147029775420442,
+          "zero_outcomes": 48
+        },
+        "correction": -0.3803279109046901,
+        "holm_rejects_no_improvement": true,
+        "market": "rushing_yards",
+        "one_sided_bootstrap_p": 0.0009765625,
+        "paired_week_bootstrap95": [
+          -0.08468408338025754,
+          -0.048819500539613064
+        ],
+        "probability_scope": "Hypothetical half-lines; normal-tail diagnostic with pre-2026 residual scale, not bookmaker returns or validated calibration",
+        "probability_scores": {
+          "baseline": {
+            "brier": 0.24994315592878447,
+            "log_loss": 0.6930334944284277
+          },
+          "candidate": {
+            "brier": 0.24908593956940558,
+            "log_loss": 0.6913188905249523
+          }
+        },
+        "relative_mae_gain": 0.003102496498483487,
+        "weeks": 10
+      }
+    ],
+    "plan_sha256": "f99c7153b219d34534f65d9ebdb9e506c73c926f52e16f15bd7daeaf64d7a79c",
+    "probability_gate": false,
+    "reasons": [
+      "Previously inspected holdout is not fresh independent evidence",
+      "Historical baseline is an archived chronological proxy, not the live frozen champion weights",
+      "No certified compatible challenger release or exact-replay promotion certificate"
+    ],
+    "sign_test_assumptions": "Paired week-cluster sign randomisation; requires exchangeable signs across weeks. Temporal dependence and reused development data preclude confirmatory interpretation.",
+    "statistical_gate": false
+  },
+  "champion_models": {
+    "completions": {
+      "sha256": "70cd548f6bb3662e6b4608097cfc8ac2e9d53e781cc4fc19589fe6bc27abb093",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_attempts": {
+      "sha256": "e021d5913a84a5901eb81c42a384cf014baf33fa8b349133284433d165effe5e",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "passing_yards": {
+      "sha256": "d249135ca74add185f9d35bbb10478bf2dd9c4ccfff71cd853116a311f190823",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_attempts": {
+      "sha256": "0bee97eeae85e7ff3375a5f353b3f07b8bad11dfefc4e168cea4da02483684a3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "qb_rushing_yards": {
+      "sha256": "07ae40c7b118cbb8af7e4aaa946a1f9f9ce987050c00820b2ef7cfc42424d2c5",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receiving_yards": {
+      "sha256": "9925344a77f52a3e9dc58bad6105f6aca7c168b594d4184e8cd1844cd93b8e49",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "receptions": {
+      "sha256": "577caa4992b0bb50ac71f6f627d7b99ae215ae9534bb7413f2dd7d414c113b00",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_attempts": {
+      "sha256": "04f27a3625e81ee02a2d0e38edbd4c9457cc98536a119c8ae7937e67e411b4fd",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    },
+    "rushing_yards": {
+      "sha256": "7535c2e27ff1b5799d213f8d6a39fd2b7566476b7858d0eb8355ff7edce540b3",
+      "training_as_of": "2026-11-13T17:09:40.909923+00:00",
+      "training_cutoff": "2026-11-13T09:15:00+00:00"
+    }
+  },
+  "champion_release": "stage1a-20261113-py314-arrow24-r2",
+  "code_sha256": {
+    "weekly_learning/__init__.py": "cb6624d255c3e09bc200cfd80d5e0d4375aa8f6022e3cc4cba36f024662c2906",
+    "weekly_learning/cli.py": "2d8ead7a5db730965a7f6b2301414ce82e26cf31ac1eb4e1bef2f25293abee8f",
+    "weekly_learning/engine.py": "f55b238015c0866f9cf91cf42b4eb8c53a0f64a65a5b0c015820bd9e1ee373e1",
+    "weekly_learning/forecast.py": "e4358a8793dee3b28698caa0f5c32de25b9dc0dc961e74a3634043551e68ec4e",
+    "weekly_learning/promotion.py": "aedc260f5c0bc1daa24f14f70525809ffa687b0b2aa500ff4575c815a51afe48",
+    "weekly_learning/sources.py": "4cf5f915a30a7c34cc71e041f8c271a40bc83933e374d7c68de32418a6e19530",
+    "weekly_learning/store.py": "886410e6d71dabbf1caa692387fb7e40131937764e0596ad95e00facd3da3eca",
+    "weekly_learning/ui.py": "032b850df6f1be239d2d91d328c65988156ce9339954249868c746840932c6bb"
+  },
+  "completed_at": "2026-11-20T22:49:16.014769+00:00",
+  "cycle_id": "2026-w09-dryrun-v1",
+  "data_gaps": [
+    "Injury cause and game-day inactive/void status are not inferred from snap absence",
+    "At-snap states are recorded where cached PBP is available; final-margin scenario probabilities target a different outcome",
+    "Team/script expectations are separate experimental context, not champion structural inputs",
+    "Historical source publication timestamps and archived pregame roster availability unverified"
+  ],
+  "forecast_capture_tier": "retrospective_replay_not_genuine_predecision",
+  "forecast_sha256": "3aaa4209757ca8011c7fd3f850a2b963ec09304a88614e530f793611777ea8cf",
+  "game_script_brier": 0.5574101945893698,
+  "game_script_scope": "Experimental final-margin category Brier, not in-game lead/trail occupancy",
+  "metrics": [
+    {
+      "bias": 1.0259631267642666,
+      "group": "market",
+      "mae": 4.380152788113475,
+      "n": 32,
+      "rmse": 5.992924171929322,
+      "value": "completions",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": 0.12096989736226776,
+      "group": "market",
+      "mae": 6.906936244325444,
+      "n": 32,
+      "rmse": 9.173969597321358,
+      "value": "passing_attempts",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": -1.9871413712266488,
+      "group": "market",
+      "mae": 62.610723095513855,
+      "n": 32,
+      "rmse": 77.61723249151513,
+      "value": "passing_yards",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": 0.038342474803606974,
+      "group": "market",
+      "mae": 1.8976164670067357,
+      "n": 32,
+      "rmse": 2.6880171768671772,
+      "value": "qb_rushing_attempts",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": 0.29763683254432216,
+      "group": "market",
+      "mae": 12.97859718086589,
+      "n": 32,
+      "rmse": 17.83049010163971,
+      "value": "qb_rushing_yards",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -2.169491532225584,
+      "group": "market",
+      "mae": 17.83159852152885,
+      "n": 209,
+      "rmse": 26.140277149675942,
+      "value": "receiving_yards",
+      "zero_outcomes": 44
+    },
+    {
+      "bias": 0.08114506883864624,
+      "group": "market",
+      "mae": 1.1964570940328079,
+      "n": 209,
+      "rmse": 1.5642014822733448,
+      "value": "receptions",
+      "zero_outcomes": 41
+    },
+    {
+      "bias": -0.43076119207815977,
+      "group": "market",
+      "mae": 3.5563014996889435,
+      "n": 65,
+      "rmse": 4.586446003226982,
+      "value": "rushing_attempts",
+      "zero_outcomes": 5
+    },
+    {
+      "bias": 0.047279343281461196,
+      "group": "market",
+      "mae": 18.041437971327095,
+      "n": 65,
+      "rmse": 22.33553933322699,
+      "value": "rushing_yards",
+      "zero_outcomes": 5
+    },
+    {
+      "bias": -2.008657482201094,
+      "group": "team",
+      "mae": 6.7880878556551485,
+      "n": 21,
+      "rmse": 13.833834981407252,
+      "value": "ARI",
+      "zero_outcomes": 5
+    },
+    {
+      "bias": 1.0498754297939856,
+      "group": "team",
+      "mae": 11.137048646567317,
+      "n": 21,
+      "rmse": 18.336344853614182,
+      "value": "ATL",
+      "zero_outcomes": 0
+    },
+    {
+      "bias": 4.646347060305282,
+      "group": "team",
+      "mae": 13.61291570879683,
+      "n": 20,
+      "rmse": 22.9000137245297,
+      "value": "BAL",
+      "zero_outcomes": 6
+    },
+    {
+      "bias": 0.715209443041839,
+      "group": "team",
+      "mae": 8.89416666856687,
+      "n": 25,
+      "rmse": 12.89393529116634,
+      "value": "BUF",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -4.8371347010873915,
+      "group": "team",
+      "mae": 8.76573937769375,
+      "n": 27,
+      "rmse": 17.436590690444884,
+      "value": "CAR",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -2.5053785922588947,
+      "group": "team",
+      "mae": 9.604071766257443,
+      "n": 23,
+      "rmse": 16.10996016268481,
+      "value": "CHI",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -2.500702032093932,
+      "group": "team",
+      "mae": 10.982562344581018,
+      "n": 21,
+      "rmse": 20.815717185898638,
+      "value": "CIN",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": -12.277379406651608,
+      "group": "team",
+      "mae": 16.63203685220721,
+      "n": 23,
+      "rmse": 42.66014800334623,
+      "value": "CLE",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": -15.93496627020853,
+      "group": "team",
+      "mae": 17.67187533160259,
+      "n": 17,
+      "rmse": 36.62124584382361,
+      "value": "DAL",
+      "zero_outcomes": 0
+    },
+    {
+      "bias": -0.7941506095646187,
+      "group": "team",
+      "mae": 9.297819639014618,
+      "n": 23,
+      "rmse": 13.355273395828478,
+      "value": "DEN",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": 8.456038559036855,
+      "group": "team",
+      "mae": 11.326880031725661,
+      "n": 21,
+      "rmse": 22.03462568579256,
+      "value": "DET",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": -11.401870928668746,
+      "group": "team",
+      "mae": 22.56000713992704,
+      "n": 25,
+      "rmse": 42.87962489151513,
+      "value": "GB",
+      "zero_outcomes": 8
+    },
+    {
+      "bias": -2.89822829450818,
+      "group": "team",
+      "mae": 19.28400331630362,
+      "n": 32,
+      "rmse": 44.65810106545677,
+      "value": "HOU",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": 2.792565596238439,
+      "group": "team",
+      "mae": 9.007250278382346,
+      "n": 27,
+      "rmse": 14.736133502334415,
+      "value": "IND",
+      "zero_outcomes": 3
+    },
+    {
+      "bias": -0.0648072939472774,
+      "group": "team",
+      "mae": 8.897247923095017,
+      "n": 31,
+      "rmse": 13.71059177544117,
+      "value": "JAX",
+      "zero_outcomes": 8
+    },
+    {
+      "bias": -1.2422093993418526,
+      "group": "team",
+      "mae": 8.1371395509444,
+      "n": 23,
+      "rmse": 12.17191541089269,
+      "value": "KC",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -0.913711726709701,
+      "group": "team",
+      "mae": 10.006251862843104,
+      "n": 19,
+      "rmse": 17.893394484125224,
+      "value": "LA",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": 0.18424461718497218,
+      "group": "team",
+      "mae": 9.783935763478386,
+      "n": 29,
+      "rmse": 14.315601089233343,
+      "value": "LAC",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": 5.098174960782237,
+      "group": "team",
+      "mae": 10.355158642043406,
+      "n": 23,
+      "rmse": 18.56977167386953,
+      "value": "LV",
+      "zero_outcomes": 7
+    },
+    {
+      "bias": 5.102698451930981,
+      "group": "team",
+      "mae": 10.827245631407296,
+      "n": 23,
+      "rmse": 18.265360943091018,
+      "value": "MIA",
+      "zero_outcomes": 6
+    },
+    {
+      "bias": 10.4296536860645,
+      "group": "team",
+      "mae": 10.792054471608276,
+      "n": 30,
+      "rmse": 24.326320933116563,
+      "value": "MIN",
+      "zero_outcomes": 5
+    },
+    {
+      "bias": -6.291439823584827,
+      "group": "team",
+      "mae": 12.672192207509728,
+      "n": 25,
+      "rmse": 20.814167763230618,
+      "value": "NE",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -3.8470478298733974,
+      "group": "team",
+      "mae": 10.342363512058368,
+      "n": 29,
+      "rmse": 16.963961521072456,
+      "value": "NO",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": 5.026940627423374,
+      "group": "team",
+      "mae": 11.605880528646738,
+      "n": 22,
+      "rmse": 24.881072514716873,
+      "value": "NYG",
+      "zero_outcomes": 0
+    },
+    {
+      "bias": 7.207890741893978,
+      "group": "team",
+      "mae": 11.271154875112861,
+      "n": 19,
+      "rmse": 21.837018612912136,
+      "value": "NYJ",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": -6.535978546197429,
+      "group": "team",
+      "mae": 13.997935297539133,
+      "n": 21,
+      "rmse": 23.595248909869394,
+      "value": "PHI",
+      "zero_outcomes": 2
+    },
+    {
+      "bias": 2.734876457467102,
+      "group": "team",
+      "mae": 11.715209491829167,
+      "n": 18,
+      "rmse": 17.1251635890239,
+      "value": "SEA",
+      "zero_outcomes": 4
+    },
+    {
+      "bias": 4.434046768136442,
+      "group": "team",
+      "mae": 10.354664204029278,
+      "n": 28,
+      "rmse": 20.08636282961056,
+      "value": "SF",
+      "zero_outcomes": 7
+    },
+    {
+      "bias": -5.34366572250286,
+      "group": "team",
+      "mae": 14.569856808247602,
+      "n": 19,
+      "rmse": 23.260466302093533,
+      "value": "TB",
+      "zero_outcomes": 1
+    },
+    {
+      "bias": -2.1436810058531734,
+      "group": "team",
+      "mae": 8.595823484202366,
+      "n": 23,
+      "rmse": 15.492320112560442,
+      "value": "WAS",
+      "zero_outcomes": 0
+    },
+    {
+      "bias": -0.10084580795043693,
+      "group": "position",
+      "mae": 17.75480515516508,
+      "n": 160,
+      "rmse": 35.971275906069245,
+      "value": "QB",
+      "zero_outcomes": 8
+    },
+    {
+      "bias": 0.5648776226050809,
+      "group": "position",
+      "mae": 8.68079375174245,
+      "n": 260,
+      "rmse": 14.156354589891434,
+      "value": "RB",
+      "zero_outcomes": 57
+    },
+    {
+      "bias": -0.3083211079319906,
+      "group": "position",
+      "mae": 7.57612486428464,
+      "n": 88,
+      "rmse": 13.218335236586547,
+      "value": "TE",
+      "zero_outcomes": 8
+    },
+    {
+      "bias": -2.9056332769948057,
+      "group": "position",
+      "mae": 12.28505662879172,
+      "n": 200,
+      "rmse": 23.41344850598656,
+      "value": "WR",
+      "zero_outcomes": 30
+    }
+  ],
+  "mode": "historical_dry_run",
+  "next_slate": {
+    "champion_retained": true,
+    "checks": {
+      "complete_rows": 568,
+      "eligibility_counts": {
+        "eligible": 336,
+        "ineligible": 70,
+        "unresolved": 166
+      },
+      "exact_replay": true,
+      "fixtures": 12,
+      "forecast_rows": 618,
+      "models_verified": 9,
+      "top_picks": 22
+    },
+    "manifest_sha256": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+    "new_forecasts_generated": false,
+    "release_id": "research-week11-frozen-20261120-r2",
+    "source_path": "research_inference_releases/research-week11-frozen-20261120-r2",
+    "status": "certified_existing_bundle_replayed",
+    "top_two_rows": 22,
+    "week": 11
+  },
+  "schema": 1,
+  "source_manifest_sha256": "2ef8e0a19da56705e31d3af0f72b1b4dd71bd3a3a5d5a8c8fc4a5016d0e1a021",
+  "status_counts": {
+    "scored": 708
+  },
+  "week": 9,
+  "week12_readiness": {
+    "champion_retained": true,
+    "reason": "SEALED: prospective settlement policy and compatible inference contract require owner approval",
+    "status": "blocked",
+    "target_week": 12
+  }
+}

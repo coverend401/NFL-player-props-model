@@ -1,0 +1,22 @@
+{
+  "authority_sha256": "9a4d0b2bc161adfb5e955d5d68789047f08b59e5addf9c777c872d1c16ff1119",
+  "directory": "research_inference_releases/weekly-routine-initial-20261127",
+  "manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+  "preparation_note": "Initial unactivated authority code pins finalised after ticket push safety review; immutable forecasts and original preparation retained",
+  "prepared_at": "2026-11-27T15:46:37.368882+00:00",
+  "profile": "research_runtime_profiles/routine-weekly-routine-initial-20261127",
+  "release_id": "weekly-routine-initial-20261127",
+  "run_id": "routine-final-20261127",
+  "settlement": {
+    "availability": {
+      "status": "unavailable; no player declared healthy"
+    },
+    "completed_cycles": [],
+    "private_settlement": [],
+    "waiting_for_authorised_cutoff": [
+      "weekly-week12-remaining-20261127",
+      "weekly-week12-schemafix-20261124"
+    ]
+  },
+  "status": "prepared_not_published"
+}

@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T16:00:39.917621+00:00",
+  "details": {
+    "id": "routine-final-20261127",
+    "kind": "routine_plans",
+    "manifest_sha256": "c330e635d77270fa9887a0645348f4f904cd5bb7b8d859bb4fec79b7168485bf"
+  },
+  "previous_sha256": "5f3c7bb868d553f36332c2eda8b095602dc807b46a21b50c55ed3932dc20669a"
+}

@@ -1,0 +1,21 @@
+# REVIEW TEMPLATE ONLY: copy to .github/workflows on main only after approval.
+name: Dispatch research weekly learning
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [preflight, capture, prepare, auto, select]
+        default: preflight
+      candidate:
+        description: 'Certified research candidate path (select only)'
+        type: string
+        default: ''
+permissions:
+  contents: write
+jobs:
+  research:
+    uses: coverend401/NFL-player-props-model/.github/workflows/weekly_learning.yml@sportsgameodds-free-feasibility
+    with:
+      mode: ${{ inputs.mode }}
+      candidate: ${{ inputs.candidate }}

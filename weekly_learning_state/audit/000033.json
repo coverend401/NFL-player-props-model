@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T15:45:51.573323+00:00",
+  "details": {
+    "id": "weekly-routine-initial-20261127",
+    "kind": "learning_shadows",
+    "manifest_sha256": "434dc5fd61856689200ac398961e700cec34a3ed1c7b095fe2ca3aa22de0e772"
+  },
+  "previous_sha256": "9e1e335421973c52d58b57f73c2c9643ddcea17fe9c7af80202114934f153911"
+}

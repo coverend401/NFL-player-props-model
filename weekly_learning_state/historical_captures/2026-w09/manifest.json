@@ -1,0 +1,10 @@
+{
+  "files": {
+    "capture.json": "acc1bd2c636e2463a4ecc70fd00bb78e1bb889a6aadb49ccc634c85d0bd486c7",
+    "forecasts.parquet": "3aaa4209757ca8011c7fd3f850a2b963ec09304a88614e530f793611777ea8cf",
+    "team_results.parquet": "cb73cc570fdf069d934e0b4733e997453b831c5a3f6687afd6bc1a1f1d049328"
+  },
+  "id": "2026-w09",
+  "kind": "historical_captures",
+  "schema": 1
+}

@@ -1,0 +1,849 @@
+{
+  "method": "admitted_team_descriptive_v1",
+  "prediction_at": "2026-11-27T15:44:10.464915+00:00",
+  "feature_data_cutoff": "2026-11-27T15:43:58.626100+00:00",
+  "release_id": "weekly-routine-initial-20261127",
+  "projection_adjustments": false,
+  "fixtures": [
+    {
+      "game_id": "2026_12_ATL_MIN",
+      "team": "ATL",
+      "opponent": "MIN",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 32.666666666666664,
+      "carries_last3": 24.0,
+      "mean_margin_last8": -2.375,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 4,
+          "pass_attempts": 32.75,
+          "carries": 21.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 1,
+          "pass_attempts": 35.0,
+          "carries": 26.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 26.333333333333332,
+          "carries": 35.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_ATL_MIN",
+      "team": "MIN",
+      "opponent": "ATL",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 35.333333333333336,
+      "carries_last3": 21.333333333333332,
+      "mean_margin_last8": 0.25,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 2,
+          "pass_attempts": 37.5,
+          "carries": 16.5
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 29.75,
+          "carries": 25.25
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 2,
+          "pass_attempts": 30.5,
+          "carries": 33.5
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_BAL_HOU",
+      "team": "BAL",
+      "opponent": "HOU",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 35.0,
+      "carries_last3": 23.666666666666668,
+      "mean_margin_last8": -8.25,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 26.333333333333332,
+          "carries": 26.666666666666668
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 35.6,
+          "carries": 25.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_BAL_HOU",
+      "team": "HOU",
+      "opponent": "BAL",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 34.0,
+      "carries_last3": 29.666666666666668,
+      "mean_margin_last8": 7.0,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 31.6,
+          "carries": 22.8
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 32.666666666666664,
+          "carries": 30.666666666666668
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_CAR_TB",
+      "team": "CAR",
+      "opponent": "TB",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 33.0,
+      "carries_last3": 29.0,
+      "mean_margin_last8": -3.0,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 2,
+          "pass_attempts": 36.0,
+          "carries": 20.5
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 37.6,
+          "carries": 27.6
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 1,
+          "pass_attempts": 39.0,
+          "carries": 33.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_CAR_TB",
+      "team": "TB",
+      "opponent": "CAR",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 22.666666666666668,
+      "carries_last3": 37.333333333333336,
+      "mean_margin_last8": 3.0,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 33.0,
+          "carries": 28.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 34.75,
+          "carries": 26.25
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 13.0,
+          "carries": 48.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_DEN_PIT",
+      "team": "DEN",
+      "opponent": "PIT",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 34.666666666666664,
+      "carries_last3": 28.0,
+      "mean_margin_last8": 5.0,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 42.0,
+          "carries": 22.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 31.4,
+          "carries": 26.4
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 2,
+          "pass_attempts": 32.0,
+          "carries": 30.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_DEN_PIT",
+      "team": "PIT",
+      "opponent": "DEN",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 33.666666666666664,
+      "carries_last3": 25.333333333333332,
+      "mean_margin_last8": 2.875,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 32.0,
+          "carries": 23.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 39.4,
+          "carries": 22.8
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 2,
+          "pass_attempts": 28.0,
+          "carries": 27.5
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_LV_CLE",
+      "team": "LV",
+      "opponent": "CLE",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 32.666666666666664,
+      "carries_last3": 21.0,
+      "mean_margin_last8": -10.75,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 5,
+          "pass_attempts": 35.8,
+          "carries": 19.6
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 3,
+          "pass_attempts": 39.666666666666664,
+          "carries": 26.333333333333332
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_LV_CLE",
+      "team": "CLE",
+      "opponent": "LV",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 37.333333333333336,
+      "carries_last3": 24.0,
+      "mean_margin_last8": -1.5,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 41.0,
+          "carries": 15.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 7,
+          "pass_attempts": 32.857142857142854,
+          "carries": 28.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NE_LAC",
+      "team": "NE",
+      "opponent": "LAC",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 29.666666666666668,
+      "carries_last3": 24.666666666666668,
+      "mean_margin_last8": -4.375,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 33.333333333333336,
+          "carries": 21.333333333333332
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 30.0,
+          "carries": 31.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 1,
+          "pass_attempts": 34.0,
+          "carries": 31.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NE_LAC",
+      "team": "LAC",
+      "opponent": "NE",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 23.0,
+      "carries_last3": 31.333333333333332,
+      "mean_margin_last8": -9.25,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 4,
+          "pass_attempts": 33.25,
+          "carries": 26.25
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 23.75,
+          "carries": 32.5
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NO_CIN",
+      "team": "NO",
+      "opponent": "CIN",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 37.666666666666664,
+      "carries_last3": 25.666666666666668,
+      "mean_margin_last8": -6.0,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 4,
+          "pass_attempts": 39.5,
+          "carries": 21.5
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 34.5,
+          "carries": 27.5
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NO_CIN",
+      "team": "CIN",
+      "opponent": "NO",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 37.666666666666664,
+      "carries_last3": 19.333333333333332,
+      "mean_margin_last8": 7.875,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 42.2,
+          "carries": 19.4
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 34.333333333333336,
+          "carries": 21.333333333333332
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NYG_IND",
+      "team": "NYG",
+      "opponent": "IND",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 34.0,
+      "carries_last3": 27.666666666666668,
+      "mean_margin_last8": 3.25,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 6,
+          "pass_attempts": 37.666666666666664,
+          "carries": 27.833333333333332
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 2,
+          "pass_attempts": 28.0,
+          "carries": 29.5
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NYG_IND",
+      "team": "IND",
+      "opponent": "NYG",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 28.333333333333332,
+      "carries_last3": 24.666666666666668,
+      "mean_margin_last8": -8.375,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 34.333333333333336,
+          "carries": 22.333333333333332
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 30.0,
+          "carries": 30.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 1,
+          "pass_attempts": 34.0,
+          "carries": 30.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NYJ_MIA",
+      "team": "NYJ",
+      "opponent": "MIA",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 31.333333333333332,
+      "carries_last3": 28.333333333333332,
+      "mean_margin_last8": -7.5,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 29.333333333333332,
+          "carries": 20.666666666666668
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 28.6,
+          "carries": 28.8
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_NYJ_MIA",
+      "team": "MIA",
+      "opponent": "NYJ",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 30.666666666666668,
+      "carries_last3": 22.333333333333332,
+      "mean_margin_last8": -7.125,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 31.666666666666668,
+          "carries": 24.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 26.0,
+          "carries": 28.4
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_SEA_SF",
+      "team": "SEA",
+      "opponent": "SF",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 26.333333333333332,
+      "carries_last3": 29.0,
+      "mean_margin_last8": 2.625,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 34.0,
+          "carries": 19.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 37.0,
+          "carries": 25.75
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 24.333333333333332,
+          "carries": 36.333333333333336
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_SEA_SF",
+      "team": "SF",
+      "opponent": "SEA",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 26.666666666666668,
+      "carries_last3": 32.333333333333336,
+      "mean_margin_last8": 8.5,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 40.0,
+          "carries": 23.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 28.25,
+          "carries": 26.25
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 3,
+          "pass_attempts": 27.333333333333332,
+          "carries": 34.333333333333336
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_TEN_JAX",
+      "team": "TEN",
+      "opponent": "JAX",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 36.333333333333336,
+      "carries_last3": 24.333333333333332,
+      "mean_margin_last8": -9.5,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 3,
+          "pass_attempts": 35.0,
+          "carries": 21.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 5,
+          "pass_attempts": 32.0,
+          "carries": 25.6
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_TEN_JAX",
+      "team": "JAX",
+      "opponent": "TEN",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 36.0,
+      "carries_last3": 28.0,
+      "mean_margin_last8": 12.875,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 4,
+          "pass_attempts": 37.5,
+          "carries": 24.75
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 4,
+          "pass_attempts": 26.75,
+          "carries": 32.25
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_WAS_ARI",
+      "team": "WAS",
+      "opponent": "ARI",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 34.333333333333336,
+      "carries_last3": 26.0,
+      "mean_margin_last8": -0.75,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 1,
+          "pass_attempts": 37.0,
+          "carries": 22.0
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 6,
+          "pass_attempts": 33.166666666666664,
+          "carries": 26.166666666666668
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 1,
+          "pass_attempts": 29.0,
+          "carries": 26.0
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    },
+    {
+      "game_id": "2026_12_WAS_ARI",
+      "team": "ARI",
+      "opponent": "WAS",
+      "recorded_games": 8,
+      "recent_games": 3,
+      "pass_attempts_last3": 26.333333333333332,
+      "carries_last3": 16.666666666666668,
+      "mean_margin_last8": -14.25,
+      "historical_final_margin_groups": [
+        {
+          "final_margin_group": "finished_behind_by_8_plus",
+          "games": 6,
+          "pass_attempts": 35.0,
+          "carries": 19.666666666666668
+        },
+        {
+          "final_margin_group": "finished_within_7",
+          "games": 2,
+          "pass_attempts": 40.5,
+          "carries": 31.0
+        },
+        {
+          "final_margin_group": "finished_ahead_by_8_plus",
+          "games": 0,
+          "pass_attempts": null,
+          "carries": null
+        }
+      ],
+      "interpretation": "A lead may support carries and chasing points may support passing. These are conditional football hypotheses, not predicted game-state probabilities or player adjustments.",
+      "missing": [
+        "No calibrated lead/trail occupancy probabilities",
+        "No unverified scheme, injury or personnel claims"
+      ]
+    }
+  ]
+}
