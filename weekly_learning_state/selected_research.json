@@ -1,0 +1,20 @@
+{
+  "checks": {
+    "complete_rows": 457,
+    "eligibility_counts": {
+      "eligible": 336,
+      "ineligible": 169,
+      "unresolved": 73
+    },
+    "exact_replay": true,
+    "fixtures": 12,
+    "forecast_rows": 604,
+    "models_verified": 9,
+    "top_picks": 18,
+    "top_two_rows": 18
+  },
+  "manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+  "path": "research_inference_releases/weekly-routine-initial-20261127",
+  "release_id": "weekly-routine-initial-20261127",
+  "selected_at": "2026-11-27T16:44:40.911467+00:00"
+}

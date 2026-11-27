@@ -1,0 +1,15 @@
+{
+  "authority_sha256": "9a4d0b2bc161adfb5e955d5d68789047f08b59e5addf9c777c872d1c16ff1119",
+  "certificate_sha256": "92484156889da621f7f7e9841cf8bed46798c76f9935813e6624ab02217d144f",
+  "code_revision": "3f9e96a7480bf1a572ac814a72b361c6b536ac27",
+  "manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+  "path": "research_inference_releases/weekly-routine-initial-20261127",
+  "profile": "research_runtime_profiles/routine-weekly-routine-initial-20261127",
+  "published_at": "2026-11-27T16:44:40.911467+00:00",
+  "release_id": "weekly-routine-initial-20261127",
+  "storage": {
+    "mode": "forecast_only",
+    "reason": "Private quoted-selection storage is not configured",
+    "verified": false
+  }
+}

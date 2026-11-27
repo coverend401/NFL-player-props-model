@@ -2,6 +2,11 @@
 name: Scheduled NFL research operation
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        type: choice
+        options: [refresh, availability]
+        default: refresh
   schedule:
     - cron: '0 12 * * 2'
     - cron: '0 14 * * 2'
@@ -16,7 +21,7 @@ jobs:
   research:
     uses: coverend401/NFL-player-props-model/.github/workflows/routine_learning.yml@APPROVED_CODE_SHA
     with:
-      mode: ${{ (github.event.schedule == '35 16 * * 0' || github.event.schedule == '35 19 * * 0') && 'availability' || 'refresh' }}
+      mode: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || ((github.event.schedule == '35 16 * * 0' || github.event.schedule == '35 19 * * 0') && 'availability' || 'refresh') }}
     secrets:
       NFL_SELECTION_GITHUB_REPOSITORY: ${{ secrets.NFL_SELECTION_GITHUB_REPOSITORY }}
       NFL_SELECTION_GITHUB_TOKEN: ${{ secrets.NFL_SELECTION_GITHUB_TOKEN }}

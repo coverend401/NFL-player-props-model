@@ -1,0 +1,9 @@
+{
+  "files": {
+    "publication.json": "090b59336b37c28266b241bf389077d32d94f1cc7d7219c7c143bd0ed12c09fe",
+    "rollback.json": "f1776bd397f156eb5f4f42a8bc74cdb3f98d083465255ca521b3bcdb6ff063f4"
+  },
+  "id": "routine-final-20261127",
+  "kind": "routine_publications",
+  "schema": 1
+}

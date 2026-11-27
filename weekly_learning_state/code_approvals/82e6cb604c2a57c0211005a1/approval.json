@@ -1,0 +1,9 @@
+{
+  "checks": {
+    "cycle": "success",
+    "regression (3.12)": "success",
+    "regression (3.14)": "success"
+  },
+  "fingerprint": "82e6cb604c2a57c0211005a198705d6eadcbebd7916b39bc4df461ef1efb18c8",
+  "revision": "3f9e96a7480bf1a572ac814a72b361c6b536ac27"
+}
