@@ -86,8 +86,11 @@ def _build(directory, profile):
         raise ValueError("Selection state contains data unavailable at forecast build")
     scope = dict(
         team_features.__globals__,
-        CERTIFIED=RELEASE,
-        FILTERS=[("season", "==", 2026), ("week", "<", 12)],
+        CERTIFIED=directory,
+        FILTERS=[
+            ("season", "==", manifest["fixture_slate"]["season"]),
+            ("week", "<", manifest["fixture_slate"]["week"]),
+        ],
     )
     teams = FunctionType(team_features.__code__, scope)(source, requests)
     current = current.drop(

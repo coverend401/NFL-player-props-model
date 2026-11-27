@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T15:45:10.053212+00:00",
+  "details": {
+    "id": "weekly-routine-initial-20261127",
+    "kind": "captures",
+    "manifest_sha256": "a0b56e854dc0f3099b422b43c285125d4cfcb7bf7aceaad1328d7b5a15ae61cd"
+  },
+  "previous_sha256": "e1faacf76e0c844aca8d5b3e281f719b091cf937cf0713c44116a34dc5040f1a"
+}

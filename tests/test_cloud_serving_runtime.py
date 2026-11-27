@@ -148,6 +148,7 @@ class CloudHostedTests(unittest.TestCase):
                     "SGO_RESEARCH_STORE": str(Path(tmp) / "cache.sqlite"),
                 },
             ),
+            patch("research_platform.weekly_serving.selected", return_value=None),
             patch("research_platform.enhanced_ui.datetime") as ui_clock,
             patch("research_platform.r8.datetime") as app_clock,
             patch("research_platform.selection_integrity.datetime") as audit_clock,

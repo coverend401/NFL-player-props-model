@@ -43,6 +43,12 @@ def inputs(profile=PROFILE, directory=RELEASE):
         "docs/season-intelligence-probability-uncertainty.csv",
         "research_runtime_profiles/week11-certifi-20261120-v1/requirements.lock",
     ]
+    if (profile / "authority.json").exists():
+        files += [
+            str((profile / p).relative_to(ROOT))
+            for p in ["authority.json", "fixture_verification.json"]
+        ]
+        files += ["weekly_learning/authority.py", "weekly_learning/publication.py"]
     files.extend(
         str((profile / p).relative_to(ROOT))
         for p in ["selection_build.json", "baseline.json"]
@@ -89,9 +95,13 @@ def admit(profile=PROFILE, directory=RELEASE):
         or certificate["runtime"]["packages"] != runtime()["packages"]
     ):
         raise ValueError("Weekly serving certificate/provenance mismatch")
-    proof = read_json(
-        ROOT
-        / "weekly_learning_state/readiness/week12-independent-fixtures-20261124/fixture_verification.json"
+    proof = (
+        read_json(profile / "fixture_verification.json")
+        if (profile / "fixture_verification.json").exists()
+        else read_json(
+            ROOT
+            / "weekly_learning_state/readiness/week12-independent-fixtures-20261124/fixture_verification.json"
+        )
     )
     from weekly_learning.admission import utc
 
@@ -164,6 +174,19 @@ def selected():
         for p, d in CANDIDATES.items()
         if str(p.relative_to(ROOT)) == pointer.get("profile")
     ]
+    if not matches:
+        catalog = read_json(ROOT / "weekly_learning_state/serving_catalog.json")
+        entry = catalog["releases"].get(pointer.get("profile"))
+        if entry is None or catalog["schema"] != 1:
+            raise ValueError("Unknown weekly serving profile")
+        from weekly_learning.authority import paths
+
+        profile, directory = paths(ROOT / entry["profile"], ROOT / entry["path"])
+        if entry["certificate_sha256"] != pointer["certificate_sha256"] or entry[
+            "authority_sha256"
+        ] != sha256(profile / "authority.json"):
+            raise ValueError("Routine publication catalogue changed")
+        matches = [(profile, directory)]
     if len(matches) != 1:
         raise ValueError("Unknown weekly serving profile")
     profile, directory = matches[0]

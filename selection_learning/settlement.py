@@ -13,7 +13,15 @@ from .engine import VERSION, digest, quote_identity, rankings
 from .store import append, validate
 
 
-def freeze(state, records, *, now=None, release_id, forecast_manifest_sha256):
+def freeze(
+    state,
+    records,
+    *,
+    now=None,
+    release_id,
+    forecast_manifest_sha256,
+    calibration_history=None,
+):
     now = utc(now or datetime.now(UTC))
     validate(state)
     if not records:
@@ -45,6 +53,21 @@ def freeze(state, records, *, now=None, release_id, forecast_manifest_sha256):
         raise ValueError(
             "Duplicate predecision quotes cannot be frozen or counted twice"
         )
+    from .calibration_learning import shadow
+
+    records = [
+        {
+            **r,
+            "calibration_challenger": shadow(
+                calibration_history if calibration_history is not None else state,
+                r,
+                now,
+            )
+            if r.get("hit_probability") is not None
+            else {"status": "probability_unavailable"},
+        }
+        for r in records
+    ]
     previous = [
         r
         for e in state["events"]
@@ -119,6 +142,10 @@ def settle_records(state, actuals, *, now, policy, receipt_id):
                 "game_id": r["game_id"],
                 "player_id": r["player_id"],
                 "market": r["market"],
+                "decimal_odds": r["decimal_odds"],
+                "side": r["side"],
+                "line": r["line"],
+                "position": r.get("position"),
                 "outcome": outcome,
                 "status": status,
                 "paper_profit": 0.0 if push else r["decimal_odds"] - 1 if won else -1.0,
@@ -131,6 +158,14 @@ def settle_records(state, actuals, *, now, policy, receipt_id):
                     max(1e-15, min(1 - 1e-15, probability if won else 1 - probability))
                 ),
                 "hit_probability": probability,
+                "calibration_challenger": r.get(
+                    "calibration_challenger", {"status": "not_captured"}
+                ),
+                "shadow_brier": (r["calibration_challenger"]["probability"] - int(won))
+                ** 2
+                if not push
+                and r.get("calibration_challenger", {}).get("status") == "shadow_only"
+                else None,
                 "receipt_id": receipt_id,
                 "scope": "hypothetical one-unit paper return at owner-recorded quote; not realised ROI",
             }
@@ -205,6 +240,47 @@ def performance(state, *, slate=None):
                     / len(band),
                 }
             )
+    report["comparable_price_bands"] = []
+    for label, low, high in [
+        ("below_1.5", 1.0, 1.5),
+        ("1.5_to_2", 1.5, 2.0),
+        ("2_to_3", 2.0, 3.0),
+        ("3_plus", 3.0, float("inf")),
+    ]:
+        band = [
+            r
+            for r in records
+            if low <= r.get("decimal_odds", 0) < high and r["status"] != "push"
+        ]
+        if band:
+            report["comparable_price_bands"].append(
+                {
+                    "band": label,
+                    "n": len(band),
+                    "hit_rate": sum(r["status"] == "win" for r in band) / len(band),
+                    "mean_probability": sum(
+                        r["hit_probability"]
+                        for r in band
+                        if r["hit_probability"] is not None
+                    )
+                    / sum(r["hit_probability"] is not None for r in band)
+                    if any(r["hit_probability"] is not None for r in band)
+                    else None,
+                    "paper_profit_units": sum(r["paper_profit"] for r in band),
+                    "scope": "Genuine owner-recorded prices; paper results, not realised betting ROI",
+                }
+            )
+    shadow = [r for r in records if r.get("shadow_brier") is not None]
+    report["probability_challenger"] = {
+        "n": len(shadow),
+        "baseline_brier": sum(r["brier"] for r in shadow) / len(shadow)
+        if shadow
+        else None,
+        "shadow_brier": sum(r["shadow_brier"] for r in shadow) / len(shadow)
+        if shadow
+        else None,
+        "promotion": "RETAIN_CHAMPION; insufficient independent evidence until prospectively validated",
+    }
     if slate is None:
         slates = sorted(
             {

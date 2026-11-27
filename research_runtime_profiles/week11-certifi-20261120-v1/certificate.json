@@ -2,7 +2,7 @@
   "schema": 1,
   "profile_id": "week11-certifi-20261120-v1",
   "status": "passed",
-  "validated_at": "2026-11-27T10:07:15.415832+00:00",
+  "validated_at": "2026-11-27T16:09:39.622734+00:00",
   "forecast_release": "research-week11-frozen-20261120-r2",
   "training_runtime": {
     "python_minor": "3.14",
@@ -365,12 +365,14 @@
     "season_intelligence/ui.py": "2d622b72da6fb901581f898da9bc6a8601a844dbec20982792992453a73f96f4",
     "season_intelligence/validate.py": "7accb1dc0215531badc1ca08b59b3c60f119ae054f8303b6c49177962887a02c",
     "selection_learning/__init__.py": "1ff45b5f264aa9154c474df0f1224e1710273542790533bf1b1901227b1f5d27",
-    "selection_learning/cli.py": "5fdd5f3378693d211896b3bbc9e0bfbaface7debf16260393c9d88f791aae6fb",
-    "selection_learning/engine.py": "397d54466a9d26d745026eb7f7c1e61abe284f4ccec334c1cc530430ca0958ba",
+    "selection_learning/calibration_learning.py": "b0ef78c669caaeed0d994c320a1a1f61e07982929e2150e61002792240ec4d85",
+    "selection_learning/cli.py": "0a7cd831156293adb49cc378055dfe740d09733f06a70c3e8a2a053d6bc77902",
+    "selection_learning/engine.py": "bd5c6e6adb2d2c709d7845fc0f987e82882ccaf46e72184aae3577533acd3a39",
+    "selection_learning/imports.py": "e627ef0acb9e2bb3554619ed14509b57283d5fc6e30cb92da241312e60b26001",
     "selection_learning/probe.py": "a3b374604f49d7eb9a69dc18a70544a164e1b8c26ff7fc7a6441dac41c9784a8",
-    "selection_learning/settlement.py": "29471eade5916b87caca1d1a59335256df9b9a090da6b92c9a1460a05b48ccde",
-    "selection_learning/store.py": "fb8afadd530039c7fc143a18ba49f8785a8f0a39c216250c57697f31dd158df0",
-    "selection_learning/ui.py": "87d1440799a90694e19ab247c5a203eca70da75c737d43063cd647bd42fc8cc2"
+    "selection_learning/settlement.py": "16170026c8308fb20db2b2662375a2a23c7529797b09df25d82343b84c2a5c3c",
+    "selection_learning/store.py": "363af4d684f51069f5236437eaab345a248a5dd72d229afa6d25a4867662c4ff",
+    "selection_learning/ui.py": "15396271fb8bdb03e37e49ebe6204ffba9adaeef5971a7baa17289d9d369fc18"
   },
   "model_parent": {
     "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",

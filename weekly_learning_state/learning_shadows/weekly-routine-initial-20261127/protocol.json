@@ -1,0 +1,76 @@
+{
+  "champion_changed": false,
+  "code_sha256": "37d0ad7bdb83f6551292083240109f9f0382fea97ceb9c032f98d90b3572a755",
+  "details": [
+    {
+      "market": "completions",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 19,
+      "training_weeks": 1
+    },
+    {
+      "market": "passing_attempts",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 19,
+      "training_weeks": 1
+    },
+    {
+      "market": "passing_yards",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 19,
+      "training_weeks": 1
+    },
+    {
+      "market": "qb_rushing_attempts",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 19,
+      "training_weeks": 1
+    },
+    {
+      "market": "qb_rushing_yards",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 19,
+      "training_weeks": 1
+    },
+    {
+      "market": "receiving_yards",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 148,
+      "training_weeks": 1
+    },
+    {
+      "market": "receptions",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 149,
+      "training_weeks": 1
+    },
+    {
+      "market": "rushing_attempts",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 46,
+      "training_weeks": 1
+    },
+    {
+      "market": "rushing_yards",
+      "status": "insufficient_prior_prospective_data",
+      "training_rows": 46,
+      "training_weeks": 1
+    }
+  ],
+  "frozen_at": "2026-11-27T15:45:51.555769+00:00",
+  "parent_manifest_sha256": "31e61ccb5ad2f71cb575eca27cca1213e20fd9e3b40e8b4c4693706a2ec828a0",
+  "policy": {
+    "bias_prior_rows": 100,
+    "families": [
+      "shrunk_market_bias",
+      "role_residual_ridge"
+    ],
+    "minimum_training_rows": 100,
+    "minimum_training_weeks": 2,
+    "promotion": "Never automatic; requires >=8 prospectively frozen test weeks, paired uncertainty, multiplicity control, probability/selection validation and no important-market regression",
+    "ridge_alpha": 10,
+    "version": "prospective-corrections-v1"
+  },
+  "release_id": "weekly-routine-initial-20261127",
+  "training_sha256": "3a5b7c2e7e2fdcd7db3f5a282e658f49c80bebe9d93b275f8b45e6653fb91377"
+}

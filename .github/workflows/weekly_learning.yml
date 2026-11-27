@@ -28,6 +28,11 @@ on:
     paths:
       - 'weekly_learning/**'
       - 'selection_learning/**'
+      - 'weekly_learning_state/**'
+      - 'research_inference_releases/weekly-*/**'
+      - 'research_runtime_profiles/**'
+      - 'research_weekly_serving_active.json'
+      - 'ops/**'
       - 'performance_research/**'
       - '.github/workflows/weekly_learning.yml'
 # Only standard Linux runners. No paid service, provider keys or production secrets.

@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T16:00:39.911818+00:00",
+  "details": {
+    "id": "initial-before-ticket-push-review",
+    "kind": "authority_drafts",
+    "manifest_sha256": "352876e950d5298aba8c31ac2fa65cb3a13b6588129cebddd25fe9f36576146b"
+  },
+  "previous_sha256": "87ee428403e133b3cde6b732a690abd7d147725369f4f7e8e10885058c7c03c2"
+}

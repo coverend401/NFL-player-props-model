@@ -21,6 +21,53 @@ def render():
         else:
             st.json(performance(journal))
     root = ROOT / "weekly_learning_state"
+    with st.expander(
+        "Routine operation and prospective challenger status", expanded=True
+    ):
+        active = root / "selected_research.json"
+        if active.exists():
+            selected = json.loads(active.read_text())
+            st.caption("Current research forecast: " + selected["release_id"])
+        publications = list((root / "routine_publications").glob("*/publication.json"))
+        if publications:
+            latest_publication = max(
+                publications, key=lambda p: json.loads(p.read_text())["published_at"]
+            )
+            Store(root).validate(latest_publication.parent)
+            record = json.loads(latest_publication.read_text())
+            st.caption(
+                "Routine publication: "
+                + record["published_at"]
+                + " · "
+                + record["storage"]["mode"]
+            )
+        else:
+            st.caption(
+                "No routine publication recorded yet; last certified release remains available."
+            )
+        shadows = sorted((root / "learning_shadows").glob("*/protocol.json"))
+        if shadows:
+            latest_shadow = max(
+                shadows, key=lambda p: json.loads(p.read_text())["frozen_at"]
+            )
+            Store(root).validate(latest_shadow.parent)
+            protocol = json.loads(latest_shadow.read_text())
+            st.write(
+                "Prospective challengers: shrunk market bias and player-workload residual correction. Champion unchanged."
+            )
+            st.dataframe(pd.DataFrame(protocol["details"]), hide_index=True)
+        failures = list((root / "routine_failures").glob("*/failure.json"))
+        if failures:
+            last = max(failures, key=lambda p: json.loads(p.read_text())["at"])
+            Store(root).validate(last.parent)
+            failure = json.loads(last.read_text())
+            st.caption(
+                "Last failed attempt: "
+                + failure["at"]
+                + " · "
+                + failure["reason"]
+                + " · last certified release preserved"
+            )
     reports = sorted((root / "cycles").glob("*/report.json"))
     if not reports:
         st.info(
@@ -52,7 +99,31 @@ def render():
 
     status = {}
     try:
-        status = preflight(Store(root), record_capture=False)
+        selected_pointer = root / "selected_research.json"
+        if selected_pointer.exists():
+            from .admission import time_gate
+
+            selected_meta = json.loads(selected_pointer.read_text())
+            cap = root / "captures" / selected_meta["release_id"]
+            Store(root).validate(cap)
+            captured = json.loads((cap / "capture.json").read_text())
+            year, week = map(int, next(iter(captured["game_kickoffs"])).split("_")[:2])
+            try:
+                time_gate(
+                    json.loads((ROOT / "weekly_learning/policy.json").read_text()),
+                    year,
+                    week,
+                    capture=captured,
+                )
+                status = {"time_gate_open": True}
+            except ValueError as error:
+                status = {
+                    "time_gate_open": False,
+                    "status": "waiting_for_settlement",
+                    "reason": str(error),
+                }
+        else:
+            status = preflight(Store(root), record_capture=False)
         if not status.get("time_gate_open"):
             st.info(status.get("reason", status["status"]))
         else:

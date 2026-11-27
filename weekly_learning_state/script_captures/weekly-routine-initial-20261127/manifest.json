@@ -1,0 +1,11 @@
+{
+  "files": {
+    "capture.json": "b31c825ba7ebc2ff5678ea648faac35895c793a29b71540b3fb063eaac65e06d",
+    "coherence.parquet": "f75e044f0ef82b4a617c40175cb65f5ef6a00a7626254a7920613a465ec7023b",
+    "predictions.parquet": "8ea4ed163b8b53acff706275c6af210dfd7bb7c2069163790a374d686f60159a",
+    "teams.parquet": "2be926a85eeaecb0e82f8b76f7eb5de6723eedc39c1264158f5fa3a5c481f2d3"
+  },
+  "id": "weekly-routine-initial-20261127",
+  "kind": "script_captures",
+  "schema": 1
+}

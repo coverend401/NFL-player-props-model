@@ -15,11 +15,19 @@ from .store import GitHubJournal
 
 def backend():
     return GitHubJournal(
-        secret("NFL_SELECTION_GITHUB_REPOSITORY"), secret("NFL_SELECTION_GITHUB_TOKEN")
+        secret("NFL_SELECTION_GITHUB_REPOSITORY"),
+        secret("NFL_SELECTION_GITHUB_TOKEN"),
+        week=st.session_state.get("line_week"),
     )
 
 
 def render(frame, fixtures, release, mode, *, admitted_current=None):
+    scope = release.get("fixture_slate", {})
+    week = f"{scope['season']}-{scope['week']:02d}" if scope else None
+    if st.session_state.get("line_week") != week:
+        for key in ["line_journal", "line_draft", "line_initial_read_attempted"]:
+            st.session_state.pop(key, None)
+        st.session_state["line_week"] = week
     st.markdown(
         "#### Quoted propositions — "
         + ("Top Picks" if mode == "top" else "Top 2 per Game")
@@ -53,6 +61,19 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
             st.error(
                 "Private selection journal unavailable or failed integrity checks. No fallback to ephemeral selection recording."
             )
+    if (
+        durable
+        and "line_journal" not in st.session_state
+        and not st.session_state.get("line_initial_read_attempted")
+    ):
+        st.session_state["line_initial_read_attempted"] = True
+        try:
+            state, _ = backend().read()
+            st.session_state["line_journal"] = state
+        except (ValueError, OSError, KeyError, TypeError):
+            st.warning(
+                "Initial private journal read failed; use Load to retry explicitly. No selections inferred."
+            )
     draft = st.session_state.get("line_draft", [])
     state = st.session_state.get("line_journal", {"schema": 1, "events": []})
     frozen = [
@@ -61,7 +82,12 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
         if e["kind"] == "freeze" and e["payload"]["release_id"] == release["release_id"]
         for r in e["payload"]["records"]
     ]
-    top, groups = rankings(frozen)
+    allowed = set(zip(live.game_id, live.player_id, live.market, strict=True))
+    # New material availability evidence restricts serving, never rewrites frozen decisions.
+    visible = [
+        r for r in frozen if (r["game_id"], r["player_id"], r["market"]) in allowed
+    ]
+    top, groups = rankings(visible)
     if mode == "top":
         selected = top
         if not selected:
@@ -101,6 +127,9 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
                     ),
                 )
                 side = st.selectbox("Actual quoted side", ["over", "under"])
+                line_type = st.selectbox(
+                    "Line definition", ["unspecified", "primary", "alternate"]
+                )
                 line = st.number_input("Actual line", value=None, step=0.5)
                 odds = st.number_input(
                     "Actual decimal odds", value=None, min_value=1.01
@@ -124,6 +153,7 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
                         "player_id": r.player_id,
                         "market": r.market,
                         "side": side,
+                        "line_type": line_type,
                         "line": line,
                         "decimal_odds": odds,
                         "bookmaker": book,
@@ -151,14 +181,11 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
                     if upload is None or upload.size > 65536 or not confirmed_bulk:
                         raise ValueError("Confirmed bounded CSV required")
                     imported = pd.read_csv(io.BytesIO(upload.getvalue()))
-                    if (
-                        not REQUIRED.issubset(imported.columns)
-                        or not 1 <= len(imported) <= 100
-                    ):
+                    if not 1 <= len(imported) <= 100:
                         raise ValueError("Unsupported CSV schema/count")
-                    parsed = [
-                        evaluate(raw, live) for raw in imported.to_dict("records")
-                    ]
+                    from .imports import compare
+
+                    parsed = compare(imported, live)
                     draft = [*draft, *parsed]
                     st.session_state["line_draft"] = draft
                 except (ValueError, TypeError, KeyError, OSError):
@@ -207,6 +234,7 @@ def render(frame, fixtures, release, mode, *, admitted_current=None):
                     after = freeze(
                         before,
                         draft,
+                        calibration_history=journal.prior_state(),
                         release_id=release["release_id"],
                         forecast_manifest_sha256=sha(
                             __import__("pathlib").Path(__file__).resolve().parents[1]

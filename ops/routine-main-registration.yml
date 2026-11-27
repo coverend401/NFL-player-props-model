@@ -1,0 +1,22 @@
+# Approval template: ONLY this workflow belongs on main. No production code/data changes.
+name: Scheduled NFL research operation
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 12 * * 2'
+    - cron: '0 14 * * 2'
+    - cron: '0 10 * * 5'
+    - cron: '0 7 * * 0'
+    - cron: '35 16 * * 0'
+    - cron: '35 19 * * 0'
+permissions:
+  contents: write
+  checks: read
+jobs:
+  research:
+    uses: coverend401/NFL-player-props-model/.github/workflows/routine_learning.yml@APPROVED_CODE_SHA
+    with:
+      mode: ${{ (github.event.schedule == '35 16 * * 0' || github.event.schedule == '35 19 * * 0') && 'availability' || 'refresh' }}
+    secrets:
+      NFL_SELECTION_GITHUB_REPOSITORY: ${{ secrets.NFL_SELECTION_GITHUB_REPOSITORY }}
+      NFL_SELECTION_GITHUB_TOKEN: ${{ secrets.NFL_SELECTION_GITHUB_TOKEN }}

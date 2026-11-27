@@ -73,7 +73,7 @@ def append(state, kind, identity, at, payload):
 class GitHubJournal:
     """Requires an owner-configured private repository separate from quota/model repos."""
 
-    def __init__(self, repository, token, *, request=None):
+    def __init__(self, repository, token, *, request=None, week=None):
         if (
             not isinstance(repository, str)
             or not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository)
@@ -94,6 +94,13 @@ class GitHubJournal:
             or token[0] in "\"'"
         ):
             raise StorageError("Private selection token missing or malformed")
+        if week is not None and (
+            not isinstance(week, str)
+            or not re.fullmatch(r"20[0-9]{2}-(?:0[1-9]|1[0-8])", week)
+        ):
+            raise StorageError("Invalid private journal week")
+        self.week = week
+        self.file = FILE if week is None else "selection-journals/" + week + ".json"
         self.repository, self._token, self._request = (
             repository,
             token,
@@ -153,7 +160,7 @@ class GitHubJournal:
             raise StorageError(
                 "Selection repository is not the expected private repository"
             )
-        body = self.call("GET", "/contents/" + FILE)
+        body = self.call("GET", "/contents/" + self.file)
         if body is None:
             return initial(), None
         if (
@@ -164,11 +171,26 @@ class GitHubJournal:
         raw = base64.b64decode(body["content"])
         if len(raw) > MAX_BYTES:
             raise StorageError("Private selection journal full; no history pruned")
-        return validate(json.loads(raw)), body["sha"]
+        state = validate(json.loads(raw))
+        self.check_week(state)
+        return state, body["sha"]
+
+    def check_week(self, state):
+        if self.week is not None:
+            for event in state["events"]:
+                if event["kind"] == "freeze":
+                    for record in event["payload"]["records"]:
+                        season, week = map(int, record["game_id"].split("_")[:2])
+                        if f"{season}-{week:02d}" != self.week:
+                            raise StorageError(
+                                "Selection belongs to another weekly partition"
+                            )
 
     def write(self, before, after, sha):
         validate(before)
         validate(after)
+        self.check_week(before)
+        self.check_week(after)
         if after["events"][: len(before["events"])] != before["events"]:
             raise StorageError("Cannot modify historical selection records")
         if before == after:
@@ -176,7 +198,7 @@ class GitHubJournal:
         raw = json.dumps(after, sort_keys=True, allow_nan=False).encode()
         if len(raw) > MAX_BYTES:
             raise StorageError(
-                "Private selection journal full; archive requires owner review"
+                "Private weekly selection journal full; no history pruned"
             )
         payload = {
             "message": "Append frozen research selection records",
@@ -184,7 +206,7 @@ class GitHubJournal:
         }
         if sha is not None:
             payload["sha"] = sha
-        self.call("PUT", "/contents/" + FILE, payload)
+        self.call("PUT", "/contents/" + self.file, payload)
         persisted, _ = self.read()
         # A concurrent append is acceptable only if our whole prefix persists.
         if (
@@ -192,3 +214,22 @@ class GitHubJournal:
             and persisted["events"][: len(after["events"])] != after["events"]
         ):
             raise StorageError("Selection persistence verification failed")
+
+    def prior_state(self, weeks=4):
+        """At most four earlier weekly journals; separate evidence, never a merged write."""
+        if self.week is None:
+            return initial()
+        season, week = map(int, self.week.split("-"))
+        if type(weeks) is not int or not 1 <= weeks <= 4:
+            raise StorageError("Historical private read exceeds four-week bound")
+        events = []
+        for value in range(max(1, week - weeks), week):
+            journal = GitHubJournal(
+                self.repository,
+                self._token,
+                request=self._request,
+                week=f"{season}-{value:02d}",
+            )
+            state, _ = journal.read()
+            events.extend(state["events"])
+        return {"schema": 1, "events": events}

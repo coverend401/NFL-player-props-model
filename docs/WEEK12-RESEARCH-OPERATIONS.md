@@ -1,3 +1,5 @@
+> Operational update, 27 November: the owner has authorised standing, validated research-only forecast publication. The earlier per-release activation procedure below is retained as historical evidence; use [ROUTINE-OPERATIONS.md](ROUTINE-OPERATIONS.md) for the current cutover, safeguards and single owner checklist.
+
 # Week 12 research operation and owner handoff
 
 Status: serving candidates prepared; **not selected or activated**. Production/main, original nine models, certified forecast artifacts, authentication, Supabase and bookmaker quota are unchanged. No genuine quote has been supplied or frozen in this task. No profitability, sportsbook win-rate or ticket-success claim is made.

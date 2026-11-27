@@ -51,8 +51,20 @@ def checks(cloud, directory=RELEASE, profile=PROFILE):
     }
 
 
-def run(baseline=False, verify=False, profile=PROFILE):
-    directory = CANDIDATES[profile]
+def run(baseline=False, verify=False, profile=PROFILE, directory=None):
+    if directory is None:
+        directory = CANDIDATES[profile]
+    elif profile not in CANDIDATES:
+        from weekly_learning.authority import paths
+
+        profile, directory = paths(profile, directory)
+        import shutil
+
+        from weekly_learning.authority import PATH
+
+        if not (profile / "authority.json").exists():
+            profile.mkdir(exist_ok=True)
+            shutil.copyfile(PATH, profile / "authority.json")
     profile.mkdir(exist_ok=True)
     if baseline:
         plan = profile / "selection_build.json"

@@ -13,10 +13,6 @@ def main():
     parser.add_argument("--cycle")
     parser.add_argument("--latest", action="store_true")
     args = parser.parse_args()
-    journal = GitHubJournal(
-        os.environ.get("NFL_SELECTION_GITHUB_REPOSITORY"),
-        os.environ.get("NFL_SELECTION_GITHUB_TOKEN"),
-    )
     cycle = args.cycle
     if args.latest:
         from weekly_learning.store import ROOT
@@ -38,6 +34,16 @@ def main():
         ).parent
     if not cycle:
         raise ValueError("Provide --cycle or --latest")
+    from pathlib import Path
+
+    metadata = json.loads((Path(cycle) / "report.json").read_text())
+    game = next(iter(metadata["capture"]["game_kickoffs"]))
+    season, week = map(int, game.split("_")[:2])
+    journal = GitHubJournal(
+        os.environ.get("NFL_SELECTION_GITHUB_REPOSITORY"),
+        os.environ.get("NFL_SELECTION_GITHUB_TOKEN"),
+        week=f"{season}-{week:02d}",
+    )
     report = reconcile_cycle(journal, cycle)
     # Actions runs in the public model repository: private performance stays private.
     print(

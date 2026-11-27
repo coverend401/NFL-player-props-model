@@ -485,6 +485,12 @@ class PublicLogPrivacyTests(unittest.TestCase):
         output = io.StringIO()
         with (
             patch("sys.argv", ["selection_learning", "--cycle", "synthetic"]),
+            patch(
+                "pathlib.Path.read_text",
+                return_value=json.dumps(
+                    {"capture": {"game_kickoffs": {"2026_12_A_B": "2026-11-29T18:00Z"}}}
+                ),
+            ),
             patch.object(cli, "GitHubJournal"),
             patch.object(
                 cli,

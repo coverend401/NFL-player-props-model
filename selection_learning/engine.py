@@ -69,6 +69,7 @@ def quote_identity(row):
         float(identity["line"]),
         float(identity["decimal_odds"]),
     )
+    identity["line_type"] = row.get("line_type", "unspecified")
     return digest(identity)
 
 
@@ -77,6 +78,20 @@ def admit_quote(raw, forecasts, *, now=None):
     if not REQUIRED.issubset(raw):
         raise ValueError("Missing required quote columns")
     q = {key: raw[key] for key in REQUIRED}
+    for key in [
+        "original_odds",
+        "odds_format",
+        "provider_event_id",
+        "provider_player_id",
+        "provider_market_id",
+    ]:
+        if key in raw:
+            if not isinstance(raw[key], str) or len(raw[key]) > 180:
+                raise ValueError("Invalid provider metadata")
+            q[key] = raw[key]
+    q["line_type"] = raw.get("line_type", "unspecified")
+    if q["line_type"] not in {"primary", "alternate", "unspecified"}:
+        raise ValueError("Unknown primary/alternate line definition")
     for key in ["game_id", "player_id", "market", "bookmaker", "source"]:
         if not isinstance(q[key], str) or not 1 <= len(q[key]) <= 180:
             raise ValueError("Invalid quote identity or source")
@@ -218,6 +233,7 @@ def evaluate(raw, forecasts, *, now=None, pricing=None, evidence=None):
         if status == "WATCH"
         else "Insufficient probability validation or workload evidence",
         "player": r["player"],
+        "position": r.get("position"),
         "team": r["team"],
         "opponent": r["opponent"],
         "projection": float(r["enhanced_projection"]),
@@ -257,12 +273,15 @@ def dependency(a, b):
     )
 
 
-def rankings(records, *, now=None):
+def eligible_quotes(records, *, now=None):
     now = utc(now or datetime.now(UTC))
     # Latest superseding quote wins, including withdrawal; old valid prices never resurface.
     latest = {}
     for r in records:
-        k = tuple(r[k] for k in ["game_id", "player_id", "market", "side", "bookmaker"])
+        kind = r.get("line_type", "unspecified")
+        k = tuple(
+            r[k] for k in ["game_id", "player_id", "market", "side", "bookmaker"]
+        ) + (kind, r["line"] if kind == "alternate" else None)
         if k not in latest or utc(r["retrieved_at"]) >= utc(latest[k]["retrieved_at"]):
             latest[k] = r
     eligible = [
@@ -282,6 +301,11 @@ def rankings(records, *, now=None):
             r["quote_id"],
         ),
     )
+    return ordered
+
+
+def rankings(records, *, now=None):
+    ordered = eligible_quotes(records, now=now)
     # Alternative sides/lines/books stay available in records, never fill primary slots.
     primary, seen = [], set()
     for r in ordered:
@@ -297,23 +321,78 @@ def rankings(records, *, now=None):
     return primary[:12], games
 
 
-def ticket(legs, offered_odds=None):
+def ticket(legs, offered_odds=None, ticket_quote=None):
     if not legs or len({r["quote_id"] for r in legs}) != len(legs):
         raise ValueError("Select distinct frozen legs")
-    ps = [r["hit_probability"] for r in legs]
-    # Frechet bounds require no independence assumption; not a calibrated joint estimate.
+    groups = {}
+    for r in legs:
+        if not finite(r.get("hit_probability")) or not 0 <= r["hit_probability"] <= 1:
+            raise ValueError("Unsupported marginal probability")
+        key = (r["game_id"], r["player_id"], r["market"], r.get("forecast_sha256"))
+        groups.setdefault(key, []).append(r)
+    probabilities = []
+    for rs in groups.values():
+        overs = [r for r in rs if r["side"] == "over"]
+        unders = [r for r in rs if r["side"] == "under"]
+        over = max(overs, key=lambda r: r["line"]) if overs else None
+        under = min(unders, key=lambda r: r["line"]) if unders else None
+        if over and under:
+            probabilities.append(
+                0.0
+                if over["line"] >= under["line"]
+                else max(0.0, over["hit_probability"] + under["hit_probability"] - 1)
+            )
+        else:
+            probabilities.append((over or under)["hit_probability"])
+    exact = len(groups) == 1 and all(r.get("forecast_sha256") for r in legs)
+    joint = probabilities[0] if exact else None
+    ev = None
+    verified_price = False
+    if ticket_quote:
+        quoted = utc(ticket_quote["quoted_at"])
+        now = utc(datetime.now(UTC))
+        books = {r["bookmaker"].strip().casefold() for r in legs}
+        if (
+            len(books) != 1
+            or ticket_quote["bookmaker"].strip().casefold() not in books
+            or not ticket_quote.get("source")
+            or not ticket_quote.get("confirmed_available")
+            or not quoted <= now < quoted + MAX_AGE
+            or any(now >= utc(r["expires_at"]) for r in legs)
+            or not finite(ticket_quote["decimal_odds"])
+            or float(ticket_quote["decimal_odds"]) <= 1
+        ):
+            raise ValueError(
+                "Combined ticket quote is incomplete, expired or cross-book"
+            )
+        offered_odds = float(ticket_quote["decimal_odds"])
+        verified_price = True
+        # Integer legs can push and change the settled ticket price/refund.
+        # A marginal intersection alone does not identify that payout distribution.
+        if exact and all(not float(r["line"]).is_integer() for r in legs):
+            ev = joint * offered_odds - 1
     return {
         "legs": len(legs),
-        "probability_lower_bound": max(0.0, sum(ps) - len(ps) + 1),
-        "probability_upper_bound": min(ps),
-        "joint_probability": None,
-        "fair_odds": None,
+        "probability_lower_bound": max(
+            0.0, sum(probabilities) - len(probabilities) + 1
+        ),
+        "probability_upper_bound": min(probabilities),
+        "joint_probability": joint,
+        "fair_odds": 1 / joint
+        if exact and joint and all(not float(r["line"]).is_integer() for r in legs)
+        else None,
         "offered_odds": offered_odds,
-        "expected_value": None,
+        "expected_value": ev,
+        "combined_price_verified_by_owner": verified_price,
+        "push_settlement_supported": all(
+            not float(r["line"]).is_integer() for r in legs
+        ),
         "dependencies": [
             dependency(a, b) for i, a in enumerate(legs) for b in legs[i + 1 :]
         ],
-        "reason": "No validated joint model; ticket probability, fair odds and EV withheld. Bounds are conditional scenarios assuming all legs participate and the supplied marginals apply jointly; they inherit marginal-probability uncertainty.",
+        "reason": "Exact threshold intersection under one common frozen marginal law"
+        if exact
+        else "No validated cross-player joint model: joint probability and ticket EV withheld; bounds inherit marginal uncertainty.",
     }
 
 
