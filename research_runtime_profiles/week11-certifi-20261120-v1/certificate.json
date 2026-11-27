@@ -2,7 +2,7 @@
   "schema": 1,
   "profile_id": "week11-certifi-20261120-v1",
   "status": "passed",
-  "validated_at": "2026-11-23T15:30:26.851752+00:00",
+  "validated_at": "2026-11-27T10:07:15.415832+00:00",
   "forecast_release": "research-week11-frozen-20261120-r2",
   "training_runtime": {
     "python_minor": "3.14",
@@ -323,7 +323,7 @@
     "research_inference_releases/research-week11-frozen-20261120-r2/slate.parquet": "03fa5df3550258229daa2dcf6d23d623d47d4a04667394ba2adeb5a19eb68152",
     "research_inference_releases/research-week11-frozen-20261120-r2/sources.json": "2fbdbf33402d6b68b9beaca3aaa7aa49e841106e38bd82a2efde2d0413aa6542",
     "research_inference_releases/research-week11-frozen-20261120-r2/top_picks.parquet": "7a206c5a5c86c5e647cb556486203ace647e7fe2168278e0725ec7e9f3d3bb09",
-    "research_platform/cloud_dashboard.py": "6e41627be574f55568258f8ec55e67963588edda2583865ab342906e6598614b",
+    "research_platform/cloud_dashboard.py": "eed9fb05014bf3834033f87a3614de7b9b8a76afa421dcab39ade811a4f641f4",
     "research_platform/cloud_inference.py": "c3479d743a12077132e7845c57b2680a227b108f94ee4cf1494a42e705479d94",
     "research_platform/cloud_intelligence.py": "4f22d42e09d5ec35873f1335f0ac23c62cd09f9a7b1eea39158479c9c8d264b9",
     "research_platform/cloud_intelligence_ui.py": "fde4da25882d6ab3e070c4da7e1c049cfd8702a24e9bfa40e4a71b433dc0682c",
@@ -366,10 +366,11 @@
     "season_intelligence/validate.py": "7accb1dc0215531badc1ca08b59b3c60f119ae054f8303b6c49177962887a02c",
     "selection_learning/__init__.py": "1ff45b5f264aa9154c474df0f1224e1710273542790533bf1b1901227b1f5d27",
     "selection_learning/cli.py": "5fdd5f3378693d211896b3bbc9e0bfbaface7debf16260393c9d88f791aae6fb",
-    "selection_learning/engine.py": "1df146c5dd45cc10576b2fb819d1b7811c0913aac9fae3354dcea51208ffc533",
-    "selection_learning/settlement.py": "fb98d47fbac106776ca92bc9a2f9184c66a2683498a8f3f81abff60ac8c53f67",
+    "selection_learning/engine.py": "397d54466a9d26d745026eb7f7c1e61abe284f4ccec334c1cc530430ca0958ba",
+    "selection_learning/probe.py": "a3b374604f49d7eb9a69dc18a70544a164e1b8c26ff7fc7a6441dac41c9784a8",
+    "selection_learning/settlement.py": "29471eade5916b87caca1d1a59335256df9b9a090da6b92c9a1460a05b48ccde",
     "selection_learning/store.py": "fb8afadd530039c7fc143a18ba49f8785a8f0a39c216250c57697f31dd158df0",
-    "selection_learning/ui.py": "394e3b93d0956841f983d7d572f68097220db39f4172144b3a8568535756b7ad"
+    "selection_learning/ui.py": "87d1440799a90694e19ab247c5a203eca70da75c737d43063cd647bd42fc8cc2"
   },
   "model_parent": {
     "path": "release_candidates/stage1a-20261113-py314-arrow24-r2",

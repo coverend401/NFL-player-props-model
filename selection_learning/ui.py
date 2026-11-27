@@ -19,7 +19,7 @@ def backend():
     )
 
 
-def render(frame, fixtures, release, mode):
+def render(frame, fixtures, release, mode, *, admitted_current=None):
     st.markdown(
         "#### Quoted propositions — "
         + ("Top Picks" if mode == "top" else "Top 2 per Game")
@@ -31,10 +31,15 @@ def render(frame, fixtures, release, mode):
 
     live = engine.eligible_rows(frame, datetime.now(UTC))
     durable = bool(
-        secret("NFL_SELECTION_GITHUB_REPOSITORY")
+        not release.get("preview_only", False)
+        and secret("NFL_SELECTION_GITHUB_REPOSITORY")
         and secret("NFL_SELECTION_GITHUB_TOKEN")
     )
-    if not durable:
+    if release.get("preview_only"):
+        st.info(
+            "Unselected candidate preview: comparisons are allowed, but private reads and freezing are disabled until owner-approved activation."
+        )
+    elif not durable:
         st.info(
             "Durable private selection storage is not configured. Quotes may be compared, but no selections are recorded or recommended until immutable storage succeeds. The existing quota repository is never used."
         )
@@ -53,7 +58,7 @@ def render(frame, fixtures, release, mode):
     frozen = [
         r
         for e in state["events"]
-        if e["kind"] == "freeze"
+        if e["kind"] == "freeze" and e["payload"]["release_id"] == release["release_id"]
         for r in e["payload"]["records"]
     ]
     top, groups = rankings(frozen)
@@ -65,9 +70,7 @@ def render(frame, fixtures, release, mode):
             )
         show(selected)
     else:
-        for game in fixtures[
-            fixtures.gameday.astype(str).eq("2026-11-22")
-        ].itertuples():
+        for game in fixtures.itertuples():
             st.markdown(
                 f"**{game.away_team} at {game.home_team} — quoted propositions**"
             )
@@ -178,13 +181,19 @@ def render(frame, fixtures, release, mode):
                     from research_platform.enhanced_ui import current
                     from research_platform.selection_integrity import block_reason
 
-                    if block_reason(release):
-                        raise ValueError("Current forecast integrity review required")
-                    current_live = current(release)[0]
+                    if admitted_current is None:
+                        if block_reason(release):
+                            raise ValueError(
+                                "Current forecast integrity review required"
+                            )
+                        current_live = current(release)[0]
+                    else:
+                        current_live = admitted_current()
                     refreshed = [evaluate(r, current_live) for r in draft]
                     # An unchanged quote must retain its originally displayed numbers.
                     for old, new in zip(draft, refreshed, strict=True):
                         for key in [
+                            "quote_id",
                             "hit_probability",
                             "expected_profit_per_unit",
                             "forecast_sha256",
@@ -199,7 +208,12 @@ def render(frame, fixtures, release, mode):
                         before,
                         draft,
                         release_id=release["release_id"],
-                        forecast_manifest_sha256=sha(DIRECTORY / "manifest.json"),
+                        forecast_manifest_sha256=sha(
+                            __import__("pathlib").Path(__file__).resolve().parents[1]
+                            / release["selection_manifest_path"]
+                            if admitted_current is not None
+                            else DIRECTORY / "manifest.json"
+                        ),
                     )
                     journal.write(before, after, version)
                     st.session_state["line_journal"] = after
@@ -255,6 +269,16 @@ def show(records):
                 f"Research hit probability conditional on participation {r['hit_probability']:.1%} · implied {r['implied_probability']:.1%} · estimated EV {r['expected_profit_per_unit']:+.3f}/unit · {r['status']}"
             )
             st.caption(r["why_pick"] + " Risk: " + r["risk"])
+            interval = r.get("outcome_interval90", [])
+            if len(interval) == 2 and all(v is not None for v in interval):
+                st.caption(
+                    f"Research 90% outcome interval: {interval[0]:.1f}–{interval[1]:.1f}; this is not a probability confidence interval."
+                )
+            band = r.get("probability_band_evidence", {})
+            if band.get("player_games") is not None:
+                st.caption(
+                    f"Probability-band evidence: {band['player_games']} player-games across {band['weeks']} weeks; calibration gap {band['band_gap']:.1%}. Previously inspected research thresholds, not independent bookmaker validation."
+                )
         st.caption(
             r["reason"]
             + f" · Quote observed {r['quoted_at']} · expires {r['expires_at']}"

@@ -5,10 +5,10 @@ on:
       mode:
         description: 'Dry run or automatic capture/results cycle (seal checks still apply)'
         type: choice
-        options: [preflight, capture, prepare, dry-run, auto, select]
+        options: [preflight, capture, prepare, dry-run, auto]
         default: preflight
       candidate:
-        description: 'Certified research candidate path; used only for explicit select'
+        description: 'Reserved compatibility input; activation uses the coordinated serving helper'
         type: string
         default: ''
   workflow_call:
@@ -72,13 +72,23 @@ jobs:
             mode="${REQUESTED_MODE:-preflight}"
             case "$mode" in
               preflight|capture|prepare) python -m weekly_learning.cli "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
-              select) test -n "$REQUESTED_CANDIDATE"; python -m weekly_learning.cli select --candidate "$REQUESTED_CANDIDATE" ;;
+              select) echo "Activation blocked: use scripts.select_weekly_serving with owner approval, exact certificate and verified private storage." >&2; exit 1 ;;
               dry-run|auto) python -m weekly_learning.cli cycle --mode "$mode" --id "weekly-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" ;;
               *) exit 1 ;;
             esac
           fi
-      - name: Compare forecasting and calibration challengers (cached, no promotion)
-        run: python -m performance_research.study
+      - name: Verify frozen research evidence (new experiments paused)
+        run: |
+          python - <<'PYVERIFY'
+          from pathlib import Path
+          from weekly_learning.store import Store
+          for name in ["performance_research", "threshold_benchmark"]:
+              root = Path("weekly_learning_state") / name
+              store = Store(root)
+              for manifest in (root / "studies").glob("*/manifest.json"):
+                  store.validate(manifest.parent)
+          print("Frozen evidence hashes verified; no new experiment fitted or promoted")
+          PYVERIFY
       - name: Reconcile privately frozen quoted selections after admitted results
         if: success() && github.event_name != 'pull_request' && inputs.mode == 'auto'
         env:

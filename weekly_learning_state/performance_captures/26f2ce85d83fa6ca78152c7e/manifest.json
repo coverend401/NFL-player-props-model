@@ -1,0 +1,9 @@
+{
+  "files": {
+    "capture.json": "a0d73324617fffa458054acc3a9c8e1091eb6ead56bd79b9d369a8c6709a3502",
+    "predictions.parquet": "9e4af4bcb96a5181dea1346474b1771ceec1e10cf91f1cb2f28df56b4825d820"
+  },
+  "id": "26f2ce85d83fa6ca78152c7e",
+  "kind": "performance_captures",
+  "schema": 1
+}

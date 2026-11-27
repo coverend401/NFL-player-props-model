@@ -49,6 +49,29 @@ def finite(value):
         return False
 
 
+def quote_identity(row):
+    """A real observed quote is not a new proposition just because it was reloaded."""
+    keys = [
+        "game_id",
+        "player_id",
+        "market",
+        "side",
+        "line",
+        "decimal_odds",
+        "bookmaker",
+        "quoted_at",
+        "settlement_rule",
+    ]
+    identity = {k: row[k] for k in keys}
+    identity["bookmaker"] = identity["bookmaker"].strip().casefold()
+    identity["quoted_at"] = utc(identity["quoted_at"]).isoformat()
+    identity["line"], identity["decimal_odds"] = (
+        float(identity["line"]),
+        float(identity["decimal_odds"]),
+    )
+    return digest(identity)
+
+
 def admit_quote(raw, forecasts, *, now=None):
     now = utc(now or datetime.now(UTC))
     if not REQUIRED.issubset(raw):
@@ -92,7 +115,9 @@ def admit_quote(raw, forecasts, *, now=None):
             quoted + MAX_AGE, kickoff - pd.Timedelta(minutes=60)
         ).isoformat(),
     )
-    q["quote_id"] = digest(q)
+    q["quoted_at"] = quoted.isoformat()
+    q["quote_identity_version"] = "observed-quote-v2"
+    q["quote_id"] = quote_identity(q)
     return q, row
 
 
@@ -206,6 +231,7 @@ def evaluate(raw, forecasts, *, now=None, pricing=None, evidence=None):
         else None,
         "validation_n": int(r["diagnostic_n"]),
         "probability_band_evidence": band,
+        "outcome_interval90": [r.get("q05"), r.get("q95")],
         "relative_width": float(r["relative_width"])
         if finite(r.get("relative_width"))
         else None,

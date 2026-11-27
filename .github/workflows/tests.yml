@@ -65,8 +65,12 @@ jobs:
         if: matrix.python-version == '3.14'
         run: |
           python -m scripts.certify_cloud_runtime --verify-baseline
+          python -m scripts.certify_weekly_serving --baseline --verify
+          python -m scripts.certify_weekly_serving --baseline --verify --profile week12-remaining-certifi-20261120-v1
           python -m pip install -r research_runtime_profiles/week11-certifi-20261120-v1/requirements.lock
           python -m pip check
           python -c 'import importlib.metadata; assert importlib.metadata.version("certifi") == "2026.11.20"'
           python -m scripts.certify_cloud_runtime --verify
-          python -m unittest tests.test_cloud_serving_runtime -v
+          python -m scripts.certify_weekly_serving --verify
+          python -m scripts.certify_weekly_serving --verify --profile week12-remaining-certifi-20261120-v1
+          python -m unittest tests.test_cloud_serving_runtime tests.test_week12_serving -v

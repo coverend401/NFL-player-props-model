@@ -1,0 +1,13 @@
+{
+  "files": {
+    "capture.json": "3b7e8ea83b64dc73dd3d9b296193334cfad666130f5f380b8ccd5cba81dee727",
+    "experimental_context.parquet": "e37dc6dffcde3a90d8d07c15fbfce1a7f193b4cfe43944e419fb82164813fadf",
+    "forecasts.parquet": "93790dd94c33ad3566f6cc335e4c8479c576f0100bd82c59d9a9d6e66d42f9bb",
+    "game_script.json": "72026787ebaa0f1f69ea1e350385bbeac8180b08aebd41b88a174fa75d827883",
+    "release_manifest.json": "b6d2c3546ed4c38d29c61d4c320cdd7a875272d4a6155a2b57dbf9cd49deb675",
+    "top_picks.parquet": "8584ec336b61008d0704ffb34e2d24425c0d73c97df988ebdf61b8e5a8eefd69"
+  },
+  "id": "weekly-week12-remaining-20261127",
+  "kind": "captures",
+  "schema": 1
+}

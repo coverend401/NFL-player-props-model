@@ -1,0 +1,482 @@
+{
+  "checks": {
+    "complete_fixtures": 12,
+    "forecast_only_top": [
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036322"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036900"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0038543"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0040667"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receptions",
+        "player_id": "00-0039793"
+      },
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receptions",
+        "player_id": "00-0037238"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0040124"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0039919"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0033288"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0038996"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0039491"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0036963"
+      }
+    ],
+    "forecast_only_two": [
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036322"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036900"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0038543"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0040667"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receptions",
+        "player_id": "00-0039793"
+      },
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receptions",
+        "player_id": "00-0037238"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0040124"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0039919"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0038996"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0039491"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0036963"
+      },
+      {
+        "game_id": "2026_12_KC_BUF",
+        "market": "rushing_yards",
+        "player_id": "00-0038134"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receptions",
+        "player_id": "00-0037239"
+      },
+      {
+        "game_id": "2026_12_LV_CLE",
+        "market": "receptions",
+        "player_id": "00-0037291"
+      },
+      {
+        "game_id": "2026_12_TEN_JAX",
+        "market": "rushing_yards",
+        "player_id": "00-0035261"
+      },
+      {
+        "game_id": "2026_12_KC_BUF",
+        "market": "receptions",
+        "player_id": "00-0039894"
+      },
+      {
+        "game_id": "2026_12_NYJ_MIA",
+        "market": "rushing_yards",
+        "player_id": "00-0040198"
+      },
+      {
+        "game_id": "2026_12_TEN_JAX",
+        "market": "receptions",
+        "player_id": "00-0034960"
+      },
+      {
+        "game_id": "2026_12_LV_CLE",
+        "market": "receiving_yards",
+        "player_id": "00-0040122"
+      },
+      {
+        "game_id": "2026_12_NE_LAC",
+        "market": "receiving_yards",
+        "player_id": "00-0035676"
+      },
+      {
+        "game_id": "2026_12_NYJ_MIA",
+        "market": "receptions",
+        "player_id": "00-0039880"
+      },
+      {
+        "game_id": "2026_12_NE_LAC",
+        "market": "receptions",
+        "player_id": "00-0040727"
+      },
+      {
+        "game_id": "2026_12_DEN_PIT",
+        "market": "receiving_yards",
+        "player_id": "00-0035640"
+      },
+      {
+        "game_id": "2026_12_DEN_PIT",
+        "market": "receptions",
+        "player_id": "00-0036894"
+      }
+    ],
+    "frame_signature": "389a669b016eb858c605d3343c1de110b58ba16ccd5f30258a235a6712aa076d",
+    "inference": {
+      "complete_rows": 651,
+      "eligibility_counts": {
+        "eligible": 461,
+        "ineligible": 52,
+        "unresolved": 65
+      },
+      "exact_replay": true,
+      "fixtures": 16,
+      "forecast_rows": 846,
+      "models_verified": 9,
+      "top_picks": 24,
+      "top_two_rows": 24
+    },
+    "pricing_checks": [
+      {
+        "line": 21.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "completions",
+        "pricing": {
+          "unavailable": "The enhanced point forecast has not established reliable pricing; the unchanged certified comparison remains below."
+        }
+      },
+      {
+        "line": 31.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "passing_attempts",
+        "pricing": {
+          "fair_over": 1.9667903801842517,
+          "fair_under": 2.034350382974869,
+          "over": 0.508442592599176,
+          "push": 0.0,
+          "under": 0.491557407400824
+        }
+      },
+      {
+        "line": 236.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "passing_yards",
+        "pricing": {
+          "fair_over": 1.9915106821594626,
+          "fair_under": 2.008562003408827,
+          "over": 0.5021313764260938,
+          "push": 0.0,
+          "under": 0.49786862357390615
+        }
+      },
+      {
+        "line": 1.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "qb_rushing_attempts",
+        "pricing": {
+          "fair_over": 1.760983178925641,
+          "fair_under": 2.3140894932944565,
+          "over": 0.5678645951689842,
+          "push": 0.0,
+          "under": 0.43213540483101576
+        }
+      },
+      {
+        "line": 2.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "qb_rushing_yards",
+        "pricing": {
+          "fair_over": 2.896943935169775,
+          "fair_under": 1.5271637086683327,
+          "over": 0.3451913541921532,
+          "push": 0.0,
+          "q05": -3.0,
+          "q50": 1.0,
+          "q95": 16.0,
+          "under": 0.6548086458078468
+        }
+      },
+      {
+        "line": 9.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "receiving_yards",
+        "pricing": {
+          "fair_over": 2.1433787891800113,
+          "fair_under": 1.8746007967466007,
+          "over": 0.466553091337891,
+          "push": 0.0,
+          "q05": 0.0,
+          "q50": 8.0,
+          "q95": 44.0,
+          "under": 0.5334469086621086
+        }
+      },
+      {
+        "line": 1.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "receptions",
+        "pricing": {
+          "fair_over": 2.179275511012278,
+          "fair_under": 1.847978263486205,
+          "over": 0.45886809398206746,
+          "push": 0.0,
+          "q05": 0.0,
+          "q50": 1.0,
+          "q95": 4.0,
+          "under": 0.5411319060179329
+        }
+      },
+      {
+        "line": 11.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "rushing_attempts",
+        "pricing": {
+          "fair_over": 2.0262745104223674,
+          "fair_under": 1.9743981652515614,
+          "over": 0.49351654716890003,
+          "push": 0.0,
+          "q05": 3.0,
+          "q50": 11.0,
+          "q95": 22.0,
+          "under": 0.5064834528311002
+        }
+      },
+      {
+        "line": 44.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "rushing_yards",
+        "pricing": {
+          "fair_over": 1.9620082373661047,
+          "fair_under": 2.0394921385890763,
+          "over": 0.5096818560468679,
+          "push": 0.0,
+          "q05": 6.0,
+          "q50": 45.0,
+          "q95": 115.0,
+          "under": 0.4903181439531321
+        }
+      }
+    ],
+    "roof_only_fixtures": [
+      "2026_12_BAL_HOU",
+      "2026_12_NYG_IND",
+      "2026_12_PHI_DAL",
+      "2026_12_WAS_ARI"
+    ],
+    "selection_rows": 651
+  },
+  "files": {
+    "docs/season-intelligence-probability-uncertainty.csv": "2e4ef2b28823912f52e734b54cbc4aaf4c1fa7d56ef49f60cffa8d426c44bde9",
+    "experiments/season_intelligence/sunday-20261121-v1/cache_equivalence.json": "790750327d3929a15ebd7218bc8693809cb5c274e85e1f0e50775fb1862a8c96",
+    "experiments/season_intelligence/sunday-20261121-v1/feature_diagnostics.csv": "b9d9211697dc500d3dd065d951ba669edf0d47caedf64c1b0d12c567f4fb4ae9",
+    "experiments/season_intelligence/sunday-20261121-v1/historical_predictions.parquet": "b94774f6e359b5124848121bf75cf5de157d75ca0f7322945e5abd403b23f36e",
+    "experiments/season_intelligence/sunday-20261121-v1/manifest.json": "839a4d0977ff31c20f7bce3e7722267be7da8a47bbe8efb2e9b621a8ccf32d69",
+    "experiments/season_intelligence/sunday-20261121-v1/point_metrics.csv": "31ccaa7e111f47e30ba3a060c439b4a2f054030624bb61c64827c46bc34c0828",
+    "experiments/season_intelligence/sunday-20261121-v1/point_selection_trials.csv": "588a3cf96c100cf60f3f0228ee0b6a4ca4a2179397389cb4324de3cee4a9d666",
+    "experiments/season_intelligence/sunday-20261121-v1/position_probability_metrics.csv": "aae6e9e8659c0fcd245b46405a895d5cd27a4f334f3fb3f48309cfda19b1159b",
+    "experiments/season_intelligence/sunday-20261121-v1/probability_metrics.csv": "8068df2ecc77d2d9316d545495bbb17f98f34305d9cf4d2f5da55a8d63c5a77a",
+    "experiments/season_intelligence/sunday-20261121-v1/probability_predictions.parquet": "4db3dd5eae2c744d52dd929aa6c9312efe1f493f770fc490f259f385e4167b98",
+    "experiments/season_intelligence/sunday-20261121-v1/reliability.csv": "1a543b2684d3c490034957d402cfed6a153fe9bda2910fc3c487793c0c96bae4",
+    "experiments/season_intelligence/sunday-20261121-v1/research_models.joblib": "15d6ee5fd61a908b2539c3122d0495790f4375ec261c95afd9a17f90cb1fc0da",
+    "experiments/season_intelligence/sunday-20261121-v1/selection.json": "13b98a12440bcb3df79516ddfea1fb49c74936d98ea30a885bf8ddcecdf9497b",
+    "experiments/season_intelligence/sunday-20261121-v1/side_reliability.csv": "529018d4fbe6dde05462bce1a799bd03d2945bad24f9b42c4cda6ac24b70f4d7",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_feature_states.parquet": "3b3da7e01e134ef104d090ec592135070911a9398ec92a9f093cf422c0335456",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_forecasts.parquet": "2383411393a6b26f437e9a223bcd4dfad98fa87d451f23ac7d1cb8100fef8207",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_hypothetical_lines.csv": "0500625f754939ba202ec58caa2afbbafc9c847001217e96b2054a51d850ba06",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_models.joblib": "3d8edb789233bd2245e8e31b38b4f5b1053ee607ce9dc57e182cf98746f0de98",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_provenance.json": "0a983bd79e9ce4ea0ff2a05c32abdbc3b18543211be9b731e35deb07fcbb86bc",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_shortlist.csv": "861fad2d5612b5384a7bef0fe7b52c50c16d6a00dd76c8f6b0257616a9041a6e",
+    "experiments/season_intelligence/sunday-20261121-v1/sunday_top2.csv": "d1ec7480ace9af58cf6914f3ebfb5a4c9a656fd7225b8e1d1c32d8c7f3284b42",
+    "research_access.py": "643d17a27d19bd365fbbc0d24af9bd921809cbeab6d8ee4853a989d15c572bd2",
+    "research_inference_releases/weekly-week12-schemafix-20261124/admission.json": "de91d8f89a8a5a22d6f1f6599a7dc48068975aec4d4754949e4455e72796edbe",
+    "research_inference_releases/weekly-week12-schemafix-20261124/eligibility.json": "72171f8d571f94b3aeeb9f28fdd28b1f1ff1737ab0457a1cb6019037a9028e43",
+    "research_inference_releases/weekly-week12-schemafix-20261124/features.parquet": "4fa19128e5231657499348733bb1d9c4b2a415064dc45f4057967e3f51e6ab06",
+    "research_inference_releases/weekly-week12-schemafix-20261124/game_script.json": "c6bdea030e3e7698ec75ad754d8bec8f199ea7d04a35f2576c7835c30cd28ec8",
+    "research_inference_releases/weekly-week12-schemafix-20261124/manifest.json": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+    "research_inference_releases/weekly-week12-schemafix-20261124/qb_starters.json": "74e0ab4b5998edbc3b413a50d588412f9290c1a4162f34aa54f18134709aac93",
+    "research_inference_releases/weekly-week12-schemafix-20261124/roster_evidence.csv": "34437f7d97f1cbbf9d65830efb48a6fb91bd03d5ddcdff00e0f4277159e5c687",
+    "research_inference_releases/weekly-week12-schemafix-20261124/schedule.parquet": "44638f8f91ba540b65b4f84a043a1cd60681334c6da630ab1febedf0cc94c8ee",
+    "research_inference_releases/weekly-week12-schemafix-20261124/slate.parquet": "1a320577747403bbd871ef2fb485ad93d1013526dcec1db2beb3029740d8ff3f",
+    "research_inference_releases/weekly-week12-schemafix-20261124/sources.json": "e1be498f4aa44c313a8e485bcc132d5cbb9b312335b9a8a089b68df95a93c51b",
+    "research_inference_releases/weekly-week12-schemafix-20261124/top_picks.parquet": "105c777cf56f1ec6af487472cd61b9a671d73cb1bcff073a8275593d4547e07b",
+    "research_inference_releases/weekly-week12-schemafix-20261124/top_two.parquet": "bf36adc666f08e6ba58f42d1ce92dd8f71da64c5fa2219b7c74b28d37bdfe5a3",
+    "research_inputs/script_adjustment/pbp-20261121-v2/games.parquet": "6e73f8845329f905bccd10a2f67237d948e539140b39e775487fe5b7fbd7349b",
+    "research_platform/cloud_dashboard.py": "eed9fb05014bf3834033f87a3614de7b9b8a76afa421dcab39ade811a4f641f4",
+    "research_platform/cloud_runtime.py": "aa244d8163c9e408b927fb7efd3b19872d94e16a6ac99fe39738d947f528d060",
+    "research_platform/cloud_weekly_contract.py": "8411d93462c97de30f30d844e88582fd172d0a21ed529cb79ab17442d6df5542",
+    "research_platform/enhanced_engine.py": "1f2c99d160af321d732680b3ba3f3e022223c9b81851b164b3ad841d469888d4",
+    "research_platform/enhanced_ui.py": "360e1d6b266624df6af592e91f6c4efb316c1d9ea39ce22f7a7d03538e87a984",
+    "research_platform/weekly_frame.py": "b73d730c2c9ef055477b4965042235703eb76ef5d4146ecc71a887cb81e8ce5a",
+    "research_platform/weekly_serving.py": "140c8e0aff9697fd20c59a4256d8743065978d1b072e2a06d32b5b51aa952012",
+    "research_platform/weekly_ui.py": "ea1111c8d46eae5b458ca59b1aa06325ad387ea1037f82fe75366b44ad975230",
+    "research_runtime_profiles/week11-certifi-20261120-v1/requirements.lock": "0aafdd0411b4089fc2ec062f676c3b59cf4218ba030ae73fd6b887f632f575a6",
+    "research_runtime_profiles/week12-certifi-20261120-v1/baseline.json": "ddb7ca0891728dcfc6624e474eb52c2cbc68facf2e05f66a84124c5495d22d35",
+    "research_runtime_profiles/week12-certifi-20261120-v1/selection_build.json": "812436a5d1e3d414484f9af6796bf6a5af39125f0bc1d7e99767314078cb6d5b",
+    "research_selection_releases/enhanced-sunday-20261121-v1/fixtures.csv": "ee54b65de88c3b2ff4d2d0467b2f7c14dcbc90de4d65b4e516b95cf340404624",
+    "research_selection_releases/enhanced-sunday-20261121-v1/forecasts.parquet": "b38f5ef7c442122ac96366cc0d45e04daf06ad191a6e82316e971812982034af",
+    "research_selection_releases/enhanced-sunday-20261121-v1/manifest.json": "6d5ce9992d54726eff0f88389846c7836dc93c5ba637421c45e66ec9c738ed52",
+    "research_selection_releases/enhanced-sunday-20261121-v1/positive_line_evidence.csv": "fb4903119c2c7a050c8fc8aadadf840812ff0415a8e38c9753efb33175b863e8",
+    "research_selection_releases/enhanced-sunday-20261121-v1/sensitivity.csv": "f9667b4fafebd4c5ce559f719ecbd958fc99b11e10762f5ba9fbbee71ffca682",
+    "research_selection_releases/enhanced-sunday-20261121-v1/top2.csv": "928b6a1be87c4f49fa23056f57c810c3c2c0a3de5dae190261534c1b7e6f18aa",
+    "research_selection_releases/enhanced-sunday-20261121-v1/top_picks.csv": "823891d324fc8a2a3e023a7263d9e9d9c14a51c173e2d7d6d0e8ba7eb5f5294e",
+    "scripts/certify_weekly_serving.py": "85059794549e64d75c86725fea63bbc9eb8c2deabb325ba7b5a5ac1f8f26afba",
+    "scripts/generate_weekly_serving.py": "50e4699aa1c73766deb849b5dfa34ca98752c94e4a40ae9e1ef884170a5b9e2a",
+    "scripts/select_weekly_serving.py": "bc5bbb1605e82c67a4c5b262fe0053931e26d75a987b5795e5a8d0e3824f22a4",
+    "season_intelligence/data.py": "abdc07abe6e5a00008d71b643defd07201e662de82b578fbe2df1ef580c04ac2",
+    "season_intelligence/models.py": "fa5e414fe3e810a7da700dbabdc339760b53cc737e0091ace01d689b2251302a",
+    "season_intelligence/probability.py": "77a5993e32bce26de20f686a6f62f3fbce2e5d6c7339439b0e45053590509a08",
+    "selection_learning/__init__.py": "1ff45b5f264aa9154c474df0f1224e1710273542790533bf1b1901227b1f5d27",
+    "selection_learning/cli.py": "5fdd5f3378693d211896b3bbc9e0bfbaface7debf16260393c9d88f791aae6fb",
+    "selection_learning/engine.py": "397d54466a9d26d745026eb7f7c1e61abe284f4ccec334c1cc530430ca0958ba",
+    "selection_learning/probe.py": "a3b374604f49d7eb9a69dc18a70544a164e1b8c26ff7fc7a6441dac41c9784a8",
+    "selection_learning/settlement.py": "29471eade5916b87caca1d1a59335256df9b9a090da6b92c9a1460a05b48ccde",
+    "selection_learning/store.py": "fb8afadd530039c7fc143a18ba49f8785a8f0a39c216250c57697f31dd158df0",
+    "selection_learning/ui.py": "87d1440799a90694e19ab247c5a203eca70da75c737d43063cd647bd42fc8cc2",
+    "weekly_learning_state/readiness/week12-independent-fixtures-20261124/fixture_verification.json": "6183eaa581c694829548d5c92adedd1c31e2d0345caaa280f1546882eebfee16",
+    "weekly_learning_state/readiness/week12-independent-fixtures-20261124/manifest.json": "6083b9e87b064fd7f1e6d1aca4e4933268760c8283ea19be77af0c2fb429a3ad"
+  },
+  "manifest_sha256": "4377a209105f79fd038c23e5390fb2cd720281779acf27bffc61e26fe2dc8af5",
+  "release_id": "weekly-week12-schemafix-20261124",
+  "runtime": {
+    "packages": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.4",
+      "PyJWT": "2.15.1",
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.11.20",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "24.0.0",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    },
+    "python_build": "3.14.10",
+    "python_minor": "3.14"
+  },
+  "schema": 1,
+  "status": "passed",
+  "validated_at": "2026-11-27T10:07:30.425179+00:00"
+}

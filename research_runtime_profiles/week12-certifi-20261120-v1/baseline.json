@@ -1,0 +1,408 @@
+{
+  "checks": {
+    "complete_fixtures": 12,
+    "forecast_only_top": [
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036322"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036900"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0038543"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0040667"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receptions",
+        "player_id": "00-0039793"
+      },
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receptions",
+        "player_id": "00-0037238"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0040124"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0039919"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0033288"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0038996"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0039491"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0036963"
+      }
+    ],
+    "forecast_only_two": [
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036322"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receiving_yards",
+        "player_id": "00-0036900"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receiving_yards",
+        "player_id": "00-0038543"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0040667"
+      },
+      {
+        "game_id": "2026_12_SEA_SF",
+        "market": "receptions",
+        "player_id": "00-0039793"
+      },
+      {
+        "game_id": "2026_12_ATL_MIN",
+        "market": "receptions",
+        "player_id": "00-0037238"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0040124"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0039919"
+      },
+      {
+        "game_id": "2026_12_GB_LA",
+        "market": "receptions",
+        "player_id": "00-0038996"
+      },
+      {
+        "game_id": "2026_12_CAR_TB",
+        "market": "receptions",
+        "player_id": "00-0039491"
+      },
+      {
+        "game_id": "2026_12_CHI_DET",
+        "market": "receptions",
+        "player_id": "00-0036963"
+      },
+      {
+        "game_id": "2026_12_KC_BUF",
+        "market": "rushing_yards",
+        "player_id": "00-0038134"
+      },
+      {
+        "game_id": "2026_12_NO_CIN",
+        "market": "receptions",
+        "player_id": "00-0037239"
+      },
+      {
+        "game_id": "2026_12_LV_CLE",
+        "market": "receptions",
+        "player_id": "00-0037291"
+      },
+      {
+        "game_id": "2026_12_TEN_JAX",
+        "market": "rushing_yards",
+        "player_id": "00-0035261"
+      },
+      {
+        "game_id": "2026_12_KC_BUF",
+        "market": "receptions",
+        "player_id": "00-0039894"
+      },
+      {
+        "game_id": "2026_12_NYJ_MIA",
+        "market": "rushing_yards",
+        "player_id": "00-0040198"
+      },
+      {
+        "game_id": "2026_12_TEN_JAX",
+        "market": "receptions",
+        "player_id": "00-0034960"
+      },
+      {
+        "game_id": "2026_12_LV_CLE",
+        "market": "receiving_yards",
+        "player_id": "00-0040122"
+      },
+      {
+        "game_id": "2026_12_NE_LAC",
+        "market": "receiving_yards",
+        "player_id": "00-0035676"
+      },
+      {
+        "game_id": "2026_12_NYJ_MIA",
+        "market": "receptions",
+        "player_id": "00-0039880"
+      },
+      {
+        "game_id": "2026_12_NE_LAC",
+        "market": "receptions",
+        "player_id": "00-0040727"
+      },
+      {
+        "game_id": "2026_12_DEN_PIT",
+        "market": "receiving_yards",
+        "player_id": "00-0035640"
+      },
+      {
+        "game_id": "2026_12_DEN_PIT",
+        "market": "receptions",
+        "player_id": "00-0036894"
+      }
+    ],
+    "frame_signature": "389a669b016eb858c605d3343c1de110b58ba16ccd5f30258a235a6712aa076d",
+    "inference": {
+      "complete_rows": 651,
+      "eligibility_counts": {
+        "eligible": 461,
+        "ineligible": 52,
+        "unresolved": 65
+      },
+      "exact_replay": true,
+      "fixtures": 16,
+      "forecast_rows": 846,
+      "models_verified": 9,
+      "top_picks": 24,
+      "top_two_rows": 24
+    },
+    "pricing_checks": [
+      {
+        "line": 21.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "completions",
+        "pricing": {
+          "unavailable": "The enhanced point forecast has not established reliable pricing; the unchanged certified comparison remains below."
+        }
+      },
+      {
+        "line": 31.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "passing_attempts",
+        "pricing": {
+          "fair_over": 1.9667903801842517,
+          "fair_under": 2.034350382974869,
+          "over": 0.508442592599176,
+          "push": 0.0,
+          "under": 0.491557407400824
+        }
+      },
+      {
+        "line": 236.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "passing_yards",
+        "pricing": {
+          "fair_over": 1.9915106821594626,
+          "fair_under": 2.008562003408827,
+          "over": 0.5021313764260938,
+          "push": 0.0,
+          "under": 0.49786862357390615
+        }
+      },
+      {
+        "line": 1.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "qb_rushing_attempts",
+        "pricing": {
+          "fair_over": 1.760983178925641,
+          "fair_under": 2.3140894932944565,
+          "over": 0.5678645951689842,
+          "push": 0.0,
+          "under": 0.43213540483101576
+        }
+      },
+      {
+        "line": 2.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "qb_rushing_yards",
+        "pricing": {
+          "fair_over": 2.896943935169775,
+          "fair_under": 1.5271637086683327,
+          "over": 0.3451913541921532,
+          "push": 0.0,
+          "q05": -3.0,
+          "q50": 1.0,
+          "q95": 16.0,
+          "under": 0.6548086458078468
+        }
+      },
+      {
+        "line": 9.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "receiving_yards",
+        "pricing": {
+          "fair_over": 2.1433787891800113,
+          "fair_under": 1.8746007967466007,
+          "over": 0.466553091337891,
+          "push": 0.0,
+          "q05": 0.0,
+          "q50": 8.0,
+          "q95": 44.0,
+          "under": 0.5334469086621086
+        }
+      },
+      {
+        "line": 1.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "receptions",
+        "pricing": {
+          "fair_over": 2.179275511012278,
+          "fair_under": 1.847978263486205,
+          "over": 0.45886809398206746,
+          "push": 0.0,
+          "q05": 0.0,
+          "q50": 1.0,
+          "q95": 4.0,
+          "under": 0.5411319060179329
+        }
+      },
+      {
+        "line": 11.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "rushing_attempts",
+        "pricing": {
+          "fair_over": 2.0262745104223674,
+          "fair_under": 1.9743981652515614,
+          "over": 0.49351654716890003,
+          "push": 0.0,
+          "q05": 3.0,
+          "q50": 11.0,
+          "q95": 22.0,
+          "under": 0.5064834528311002
+        }
+      },
+      {
+        "line": 44.5,
+        "line_type": "synthetic certification query, not bookmaker quote",
+        "market": "rushing_yards",
+        "pricing": {
+          "fair_over": 1.9620082373661047,
+          "fair_under": 2.0394921385890763,
+          "over": 0.5096818560468679,
+          "push": 0.0,
+          "q05": 6.0,
+          "q50": 45.0,
+          "q95": 115.0,
+          "under": 0.4903181439531321
+        }
+      }
+    ],
+    "roof_only_fixtures": [
+      "2026_12_BAL_HOU",
+      "2026_12_NYG_IND",
+      "2026_12_PHI_DAL",
+      "2026_12_WAS_ARI"
+    ],
+    "selection_rows": 651
+  },
+  "runtime": {
+    "packages": {
+      "Jinja2": "3.1.6",
+      "MarkupSafe": "3.0.4",
+      "PyJWT": "2.15.1",
+      "altair": "6.3.0",
+      "annotated-types": "0.8.0",
+      "anyio": "4.16.0",
+      "attrs": "26.1.0",
+      "certifi": "2026.10.23",
+      "cffi": "2.1.1",
+      "charset-normalizer": "3.5.2",
+      "click": "8.5.1",
+      "cloudpickle": "3.1.2",
+      "cryptography": "50.0.2",
+      "deprecation": "2.1.0",
+      "h11": "0.16.0",
+      "h2": "4.4.1",
+      "hpack": "4.2.0",
+      "httpcore": "1.0.9",
+      "httpx": "0.28.1",
+      "hyperframe": "6.1.0",
+      "idna": "3.20",
+      "itsdangerous": "2.2.0",
+      "joblib": "1.6.0",
+      "jsonschema": "4.26.0",
+      "jsonschema-specifications": "2025.9.1",
+      "multidict": "7.2.1",
+      "narwhals": "2.28.0",
+      "nflreadpy": "0.1.5",
+      "numpy": "2.5.4",
+      "packaging": "26.3",
+      "pandas": "3.1.1",
+      "pillow": "13.0.0",
+      "platformdirs": "4.14.5",
+      "polars": "2.1.0",
+      "polars-runtime-32": "2.1.0",
+      "postgrest": "2.34.1",
+      "propcache": "0.5.4",
+      "protobuf": "7.36.2",
+      "pyarrow": "24.0.0",
+      "pycparser": "3.12",
+      "pydantic": "2.14.3",
+      "pydantic-settings": "2.16.2",
+      "pydantic_core": "2.50.4",
+      "pydeck": "0.9.3",
+      "python-dateutil": "4.0.0",
+      "python-dotenv": "1.2.4",
+      "python-multipart": "0.0.33",
+      "realtime": "2.34.1",
+      "referencing": "0.37.0",
+      "requests": "2.34.2",
+      "rpds-py": "2026.9.1",
+      "scikit-learn": "1.9.1",
+      "scipy": "1.18.1",
+      "starlette": "1.10.0",
+      "storage3": "2.34.1",
+      "streamlit": "1.67.0",
+      "supabase": "2.34.1",
+      "supabase-auth": "2.34.1",
+      "supabase-functions": "2.34.1",
+      "threadpoolctl": "3.8.0",
+      "tqdm": "4.70.1",
+      "typing-inspection": "0.4.5",
+      "typing_extensions": "4.16.0",
+      "tzdata": "2026.6",
+      "urllib3": "2.8.0",
+      "uvicorn": "0.54.0",
+      "watchdog": "7.1.0",
+      "websockets": "15.0.1",
+      "yarl": "1.25.1"
+    },
+    "python_build": "3.14.10",
+    "python_minor": "3.14"
+  },
+  "validated_at": "2026-11-24T17:43:55.614979+00:00"
+}

@@ -9,7 +9,7 @@ import pandas as pd
 from weekly_learning.admission import time_gate, utc, validate_receipt
 from weekly_learning.store import ROOT, Store, sha
 
-from .engine import VERSION, digest, rankings
+from .engine import VERSION, digest, quote_identity, rankings
 from .store import append, validate
 
 
@@ -30,22 +30,42 @@ def freeze(state, records, *, now=None, release_id, forecast_manifest_sha256):
         if e["kind"] == "freeze"
         for r in e["payload"]["records"]
     }
+    observed = {
+        quote_identity(r)
+        for e in state["events"]
+        if e["kind"] == "freeze"
+        for r in e["payload"]["records"]
+    }
+    incoming = [quote_identity(r) for r in records]
+    if len(set(incoming)) != len(incoming) or any(k in observed for k in incoming):
+        raise ValueError("The same observed bookmaker quote cannot be recorded twice")
     if len({r["quote_id"] for r in records}) != len(records) or any(
         r["quote_id"] in old_ids for r in records
     ):
         raise ValueError(
             "Duplicate predecision quotes cannot be frozen or counted twice"
         )
-    top, games = rankings(records, now=now)
+    previous = [
+        r
+        for e in state["events"]
+        if e["kind"] == "freeze" and e["payload"]["release_id"] == release_id
+        for r in e["payload"]["records"]
+    ]
+    top, games = rankings([*previous, *records], now=now)
+    new_ids = {r["quote_id"] for r in records}
     payload = {
         "frozen_at": now.isoformat(),
         "capture_tier": "genuine_predecision_capture",
         "release_id": release_id,
         "forecast_manifest_sha256": forecast_manifest_sha256,
         "ranking_version": VERSION,
+        "capture_policy": "global-current-pool-new-members-v2",
         "records": records,
-        "top_picks": [r["quote_id"] for r in top],
-        "top2": {g: [r["quote_id"] for r in rs] for g, rs in games.items()},
+        "top_picks": [r["quote_id"] for r in top if r["quote_id"] in new_ids],
+        "top2": {
+            g: [r["quote_id"] for r in rs if r["quote_id"] in new_ids]
+            for g, rs in games.items()
+        },
         "paper_stake": 1.0,
         "financial_scope": "hypothetical fixed one-unit paper stakes; no bankroll access",
         "game_kickoffs": {r["game_id"]: r["kickoff_at"] for r in records},

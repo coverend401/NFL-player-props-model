@@ -1,0 +1,10 @@
+{
+  "action": "bundle_committed",
+  "at": "2026-11-27T09:55:02.452031+00:00",
+  "details": {
+    "id": "week12-remaining-20261127",
+    "kind": "readiness",
+    "manifest_sha256": "cf865add09dabafbfa4722a22a493f435faaff5c63010aaa2eed1e7549bebed6"
+  },
+  "previous_sha256": "c6797895fd181840483a04da609f9e7aceb234ecde95a94fded1427d9bbeda15"
+}
